@@ -1,4 +1,4 @@
-package Usuario;
+package gestorAplicacion.Usuario;
 
 public class Usuario extends Persona {
 	private double saldo;

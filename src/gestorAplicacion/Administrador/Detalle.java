@@ -1,4 +1,4 @@
-package Administrador;
+package gestorAplicacion.Administrador;
 
 public class Detalle {
 	

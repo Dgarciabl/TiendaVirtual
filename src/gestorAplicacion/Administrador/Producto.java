@@ -1,4 +1,4 @@
-package Administrador;
+package gestorAplicacion.Administrador;
 import java.util.*;
 
 public class Producto {

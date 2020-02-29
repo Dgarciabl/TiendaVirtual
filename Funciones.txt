@@ -1,0 +1,27 @@
+invitado:
+  . buscar productos
+Cliente:
+  . cambiar sus atributos
+  . Funciones del carro
+    . Añadir productos
+    . eliminar productos
+    . subtotal
+    . comprar
+Administrador:
+  . funciones de Producto
+    . crear un producto
+    . modificar un producto
+    . eliminar un producto
+  . funciones de categoria
+    . crear una categoria
+    . modificar una categoria
+    . eliminar una categoria
+  . funciones de detalle
+    . crear un detalle
+    . modificar un detalle
+    . eliminar un detalle
+  . funciones de inventario
+    . Añadir detalles al inventario
+    . eliminar un detalle del inventario
+  . funciones estadisticas
+    . ver las estadisticas de la tienda

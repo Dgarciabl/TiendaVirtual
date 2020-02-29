@@ -1,7 +1,7 @@
 package Administrador;
 
-import Usuario.Usuario;
+import Usuario.Persona;
 
-public class Administrador extends Usuario {
+public class Administrador extends Persona {
 
 }

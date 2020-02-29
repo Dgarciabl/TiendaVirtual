@@ -6,9 +6,14 @@ public class Inventario {
 	private ArrayList<Detalle> Inventario;
 	
 	//Constructores
-	Inventario(ArrayList<Detalle> a){
+	public Inventario(ArrayList<Detalle> a){
 		this.Inventario=a;
 	}
+	
+	public Inventario(){
+		this.Inventario=null;
+	}
+
 	
 	//Getters
 	public ArrayList<Detalle> GetInventario(){return this.Inventario;}

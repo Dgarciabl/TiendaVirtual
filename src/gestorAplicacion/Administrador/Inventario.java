@@ -2,36 +2,33 @@ package gestorAplicacion.Administrador;
 import java.util.*;
 
 public class Inventario {
-	//Atributos
-	private ArrayList<Detalle> Inventario;
+	//Attributes
+	protected ArrayList<Detalle> inventario;
 	
-	//Constructores
+	//Constructors
 	public Inventario(ArrayList<Detalle> a){
-		this.Inventario=a;
+		this.inventario=a;
 	}
-	
 	public Inventario(){
-		this.Inventario=null;
+		this.inventario=new ArrayList<Detalle>();
 	}
-
-	
 	//Getters
-	public ArrayList<Detalle> getInventario(){return this.Inventario;}
+	public ArrayList<Detalle> getInventario(){return this.inventario;}
 	
-	public Detalle getInventario(int i) {return Inventario.get(i);}
+	public Detalle getInventario(int i) {return inventario.get(i);}
 	
 	//Metodos Concretos (EN ESPERA)
 	void AddInventario(Detalle d) {
-		Inventario.add(d);
+		inventario.add(d);
 	}
 	void AddInventario(Detalle d, int i) {
-		Inventario.add(i, d);
+		inventario.add(i, d);
 	}
 	void DellInventario(Detalle d) {
-		Inventario.remove(d);
+		inventario.remove(d);
 	}
 	void DellInventario(int i) {
-		Inventario.remove(i);
+		inventario.remove(i);
 	}
 	public Detalle RealizarBusqueda(String n) {
 		

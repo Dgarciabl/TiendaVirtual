@@ -24,11 +24,14 @@ public class Usuario extends Persona {
 	public double getSaldo() {
 		return this.saldo;
 	}
-	public String getCarro() {
-		return this.getCarro().toString();
+	public Carro getCarro() {
+		return this.getCarro();
+	}
+	public String getCarroToString() {
+		return this.carroCompra.toString();
 	}
 	public double getSubtotal() {
-		return this.carroCompra.subTotal;
+		return this.carroCompra.getSubTotal();
 	}
 	//Setters
 	public void actualizarSaldo(double modificacion) {

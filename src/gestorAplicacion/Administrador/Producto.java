@@ -12,32 +12,32 @@ public class Producto {
 	private float calificacionProducto;
 	
 	//Constructores
-	Producto(String n,String d, ArrayList<Categoria> cat, int pv, int pc, float cp){
+	public Producto(String n,String d, ArrayList<Categoria> cat, int pv, int pc, float cp){
 		this.nombre=n; this.descripcion=d; this.categorias=cat;
 		this.precioVenta=pv; this.precioCompra=pc; this.calificacionProducto=cp;
 	}
 	
 	//Getters
-	public String GetNombre() {return this.nombre;}
+	public String getNombre() {return this.nombre;}
 	
-	public String GetDescripcion() {return this.descripcion;}
+	public String getDescripcion() {return this.descripcion;}
 	
-	public ArrayList<Categoria> GetCategoria() {return this.categorias;}
+	public ArrayList<Categoria> getCategoria() {return this.categorias;}
 	
-	public int GetPrecioVenta() {return this.precioVenta;}
+	public int getPrecioVenta() {return this.precioVenta;}
 	
-	public int GetPrecioCompra() {return this.precioCompra;}
+	public int getPrecioCompra() {return this.precioCompra;}
 	
-	public float GetCalificacion() {return this.calificacionProducto;}
+	public float getCalificacion() {return this.calificacionProducto;}
 	
 	//Setters
-	void SetNombre(String s) {this.nombre=s;}
+	void setNombre(String s) {this.nombre=s;}
 	
-	void SetDescripcion(String s) {this.descripcion=s;}
+	void setDescripcion(String s) {this.descripcion=s;}
 	
-	void SetPrecioVenta(int i) {this.precioVenta=i;}
+	void setPrecioVenta(int i) {this.precioVenta=i;}
 	
-	void SetPrecioCompra(int i) {this.precioCompra=i;}
+	void setPrecioCompra(int i) {this.precioCompra=i;}
 	
 	
 	//Metodos Concretos (EN ESPERA)

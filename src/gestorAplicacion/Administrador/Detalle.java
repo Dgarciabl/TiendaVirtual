@@ -7,26 +7,26 @@ public class Detalle {
 	private int cantidad;
 	
 	//Constructores
-	Detalle(Producto p, int c){
+	public Detalle(Producto p, int c){
 		this.producto=p;
 		this.cantidad=c;
 	}
 	
 	//Getters
-	public Producto GetProducto() {
+	public Producto getProducto() {
 		return this.producto;
 	}
 	
-	public int GetCantidad() {
+	public int getCantidad() {
 		return this.cantidad;
 	}
 	
 	//Setters
-	void SetProducto(Producto k) {
+	void setProducto(Producto k) {
 		this.producto=k;
 	}
 	
-	void SetCantidad(int i) {
+	void setCantidad(int i) {
 		this.cantidad=i;
 	}
 

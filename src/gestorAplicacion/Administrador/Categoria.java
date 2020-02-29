@@ -6,26 +6,26 @@ public class Categoria {
 	private String descripcion;
 	
 	//Constructores
-	Categoria(String Nom,String Des){
+	public Categoria(String Nom,String Des){
 		this.nombre=Nom;
 		this.descripcion=Des;
 	}
 	
 	//Getters
-	public String GetDescripcion() {
+	public String getDescripcion() {
 		return this.descripcion;
 	}
 	
-	public String GetNombre() {
+	public String getNombre() {
 		return this.nombre;
 	}
 	
 	//Setters
-	void SetDescripcion(String d) {
+	void setDescripcion(String d) {
 		this.descripcion=d;
 	}
 		
-	void SetNombre(String d) {
+	void setNombre(String d) {
 		this.nombre=d;
 	}
 

@@ -16,9 +16,9 @@ public class Inventario {
 
 	
 	//Getters
-	public ArrayList<Detalle> GetInventario(){return this.Inventario;}
+	public ArrayList<Detalle> getInventario(){return this.Inventario;}
 	
-	public Detalle GetInventario(int i) {return Inventario.get(i);}
+	public Detalle getInventario(int i) {return Inventario.get(i);}
 	
 	//Metodos Concretos (EN ESPERA)
 	void AddInventario(Detalle d) {

@@ -1,5 +1,5 @@
-package uiMain;
+package UImain;
 
-public abstract class OpcionDeMenu {
-
+public interface OpcionDeMenu {
+	public abstract void ejecutar();
 }

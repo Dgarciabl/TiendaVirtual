@@ -1,4 +1,4 @@
-package uiMain;
+package UImain;
 
 public class MenuDeConsola {
 

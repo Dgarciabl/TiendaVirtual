@@ -82,6 +82,7 @@ public abstract class Persona {
 	//abstract methods(OK)
 	public abstract void mostrarInventario();
 	public abstract void mostrarCategorias();
+	public abstract void mostrarProductos();
 	public abstract void busqueda(String nombreProducto);
 	public abstract void busqueda(int indexCategoria);
 }

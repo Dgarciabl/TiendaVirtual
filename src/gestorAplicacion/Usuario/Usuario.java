@@ -56,6 +56,11 @@ public class Usuario extends Persona {
 		
 	}
 	@Override
+	public void mostrarProductos() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
 	public void busqueda(String nombreProducto) {
 		// TODO Auto-generated method stub
 		

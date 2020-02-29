@@ -28,6 +28,31 @@ public class Producto {
 	
 	public int GetPrecioCompra() {return this.precioCompra;}
 	
+	public float GetCalificacion() {return this.calificacionProducto;}
+	
+	//Setters
+	void SetNombre(String s) {this.nombre=s;}
+	
+	void SetDescripcion(String s) {this.descripcion=s;}
+	
+	void SetPrecioVenta(int i) {this.precioVenta=i;}
+	
+	void SetPrecioCompra(int i) {this.precioCompra=i;}
+	
+	
+	//Metodos Concretos (EN ESPERA)
+	void AgregarCategoria(Categoria cat) {
+		
+	}
+	
+	void EliminarCategoria() {
+		
+	}
+	public void Calificar(float C) {
+		
+	}
+	
+	
 	
 
 }

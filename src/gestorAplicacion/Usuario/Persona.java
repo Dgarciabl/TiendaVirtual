@@ -61,7 +61,7 @@ public abstract class Persona {
 	public String getPregunta() {
 		return this.preguntaRecuperacion;
 	}
-	//concrete methods
+	//concrete methods(OK)
 	public boolean comprobarContraseña(String contraseña) {
 		if (this.contraseña.equals(contraseña)) {
 			return true;
@@ -79,7 +79,7 @@ public abstract class Persona {
 			this.contraseña=contraseñaNueva;
 		}
 	}
-	//abstract methods
+	//abstract methods(OK)
 	public abstract void mostrarInventario();
 	public abstract void mostrarCategorias();
 	public abstract void busqueda(String nombreProducto);

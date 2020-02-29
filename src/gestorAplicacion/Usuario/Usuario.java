@@ -19,6 +19,7 @@ public class Usuario extends Persona {
 	}
 	public Usuario(String usuario, String contraseña, String pregunta, String respuesta) {
 		super(usuario,contraseña, pregunta, respuesta);
+		this.saldo=0;
 	}
 	//Getters
 	public double getSaldo() {

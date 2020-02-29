@@ -27,7 +27,9 @@ public class Detalle {
 	}
 	
 	void setCantidad(int i) {
-		this.cantidad=i;
+		if (i>=0) {
+			this.cantidad=i;
+		}
 	}
 
 }

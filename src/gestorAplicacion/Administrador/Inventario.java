@@ -24,10 +24,10 @@ public class Inventario {
 	void AddInventario(Detalle d, int i) {
 		inventario.add(i, d);
 	}
-	void DellInventario(Detalle d) {
+	void DelInventario(Detalle d) {
 		inventario.remove(d);
 	}
-	void DellInventario(int i) {
+	void DelInventario(int i) {
 		inventario.remove(i);
 	}
 	public Detalle RealizarBusqueda(String n) {

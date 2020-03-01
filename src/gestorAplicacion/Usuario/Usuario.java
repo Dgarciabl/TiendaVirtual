@@ -88,32 +88,11 @@ public class Usuario extends Persona {
 	}
 	@Override
 	public int busqueda(String nombreProducto) {
-		ArrayList<Producto> Lis=Main.productos;
-		for (int i=0;i<Lis.size();i++) {
-			Producto Temp=Lis.get(i);
-			if(nombreProducto.equals(Temp.getNombre())) {
-				return i;
-				
-			}
-		}
-		return -1;
+		return this.carroCompra.RealizarBusqueda(nombreProducto);
 	}
 	@Override
 	public ArrayList<Producto> busqueda(int indexCategoria) {
-		Categoria Ind=Main.categorias.get(indexCategoria);
-		ArrayList<Producto> Lis=Main.productos; ArrayList<Producto> Regreso=new ArrayList<Producto>();
-		
-		for (int i=0;i<Lis.size();i++) {
-			Producto Temp=Lis.get(i);
-			ArrayList<Categoria> Temp2=Temp.getCategoria();
-			for (int j=0;j<Temp2.size();j++) {
-				Categoria Cat=Temp2.get(j);
-				if (Ind.getNombre().equals(Cat.getNombre())) {
-					Regreso.add(Temp);
-				}
-			}
-		}
-		return Regreso;
+		return this.carroCompra.RealizarBusqueda(indexCategoria);
 	}
 	//Methods
 	public void comprar() {

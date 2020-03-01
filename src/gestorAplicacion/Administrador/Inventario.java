@@ -1,6 +1,8 @@
 package gestorAplicacion.Administrador;
 import java.util.*;
 
+import UImain.Main;
+
 public class Inventario {
 	//Attributes
 	protected ArrayList<Detalle> inventario;
@@ -30,10 +32,31 @@ public class Inventario {
 	void DelInventario(int i) {
 		inventario.remove(i);
 	}
-	public Detalle RealizarBusqueda(String n) {
-		
+	public int RealizarBusqueda(String n) {
+		ArrayList<Producto> Lis=Main.productos;
+		for (int i=0;i<Lis.size();i++) {
+			Producto Temp=Lis.get(i);
+			if(n.equals(Temp.getNombre())) {
+				return i;
+				
+			}
+		}
+		return -1;
 	}
-	public Detalle RealizarBusqueda(Categoria cat) {
+	public ArrayList<Producto> RealizarBusqueda(int indexCategoria) {
+		Categoria Ind=Main.categorias.get(indexCategoria);
+		ArrayList<Producto> Lis=Main.productos; ArrayList<Producto> Regreso=new ArrayList<Producto>();
 		
+		for (int i=0;i<Lis.size();i++) {
+			Producto Temp=Lis.get(i);
+			ArrayList<Categoria> Temp2=Temp.getCategoria();
+			for (int j=0;j<Temp2.size();j++) {
+				Categoria Cat=Temp2.get(j);
+				if (Ind.getNombre().equals(Cat.getNombre())) {
+					Regreso.add(Temp);
+				}
+			}
+		}
+		return Regreso;
 	}
 }

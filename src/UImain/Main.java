@@ -11,6 +11,7 @@ public class Main {
 	public static ArrayList<Producto> productos;
 	public static Estadistica estadisticos;
 	public static int nivel=2;
+	public static Persona usuario;
 	public static MenuDeConsola[] menu= new MenuDeConsola[3];
 	public static void main(String[] args){
 		while(true) {

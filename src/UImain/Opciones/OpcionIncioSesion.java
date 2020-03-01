@@ -11,6 +11,7 @@ public class OpcionIncioSesion implements OpcionDeMenu {
 	public void ejecutar() {
 		Sesion();
 		if (Sesion()) {
+			Main.usuario=temp;
 			if(temp instanceof Administrador) {
 				Main.nivel=0;
 			}else {

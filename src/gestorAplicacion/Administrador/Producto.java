@@ -13,8 +13,8 @@ public class Producto {
 	
 	//Constructores
 	public Producto(String n,String d, int pv, int pc){
-		this.nombre=n; this.descripcion=d; this.categorias=cat;
-		this.precioVenta=pv; this.precioCompra=pc; this.calificacionProducto=cp;
+		this.nombre=n; this.descripcion=d;
+		this.precioVenta=pv; this.precioCompra=pc;
 	}
 	
 	//Getters

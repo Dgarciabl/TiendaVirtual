@@ -18,11 +18,9 @@ public class OpcionCrearProductos implements OpcionCreacion {
 		System.out.println("Precio de Venta:");
 		double precioVenta=in.nextDouble();
 		admon.crearProducto(nombre, descripcion, precioCompra, precioVenta);
-		System.out.println("");
 	}
 	@Override
 	public String toString() {
 		return "Crear Productos";
 	}
-
 }

@@ -7,12 +7,12 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private ArrayList<Categoria> categorias;
-	private int precioVenta;
-	private int precioCompra;
+	private double precioVenta;
+	private double precioCompra;
 	private float calificacionProducto;
 	
 	//Constructores
-	public Producto(String n,String d, int pv, int pc){
+	public Producto(String n,String d, double pv, double pc){
 		this.nombre=n; this.descripcion=d;
 		this.precioVenta=pv; this.precioCompra=pc;
 	}
@@ -24,9 +24,9 @@ public class Producto {
 	
 	public ArrayList<Categoria> getCategoria() {return this.categorias;}
 	
-	public int getPrecioVenta() {return this.precioVenta;}
+	public double getPrecioVenta() {return this.precioVenta;}
 	
-	public int getPrecioCompra() {return this.precioCompra;}
+	public double getPrecioCompra() {return this.precioCompra;}
 	
 	public float getCalificacion() {return this.calificacionProducto;}
 	

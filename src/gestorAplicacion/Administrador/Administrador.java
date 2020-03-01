@@ -61,7 +61,6 @@ public class Administrador extends Persona {
 	
 	//Methods
 	//Create
-	//Recibir atributos, crear un objeto tipo producto y añadirlo al main sin retornarlo
 	public void crearProducto(String name, String description, int oPrice, int sPrice) {
 		Producto productI = new Producto(name, description, oPrice, sPrice);	
 		Main.productos.add(productI);

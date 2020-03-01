@@ -58,12 +58,16 @@ public class Administrador extends Persona {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	//Methods
-	  //Create
-	public void crearProducto() {
-		
+	//Create
+	//Recibir atributos, crear un objeto tipo producto y añadirlo al main sin retornarlo
+	public void crearProducto(String name, String description, int oPrice, int sPrice) {
+		Producto product = new Producto(name, description, oPrice, sPrice);	
 	}
+	
 	public void crearCategoria() {
+		
 		
 	}
 	public void añadirDetalle() {

@@ -76,7 +76,8 @@ public class Administrador extends Persona {
 		Main.inventario.AddInventario(detailI);
 	}
 	  //Modify
-	public void modificarProducto() {
+// Producto modificar para cada atributo, 
+	public void modificarProducto(){
 		
 	}
 	public void modificarCategoria() {
@@ -85,14 +86,17 @@ public class Administrador extends Persona {
 	public void modificarInventario() {
 		
 	}
-	  //Eliminate
-	public void eliminarProducto() {
+	 //Eliminate
+	public void eliminarProducto(int i){
+		Main.productos.remove(i);
 		
 	}
-	public void eliminarCategoria() {
+	public void eliminarCategoria(int i){
+		Main.categorias.remove(i);
 		
 	}
-	public void eliminarDetalle() {
+	public void eliminarDetalle(int i) {
+		Main.inventario.DelInventario(i);
 		
 	}
 	  //Statistics

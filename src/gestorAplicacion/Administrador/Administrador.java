@@ -61,7 +61,7 @@ public class Administrador extends Persona {
 	
 	//Methods
 	//Create
-	public void crearProducto(String name, String description, int oPrice, int sPrice) {
+	public void crearProducto(String name, String description, double oPrice, double sPrice) {
 		Producto productI = new Producto(name, description, oPrice, sPrice);	
 		Main.productos.add(productI);
 	}

@@ -1,13 +1,12 @@
 package UImain.Opciones;
 import java.util.Scanner;
+import gestorAplicacion.Usuario.Persona;
 import gestorAplicacion.Administrador.Administrador;
 import UImain.Main;
 import UImain.OpcionDeMenu;
-import gestorAplicacion.Usuario.Persona;
 public class OpcionIncioSesion implements OpcionDeMenu {
 	private Scanner in=new Scanner(System.in);
 	private Persona temp;
-	private boolean access=false;
 	@Override
 	public void ejecutar() {
 		Sesion();
@@ -22,7 +21,7 @@ public class OpcionIncioSesion implements OpcionDeMenu {
 			System.out.println("Clave o usuario Errado");
 		}
 	}
-	public boolean Sesion() {
+	private boolean Sesion() {
 		System.out.println("Usuario:");
 		String usu=in.next();
 		System.out.println("Contraseña:");

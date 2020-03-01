@@ -84,6 +84,6 @@ public abstract class Persona {
 	//abstract methods(OK)
 	public abstract void mostrarCategorias();
 	public abstract void mostrarProductos();
-	public abstract Producto busqueda(String nombreProducto);
+	public abstract int busqueda(String nombreProducto);
 	public abstract ArrayList<Producto> busqueda(int indexCategoria);
 }

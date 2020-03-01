@@ -3,9 +3,8 @@ import java.util.*;
 
 import gestorAplicacion.Administrador.Detalle;
 import gestorAplicacion.Administrador.Categoria;
-import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Producto;
-import uiMain.*;
+import UImain.*;
 
 public class Usuario extends Persona {
 	//Attributes
@@ -88,17 +87,16 @@ public class Usuario extends Persona {
 		}				
 	}
 	@Override
-	public Producto busqueda(String nombreProducto) {
+	public int busqueda(String nombreProducto) {
 		ArrayList<Producto> Lis=Main.productos;
 		for (int i=0;i<Lis.size();i++) {
 			Producto Temp=Lis.get(i);
 			if(nombreProducto.equals(Temp)) {
-				return Temp;
+				return i;
 				
 			}
 		}
-		return null;
-		
+		return -1;
 	}
 	@Override
 	public ArrayList<Producto> busqueda(int indexCategoria) {
@@ -116,7 +114,6 @@ public class Usuario extends Persona {
 			}
 		}
 		return Regreso;
-		
 	}
 	//Methods
 	public void comprar() {

@@ -1,4 +1,4 @@
-package UImain.Opciones;
+package UImain.Opciones.Invitado;
 import java.util.Scanner;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Usuario.Persona;

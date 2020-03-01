@@ -1,8 +1,8 @@
-package UImain.Opciones;
+package UImain.Opciones.Invitado;
 
 import UImain.OpcionDeMenu;
 
-public class OpcionEliminar implements OpcionDeMenu {
+public class OpcionBusqueda implements OpcionDeMenu {
 
 	@Override
 	public void ejecutar() {

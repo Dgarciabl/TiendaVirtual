@@ -1,4 +1,4 @@
-package UImain.Opciones;
+package UImain.Opciones.Invitado;
 
 import UImain.OpcionDeMenu;
 import UImain.Main;

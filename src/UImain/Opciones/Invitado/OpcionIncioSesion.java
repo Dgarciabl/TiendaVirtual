@@ -1,4 +1,4 @@
-package UImain.Opciones;
+package UImain.Opciones.Invitado;
 import java.util.Scanner;
 import gestorAplicacion.Usuario.Persona;
 import gestorAplicacion.Administrador.Administrador;

@@ -13,7 +13,9 @@ public class Main {
 	public static int nivel=2;
 	public static MenuDeConsola[] menu= new MenuDeConsola[3];
 	public static void main(String[] args){
-		
+		while(true) {
+			menu[nivel].lanzarMenu();
+		}
 	}
 	public void montarDB() {
 		//Usuarios;

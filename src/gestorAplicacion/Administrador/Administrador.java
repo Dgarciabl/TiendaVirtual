@@ -1,6 +1,8 @@
 package gestorAplicacion.Administrador;
+import UImain.Main;
 
 import gestorAplicacion.Usuario.Persona;
+import java.util.*;
 
 public class Administrador extends Persona {
 	//Doesn't have attributes
@@ -14,17 +16,31 @@ public class Administrador extends Persona {
 	//Abstract Methods
 	@Override
 	public void mostrarInventario() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(Main.inventario);
 	}
 	@Override
 	public void mostrarCategorias() {
-		// TODO Auto-generated method stub
+		ArrayList<Categoria> Cat=Main.categorias;
+		System.out.println("Lista de categorias:");
+		for (int i=0;i<Cat.size();i++) {
+			Categoria Temp=Cat.get(i);
+			System.out.println(Temp.getNombre());
+			System.out.println(Temp.getDescripcion());
+			System.out.println("---------------");
+		}
 		
 	}
 	@Override
 	public void mostrarProductos() {
-		// TODO Auto-generated method stub
+		ArrayList<Producto> Temp=Main.productos;
+		for (int i=0;i<Temp.size();i++) {
+			Producto Temp2=Temp.get(i);
+			System.out.println("Nombre: " + Temp2.getNombre());
+			System.out.println("Descripcion: " + Temp2.getDescripcion());
+			System.out.println("Precio de compra:" + Temp2.getPrecioCompra());
+			System.out.println("Precio de venta: " + Temp2.getPrecioVenta());
+			System.out.println("--------------------------");
+		}
 		
 	}
 	@Override

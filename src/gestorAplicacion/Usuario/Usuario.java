@@ -91,7 +91,7 @@ public class Usuario extends Persona {
 		ArrayList<Producto> Lis=Main.productos;
 		for (int i=0;i<Lis.size();i++) {
 			Producto Temp=Lis.get(i);
-			if(nombreProducto.equals(Temp)) {
+			if(nombreProducto.equals(Temp.getNombre())) {
 				return i;
 				
 			}
@@ -108,7 +108,7 @@ public class Usuario extends Persona {
 			ArrayList<Categoria> Temp2=Temp.getCategoria();
 			for (int j=0;j<Temp2.size();j++) {
 				Categoria Cat=Temp2.get(j);
-				if (Ind.equals(Cat)) {
+				if (Ind.getNombre().equals(Cat.getNombre())) {
 					Regreso.add(Temp);
 				}
 			}

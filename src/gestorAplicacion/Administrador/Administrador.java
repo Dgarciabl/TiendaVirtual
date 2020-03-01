@@ -74,7 +74,7 @@ public class Administrador extends Persona {
 	
 	public void añadirDetalle(Producto obj1, int amount) {
 		Detalle detailI = new Detalle(obj1,amount);
-		Inventario.AddInventario(detailI);
+		Main.inventario.AddInventario(detailI);
 	}
 	  //Modify
 	public void modificarProducto() {

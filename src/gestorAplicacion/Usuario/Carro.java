@@ -3,6 +3,8 @@ import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Detalle;
 import java.util.*;
 
+import UImain.Main;
+
 public class Carro extends Inventario {
 	//Attributes
 	private double subTotal;
@@ -48,7 +50,9 @@ public class Carro extends Inventario {
 	}
 	//Concrete Methods (EN ESPERA)
 	public String GenerarFactura() {
-		
+		String s=this.toString();
+		//incompleto le falta, arreglar al hacer la compra
+		return s;
 	}
 	@Override
 	public String toString() {

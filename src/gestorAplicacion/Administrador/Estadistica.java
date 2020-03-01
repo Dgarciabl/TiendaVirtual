@@ -1,6 +1,8 @@
 package gestorAplicacion.Administrador;
 
 public class Estadistica {
-	private int onichan;
-	private String ototo;
+	private Float gananciaNeta;
+	private Float gananciaHombres;
+	private Float gananciaMujeres;
+	private Float gananciaPorObjeto;
 }

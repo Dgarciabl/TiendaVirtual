@@ -76,15 +76,48 @@ public class Administrador extends Persona {
 		Main.inventario.AddInventario(detailI);
 	}
 	  //Modify
-// Producto modificar para cada atributo, 
-	public void modificarProducto(){
-		
+// Metodo modificar para cada atributo, 
+	//Modificar Producto
+	public void modificarNombreProducto(int index, String name){
+		Main.productos.get(index).setNombre(name);	
 	}
-	public void modificarCategoria() {
-		
+	public void modificarDescripcionProducto(int index, String description) {
+		Main.productos.get(index).setDescripcion(description);
 	}
-	public void modificarInventario() {
-		
+	public void addCategoriaProducto(int index, Categoria cat1){
+		Main.productos.get(index).getCategoria().add(cat1);
+	}
+	public void delCategoriaProducto(int index, Categoria cat1){
+		Main.productos.get(index).getCategoria().remove(cat1);
+	}
+	public void modificarPrecioCompra(int index, int price) {
+		Main.productos.get(index).setPrecioCompra(price);
+	}
+	public void modificarPrecioVenta(int index, int price) {
+		Main.productos.get(index).setPrecioVenta(price);
+	}
+	public void resetCalificacion(int index) {
+		Main.productos.get(index).Calificar(5);
+	}
+	
+	//Modificar Categoria
+	public void modificarNombre(int index, String name) {
+		Main.categorias.get(index).setNombre(name);
+	}
+	public void modificarDescripcion(int index, String description) {
+		Main.categorias.get(index).setDescripcion(description);
+	}
+	
+	//Modificar Inventario
+	
+	public void addProductoInventario(int index, Detalle detail){
+		Main.inventario.AddInventario(detail);
+	}
+	public void delProductoInventario(int index, Detalle detail) {
+		Main.inventario.DelInventario(detail);
+	}
+	public void modificarProductoInventario(Detalle detail, int amount) {
+		Main.inventario.getInventario().get(Main.inventario.getInventario().indexOf(detail)).setCantidad(amount);
 	}
 	 //Eliminate
 	public void eliminarProducto(int i){

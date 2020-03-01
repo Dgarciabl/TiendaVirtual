@@ -1,8 +1,11 @@
 package gestorAplicacion.Usuario;
 import java.util.*;
+
+import UImain.Main;
 import gestorAplicacion.Administrador.Detalle;
 import gestorAplicacion.Administrador.Categoria;
-
+import gestorAplicacion.Administrador.Inventario;
+import UImain.*;
 public class Usuario extends Persona {
 	//Attributes
 	private double saldo;
@@ -49,31 +52,15 @@ public class Usuario extends Persona {
 	}
 	//Abstract Methods implementation 
 	@Override
-	public void mostrarInventario() {
-		ArrayList<Detalle> Temp=this.carroCompra.getInventario();
-		for (int i=0; i<Temp.size();i++) {
-			Detalle Temp2=Temp.get(i);
-			System.out.println(i+1 +")"+ Temp2.getProducto().getNombre());
-			System.out.println(Temp2.getCantidad());
-			System.out.println("-------------------------------------");
-		}
-		
-	}
-	@Override
 	public void mostrarCategorias() {
-		ArrayList<Detalle> Temp=this.carroCompra.getInventario();
+		ArrayList<Categoria> Temp=Main.categorias;
+		System.out.println("-------------------------------------");
+		System.out.println("Categorias:");
+		System.out.println("-------------------------------------");
 		for (int i=0; i<Temp.size();i++) {
-			Detalle Temp2=Temp.get(i);
-			System.out.println("Nombre de producto:");
-			System.out.println(i+1 +")"+ Temp2.getProducto().getNombre());
-			ArrayList<Categoria> Temp3=Temp2.getProducto().getCategoria();
-			System.out.println("Categorias de: "+ Temp2.getProducto().getNombre());
-			for (int j=0;i<Temp3.size();j++) {
-				Categoria Temp4=Temp3.get(j);
-				System.out.println(j+1 +")"+ Temp4.getNombre());
-				System.out.println(Temp4.getDescripcion());
-				System.out.println("---------------");
-			}
+			System.out.println(i+1 +")"+ Temp.get(i).getNombre());
+			System.out.println("Descripcion:");
+			System.out.println(Temp.get(i).getDescripcion());
 			System.out.println("-------------------------------------");
 		}
 		
@@ -82,13 +69,20 @@ public class Usuario extends Persona {
 	}
 	@Override
 	public void mostrarProductos() {
-		ArrayList<Detalle> Temp=this.carroCompra.getInventario();
+		ArrayList<Detalle> Temp=Main.inventario.getInventario();
+		System.out.println("-------------------------------------");
+		System.out.println("Productos:");
+		System.out.println("-------------------------------------");
 		for (int i=0; i<Temp.size();i++) {
-			Detalle Temp2=Temp.get(i);
-			System.out.println(Temp2.getProducto().getNombre());
-			System.out.println(Temp2.getProducto().getDescripcion());
-			System.out.println(Temp2.getProducto().getPrecioVenta());
-			System.out.println(Temp2.getCantidad());
+			System.out.println(i+1 +")"+ Temp.get(i).getProducto().getNombre());
+			System.out.println("Descripcion:");
+			System.out.println(Temp.get(i).getProducto().getDescripcion());
+			System.out.println("Precio: "+Temp.get(i).getProducto().getPrecioVenta());
+			System.out.println("Unidades Disponibles: "+Temp.get(i).getCantidad());
+			System.out.println("Categorias:");
+			for (int j=0;j<Temp.get(i).getProducto().getCategoria().size();j++) {
+				System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
+			}
 			System.out.println("-------------------------------------");
 		}				
 	}

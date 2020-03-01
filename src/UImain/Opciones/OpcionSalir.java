@@ -3,16 +3,14 @@ package UImain.Opciones;
 import UImain.OpcionDeMenu;
 
 public class OpcionSalir implements OpcionDeMenu {
-
+	//Abstract methods
 	@Override
 	public void ejecutar() {
-		// TODO Auto-generated method stub
-
+		//guardar base de datos
+		System.exit(0);
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-
+		return "Salir?";
 	}
-
 }

@@ -63,15 +63,18 @@ public class Administrador extends Persona {
 	//Create
 	//Recibir atributos, crear un objeto tipo producto y añadirlo al main sin retornarlo
 	public void crearProducto(String name, String description, int oPrice, int sPrice) {
-		Producto product = new Producto(name, description, oPrice, sPrice);	
+		Producto productI = new Producto(name, description, oPrice, sPrice);	
+		Main.productos.add(productI);
 	}
 	
 	public void crearCategoria(String name, String description) {
-		Categoria category = new Categoria(name, description);
+		Categoria categoryI = new Categoria(name, description);
+		Main.categorias.add(categoryI);
 	}
 	
 	public void añadirDetalle(Producto obj1, int amount) {
-		Detalle detail = new Detalle(obj1,amount);
+		Detalle detailI = new Detalle(obj1,amount);
+		Inventario.AddInventario(detailI);
 	}
 	  //Modify
 	public void modificarProducto() {

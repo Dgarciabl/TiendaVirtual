@@ -4,8 +4,6 @@ import java.util.*;
 import UImain.Main;
 import gestorAplicacion.Administrador.Detalle;
 import gestorAplicacion.Administrador.Categoria;
-import gestorAplicacion.Administrador.Inventario;
-import UImain.*;
 public class Usuario extends Persona {
 	//Attributes
 	private double saldo;

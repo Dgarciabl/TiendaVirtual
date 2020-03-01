@@ -6,6 +6,7 @@ import gestorAplicacion.Administrador.Categoria;
 import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Producto;
 import uiMain.*;
+
 public class Usuario extends Persona {
 	//Attributes
 	private double saldo;

@@ -66,12 +66,12 @@ public class Administrador extends Persona {
 		Producto product = new Producto(name, description, oPrice, sPrice);	
 	}
 	
-	public void crearCategoria() {
-		
-		
+	public void crearCategoria(String name, String description) {
+		Categoria category = new Categoria(name, description);
 	}
-	public void añadirDetalle() {
 	
+	public void añadirDetalle(Producto obj1, int amount) {
+		Detalle detail = new Detalle(obj1,amount);
 	}
 	  //Modify
 	public void modificarProducto() {

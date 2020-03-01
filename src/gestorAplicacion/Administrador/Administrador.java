@@ -1,5 +1,8 @@
 package gestorAplicacion.Administrador;
 
+import java.util.ArrayList;
+
+import UImain.Main;
 import gestorAplicacion.Usuario.Persona;
 
 public class Administrador extends Persona {
@@ -13,19 +16,29 @@ public class Administrador extends Persona {
 	}
 	//Abstract Methods
 	@Override
-	public void mostrarInventario() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
 	public void mostrarCategorias() {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mostrarProductos() {
-		// TODO Auto-generated method stub
-		
+		ArrayList<Detalle> Temp=Main.inventario.getInventario();
+		System.out.println("-------------------------------------");
+		System.out.println("Inventario:");
+		System.out.println("-------------------------------------");
+		for (int i=0; i<Temp.size();i++) {
+			System.out.println(i+1 +")"+ Temp.get(i).getProducto().getNombre());
+			System.out.println("Descripcion:");
+			System.out.println(Temp.get(i).getProducto().getDescripcion());
+			System.out.println("Precio de Venta: "+Temp.get(i).getProducto().getPrecioVenta());
+			System.out.println("Precio de compra: "+Temp.get(i).getProducto().getPrecioCompra());
+			System.out.println("Unidades Disponibles: "+Temp.get(i).getCantidad());
+			System.out.println("Categorias:");
+			for (int j=0;j<Temp.get(i).getProducto().getCategoria().size();j++) {
+				System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
+			}
+			System.out.println("-------------------------------------");
+		}
 	}
 	@Override
 	public void busqueda(String nombreProducto) {

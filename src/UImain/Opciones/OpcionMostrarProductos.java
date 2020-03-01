@@ -1,13 +1,11 @@
 package UImain.Opciones;
 
+import UImain.Main;
 import UImain.OpcionDeMenu;
 
 public class OpcionMostrarProductos implements OpcionDeMenu {
-
 	@Override
 	public void ejecutar() {
-		// TODO Auto-generated method stub
-
+		Main.usuario.mostrarProductos();
 	}
-
 }

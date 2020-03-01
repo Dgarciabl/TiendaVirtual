@@ -30,8 +30,9 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 			}
 		}
 		else if (i==2) {
-			System.out.println("Escriba el indice de la categoria");
-			int s=Ing.nextInt();
+			System.out.println("Escriba el nombre de la categoria");
+			String l=Ing.next();
+			int s=Main.categorias.indexOf(l);
 			ArrayList<Producto> Reg=Main.inventario.RealizarBusqueda(s);
 			if (Reg.size()!=0) {
 				System.out.println("Se han encontrado los siguientes productos");

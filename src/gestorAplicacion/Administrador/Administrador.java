@@ -17,8 +17,16 @@ public class Administrador extends Persona {
 	//Abstract Methods
 	@Override
 	public void mostrarCategorias() {
-		// TODO Auto-generated method stub
-		
+		ArrayList<Categoria> Temp=Main.categorias;
+		System.out.println("-------------------------------------");
+		System.out.println("Categorias:");
+		System.out.println("-------------------------------------");
+		for (int i=0; i<Temp.size();i++) {
+			System.out.println(i+1 +")"+ Temp.get(i).getNombre());
+			System.out.println("Descripcion:");
+			System.out.println(Temp.get(i).getDescripcion());
+			System.out.println("-------------------------------------");
+		}
 	}
 	@Override
 	public void mostrarProductos() {

@@ -12,7 +12,7 @@ public class Producto {
 	private float calificacionProducto;
 	
 	//Constructores
-	public Producto(String n,String d, ArrayList<Categoria> cat, int pv, int pc, float cp){
+	public Producto(String n,String d, int pv, int pc){
 		this.nombre=n; this.descripcion=d; this.categorias=cat;
 		this.precioVenta=pv; this.precioCompra=pc; this.calificacionProducto=cp;
 	}

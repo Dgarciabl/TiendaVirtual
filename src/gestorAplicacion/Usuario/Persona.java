@@ -1,4 +1,6 @@
 package gestorAplicacion.Usuario;
+import gestorAplicacion.Administrador.Producto;
+import java.util.*;
 
 public abstract class Persona {
 	//Attributes
@@ -82,6 +84,6 @@ public abstract class Persona {
 	//abstract methods(OK)
 	public abstract void mostrarCategorias();
 	public abstract void mostrarProductos();
-	public abstract void busqueda(String nombreProducto);
-	public abstract void busqueda(int indexCategoria);
+	public abstract Producto busqueda(String nombreProducto);
+	public abstract ArrayList<Producto> busqueda(int indexCategoria);
 }

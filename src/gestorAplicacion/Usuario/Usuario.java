@@ -1,11 +1,11 @@
 package gestorAplicacion.Usuario;
 import java.util.*;
 
-import UImain.Main;
 import gestorAplicacion.Administrador.Detalle;
 import gestorAplicacion.Administrador.Categoria;
 import gestorAplicacion.Administrador.Inventario;
-import UImain.*;
+import gestorAplicacion.Administrador.Producto;
+import uiMain.*;
 public class Usuario extends Persona {
 	//Attributes
 	private double saldo;
@@ -87,13 +87,34 @@ public class Usuario extends Persona {
 		}				
 	}
 	@Override
-	public void busqueda(String nombreProducto) {
-		// TODO Auto-generated method stub
+	public Producto busqueda(String nombreProducto) {
+		ArrayList<Producto> Lis=Main.productos;
+		for (int i=0;i<Lis.size();i++) {
+			Producto Temp=Lis.get(i);
+			if(nombreProducto.equals(Temp)) {
+				return Temp;
+				
+			}
+		}
+		return null;
 		
 	}
 	@Override
-	public void busqueda(int indexCategoria) {
-		// TODO Auto-generated method stub
+	public ArrayList<Producto> busqueda(int indexCategoria) {
+		Categoria Ind=Main.categorias.get(indexCategoria);
+		ArrayList<Producto> Lis=Main.productos; ArrayList<Producto> Regreso=new ArrayList<Producto>();
+		
+		for (int i=0;i<Lis.size();i++) {
+			Producto Temp=Lis.get(i);
+			ArrayList<Categoria> Temp2=Temp.getCategoria();
+			for (int j=0;j<Temp2.size();j++) {
+				Categoria Cat=Temp2.get(j);
+				if (Ind.equals(Cat)) {
+					Regreso.add(Temp);
+				}
+			}
+		}
+		return Regreso;
 		
 	}
 	//Methods

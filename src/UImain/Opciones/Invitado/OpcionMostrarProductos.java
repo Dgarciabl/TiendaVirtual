@@ -8,4 +8,8 @@ public class OpcionMostrarProductos implements OpcionDeMenu {
 	public void ejecutar() {
 		Main.usuario.mostrarProductos();
 	}
+	@Override
+	public String toString(){
+		return "Mostrar Productos";
+	}
 }

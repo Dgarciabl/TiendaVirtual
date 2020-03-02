@@ -25,5 +25,9 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 				}
 
 		}
+	@Override
+	public String toString(){
+		return "Busqueda por nombre";
+	}
 
 }

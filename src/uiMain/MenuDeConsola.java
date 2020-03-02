@@ -3,7 +3,7 @@ import java.util.*;
 import UImain.OpcionDeMenu;
 public class MenuDeConsola {
 	//Attributes
-	private ArrayList<OpcionDeMenu> opciones;
+	public ArrayList<OpcionDeMenu> opciones;
 	//constructors
 	public MenuDeConsola(ArrayList<OpcionDeMenu> op) {
 		this.opciones=op;

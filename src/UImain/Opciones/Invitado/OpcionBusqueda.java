@@ -3,10 +3,9 @@ package UImain.Opciones.Invitado;
 import java.util.*;
 
 import UImain.OpcionDeMenu;
-import uiMain.Main;
 import gestorAplicacion.Administrador.Producto;
-
-public class OpcionBusqueda implements OpcionDeMenu {
+import UImain.*;
+class OpcionBusqueda implements OpcionDeMenu {
 
 	@Override
 	public void ejecutar() {

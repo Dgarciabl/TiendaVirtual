@@ -49,14 +49,14 @@ public class Administrador extends Persona {
 		}
 	}
 	@Override
-	public void busqueda(String nombreProducto) {
+	public int busqueda(String nombreProducto) {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 	@Override
-	public void busqueda(int indexCategoria) {
+	public ArrayList<Producto> busqueda(int indexCategoria) {
 		// TODO Auto-generated method stub
-		
+		return new ArrayList<Producto>();
 	}
 	
 	//Methods

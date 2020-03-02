@@ -14,8 +14,11 @@ public class Main {
 	public static Persona usuario;
 	public static MenuDeConsola[] menu= new MenuDeConsola[3];
 	public static void main(String[] args){
+		Scanner in=new Scanner(System.in);
 		while(true) {
 			menu[nivel].lanzarMenu();
+			int op=in.nextInt();
+			menu[nivel].opciones.get(op);
 		}
 	}
 	public void montarDB() {

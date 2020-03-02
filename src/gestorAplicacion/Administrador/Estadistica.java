@@ -1,10 +1,10 @@
 package gestorAplicacion.Administrador;
 
 public class Estadistica {
-	private Float gananciaNeta;
-	private Float gananciaHombres;
-	private Float gananciaMujeres;
-	private Float gananciaPorObjeto;
+	private float gananciaNeta;
+	private float gananciaHombres;
+	private float gananciaMujeres;
+	private float gananciaPorObjeto;
 	double VerGananciaReal() {
 		return gananciaNeta;
 	}
@@ -17,4 +17,8 @@ public class Estadistica {
 	double VerGananciaPorObjeto() {
 		return gananciaPorObjeto;
 	}
+	ArrayList<Float> VerEstadisticas(){
+		ArrayList<float> estadisticas = new ArrayList<float>(gananciaNeta,)
+		return 
+	} 
 }

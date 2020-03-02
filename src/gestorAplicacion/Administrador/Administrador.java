@@ -101,10 +101,10 @@ public class Administrador extends Persona {
 	}
 	
 	//Modificar Categoria
-	public void modificarNombre(int index, String name) {
+	public void modificarNombreCategoria(int index, String name) {
 		Main.categorias.get(index).setNombre(name);
 	}
-	public void modificarDescripcion(int index, String description) {
+	public void modificarDescripcionCategoria(int index, String description) {
 		Main.categorias.get(index).setDescripcion(description);
 	}
 	

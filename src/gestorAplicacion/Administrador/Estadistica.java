@@ -6,6 +6,9 @@ public class Estadistica {
 	private float gananciaHombres;
 	private float gananciaMujeres;
 	private float gananciaPorObjeto;
+	private int N_ObjetosHombres;
+	private int N_ObjetosMujeres;
+	private int N_ObjetosTotal;
 	double VerGananciaReal() {
 		return gananciaNeta;
 	}
@@ -18,6 +21,15 @@ public class Estadistica {
 	double VerGananciaPorObjeto() {
 		return gananciaPorObjeto;
 	}
+	int VerN_ObjetosHombres() {
+		return N_ObjetosHombres;
+	}
+	int VerN_ObjetosMujeres() {
+		return N_ObjetosMujeres;
+	}
+	int VerN_ObjetosTotal() {
+		return N_ObjetosTotal;
+	}
 	ArrayList<Float> VerEstadisticas(){
 		ArrayList<Float> estadisticas = new ArrayList<Float>();
 		estadisticas.add(gananciaNeta);
@@ -26,4 +38,8 @@ public class Estadistica {
 		estadisticas.add(gananciaPorObjeto);
 		return estadisticas;
 	} 
+	public void Actualizar(Producto prod, boolean genero) {//true hombre, false mujeres
+		
+	}  //true hombre, false mujeres
+	
 }

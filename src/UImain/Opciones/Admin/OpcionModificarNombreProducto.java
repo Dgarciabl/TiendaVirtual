@@ -18,7 +18,7 @@ public class OpcionModificarNombreProducto implements OpcionModificar {
 		int x = input.nextInt();
 		System.out.println("Por cual nombre desea remplazarlo?");
 		String str1 = input.next();
-		admon.modificarNombreProducto(x, str1);;
+		admon.modificarNombreProducto(x, str1);
 	}
 	public String toString() {
 		return "MODIFICAR NOMBRE PRODUCTO";

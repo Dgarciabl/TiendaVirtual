@@ -1,4 +1,5 @@
 package gestorAplicacion.Administrador;
+import java.util.ArrayList;
 
 public class Estadistica {
 	private float gananciaNeta;
@@ -18,7 +19,11 @@ public class Estadistica {
 		return gananciaPorObjeto;
 	}
 	ArrayList<Float> VerEstadisticas(){
-		ArrayList<float> estadisticas = new ArrayList<float>(gananciaNeta,)
-		return 
+		ArrayList<Float> estadisticas = new ArrayList<Float>();
+		estadisticas.add(gananciaNeta);
+		estadisticas.add(gananciaHombres);
+		estadisticas.add(gananciaMujeres);
+		estadisticas.add(gananciaPorObjeto);
+		return estadisticas;
 	} 
 }

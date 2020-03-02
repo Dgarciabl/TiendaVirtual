@@ -24,6 +24,9 @@ public class Producto {
 	
 	public ArrayList<Categoria> getCategoria() {return this.categorias;}
 	
+	public Categoria getCategoriaIndividual(int index) {
+		return this.categorias.get(index);
+	}
 	public double getPrecioVenta() {return this.precioVenta;}
 	
 	public double getPrecioCompra() {return this.precioCompra;}

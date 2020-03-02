@@ -34,6 +34,7 @@ public class OpcionCrearExistencias implements OpcionCreacion {
 		System.out.println("Que cantidad desea añadir");
 		int y = input.nextInt();
 		Detalle detail = new Detalle(Main.productos.get(Indices.get(x)), y);
+		Main.inventario.getInventario().add(detail);
 	
 	}
 }

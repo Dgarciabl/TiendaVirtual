@@ -12,11 +12,13 @@ public class OpcionModificarPrecioCompraProducto implements OpcionModificar {
 		
 		Administrador admon = (Administrador)Main.usuario;
 		for(int i=0; i<Main.productos.size(); i++){
-			System.out.println(i+". "+Main.productos.get(i) + "precio: "+Main.productos.get(i).getPrecioCompra());
+			System.out.println(i+". "+Main.productos.get(i) + Main.productos.get(i).getNombre());
 		}
-		System.out.println("Que precio desea modificar?");
+		System.out.println("Que producto desea modificar?");
 		int x = input.nextInt();
-		System.out.println("Por cual desea remplazarlo?");
+		System.out.println("Precio original:/n");
+		System.out.println(Main.productos.get(x).getPrecioCompra());
+		System.out.println("/nPor cual desea remplazarlo?");
 		double y = input.nextDouble();
 		admon.modificarPrecioCompra(x, y);;
 	}

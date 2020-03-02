@@ -119,6 +119,9 @@ public class Administrador extends Persona {
 	public void modificarProductoInventario(Detalle detail, int amount) {
 		Main.inventario.getInventario().get(Main.inventario.getInventario().indexOf(detail)).setCantidad(amount);
 	}
+	public void modificarCantidadProducto(int index, int amount){
+		Main.inventario.getInventario().get(index).setCantidad(amount);
+	}
 	 //Eliminate
 	public void eliminarProducto(int i){
 		Main.productos.remove(i);

@@ -35,9 +35,9 @@ public class Producto {
 	
 	void setDescripcion(String s) {this.descripcion=s;}
 	
-	void setPrecioVenta(int i) {this.precioVenta=i;}
+	void setPrecioVenta(double i) {this.precioVenta=i;}
 	
-	void setPrecioCompra(int i) {this.precioCompra=i;}
+	void setPrecioCompra(double i) {this.precioCompra=i;}
 	
 	
 	//Metodos Concretos (EN ESPERA)

@@ -90,10 +90,10 @@ public class Administrador extends Persona {
 	public void delCategoriaProducto(int index, Categoria cat1){
 		Main.productos.get(index).getCategoria().remove(cat1);
 	}
-	public void modificarPrecioCompra(int index, int price) {
+	public void modificarPrecioCompra(int index, double price) {
 		Main.productos.get(index).setPrecioCompra(price);
 	}
-	public void modificarPrecioVenta(int index, int price) {
+	public void modificarPrecioVenta(int index, double price) {
 		Main.productos.get(index).setPrecioVenta(price);
 	}
 	public void resetCalificacion(int index) {

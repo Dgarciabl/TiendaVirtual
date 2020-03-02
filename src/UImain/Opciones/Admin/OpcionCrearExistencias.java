@@ -7,7 +7,7 @@ import gestorAplicacion.Administrador.Detalle;
 import java.util.*;
 
 public class OpcionCrearExistencias implements OpcionCreacion {
-
+	@Override
 	public void ejecutar(){
 		
 		Scanner input = new Scanner(System.in);
@@ -36,5 +36,9 @@ public class OpcionCrearExistencias implements OpcionCreacion {
 		Detalle detail = new Detalle(Main.productos.get(Indices.get(x)), y);
 		Main.inventario.getInventario().add(detail);
 	
+	}
+	@Override
+	public String toString() {
+		return "Añadir existencias";
 	}
 }

@@ -22,5 +22,7 @@ public class OpcionesModificarPrecioVentaProducto implements OpcionModificar {
 		double y = input.nextDouble();
 		admon.modificarPrecioVenta(x, y);
 	}
-
+	public String toString() {
+		return "MODIFICAR PRECIO DE VENTA";
+	}
 }

@@ -16,8 +16,7 @@ public class Main {
 	public static MenuDeConsola[] menu= new MenuDeConsola[3];
 	public static void main(String[] args){
 		Scanner in=new Scanner(System.in);
-		cargarMenu();
-		cargarUsuarios();
+		Inicio();
 		while(true) {
 			menu[nivel].lanzarMenu();
 			int op=in.nextInt();
@@ -27,6 +26,13 @@ public class Main {
 			}
 		}
 		in.close();
+	}
+	public static void Inicio() {
+		cargarMenu();
+		cargarUsuarios();
+		cargarProductos();
+		cargarCategorias();
+		cargarInventario();
 	}
 	public void montarDB() {
 		//Usuarios;
@@ -79,9 +85,16 @@ public class Main {
 	}
 	public static void cargarUsuarios() {
 		Usuarios=new ArrayList<Persona>();
-		Administrador admon=new Administrador("",true, 22, "root", "0", "0", "0");
+		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
 		Usuarios.add(admon);
-		Usuario user=new Usuario("generic",true,22,"user","0","0","0");
-		Usuarios.add(user);
+	}
+	public static void cargarProductos() {
+		productos=new ArrayList<Producto>();
+	}
+	public static void cargarInventario() {
+		inventario=new Inventario();
+	}
+	public static void cargarCategorias() {
+		categorias=new ArrayList<Categoria>();
 	}
 }

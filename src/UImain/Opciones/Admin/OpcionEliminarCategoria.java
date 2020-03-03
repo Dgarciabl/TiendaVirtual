@@ -2,10 +2,11 @@ package UImain.Opciones.Admin;
 
 import java.util.*;
 import UImain.Main;
+import UImain.OpcionEliminar;
 import UImain.OpcionModificar;
 import gestorAplicacion.Administrador.Administrador;
 
-public class OpcionEliminarCategoria implements OpcionModificar {
+public class OpcionEliminarCategoria implements OpcionEliminar {
 	Scanner input = new Scanner(System.in);
 	@Override
 	public void ejecutar() {
@@ -15,7 +16,7 @@ public class OpcionEliminarCategoria implements OpcionModificar {
 		}
 		System.out.println("Que categoria desea eliminar?");
 		int x = input.nextInt();
-		System.out.println("La categoria: "+Main.categorias.get(x).getNombre()+" Sera completamente eliminado, esta seguro? S/N");
+		System.out.println("La categoria: "+Main.categorias.get(x).getNombre()+" Sera completamente eliminada, esta seguro? S/N");
 		String str1 = input.next();
 		if(str1.equals("S")) {
 			admon.eliminarCategoria(x);

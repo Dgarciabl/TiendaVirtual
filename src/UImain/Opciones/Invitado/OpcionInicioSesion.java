@@ -9,7 +9,6 @@ public class OpcionInicioSesion implements OpcionDeMenu {
 	private Persona temp;
 	@Override
 	public void ejecutar() {
-		Sesion();
 		if (Sesion()) {
 			Main.usuario=temp;
 			if(temp instanceof Administrador) {

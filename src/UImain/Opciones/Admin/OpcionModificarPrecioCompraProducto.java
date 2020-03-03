@@ -23,6 +23,6 @@ public class OpcionModificarPrecioCompraProducto implements OpcionModificar {
 		admon.modificarPrecioCompra(x, y);;
 	}
 	public String toString() {
-		return "MODIFICAR PRECIO DE COMPRA";
+		return "Modificar Precio de Compra";
 	}
 }

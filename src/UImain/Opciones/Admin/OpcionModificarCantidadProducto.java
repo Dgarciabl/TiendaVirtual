@@ -24,7 +24,7 @@ public class OpcionModificarCantidadProducto implements OpcionModificar {
 		admon.modificarCantidadProducto(x, y);
 	}
 	public String toString() {
-		return "MODIFICAR CANTIDAD PRODUCTO";
+		return "Modificar Cantidad Producto";
 	}
 
 }

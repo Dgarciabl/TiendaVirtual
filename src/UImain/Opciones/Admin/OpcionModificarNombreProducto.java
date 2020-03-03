@@ -21,7 +21,7 @@ public class OpcionModificarNombreProducto implements OpcionModificar {
 		admon.modificarNombreProducto(x, str1);
 	}
 	public String toString() {
-		return "MODIFICAR NOMBRE PRODUCTO";
+		return "Modificar Nombre Producto";
 	}
 
 }

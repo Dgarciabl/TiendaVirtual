@@ -27,7 +27,7 @@ public class OpcionEliminarProducto implements OpcionEliminar {
 
 	}
 	public String toString() {
-		return "ELIMINAR PRODUCTO";
+		return "Eliminar ProductoO";
 	}
 
 }

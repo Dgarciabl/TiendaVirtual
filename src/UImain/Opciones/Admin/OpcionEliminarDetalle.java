@@ -25,7 +25,7 @@ public class OpcionEliminarDetalle implements OpcionEliminar {
 
 	}
 	public String toString() {
-		return "ELIMINAR DETALLE";
+		return "Eliminar Detalle";
 	}
 
 }

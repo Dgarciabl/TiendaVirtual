@@ -4,7 +4,6 @@ import java.util.*;
 import UImain.Main;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
-import gestorAplicacion.Usuario.Usuario;
 
 public class OpcionEliminarCategoria implements OpcionDeMenu {
 	
@@ -21,6 +20,7 @@ public class OpcionEliminarCategoria implements OpcionDeMenu {
 			int x = input.nextInt();
 			System.out.println("La categoria: "+Main.categorias.get(x).getNombre()+" Sera completamente eliminada, esta seguro? S/N");
 			String str1 = input.next();
+			input.close();
 			if(str1.equals("S")) {
 				admon.eliminarCategoria(x);
 			}else {
@@ -29,7 +29,7 @@ public class OpcionEliminarCategoria implements OpcionDeMenu {
 		}else {
 			System.out.println("Usuario Invalido");
 		}
-
+		
 	}
 	@Override
 	public String toString() {

@@ -7,7 +7,6 @@ import java.util.*;
 import gestorAplicacion.Administrador.Administrador;
 import gestorAplicacion.Administrador.Producto;
 import gestorAplicacion.Usuario.Persona;
-import gestorAplicacion.Usuario.Usuario;
 
 public class OpcionBuscarProducto implements OpcionDeMenu {
 
@@ -39,6 +38,7 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 					System.out.println("No se ha encontrado ningun producto");
 					}			
 			}
+			Ing.close();
 
 		}
 	@Override

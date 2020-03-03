@@ -20,6 +20,7 @@ public class OpcionEliminarDetalle implements OpcionDeMenu {
 			int x = input.nextInt();
 			System.out.println("El producto: "+Main.inventario.getInventario().get(x).getProducto().getNombre()+" Sera completamente eliminado, esta seguro? S/N");
 			String str1 = input.next();
+			input.close();
 			if(str1.equals("S")) {
 				admon.eliminarDetalle(x);
 			}else {

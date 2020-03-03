@@ -1,10 +1,8 @@
 package UImain.Opciones.Admin;
 import UImain.Main;
 import java.util.*;
-import UImain.Main;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
-import gestorAplicacion.Administrador.Producto;
 
 public class OpcionModificarPrecioVentaProducto implements OpcionDeMenu {
 	private Scanner input = new Scanner(System.in);

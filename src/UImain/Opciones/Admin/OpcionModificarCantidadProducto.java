@@ -23,6 +23,7 @@ public class OpcionModificarCantidadProducto implements OpcionDeMenu {
 			System.out.println("Cual es la nueva cantidad?");
 			int y = input.nextInt();
 			admon.modificarCantidadProducto(x, y);
+			input.close();
 		}else {
 			System.out.println("El usuario es invalido");
 		}

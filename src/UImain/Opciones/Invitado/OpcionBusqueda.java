@@ -44,6 +44,7 @@ public class OpcionBusqueda implements OpcionDeMenu {
 			}
 			
 		}
+		Ing.close();
 
 	}
 	@Override

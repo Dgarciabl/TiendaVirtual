@@ -2,7 +2,6 @@ package UImain.Opciones.Admin;
 import UImain.OpcionDeMenu;
 import UImain.Main;
 import gestorAplicacion.Administrador.Producto;
-import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Detalle;
 import java.util.*;
 
@@ -35,7 +34,7 @@ public class OpcionCrearExistencias implements OpcionDeMenu {
 		int y = input.nextInt();
 		Detalle detail = new Detalle(Main.productos.get(Indices.get(x)), y);
 		Main.inventario.getInventario().add(detail);
-	
+		input.close();
 	}
 	@Override
 	public String toString() {

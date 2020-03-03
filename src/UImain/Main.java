@@ -2,9 +2,6 @@ package UImain;
 import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
-import UImain.*;
-import UImain.Opciones.*;
-import UImain.Opciones.*;
 import UImain.Opciones.Invitado.*;
 import UImain.Opciones.Usuario.*;
 import UImain.Opciones.Admin.*;
@@ -25,7 +22,11 @@ public class Main {
 			menu[nivel].lanzarMenu();
 			int op=in.nextInt();
 			menu[nivel].opciones.get(op).ejecutar();
+			if(op==1001001) {
+				break;
+			}
 		}
+		in.close();
 	}
 	public void montarDB() {
 		//Usuarios;

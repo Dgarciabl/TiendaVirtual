@@ -2,10 +2,10 @@ package UImain.Opciones.Admin;
 
 import java.util.*;
 import UImain.Main;
-import UImain.OpcionModificar;
+import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
 
-public class OpcionModificarCantidadProducto implements OpcionModificar {
+public class OpcionModificarCantidadProducto implements OpcionDeMenu {
 
 	
 	@Override

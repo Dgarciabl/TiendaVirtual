@@ -3,10 +3,10 @@ package UImain.Opciones.Admin;
 import java.util.*;
 
 import UImain.Main;
-import UImain.OpcionEliminar;
+import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
 
-public class OpcionEliminarProducto implements OpcionEliminar {
+public class OpcionEliminarProducto implements OpcionDeMenu {
 	Scanner input = new Scanner(System.in);
 	
 	@Override

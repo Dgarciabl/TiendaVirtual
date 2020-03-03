@@ -2,10 +2,10 @@ package UImain.Opciones.Admin;
 
 import java.util.*;
 import UImain.Main;
-import UImain.OpcionEliminar;
+import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
 
-public class OpcionEliminarDetalle implements OpcionEliminar {
+public class OpcionEliminarDetalle implements OpcionDeMenu {
 	
 	@Override
 	public void ejecutar() {

@@ -2,10 +2,10 @@ package UImain.Opciones.Admin;
 
 import java.util.*;
 import UImain.Main;
-import UImain.OpcionModificar;
+import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
 
-public class OpcionModificarNombreCategoria implements OpcionModificar {
+public class OpcionModificarNombreCategoria implements OpcionDeMenu {
 	Scanner input = new Scanner(System.in);
 	
 	@Override

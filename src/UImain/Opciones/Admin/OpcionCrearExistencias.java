@@ -1,12 +1,12 @@
 package UImain.Opciones.Admin;
-import UImain.OpcionCreacion;
+import UImain.OpcionDeMenu;
 import UImain.Main;
 import gestorAplicacion.Administrador.Producto;
 import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Detalle;
 import java.util.*;
 
-public class OpcionCrearExistencias implements OpcionCreacion {
+public class OpcionCrearExistencias implements OpcionDeMenu {
 	@Override
 	public void ejecutar(){
 		

@@ -2,9 +2,9 @@ package UImain.Opciones.Admin;
 import java.util.Scanner;
 
 import UImain.Main;
-import UImain.OpcionCreacion;
+import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
-public class OpcionCrearProductos implements OpcionCreacion {
+public class OpcionCrearProductos implements OpcionDeMenu {
 	private Scanner in = new Scanner(System.in);
 	@Override
 	public void ejecutar() {

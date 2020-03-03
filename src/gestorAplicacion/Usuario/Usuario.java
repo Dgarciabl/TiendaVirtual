@@ -89,7 +89,7 @@ public class Usuario extends Persona {
 	@Override
 	public String toString() {
 		String s = new String();
-		s="Nombre: "+this.getNombre()+"/nEdad"+this.getEdad()+"/nGenero: ";
+		s="Perfil: Usuario Registrado/nNombre: "+this.getNombre()+"/nEdad"+this.getEdad()+"/nGenero: ";
 		if (getGenero()) {
 			s=s+"Masculino/n";
 		}

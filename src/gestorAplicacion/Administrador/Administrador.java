@@ -137,4 +137,14 @@ public class Administrador extends Persona {
 	public void verEstadisticas() {
 		
 	}
+	
+	public String toString() {
+		String s = new String();
+		s="Perfil: Administrador/nNombre: "+this.getNombre()+"/nEdad"+this.getEdad()+"/nGenero: ";
+		if (getGenero()) {
+			s=s+"Masculino/n";
+		}
+		s=s+"Usuario: ";
+		return s;
+	}
 }

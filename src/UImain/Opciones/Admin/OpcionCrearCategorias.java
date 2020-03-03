@@ -1,10 +1,10 @@
 package UImain.Opciones.Admin;
 import UImain.Main;
 import java.util.Scanner;
-import UImain.OpcionCreacion;
+import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
 
-public class OpcionCrearCategorias implements OpcionCreacion {
+public class OpcionCrearCategorias implements OpcionDeMenu {
 	private Scanner in=new Scanner(System.in);
 	@Override
 	public void ejecutar() {

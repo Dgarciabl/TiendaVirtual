@@ -30,7 +30,7 @@ public class OpcionModificarCantidadProducto implements OpcionDeMenu {
 	}
 	@Override
 	public String toString() {
-		return "Modificar Cantidad Producto";
+		return "Modificar Cantidad de Producto";
 	}
 
 }

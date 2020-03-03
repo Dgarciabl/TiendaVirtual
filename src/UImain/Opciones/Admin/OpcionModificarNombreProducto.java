@@ -28,7 +28,7 @@ public class OpcionModificarNombreProducto implements OpcionDeMenu {
 	
 	@Override
 	public String toString() {
-		return "Modificar Nombre Producto";
+		return "Modificar Nombre del Producto";
 	}
 
 }

@@ -32,7 +32,7 @@ public class OpcionEliminarProducto implements OpcionDeMenu {
 	
 	@Override
 	public String toString() {
-		return "Eliminar ProductoO";
+		return "Eliminar Producto";
 	}
 
 }

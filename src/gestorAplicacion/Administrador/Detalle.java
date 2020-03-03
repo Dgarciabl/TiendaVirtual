@@ -1,6 +1,5 @@
 package gestorAplicacion.Administrador;
 
-import gestorAplicacion.Administrador.Detalle.ProductoAgotado;
 
 public class Detalle {
 	

@@ -17,7 +17,8 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 			if (j!=-1) {
 				System.out.println("Se ha encotrado el siguiente producto:");
 				Producto Prod=Main.productos.get(j);
-				System.out.println("Nombre: "+ Prod.getNombre());System.out.println("Descripcion: "+Prod.getDescripcion());
+				System.out.println("Nombre: "+ Prod.getNombre());
+				System.out.println("Descripcion: "+Prod.getDescripcion());
 				System.out.println("Precio: "+Prod.getPrecioVenta());
 			}
 			else {

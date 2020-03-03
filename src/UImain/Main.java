@@ -38,7 +38,7 @@ public class Main {
 		menu[2]=new MenuDeConsola();
 		menu[1]=new MenuDeConsola();
 		menu[0]=new MenuDeConsola();
-		menu[2].añadirOpcion(new OpcionIncioSesion());
+		menu[2].añadirOpcion(new OpcionInicioSesion());
 		menu[2].añadirOpcion(new OpcionMostrarProductos());
 		menu[2].añadirOpcion(new OpcionMostrarCategorias());
 		menu[2].añadirOpcion(new OpcionBuscarProducto());

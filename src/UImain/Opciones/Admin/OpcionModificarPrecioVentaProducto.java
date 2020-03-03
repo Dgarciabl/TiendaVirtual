@@ -6,7 +6,7 @@ import UImain.OpcionModificar;
 import gestorAplicacion.Administrador.Administrador;
 import gestorAplicacion.Administrador.Producto;
 
-public class OpcionesModificarPrecioVentaProducto implements OpcionModificar {
+public class OpcionModificarPrecioVentaProducto implements OpcionModificar {
 	private Scanner input = new Scanner(System.in);
 	
 	@Override

@@ -4,7 +4,7 @@ import gestorAplicacion.Usuario.Persona;
 import gestorAplicacion.Administrador.Administrador;
 import UImain.Main;
 import UImain.OpcionDeMenu;
-public class OpcionIncioSesion implements OpcionDeMenu {
+public class OpcionInicioSesion implements OpcionDeMenu {
 	private Scanner in=new Scanner(System.in);
 	private Persona temp;
 	@Override

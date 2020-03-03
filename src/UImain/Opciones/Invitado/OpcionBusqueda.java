@@ -3,7 +3,9 @@ package UImain.Opciones.Invitado;
 import java.util.*;
 
 import UImain.OpcionDeMenu;
+import gestorAplicacion.Administrador.Administrador;
 import gestorAplicacion.Administrador.Producto;
+import gestorAplicacion.Usuario.*;
 import UImain.*;
 public class OpcionBusqueda implements OpcionDeMenu {
 
@@ -14,15 +16,31 @@ public class OpcionBusqueda implements OpcionDeMenu {
 		String l=Ing.next();
 		int s=Main.categorias.indexOf(l);
 		ArrayList<Producto> Reg=Main.inventario.RealizarBusqueda(s);
+		
+		if (Main.usuario instanceof Usuario) {
 		if (Reg.size()!=0) {
 			System.out.println("Se han encontrado los siguientes productos");
 			for (int m=0;m<Reg.size();m++) {
 				Producto h=Reg.get(m);
-				System.out.println("Nombre: "+h.toString());  System.out.println("--------------");
+				System.out.println(m+1 + ") "+h.toString());  System.out.println("--------------");
 			}
 		}
 		else {
 			System.out.println("No se han encontrado porductos");
+		}
+	}
+		else if (Main.usuario instanceof Administrador) {
+			if (Reg.size()!=0) {
+				System.out.println("Se han encontrado los siguientes productos");
+				for (int m=0;m<Reg.size();m++) {
+					Producto h=Reg.get(m);
+					System.out.println(m+1 + ") "+h.toString());System.out.println("Precio de compra: "+h.getPrecioCompra());  System.out.println("--------------");
+				}
+			}
+			else {
+				System.out.println("No se han encontrado porductos");
+			}
+			
 		}
 
 	}

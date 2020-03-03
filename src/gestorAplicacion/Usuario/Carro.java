@@ -3,8 +3,6 @@ import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Detalle;
 import java.util.*;
 
-import UImain.Main;
-
 public class Carro extends Inventario {
 	//Attributes
 	private double subTotal;

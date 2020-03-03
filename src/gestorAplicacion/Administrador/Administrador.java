@@ -3,7 +3,7 @@ package gestorAplicacion.Administrador;
 import java.util.ArrayList;
 
 import UImain.*;
-import gestorAplicacion.Usuario.Persona;
+import gestorAplicacion.Usuario.*;
 
 public class Administrador extends Persona {
 	//Doesn't have attributes
@@ -136,6 +136,10 @@ public class Administrador extends Persona {
 	  //Statistics
 	public void verEstadisticas() {
 		
+	}
+	
+	public void CrearUsuario(String nombre, boolean genero, int edad, String usuario, String contraseña, String pregunta,String respuesta) {
+		Main.Usuarios.add(new Usuario(nombre,genero,edad,usuario,contraseña,pregunta,respuesta));
 	}
 	
 	public String toString() {

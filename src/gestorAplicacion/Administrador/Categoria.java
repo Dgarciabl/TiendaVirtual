@@ -28,5 +28,12 @@ public class Categoria {
 	void setNombre(String d) {
 		this.nombre=d;
 	}
-
+	
+	
+	@Override
+	public String toString() {
+		String s=new String();
+		s=s+"Nombre: "+this.nombre+"/n"+"Descripcion:/n"+this.descripcion;
+		return s;
+	}
 }

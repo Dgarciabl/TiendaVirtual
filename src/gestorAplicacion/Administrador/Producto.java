@@ -62,7 +62,7 @@ public class Producto {
 		if(!this.categorias.isEmpty()) {
 			s=s+"Categorias:/n";
 			for (int i =0;i<categorias.size();i++) {
-				s=s+"   "+categorias.get(i).toString()+"/n";
+				s=s+"   "+categorias.get(i).getNombre()+"/n";
 			}
 		}
 		return s;

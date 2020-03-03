@@ -12,9 +12,10 @@ public class OpcionBusqueda implements OpcionDeMenu {
 	@Override
 	public void ejecutar() {
 		Scanner Ing=new Scanner(System.in);
-		System.out.println("Escriba el nombre de la categoria");
-		String l=Ing.next();
-		int s=Main.categorias.indexOf(l);
+		System.out.println("Categorias:");
+		Main.usuario.mostrarCategorias();
+		System.out.println("Escriba el indice de la categoria");
+		int s=Ing.nextInt();
 		ArrayList<Producto> Reg=Main.inventario.RealizarBusqueda(s);
 		
 		if (Main.usuario instanceof Usuario) {

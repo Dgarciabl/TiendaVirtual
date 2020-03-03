@@ -17,22 +17,21 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 		
 			String k=Ing.next();
 			int j=Main.inventario.RealizarBusqueda(k);
-			if (Main.usuario instanceof Usuario) {
-				
-			if (j!=-1) {
-				System.out.println("Se ha encotrado el siguiente producto:");
-				Producto Prod=Main.productos.get(j);
-				System.out.println(Prod.toString());
-			}
-			else {
-				System.out.println("No se ha encontrado ningun producto");
-				}
-			}
-			else if (Main.usuario instanceof Administrador) {
+			if (Main.usuario instanceof Administrador) {
 				if (j!=-1) {
 					System.out.println("Se ha encotrado el siguiente producto:");
 					Producto Prod=Main.productos.get(j);
 					System.out.println(Prod.toString()); System.out.println("Precio de compra: "+Prod.getPrecioCompra());
+				}
+				else {
+					System.out.println("No se ha encontrado ningun producto");
+					}	
+			}
+			else  {
+				if (j!=-1) {
+					System.out.println("Se ha encotrado el siguiente producto:");
+					Producto Prod=Main.productos.get(j);
+					System.out.println(Prod.toString());
 				}
 				else {
 					System.out.println("No se ha encontrado ningun producto");

@@ -1,5 +1,7 @@
 package gestorAplicacion.Administrador;
 
+import gestorAplicacion.Administrador.Detalle.ProductoAgotado;
+
 public class Detalle {
 	
 	//Atributos
@@ -26,17 +28,17 @@ public class Detalle {
 		this.producto=k;
 	}
 	
-	int setCantidad(int i) {
+	void setCantidad(int i) {
 		if (i>=0) {
 			this.cantidad=i;
 		}
-	int restarCantidad(int amount){
+	}	
+	 int restarCantidad(int amount) throws ProductoAgotado{
 		if((this.cantidad - amount)>0) {
 			return (this.getCantidad()-amount);
 		}else {
 			throw new ProductoAgotado();
 		}
-	}
 	}
 class ProductoAgotado extends Exception{
 	public ProductoAgotado() {

@@ -18,8 +18,7 @@ public class OpcionBusqueda implements OpcionDeMenu {
 			System.out.println("Se han encontrado los siguientes productos");
 			for (int m=0;m<Reg.size();m++) {
 				Producto h=Reg.get(m);
-				System.out.println("Nombre: "+h.getNombre()); System.out.println("Descripcion: "+h.getDescripcion());
-				System.out.println("Precio: "+h.getPrecioVenta()); System.out.println("--------------");
+				System.out.println("Nombre: "+h.toString());  System.out.println("--------------");
 			}
 		}
 		else {

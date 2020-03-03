@@ -2,7 +2,7 @@ package gestorAplicacion.Administrador;
 
 import java.util.ArrayList;
 
-import UImain.Main;
+import UImain.*;
 import gestorAplicacion.Usuario.Persona;
 
 public class Administrador extends Persona {
@@ -50,13 +50,11 @@ public class Administrador extends Persona {
 	}
 	@Override
 	public int busqueda(String nombreProducto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return Main.inventario.RealizarBusqueda(nombreProducto);
 	}
 	@Override
 	public ArrayList<Producto> busqueda(int indexCategoria) {
-		// TODO Auto-generated method stub
-		return new ArrayList<Producto>();
+		return Main.inventario.RealizarBusqueda(indexCategoria);
 	}
 	
 	//Methods

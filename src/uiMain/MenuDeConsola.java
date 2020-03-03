@@ -20,7 +20,7 @@ public class MenuDeConsola {
 	}
 	public void lanzarMenu() {
 		for (int i=0; i<opciones.size();i++) {
-			System.out.println(opciones.get(i).toString());
+			System.out.println(i+") "+opciones.get(i).toString());
 		}
 	}
 }

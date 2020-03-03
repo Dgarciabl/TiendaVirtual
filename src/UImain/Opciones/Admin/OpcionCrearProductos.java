@@ -12,7 +12,7 @@ public class OpcionCrearProductos implements OpcionDeMenu {
 		System.out.println("Nombre del Producto:");
 		String nombre=in.next();
 		System.out.println("Descripcion del Producto:");
-		String descripcion=in.next();
+		String descripcion=in.nextLine();
 		System.out.println("Precio original:");
 		double precioCompra=in.nextDouble();
 		System.out.println("Precio de Venta:");

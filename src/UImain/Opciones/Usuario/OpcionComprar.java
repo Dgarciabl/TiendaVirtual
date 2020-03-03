@@ -25,7 +25,7 @@ public class OpcionComprar implements OpcionDeMenu {
 					//Restar subtotal
 					us1.reducirSaldo(us1.getCarro().getSubTotal());
 					// Sacar Factura
-					System.out.println(us1.getCarro());
+					System.out.println(us1.getCarroToString());
 					
 				}
 			}

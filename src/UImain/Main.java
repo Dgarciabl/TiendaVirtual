@@ -59,6 +59,10 @@ public class Main {
 		menu[1].añadirOpcion(new OpcionMostrarCategorias());
 		menu[1].añadirOpcion(new OpcionBuscarProducto());
 		menu[1].añadirOpcion(new OpcionBusqueda());
+		menu[1].añadirOpcion(new OpcionVerPerfil());
+		menu[1].añadirOpcion(new OpcionMostrarCarro());
+		menu[1].añadirOpcion(new OpcionEliminarProductoCarro());
+		menu[1].añadirOpcion(new OpcionComprar());
 		menu[1].añadirOpcion(new OpcionCerrarSesion());
 		menu[1].añadirOpcion(new OpcionSalir());
 		//menu administrador

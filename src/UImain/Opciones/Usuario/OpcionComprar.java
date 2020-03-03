@@ -24,10 +24,10 @@ public class OpcionComprar implements OpcionDeMenu {
 					Main.inventario.getInventario().get(us1.getCarro().getInventario().indexOf(us1.getCarro().getInventario().get(i))).restarCantidad(us1.getCarro().getInventario().get(i).getCantidad());
 					//Restar subtotal
 					us1.reducirSaldo(us1.getCarro().getSubTotal());
+					// Sacar Factura
+					System.out.println(us1.getCarro());
 					
 				}
-				
-				System.out.println(i + us1.getCarro().getInventario().get(i).getProducto().getNombre()+" /n ");
 			}
 			
 			

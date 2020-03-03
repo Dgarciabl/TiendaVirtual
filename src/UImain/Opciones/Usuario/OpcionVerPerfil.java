@@ -7,8 +7,14 @@ public class OpcionVerPerfil implements OpcionDeMenu {
 
 	@Override
 	public void ejecutar() {
-		System.out.println(Main.usuario.toString());
+		if(Main.usuario != null) {
+			System.out.println(Main.usuario.toString());
+		}
 
+	}
+	@Override
+	public String toString() {
+		return "Ver perfil";
 	}
 
 }

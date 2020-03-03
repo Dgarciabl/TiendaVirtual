@@ -5,7 +5,7 @@ import java.util.*;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Producto;
 import UImain.*;
-class OpcionBusqueda implements OpcionDeMenu {
+public class OpcionBusqueda implements OpcionDeMenu {
 
 	@Override
 	public void ejecutar() {
@@ -26,6 +26,10 @@ class OpcionBusqueda implements OpcionDeMenu {
 			System.out.println("No se han encontrado porductos");
 		}
 
+	}
+	@Override
+	public String toString(){
+		return "busqueda por categoria";
 	}
 
 }

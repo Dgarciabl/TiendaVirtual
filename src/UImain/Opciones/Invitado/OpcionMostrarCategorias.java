@@ -9,5 +9,8 @@ public class OpcionMostrarCategorias implements OpcionDeMenu {
 	public void ejecutar() {
 		Main.usuario.mostrarCategorias();
 	}
-
+	@Override
+	public String toString(){
+		return "Mostrar Categorias";
+	}
 }

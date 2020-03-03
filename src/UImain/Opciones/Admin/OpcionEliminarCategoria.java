@@ -26,7 +26,7 @@ public class OpcionEliminarCategoria implements OpcionEliminar {
 
 	}
 	public String toString() {
-		return "ELIMINAR CATEGORIA";
+		return "Eliminar Categoria";
 	}
 
 }

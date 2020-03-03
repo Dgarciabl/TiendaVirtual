@@ -41,7 +41,7 @@ public class OpcionModificarCategorias implements OpcionModificar {
 		
 	}
 	public String toString() {
-		return "MODIFICAR CATEGORIAS";
+		return "Modificar Categorias";
 	}
 
 }

@@ -22,7 +22,7 @@ public class OpcionModificarNombreCategoria implements OpcionModificar {
 		admon.modificarNombreCategoria(x, str1);
 	}
 	public String toString() {
-		return "MODIFICAR NOMBRE CATEGORIA";
+		return "Modificar Nombre Categoria";
 	}
 
 

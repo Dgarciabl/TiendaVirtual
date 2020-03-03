@@ -45,5 +45,9 @@ public class Main {
 		menu[2].añadirOpcion(new OpcionBusqueda());
 		menu[2].añadirOpcion(new OpcionRecuperacion());
 		menu[2].añadirOpcion(new OpcionSalir());
+		menu[1].añadirOpcion(new OpcionMostrarProductos());
+		menu[1].añadirOpcion(new OpcionMostrarCategorias());
+		menu[1].añadirOpcion(new OpcionBuscarProducto());
+		menu[1].añadirOpcion(new OpcionBusqueda());
 	}
 }

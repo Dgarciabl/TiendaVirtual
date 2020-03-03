@@ -85,4 +85,15 @@ public class Usuario extends Persona {
 	public void comprar() {
 		
 	}	
+	
+	@Override
+	public String toString() {
+		String s = new String();
+		s="Nombre: "+this.getNombre()+"/nEdad"+this.getEdad()+"/nGenero: ";
+		if (getGenero()) {
+			s=s+"Masculino/n";
+		}
+		s=s+"Usuario: "+this.getUsuario()+"/nSaldo: "+this.saldo;
+		return s;
+	}
 }

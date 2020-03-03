@@ -41,8 +41,11 @@ public class Usuario extends Persona {
 		return this.carroCompra.getSubTotal();
 	}
 	//Setters
-	public void actualizarSaldo(double modificacion) {
-		this.saldo+=modificacion;
+	public void actualizarSaldo(double aumento) {
+		this.saldo+=aumento;
+	}
+	public void reducirSaldo(double valorAPagar) {
+		this.saldo-=valorAPagar;
 	}
 	public void añadirProducto(int indexInventario) {
 		

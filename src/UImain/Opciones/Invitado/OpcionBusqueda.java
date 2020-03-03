@@ -49,7 +49,7 @@ public class OpcionBusqueda implements OpcionDeMenu {
 	}
 	@Override
 	public String toString(){
-		return "busqueda por categoria";
+		return "Busqueda por categoria";
 	}
 
 }

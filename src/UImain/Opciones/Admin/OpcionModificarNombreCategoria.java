@@ -29,7 +29,7 @@ public class OpcionModificarNombreCategoria implements OpcionDeMenu {
 	
 	@Override
 	public String toString() {
-		return "Modificar Nombre Categoria";
+		return "Modificar Nombre de Categoria";
 	}
 
 

@@ -58,14 +58,9 @@ public class Usuario extends Persona {
 		System.out.println("Categorias:");
 		System.out.println("-------------------------------------");
 		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i+1 +")"+ Temp.get(i).getNombre());
-			System.out.println("Descripcion:");
-			System.out.println(Temp.get(i).getDescripcion());
+			System.out.println(i+1 +")"+ Temp.get(i).toString());
 			System.out.println("-------------------------------------");
 		}
-		
-		
-		
 	}
 	@Override
 	public void mostrarProductos() {
@@ -74,15 +69,7 @@ public class Usuario extends Persona {
 		System.out.println("Productos:");
 		System.out.println("-------------------------------------");
 		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i+1 +")"+ Temp.get(i).getProducto().getNombre());
-			System.out.println("Descripcion:");
-			System.out.println(Temp.get(i).getProducto().getDescripcion());
-			System.out.println("Precio: "+Temp.get(i).getProducto().getPrecioVenta());
-			System.out.println("Unidades Disponibles: "+Temp.get(i).getCantidad());
-			System.out.println("Categorias:");
-			for (int j=0;j<Temp.get(i).getProducto().getCategoria().size();j++) {
-				System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
-			}
+			System.out.println(i+1 +")"+ Temp.get(i).getProducto().toString());
 			System.out.println("-------------------------------------");
 		}				
 	}

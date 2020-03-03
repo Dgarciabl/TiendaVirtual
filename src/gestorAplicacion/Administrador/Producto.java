@@ -54,7 +54,19 @@ public class Producto {
 	public void Calificar(float C) {
 		
 	}
-	
+	@Override
+	public String toString() {
+		String s= new String();
+		s=s+"Nombre: "+this.nombre+"/n"+"Descripcion:/n"+
+		this.descripcion+"/n"+"Precio: "+this.precioVenta+"/n";
+		if(!this.categorias.isEmpty()) {
+			s=s+"Categorias:/n";
+			for (int i =0;i<categorias.size();i++) {
+				s=s+"   "+categorias.get(i).toString()+"/n";
+			}
+		}
+		return s;
+	}
 	
 	
 

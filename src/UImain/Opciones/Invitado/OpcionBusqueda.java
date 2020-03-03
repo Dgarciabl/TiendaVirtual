@@ -17,8 +17,9 @@ public class OpcionBusqueda implements OpcionDeMenu {
 		System.out.println("Escriba el indice de la categoria");
 		int s=Ing.nextInt();
 		ArrayList<Producto> Reg=Main.inventario.RealizarBusqueda(s);
+		Persona Per=Main.usuario;
 		
-		if (Main.usuario instanceof Administrador) {
+		if (Per instanceof Administrador) {
 			if (Reg.size()!=0) {
 				System.out.println("Se han encontrado los siguientes productos");
 				for (int m=0;m<Reg.size();m++) {

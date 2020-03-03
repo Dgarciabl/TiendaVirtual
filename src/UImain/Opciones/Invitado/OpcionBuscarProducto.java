@@ -6,6 +6,7 @@ import java.util.*;
 
 import gestorAplicacion.Administrador.Administrador;
 import gestorAplicacion.Administrador.Producto;
+import gestorAplicacion.Usuario.Persona;
 import gestorAplicacion.Usuario.Usuario;
 
 public class OpcionBuscarProducto implements OpcionDeMenu {
@@ -17,7 +18,8 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 		
 			String k=Ing.next();
 			int j=Main.inventario.RealizarBusqueda(k);
-			if (Main.usuario instanceof Administrador) {
+			Persona Per=Main.usuario;
+			if (Per instanceof Administrador) {
 				if (j!=-1) {
 					System.out.println("Se ha encotrado el siguiente producto:");
 					Producto Prod=Main.productos.get(j);

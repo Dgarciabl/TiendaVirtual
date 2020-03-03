@@ -17,6 +17,8 @@ public class OpcionCrearProductos implements OpcionDeMenu {
 		double precioCompra=in.nextDouble();
 		System.out.println("Precio de Venta:");
 		double precioVenta=in.nextDouble();
+		System.out.println("Cantidad: ");
+		int cantidad = in.nextInt();
 		admon.crearProducto(nombre, descripcion, precioCompra, precioVenta);
 	}
 	@Override

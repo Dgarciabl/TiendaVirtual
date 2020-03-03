@@ -33,17 +33,12 @@ public class Detalle {
 			this.cantidad=i;
 		}
 	}	
-	 int restarCantidad(int amount) throws ProductoAgotado{
+	 public void restarCantidad(int amount){
 		if((this.cantidad - amount)>0) {
-			return (this.getCantidad()-amount);
+			this.cantidad = this.getCantidad()-amount;
 		}else {
-			throw new ProductoAgotado();
+			System.out.println("La cantidad de productos pedida es superior a la existente");
 		}
 	}
-class ProductoAgotado extends Exception{
-	public ProductoAgotado() {
-		super("La cantidad de productos pedida es superior a la existente");
-	}
-}
-	
+
 }

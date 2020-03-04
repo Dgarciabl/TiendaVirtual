@@ -4,6 +4,7 @@ import java.util.*;
 
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
+import gestorAplicacion.Administrador.Categoria;
 import gestorAplicacion.Administrador.Producto;
 import gestorAplicacion.Usuario.*;
 import UImain.*;
@@ -13,9 +14,15 @@ public class OpcionBusqueda implements OpcionDeMenu {
 	public void ejecutar() {
 		Scanner Ing=new Scanner(System.in);
 		System.out.println("Categorias:");
-		Main.usuario.mostrarCategorias();
+		ArrayList<Categoria> Lis=Main.categorias;
+		for (int i=0;i<Lis.size();i++) {
+			Categoria Te=Lis.get(i);
+			System.out.println(i+":"+ Te.getNombre());
+		}
+		
 		System.out.println("Escriba el indice de la categoria");
 		int s=Ing.nextInt();
+		try {
 		ArrayList<Producto> Reg=Main.inventario.RealizarBusqueda(s);
 		Persona Per=Main.usuario;
 		
@@ -44,7 +51,11 @@ public class OpcionBusqueda implements OpcionDeMenu {
 			}
 			
 		}
-		Ing.close();
+		}
+		catch (IndexOutOfBoundsException e) {
+			System.out.println("El indice escrito no existe en la lista");
+		}
+		//Ing.close();
 
 	}
 	@Override

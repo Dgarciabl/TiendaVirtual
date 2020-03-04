@@ -20,16 +20,16 @@ public class Inventario {
 	public Detalle getInventario(int i) {return inventario.get(i);}
 	
 	//Metodos Concretos (EN ESPERA)
-	void AddInventario(Detalle d) {
+	public void AddInventario(Detalle d) {
 		inventario.add(d);
 	}
-	void AddInventario(Detalle d, int i) {
+	public void AddInventario(Detalle d, int i) {
 		inventario.add(i, d);
 	}
-	void DelInventario(Detalle d) {
+	public void DelInventario(Detalle d) {
 		inventario.remove(d);
 	}
-	void DelInventario(int i) {
+	public void DelInventario(int i) {
 		inventario.remove(i);
 	}
 	public int RealizarBusqueda(String n) {

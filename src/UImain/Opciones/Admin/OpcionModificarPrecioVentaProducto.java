@@ -16,9 +16,9 @@ public class OpcionModificarPrecioVentaProducto implements OpcionDeMenu {
 			}
 			System.out.println("Que producto desea modificar?");
 			int x = input.nextInt();
-			System.out.println("Precio original:/n");
+			System.out.println("Precio original:");
 			System.out.println(Main.productos.get(x).getPrecioVenta());
-			System.out.println("/nPor que valor desea remplazarlo?");
+			System.out.println("Por que valor desea remplazarlo?");
 			double y = input.nextDouble();
 			admon.modificarPrecioVenta(x, y);
 		}else {

@@ -6,7 +6,7 @@ public class OpcionMostrarCategorias implements OpcionDeMenu {
 
 	@Override
 	public void ejecutar() {
-		System.out.println(Persona.mostrarCategorias());
+		Persona.mostrarCategorias();
 	}
 	@Override
 	public String toString(){

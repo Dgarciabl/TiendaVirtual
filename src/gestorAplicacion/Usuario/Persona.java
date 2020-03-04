@@ -84,14 +84,14 @@ public abstract class Persona {
 			this.contraseña=contraseñaNueva;
 		}
 	}
-	public static String mostrarCategorias() {
+	public static void mostrarCategorias() {
 		ArrayList<Categoria> Temp=Main.categorias;
 		String s=new String();
 		s="-------------------------------------\nCategorias:\n-------------------------------------\n";
 		for (int i=0; i<Temp.size();i++) {
-			s=(i+1)+") "+Temp.get(i).toString()+"\n-------------------------------------\n";
+			s=(i)+") "+Temp.get(i).toString()+"\n-------------------------------------\n";
+			System.out.println(s);
 		}
-		return s;
 	}
 	
 	//abstract methods(OK)

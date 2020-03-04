@@ -197,6 +197,7 @@ public class Main {
 		full.añadirOpcion(new OpcionEliminarDetalle());
 		//otros
 		full.añadirOpcion(new OpcionComprar());
+		full.añadirOpcion(new OpcionAñadirSaldo());
 		full.añadirOpcion(new OpcionInicioSesion());
 		full.añadirOpcion(new OpcionVerPerfil());
 		full.añadirOpcion(new OpcionCambiarContraseña());

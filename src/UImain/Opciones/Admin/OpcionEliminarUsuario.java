@@ -11,7 +11,7 @@ public class OpcionEliminarUsuario implements OpcionDeMenu {
 		Scanner in=new Scanner(System.in);
 		if(Main.usuario instanceof Administrador) {
 			Administrador admon=(Administrador)Main.usuario;
-			for(int i=0;i<Main.Usuarios.size();i++) {
+			for(int i=1;i<Main.Usuarios.size();i++) {
 				System.out.println(i+") "+Main.Usuarios.get(i).getUsuario());
 			}
 			System.out.println("Seleccione el usuario a eliminar por su indice");

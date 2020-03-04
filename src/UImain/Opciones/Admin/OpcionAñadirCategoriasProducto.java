@@ -15,16 +15,17 @@ public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 		if(Main.usuario instanceof Administrador) {
 			Administrador admon = (Administrador)Main.usuario;
 			
+			System.out.println("Que producto desea modificar?");
 			for(int i=0; i<Main.productos.size(); i++){
 				System.out.println(i+". " + Main.productos.get(i).getNombre());
 			}
-			System.out.println("Que producto desea modificar?");
+
 			int x = input.nextInt();
 			
 			if(Main.productos.get(x).getCategoria().size()>0) {
 				System.out.println("Categorias:");
-				for(int i=0;i<(Main.productos.get(x).getCategoria()).size(); i++) {
-					System.out.println(i + ". "+(Main.productos.get(x).getCategoria().get(i).getNombre()));
+				for(int i=0;i<Main.categorias.size(); i++) {
+					System.out.println(i + ". "+(Main.categorias.get(x).getNombre()));
 					}
 				System.out.println("Que categoria desea añadir?");
 				int c = input.nextInt();

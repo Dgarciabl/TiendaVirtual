@@ -42,8 +42,13 @@ public class Administrador extends Persona {
 			System.out.println("Precio de compra: "+Temp.get(i).getProducto().getPrecioCompra());
 			System.out.println("Unidades Disponibles: "+Temp.get(i).getCantidad());
 			System.out.println("Categorias:");
+			
 			for (int j=0;j<Temp.get(i).getProducto().getCategoria().size();j++) {
-				System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
+				if(Temp.get(i).getProducto().getCategoria().size() ==0) {
+					System.out.println("El producto no tiene categorias");
+				}else {
+					System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
+				}
 			}
 			System.out.println("-------------------------------------");
 		}

@@ -67,13 +67,13 @@ public class Usuario extends Persona {
 	}
 	@Override
 	public void mostrarProductos() {
-		ArrayList<Detalle> Temp=Main.inventario.getInventario();
+		ArrayList<Producto> Temp=Main.productos;
 		System.out.println("-------------------------------------");
 		System.out.println("Productos:");
 		System.out.println("-------------------------------------");
 		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i +")"+ Temp.get(i).getProducto().getNombre());
-			System.out.println("-------------------------------------");
+			System.out.println(i +")"+ Temp.get(i).getNombre());
+
 		}				
 	}
 	@Override

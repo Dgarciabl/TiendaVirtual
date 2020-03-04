@@ -57,11 +57,10 @@ public class Carro extends Inventario {
 		double suma = 0;
 		for(int i=0; i<numObjetos;i++) {
 
-			str1+= i+". "+inventario.get(i).getProducto().getNombre() +"\nCantidad: "+inventario.get(i).getCantidad();
-			str1+= "\n Precio: "+inventario.get(i).getProducto().getPrecioCompra();
-			suma+= inventario.get(i).getProducto().getPrecioCompra();
+			str1+= i+") "+inventario.get(i).getProducto().toString();
+			str1+= "\n Sub Total: "+inventario.get(i).getProducto().getPrecioVenta()*inventario.get(i).getCantidad();
 		}
-		str1+="total: "+suma+"Devuelta: "+(us1.getSaldo()-suma);
+		str1+="\nTotal: "+suma+"\nDevuelta: "+(us1.getSaldo()-subTotal);
 		
 		return str1;
 	}

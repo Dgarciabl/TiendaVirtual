@@ -115,6 +115,7 @@ public class Main {
 		menu[1].añadirOpcion(new OpcionAñadirCarro());
 		menu[1].añadirOpcion(new OpcionEliminarProductoCarro());
 		menu[1].añadirOpcion(new OpcionComprar());
+		menu[1].añadirOpcion(new OpcionAñadirSaldo());
 		menu[1].añadirOpcion(new OpcionCerrarSesion());
 		menu[1].añadirOpcion(new OpcionSalir());
 		//menu administrador

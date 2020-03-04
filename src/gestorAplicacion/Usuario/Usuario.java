@@ -71,7 +71,6 @@ public class Usuario extends Persona {
 		System.out.println("-------------------------------------");
 		System.out.println("Productos:");
 		System.out.println("-------------------------------------");
-		System.out.println("Tamanos "+Main.productos.size());
 		for (int i=0; i<Temp.size();i++) {
 			System.out.println(i +")"+ Temp.get(i).getNombre());
 

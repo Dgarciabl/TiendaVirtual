@@ -3,6 +3,8 @@ import gestorAplicacion.Administrador.Inventario;
 import gestorAplicacion.Administrador.Detalle;
 import java.util.*;
 
+import UImain.Main;
+
 public class Carro extends Inventario {
 	//Attributes
 	private double subTotal;
@@ -48,9 +50,20 @@ public class Carro extends Inventario {
 	}
 	//Concrete Methods (EN ESPERA)
 	public String GenerarFactura() {
-		String s=this.toString();
+		String str1 = new String();
+		Usuario us1 = (Usuario)Main.usuario;
 		//incompleto le falta, arreglar al hacer la compra
-		return s;
+		//Muestra saldo Anterio y nuevo saldo
+		double suma = 0;
+		for(int i=0; i<numObjetos;i++) {
+
+			str1+= i+". "+inventario.get(i).getProducto().getNombre() +"\nCantidad: "+inventario.get(i).getCantidad();
+			str1+= "\n Precio: "+inventario.get(i).getProducto().getPrecioCompra();
+			suma+= inventario.get(i).getProducto().getPrecioCompra();
+		}
+		str1+="total: "+suma+"Devuelta: "+(us1.getSaldo()-suma);
+		
+		return str1;
 	}
 	@Override
 	public String toString() {

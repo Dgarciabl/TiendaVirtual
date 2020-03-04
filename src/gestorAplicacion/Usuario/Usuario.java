@@ -92,11 +92,11 @@ public class Usuario extends Persona {
 	@Override
 	public String toString() {
 		String s = new String();
-		s="Perfil: Usuario Registrado/nNombre: "+this.getNombre()+"/nEdad"+this.getEdad()+"/nGenero: ";
+		s="Perfil: Usuario Registrado\nNombre: "+this.getNombre()+"\nEdad"+this.getEdad()+"\nGenero: ";
 		if (getGenero()) {
-			s=s+"Masculino/n";
+			s=s+"Masculino\n";
 		}
-		s=s+"Usuario: "+this.getUsuario()+"/nSaldo: "+this.saldo;
+		s=s+"Usuario: "+this.getUsuario()+"\nSaldo: "+this.saldo;
 		return s;
 	}
 }

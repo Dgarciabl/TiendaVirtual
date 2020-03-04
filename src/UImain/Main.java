@@ -82,7 +82,7 @@ public class Main {
 		menu[0].añadirOpcion(new OpcionModificarPrecioVentaProducto());
 		menu[0].añadirOpcion(new OpcionModificarPrecioCompraProducto());
 		menu[0].añadirOpcion(new OpcionModificarCantidadProducto());
-		menu[0].añadirOpcion(new OpcionModificarCategorias());
+		menu[0].añadirOpcion(new OpcionAñadirCategoriasProducto());
 		menu[0].añadirOpcion(new OpcionModificarNombreCategoria());
 		menu[0].añadirOpcion(new OpcionModificarDescripcionCategoria());
 		menu[0].añadirOpcion(new OpcionEliminarUsuario());
@@ -112,7 +112,7 @@ public class Main {
 		full.añadirOpcion(new OpcionModificarPrecioVentaProducto());
 		full.añadirOpcion(new OpcionModificarPrecioCompraProducto());
 		full.añadirOpcion(new OpcionModificarCantidadProducto());
-		full.añadirOpcion(new OpcionModificarCategorias());
+		full.añadirOpcion(new OpcionAñadirCategoriasProducto());
 		full.añadirOpcion(new OpcionModificarNombreCategoria());
 		full.añadirOpcion(new OpcionModificarDescripcionCategoria());
 		full.añadirOpcion(new OpcionEliminarUsuario());

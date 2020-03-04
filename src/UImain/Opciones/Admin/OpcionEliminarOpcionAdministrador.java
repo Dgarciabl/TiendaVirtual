@@ -16,7 +16,7 @@ public class OpcionEliminarOpcionAdministrador implements OpcionDeMenu {
 			System.out.println("Selecione el indice de la opcion que desea añadir");
 			int op=in.nextInt();
 			if (Main.menu[0].opciones.get(op) instanceof OpcionCerrarSesion || 
-					Main.menu[0].opciones.get(op) instanceof OpcionAñadirOpcion) {
+					Main.menu[0].opciones.get(op) instanceof OpcionAñadirOpcionAdministrador) {
 				System.out.println("Estas opciones no se pueden modificar");
 			}else {
 				Main.menu[0].eliminarOpcion(Main.menu[0].opciones.get(op));

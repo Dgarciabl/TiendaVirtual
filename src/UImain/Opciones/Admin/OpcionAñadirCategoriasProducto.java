@@ -23,17 +23,15 @@ public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 			int x = input.nextInt();
 			
 			if(Main.productos.get(x).getCategoria().size()>0) {
-				System.out.println("Categorias:");
-				for(int i=0;i<Main.categorias.size(); i++) {
-					System.out.println(i + ". "+(Main.categorias.get(x).getNombre()));
+				System.out.println("Categorias del producto :");
+				for(int i=0;i<Main.productos.get(x).getCategoria().size(); i++) {
+					System.out.println(i + ". "+(Main.productos.get(x).getCategoria().get(i).getNombre()));
 					}
 				System.out.println("Que categoria desea añadir?");
-				int c = input.nextInt();
 				for(int j=0;j<(Main.categorias.size());j++) {
 					System.out.println(j + ". "+Main.categorias.get(j).getNombre());
 				}
 				int z = input.nextInt();
-				int h=0;
 				Boolean boli= false;		
 				for(int k=0; k<Main.productos.get(x).getCategoria().size();k++){
 					Categoria kate = Main.productos.get(x).getCategoria().get(k);

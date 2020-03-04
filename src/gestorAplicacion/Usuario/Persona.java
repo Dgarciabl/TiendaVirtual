@@ -15,12 +15,6 @@ public abstract class Persona {
 	private String preguntaRecuperacion;
 	private String respuestaRecuperacion;
 	//Constructors(OK)
-	public Persona(String usuario, String contraseña, String pregunta, String respuesta) {
-		this.usuario=usuario;
-		this.contraseña=contraseña;
-		this.preguntaRecuperacion=pregunta;
-		this.respuestaRecuperacion=respuesta;
-	}
  	public Persona(String nombre, boolean genero, int edad, String usuario, String contraseña, String pregunta, String respuesta) {
 		this.nombre=nombre;
 		this.edad=edad;

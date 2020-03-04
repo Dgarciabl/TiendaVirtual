@@ -29,12 +29,17 @@ public class OpcionCrearExistencias implements OpcionDeMenu {
 		}
 		
 		System.out.println("Escoja el indice del producto que desea añadir:");
+		try {
 		int x = input.nextInt();
 		System.out.println("Que cantidad desea añadir");
 		int y = input.nextInt();
 		Detalle detail = new Detalle(Main.productos.get(Indices.get(x)), y);
 		Main.inventario.getInventario().add(detail);
-		input.close();
+		//input.close();
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Input equivocado, intente nuevamente");
+		}
 	}
 	@Override
 	public String toString() {

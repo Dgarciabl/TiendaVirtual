@@ -10,6 +10,10 @@ public class OpcionRecuperacion implements OpcionDeMenu {
 	public void ejecutar() {
 		System.out.println("Usuario:");
 		String usu=in.next();
+		if (Main.isNumeric(usu)) {
+			System.out.println("Los usuarios no son numeros, intente nuevamente");
+		}
+		else {
 		if (encontrarUsuario(usu)) {
 			System.out.println("Responder la Siguiente Pregunta");
 			System.out.println(temp.getPregunta());
@@ -23,6 +27,7 @@ public class OpcionRecuperacion implements OpcionDeMenu {
 			}
 		}else {
 			System.out.println("Usuario no Encontrado");
+		}
 		}
 	}
 	@Override

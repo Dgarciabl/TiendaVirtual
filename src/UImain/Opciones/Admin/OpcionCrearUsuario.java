@@ -33,7 +33,7 @@ public class OpcionCrearUsuario implements OpcionDeMenu {
 			String respuesta=in.next();
 			admon.CrearUsuario(nombre,genero,edad,usuario,contraseña,pregunta,respuesta);
 		}
-		in.close();
+		//in.close();
 	}
 	@Override
 	public String toString() {

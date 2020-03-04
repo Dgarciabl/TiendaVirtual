@@ -47,6 +47,8 @@ public class Main {
 		Usuarios=new ArrayList<Persona>();
 		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
 		Usuarios.add(admon);
+		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
+		Usuarios.add(user);
 	}
 	public static void cargarProductos() {
 		productos=new ArrayList<Producto>();
@@ -105,6 +107,7 @@ public class Main {
 		menu[1].añadirOpcion(new OpcionBusqueda());
 		menu[1].añadirOpcion(new OpcionCambiarContraseña());
 		menu[1].añadirOpcion(new OpcionMostrarCarro());
+		menu[1].añadirOpcion(new OpcionAñadirCarro());
 		menu[1].añadirOpcion(new OpcionEliminarProductoCarro());
 		menu[1].añadirOpcion(new OpcionComprar());
 		menu[1].añadirOpcion(new OpcionCerrarSesion());
@@ -167,6 +170,7 @@ public class Main {
 		full.añadirOpcion(new OpcionAñadirCategoriasProducto());
 		full.añadirOpcion(new OpcionEliminarCategoriasProducto());
 			// carro
+		full.añadirOpcion(new OpcionAñadirCarro());
 		full.añadirOpcion(new OpcionEliminarProductoCarro());
 			//Categoria
 		full.añadirOpcion(new OpcionModificarNombreCategoria());

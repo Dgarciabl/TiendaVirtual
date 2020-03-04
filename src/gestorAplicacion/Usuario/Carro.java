@@ -26,19 +26,19 @@ public class Carro extends Inventario {
 		return this.numObjetos;
 	}
 	//Setters
-	void AddProducto(Detalle d) {
+	public void AddProducto(Detalle d) {
 		inventario.add(d);
 		subTotal+=(d.getCantidad()*d.getProducto().getPrecioVenta());
 	}
-	void AddProducto(Detalle d, int i) {
+	public void AddProducto(Detalle d, int i) {
 		inventario.add(i, d);
 		subTotal+=(d.getCantidad()*d.getProducto().getPrecioVenta());
 	}
-	void DelProducto(Detalle d) {
+	public void DelProducto(Detalle d) {
 		inventario.remove(d);
 		subTotal-=(d.getCantidad()*d.getProducto().getPrecioVenta());
 	}
-	void DelProducto(int i) {
+	public void DelProducto(int i) {
 		subTotal-=(inventario.get(i).getCantidad()*inventario.get(i).getProducto().getPrecioVenta());
 		inventario.remove(i);
 	}

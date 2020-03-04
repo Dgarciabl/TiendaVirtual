@@ -19,6 +19,9 @@ public class OpcionCambiarContraseña implements OpcionDeMenu {
 		}
 		
 	}
-	
+	@Override
+	public String toString() {
+		return "Cambiar contraseña";
+	}
 
 }

@@ -2,6 +2,8 @@ package UImain.Opciones.Invitado;
 
 import UImain.Main;
 import UImain.OpcionDeMenu;
+import gestorAplicacion.Administrador.Administrador;
+import gestorAplicacion.Usuario.Usuario;
 
 public class OpcionMostrarProductos implements OpcionDeMenu {
 	@Override

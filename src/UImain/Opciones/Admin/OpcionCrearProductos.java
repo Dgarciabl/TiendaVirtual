@@ -4,6 +4,8 @@ import java.util.Scanner;
 import UImain.Main;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
+import gestorAplicacion.Administrador.Detalle;
+import gestorAplicacion.Administrador.Producto;
 public class OpcionCrearProductos implements OpcionDeMenu {
 	private Scanner in = new Scanner(System.in);
 	@Override
@@ -20,6 +22,9 @@ public class OpcionCrearProductos implements OpcionDeMenu {
 		System.out.println("Cantidad: ");
 		int cantidad = in.nextInt();
 		admon.crearProducto(nombre, descripcion, precioCompra, precioVenta);
+		Producto prod1 = new Producto(nombre, descripcion, precioCompra, precioVenta);
+		Detalle deta = new Detalle(prod1,cantidad);
+		Main.inventario.getInventario().add(deta);
 	}
 	@Override
 	public String toString() {

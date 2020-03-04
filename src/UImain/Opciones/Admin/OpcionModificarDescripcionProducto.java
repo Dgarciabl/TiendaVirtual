@@ -17,15 +17,14 @@ public class OpcionModificarDescripcionProducto implements OpcionDeMenu {
 			}
 			System.out.println("Que producto desea modificar?");
 			int x = input.nextInt();
-			System.out.println("Descripcion:/n");
+			System.out.println("Descripcion:");
 			System.out.println(Main.productos.get(x).getDescripcion());
-			System.out.println("/nPor cual desea remplazarla?");
+			System.out.println("Por cual desea remplazarla?");
 			String str1 = input.next();
 			admon.modificarDescripcionProducto(x, str1);
 		}else {
 			System.out.println("No valido para Usuario");
 		}
-
 	}
 	
 	@Override

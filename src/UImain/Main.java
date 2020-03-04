@@ -87,6 +87,7 @@ public class Main {
 		menu[0].añadirOpcion(new OpcionEliminarProducto());
 		menu[0].añadirOpcion(new OpcionEliminarCategoria());
 		menu[0].añadirOpcion(new OpcionEliminarDetalle());
+		menu[0].añadirOpcion(new OpcionVerPerfil());
 		menu[0].añadirOpcion(new OpcionCerrarSesion());
 		menu[0].añadirOpcion(new OpcionSalir());
 	}

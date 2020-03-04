@@ -49,7 +49,6 @@ public class Administrador extends Persona {
 				}else {
 					System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
 				}
-
 			}
 			System.out.println("-------------------------------------");
 		}

@@ -14,15 +14,11 @@ public class OpcionBusqueda implements OpcionDeMenu {
 	public void ejecutar() {
 		Scanner Ing=new Scanner(System.in);
 		System.out.println("Categorias:");
-		ArrayList<Categoria> Lis=Main.categorias;
-		for (int i=0;i<Lis.size();i++) {
-			Categoria Te=Lis.get(i);
-			System.out.println(i+":"+ Te.getNombre());
-		}
+		Persona.mostrarCategorias();
 		
 		System.out.println("Escriba el indice de la categoria");
-		int s=Ing.nextInt();
 		try {
+		int s=Ing.nextInt();
 		ArrayList<Producto> Reg=Main.inventario.RealizarBusqueda(s);
 		Persona Per=Main.usuario;
 		
@@ -54,6 +50,9 @@ public class OpcionBusqueda implements OpcionDeMenu {
 		}
 		catch (IndexOutOfBoundsException e) {
 			System.out.println("El indice escrito no existe en la lista");
+		}
+		catch (InputMismatchException s) {
+			System.out.println("Error en el input, intente nuevamente");
 		}
 		//Ing.close();
 

@@ -9,7 +9,7 @@ public class OpcionMostrarProductos implements OpcionDeMenu {
 	@Override
 	public void ejecutar() {
 		if(Main.usuario!=null) {
-			System.out.println(Main.usuario.mostrarProductos());
+			System.out.println(Main.inventario.toString());
 		}else {
 			System.out.println("-------------------------------------\nProductos:\n-------------------------------------\n"+Main.inventario.toString());
 		}

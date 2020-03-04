@@ -17,6 +17,7 @@ public class OpcionModificarCantidadProducto implements OpcionDeMenu {
 				System.out.println(i+". " + Main.inventario.getInventario().get(i).getProducto().getNombre());
 			}
 			System.out.println("Que producto desea modificar?");
+			try {
 			int x = input.nextInt();
 			if(x<Main.inventario.getInventario().size()) {
 				System.out.println("Cantidad Actual:");
@@ -31,6 +32,13 @@ public class OpcionModificarCantidadProducto implements OpcionDeMenu {
 
 			}else {
 				System.out.println("Ingrese un numero valido");
+			}
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Error en el input, intente nuevamente");
+			}
+			catch (IndexOutOfBoundsException s) {
+				System.out.println("El indice no existe en la lista");
 			}
 			
 

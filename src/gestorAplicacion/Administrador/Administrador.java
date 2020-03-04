@@ -11,9 +11,6 @@ public class Administrador extends Persona {
 	public Administrador(String nombre, boolean genero, int edad, String usuario, String contraseña, String pregunta, String respuesta) {
 		super(nombre, genero, edad, usuario, contraseña, pregunta, respuesta);
 	}
-	public Administrador(String usuario, String contraseña, String pregunta, String respuesta) {
-		super(usuario, contraseña, pregunta, respuesta);
-	}
 	@Override
 	public String mostrarProductos() {
 		String s=new String();
@@ -68,10 +65,6 @@ public class Administrador extends Persona {
 	public void modificarPrecioVenta(int index, double price) {
 		Main.productos.get(index).setPrecioVenta(price);
 	}
-	public void resetCalificacion(int index) {
-		Main.productos.get(index).Calificar(5);
-	}
-	
 	//Modificar Categoria
 	public void modificarNombreCategoria(int index, String name) {
 		Main.categorias.get(index).setNombre(name);

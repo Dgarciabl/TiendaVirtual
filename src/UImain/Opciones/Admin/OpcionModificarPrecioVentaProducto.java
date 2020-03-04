@@ -15,12 +15,20 @@ public class OpcionModificarPrecioVentaProducto implements OpcionDeMenu {
 				System.out.println(i+". " + Main.productos.get(i).getNombre());
 			}
 			System.out.println("Que producto desea modificar?");
+			try {
 			int x = input.nextInt();
 			System.out.println("Precio original:");
 			System.out.println(Main.productos.get(x).getPrecioVenta());
 			System.out.println("Por que valor desea remplazarlo?");
 			double y = input.nextDouble();
 			admon.modificarPrecioVenta(x, y);
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Error en el input, intente nuevamente");
+			}
+			catch (IndexOutOfBoundsException s) {
+				System.out.println("El indice no existe en la tabla");
+			}
 		}else {
 			System.out.println("No valido para usuario");
 		}

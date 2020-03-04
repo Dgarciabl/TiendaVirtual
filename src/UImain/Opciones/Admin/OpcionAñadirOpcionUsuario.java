@@ -32,6 +32,7 @@ public class OpcionAñadirOpcionUsuario implements OpcionDeMenu {
 			try {
 			int op=in.nextInt();
 			Main.menu[1].añadirOpcion(Main.full.opciones.get(dic.get(op)));
+			}
 			catch(InputMismatchException e){
 				System.out.println("Error en el input, intente nuevamente");
 			}

@@ -9,7 +9,6 @@ public class Producto {
 	private ArrayList<Categoria> categorias;
 	private double precioVenta;
 	private double precioCompra;
-	private float calificacionProducto;
 	
 	//Constructores
 	public Producto(String n,String d, double pv, double pc){
@@ -29,8 +28,6 @@ public class Producto {
 	
 	public double getPrecioCompra() {return this.precioCompra;}
 	
-	public float getCalificacion() {return this.calificacionProducto;}
-	
 	//Setters
 	void setNombre(String s) {this.nombre=s;}
 	
@@ -40,18 +37,6 @@ public class Producto {
 	
 	void setPrecioCompra(double i) {this.precioCompra=i;}
 	
-	
-	//Metodos Concretos (EN ESPERA)
-	void AgregarCategoria(Categoria cat) {
-		
-	}
-	
-	void EliminarCategoria() {
-		
-	}
-	public void Calificar(float C) {
-		
-	}
 	@Override
 	public String toString() {
 		String s= new String();

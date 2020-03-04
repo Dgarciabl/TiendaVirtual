@@ -44,13 +44,8 @@ public class OpcionCrearUsuario implements OpcionDeMenu {
 				}
 				else {
 					System.out.println("digite la respuesta a la pregunta anterior");
-					String respuesta=in.next();
-					if (Main.isNumeric(respuesta)) {
-						System.out.println("La respuesta no puede ser un numero");
-					}
-					else {			
+					String respuesta=in.next();		
 						admon.CrearUsuario(nombre,genero,edad,usuario,contraseña,pregunta,respuesta);
-						}
 						}
 					}
 				}

@@ -4,7 +4,19 @@ import UImain.OpcionDeMenu;
 import java.util.*;
 import UImain.Main;
 import gestorAplicacion.Administrador.*;
+import gestorAplicacion.Usuario.Persona;
 public class OpcionCrearUsuario implements OpcionDeMenu {
+	
+	public boolean Comprobacion(String s) {
+		for (int l=0;l<Main.Usuarios.size();l++) {
+			Persona p=Main.Usuarios.get(l);
+			if (p.getNombre().equals(s)) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
 
 	@Override
 	public void ejecutar() {
@@ -13,6 +25,10 @@ public class OpcionCrearUsuario implements OpcionDeMenu {
 			Administrador admon=(Administrador)Main.usuario;
 			System.out.println("Nombre del cliente");
 			String nombre=in.next();
+			if (Comprobacion(nombre)) {
+				System.out.println("Usuario ya registrado");
+			}
+			else {
 			if (Main.isNumeric(nombre)) {
 				System.out.println("El nombre no puede ser un numero");
 			}
@@ -60,6 +76,7 @@ public class OpcionCrearUsuario implements OpcionDeMenu {
 			
 			}
 			}
+		}
 		}
 		//in.close();
 	}

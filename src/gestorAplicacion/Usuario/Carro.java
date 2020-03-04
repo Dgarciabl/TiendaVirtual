@@ -16,7 +16,7 @@ public class Carro extends Inventario {
 		this.numObjetos=i;		
 	}
 	public Carro(){
-		
+		super();
 	}
 	//Getters
 	public double getSubTotal() {

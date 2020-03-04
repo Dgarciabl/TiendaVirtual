@@ -18,15 +18,26 @@ public class OpcionEliminarProducto implements OpcionDeMenu {
 				System.out.println(i+ ". "+Main.productos.get(i).getNombre());
 			}
 			System.out.println("Que producto desea eliminar?");
+			try {
 			int x = input.nextInt();
 			System.out.println("El producto: "+Main.productos.get(x).getNombre()+" Sera completamente eliminado, esta seguro? S/N");
 			String str1 = input.next();
-			if(str1.equals("S")) {
-				admon.eliminarProducto(x);
-				Main.inventario.DelInventario(x);
-			}else {
-				System.out.println("Operacion Cancelada");
+			if (str1.equals("S") || str1.equals("N")) {
+				if(str1.equals("S")) {
+					admon.eliminarProducto(x);
+					Main.inventario.DelInventario(x);
+				}else {
+					System.out.println("Operacion Cancelada");
+				}
+				}
 			}
+			catch(InputMismatchException e) {
+				System.out.println("Error en el input, intente nuevamente");
+			}
+			catch(IndexOutOfBoundsException s) {
+				System.out.println("El producto no existe");
+			}
+			
 		}else {
 			System.out.println("Usuario Invalido");
 		}

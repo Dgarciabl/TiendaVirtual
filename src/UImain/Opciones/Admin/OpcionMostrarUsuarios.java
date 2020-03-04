@@ -10,7 +10,11 @@ public class OpcionMostrarUsuarios implements OpcionDeMenu {
 	public void ejecutar() {
 		Scanner in=new Scanner(System.in);
 		if(Main.usuario instanceof Administrador) {
-			
+			for (int i = 0;i<Main.Usuarios.size();i++) {
+				System.out.println(Main.Usuarios.get(i).toString());
+			}
+		}else {
+			System.out.println("El tipo de usuario es invalido");
 		}
 	}
 	@Override

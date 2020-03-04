@@ -72,7 +72,7 @@ public class Producto {
 		String s= new String();
 		s=s+"Nombre: "+this.nombre+"\n"+"Descripcion:\n"+
 		this.descripcion+"\n"+"Precio de Compra: "+this.precioCompra+"Precio de Venta: "+this.precioVenta+"\n";
-		if(!this.categorias.isEmpty()) {
+		if(this.categorias.size()>0) {
 			s=s+"Categorias:\n";
 			for (int i =0;i<categorias.size();i++) {
 				s=s+"   "+categorias.get(i).getNombre()+"\n";

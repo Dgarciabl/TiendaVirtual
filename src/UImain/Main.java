@@ -43,102 +43,6 @@ public class Main {
 		//estadisticos;
 		//menu;
 	}
-	public static void cargarMenu() {
-		menu[2]=new MenuDeConsola();
-		menu[1]=new MenuDeConsola();
-		menu[0]=new MenuDeConsola();
-		//menu invitado
-		menu[2].añadirOpcion(new OpcionInicioSesion());
-		menu[2].añadirOpcion(new OpcionMostrarProductos());
-		menu[2].añadirOpcion(new OpcionMostrarCategorias());
-		menu[2].añadirOpcion(new OpcionBuscarProducto());
-		menu[2].añadirOpcion(new OpcionBusqueda());
-		menu[2].añadirOpcion(new OpcionRecuperacion());
-		menu[2].añadirOpcion(new OpcionSalir());
-		//menu usuario
-		menu[1].añadirOpcion(new OpcionVerPerfil());
-		menu[1].añadirOpcion(new OpcionMostrarProductos());
-		menu[1].añadirOpcion(new OpcionMostrarCategorias());
-		menu[1].añadirOpcion(new OpcionBuscarProducto());
-		menu[1].añadirOpcion(new OpcionBusqueda());
-		menu[1].añadirOpcion(new OpcionCambiarContraseña());
-		menu[1].añadirOpcion(new OpcionMostrarCarro());
-		menu[1].añadirOpcion(new OpcionEliminarProductoCarro());
-		menu[1].añadirOpcion(new OpcionComprar());
-		menu[1].añadirOpcion(new OpcionCerrarSesion());
-		menu[1].añadirOpcion(new OpcionSalir());
-		//menu administrador
-		menu[0].añadirOpcion(new OpcionMostrarProductos());
-		menu[0].añadirOpcion(new OpcionMostrarCategorias());
-		menu[0].añadirOpcion(new OpcionMostrarUsuarios());
-		menu[0].añadirOpcion(new OpcionBuscarProducto());
-		menu[0].añadirOpcion(new OpcionBusqueda());
-		menu[0].añadirOpcion(new OpcionCrearUsuario());
-		menu[0].añadirOpcion(new OpcionCrearCategorias());
-		menu[0].añadirOpcion(new OpcionCrearProductos());
-		menu[0].añadirOpcion(new OpcionCrearExistencias());
-		menu[0].añadirOpcion(new OpcionAñadirOpcionInvitado());
-		menu[0].añadirOpcion(new OpcionAñadirOpcionUsuario());
-		menu[0].añadirOpcion(new OpcionAñadirOpcionAdministrador());
-		menu[0].añadirOpcion(new OpcionModificarNombreProducto());
-		menu[0].añadirOpcion(new OpcionModificarDescripcionProducto());
-		menu[0].añadirOpcion(new OpcionModificarPrecioVentaProducto());
-		menu[0].añadirOpcion(new OpcionModificarPrecioCompraProducto());
-		menu[0].añadirOpcion(new OpcionModificarCantidadProducto());
-		menu[0].añadirOpcion(new OpcionAñadirCategoriasProducto());
-		menu[0].añadirOpcion(new OpcionEliminarCategoriasProducto());
-		menu[0].añadirOpcion(new OpcionModificarNombreCategoria());
-		menu[0].añadirOpcion(new OpcionModificarDescripcionCategoria());
-		menu[0].añadirOpcion(new OpcionEliminarOpcionInvitado());
-		menu[0].añadirOpcion(new OpcionEliminarOpcionUsuario());
-		menu[0].añadirOpcion(new OpcionEliminarOpcionAdministrador());
-		menu[0].añadirOpcion(new OpcionEliminarUsuario());
-		menu[0].añadirOpcion(new OpcionEliminarProducto());
-		menu[0].añadirOpcion(new OpcionEliminarCategoria());
-		menu[0].añadirOpcion(new OpcionEliminarDetalle());
-		menu[0].añadirOpcion(new OpcionVerPerfil());
-		menu[0].añadirOpcion(new OpcionCambiarContraseña());
-		menu[0].añadirOpcion(new OpcionCerrarSesion());
-		menu[0].añadirOpcion(new OpcionSalir());
-		//full
-		full.añadirOpcion(new OpcionInicioSesion());
-		full.añadirOpcion(new OpcionMostrarProductos());
-		full.añadirOpcion(new OpcionMostrarCategorias());
-		full.añadirOpcion(new OpcionMostrarUsuarios());
-		full.añadirOpcion(new OpcionBuscarProducto());
-		full.añadirOpcion(new OpcionBusqueda());
-		full.añadirOpcion(new OpcionMostrarCarro());
-		full.añadirOpcion(new OpcionEliminarProductoCarro());
-		full.añadirOpcion(new OpcionComprar());
-		full.añadirOpcion(new OpcionCrearUsuario());
-		full.añadirOpcion(new OpcionCrearCategorias());
-		full.añadirOpcion(new OpcionCrearProductos());
-		full.añadirOpcion(new OpcionCrearExistencias());
-		full.añadirOpcion(new OpcionAñadirOpcionInvitado());
-		full.añadirOpcion(new OpcionAñadirOpcionUsuario());
-		full.añadirOpcion(new OpcionAñadirOpcionAdministrador());
-		full.añadirOpcion(new OpcionModificarNombreProducto());
-		full.añadirOpcion(new OpcionModificarDescripcionProducto());
-		full.añadirOpcion(new OpcionModificarPrecioVentaProducto());
-		full.añadirOpcion(new OpcionModificarPrecioCompraProducto());
-		full.añadirOpcion(new OpcionModificarCantidadProducto());
-		full.añadirOpcion(new OpcionAñadirCategoriasProducto());
-		full.añadirOpcion(new OpcionEliminarCategoriasProducto());
-		full.añadirOpcion(new OpcionModificarNombreCategoria());
-		full.añadirOpcion(new OpcionModificarDescripcionCategoria());
-		full.añadirOpcion(new OpcionEliminarOpcionInvitado());
-		full.añadirOpcion(new OpcionEliminarOpcionUsuario());
-		full.añadirOpcion(new OpcionEliminarOpcionAdministrador());
-		full.añadirOpcion(new OpcionEliminarUsuario());
-		full.añadirOpcion(new OpcionEliminarProducto());
-		full.añadirOpcion(new OpcionEliminarCategoria());
-		full.añadirOpcion(new OpcionEliminarDetalle());
-		full.añadirOpcion(new OpcionVerPerfil());
-		full.añadirOpcion(new OpcionCambiarContraseña());
-		full.añadirOpcion(new OpcionRecuperacion());
-		full.añadirOpcion(new OpcionCerrarSesion());
-		full.añadirOpcion(new OpcionSalir());
-	}
 	public static void cargarUsuarios() {
 		Usuarios=new ArrayList<Persona>();
 		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
@@ -178,5 +82,116 @@ public class Main {
 			return false;
 		}
 		return true;
+	}
+	public static void cargarMenu() {
+		menu[2]=new MenuDeConsola();
+		menu[1]=new MenuDeConsola();
+		menu[0]=new MenuDeConsola();
+		//menu invitado
+		menu[2].añadirOpcion(new OpcionInicioSesion());
+		menu[2].añadirOpcion(new OpcionMostrarProductos());
+		menu[2].añadirOpcion(new OpcionMostrarInventario());
+		menu[2].añadirOpcion(new OpcionMostrarCategorias());
+		menu[2].añadirOpcion(new OpcionBuscarProducto());
+		menu[2].añadirOpcion(new OpcionBusqueda());
+		menu[2].añadirOpcion(new OpcionRecuperacion());
+		menu[2].añadirOpcion(new OpcionSalir());
+		//menu usuario
+		menu[1].añadirOpcion(new OpcionVerPerfil());
+		menu[1].añadirOpcion(new OpcionMostrarProductos());
+		menu[1].añadirOpcion(new OpcionMostrarInventario());
+		menu[1].añadirOpcion(new OpcionMostrarCategorias());
+		menu[1].añadirOpcion(new OpcionBuscarProducto());
+		menu[1].añadirOpcion(new OpcionBusqueda());
+		menu[1].añadirOpcion(new OpcionCambiarContraseña());
+		menu[1].añadirOpcion(new OpcionMostrarCarro());
+		menu[1].añadirOpcion(new OpcionEliminarProductoCarro());
+		menu[1].añadirOpcion(new OpcionComprar());
+		menu[1].añadirOpcion(new OpcionCerrarSesion());
+		menu[1].añadirOpcion(new OpcionSalir());
+		//menu administrador
+		menu[0].añadirOpcion(new OpcionMostrarProductos());
+		menu[0].añadirOpcion(new OpcionMostrarInventario());
+		menu[0].añadirOpcion(new OpcionMostrarCategorias());
+		menu[0].añadirOpcion(new OpcionMostrarUsuarios());
+		menu[0].añadirOpcion(new OpcionBuscarProducto());
+		menu[0].añadirOpcion(new OpcionBusqueda());
+		menu[0].añadirOpcion(new OpcionCrearUsuario());
+		menu[0].añadirOpcion(new OpcionCrearCategorias());
+		menu[0].añadirOpcion(new OpcionCrearProductos());
+		menu[0].añadirOpcion(new OpcionCrearExistencias());
+		menu[0].añadirOpcion(new OpcionAñadirOpcionInvitado());
+		menu[0].añadirOpcion(new OpcionAñadirOpcionUsuario());
+		menu[0].añadirOpcion(new OpcionAñadirOpcionAdministrador());
+		menu[0].añadirOpcion(new OpcionModificarNombreProducto());
+		menu[0].añadirOpcion(new OpcionModificarDescripcionProducto());
+		menu[0].añadirOpcion(new OpcionModificarPrecioVentaProducto());
+		menu[0].añadirOpcion(new OpcionModificarPrecioCompraProducto());
+		menu[0].añadirOpcion(new OpcionModificarCantidadProducto());
+		menu[0].añadirOpcion(new OpcionAñadirCategoriasProducto());
+		menu[0].añadirOpcion(new OpcionEliminarCategoriasProducto());
+		menu[0].añadirOpcion(new OpcionModificarNombreCategoria());
+		menu[0].añadirOpcion(new OpcionModificarDescripcionCategoria());
+		menu[0].añadirOpcion(new OpcionEliminarOpcionInvitado());
+		menu[0].añadirOpcion(new OpcionEliminarOpcionUsuario());
+		menu[0].añadirOpcion(new OpcionEliminarOpcionAdministrador());
+		menu[0].añadirOpcion(new OpcionEliminarUsuario());
+		menu[0].añadirOpcion(new OpcionEliminarProducto());
+		menu[0].añadirOpcion(new OpcionEliminarCategoria());
+		menu[0].añadirOpcion(new OpcionEliminarDetalle());
+		menu[0].añadirOpcion(new OpcionVerPerfil());
+		menu[0].añadirOpcion(new OpcionCambiarContraseña());
+		menu[0].añadirOpcion(new OpcionCerrarSesion());
+		menu[0].añadirOpcion(new OpcionSalir());
+		//full
+		//  mostrar
+		full.añadirOpcion(new OpcionMostrarProductos());
+		full.añadirOpcion(new OpcionMostrarInventario());
+		full.añadirOpcion(new OpcionMostrarCategorias());
+		full.añadirOpcion(new OpcionMostrarUsuarios());
+		full.añadirOpcion(new OpcionMostrarCarro());
+		//  buscar
+		full.añadirOpcion(new OpcionBuscarProducto());
+		full.añadirOpcion(new OpcionBusqueda());
+		//  Crear
+		full.añadirOpcion(new OpcionCrearUsuario());
+		full.añadirOpcion(new OpcionCrearCategorias());
+		full.añadirOpcion(new OpcionCrearProductos());
+		full.añadirOpcion(new OpcionCrearExistencias());
+		//  modificar
+			//  Producto
+		full.añadirOpcion(new OpcionModificarNombreProducto());
+		full.añadirOpcion(new OpcionModificarDescripcionProducto());
+		full.añadirOpcion(new OpcionModificarPrecioVentaProducto());
+		full.añadirOpcion(new OpcionModificarPrecioCompraProducto());
+		full.añadirOpcion(new OpcionAñadirCategoriasProducto());
+		full.añadirOpcion(new OpcionEliminarCategoriasProducto());
+			// carro
+		full.añadirOpcion(new OpcionEliminarProductoCarro());
+			//Categoria
+		full.añadirOpcion(new OpcionModificarNombreCategoria());
+		full.añadirOpcion(new OpcionModificarDescripcionCategoria());
+			//Inventario
+		full.añadirOpcion(new OpcionModificarCantidadProducto());
+			//Opciones
+		full.añadirOpcion(new OpcionAñadirOpcionInvitado());
+		full.añadirOpcion(new OpcionAñadirOpcionUsuario());
+		full.añadirOpcion(new OpcionAñadirOpcionAdministrador());
+		//Eliminar
+		full.añadirOpcion(new OpcionEliminarOpcionInvitado());
+		full.añadirOpcion(new OpcionEliminarOpcionUsuario());
+		full.añadirOpcion(new OpcionEliminarOpcionAdministrador());
+		full.añadirOpcion(new OpcionEliminarUsuario());
+		full.añadirOpcion(new OpcionEliminarProducto());
+		full.añadirOpcion(new OpcionEliminarCategoria());
+		full.añadirOpcion(new OpcionEliminarDetalle());
+		//otros
+		full.añadirOpcion(new OpcionComprar());
+		full.añadirOpcion(new OpcionInicioSesion());
+		full.añadirOpcion(new OpcionVerPerfil());
+		full.añadirOpcion(new OpcionCambiarContraseña());
+		full.añadirOpcion(new OpcionRecuperacion());
+		full.añadirOpcion(new OpcionCerrarSesion());
+		full.añadirOpcion(new OpcionSalir());
 	}
 }

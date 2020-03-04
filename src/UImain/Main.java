@@ -47,6 +47,8 @@ public class Main {
 		Usuarios=new ArrayList<Persona>();
 		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
 		Usuarios.add(admon);
+		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
+		Usuarios.add(user);
 	}
 	public static void cargarProductos() {
 		productos=new ArrayList<Producto>();

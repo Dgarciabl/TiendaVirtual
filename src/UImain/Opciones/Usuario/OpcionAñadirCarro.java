@@ -15,7 +15,7 @@ public class OpcionAñadirCarro implements OpcionDeMenu {
 			int op=in.nextInt();
 			System.out.println("ingrese la cantidad que desea agregar");
 			int can=in.nextInt();
-			user.getCarro().AddInventario(new Detalle(Main.inventario.getInventario().get(op).getProducto(),can));
+			user.getCarro().AddProducto(new Detalle(Main.inventario.getInventario().get(op).getProducto(),can));
 		}else {
 			System.out.println("No es usuario valido");
 		}

@@ -59,4 +59,19 @@ public class Inventario {
 		}
 		return Regreso;
 	}
+	@Override
+	public String toString() {
+		 String s=new String();
+		 for (int i=0;i<inventario.size();i++) {
+			s=s+i+") "+ inventario.get(i).toString()+"\n-------------------------------------\n";
+		 }
+		 return s;
+	 }
+	public String toString2() {
+		 String s=new String();
+		 for (int i=0;i<inventario.size();i++) {
+			s=s+i+") "+ inventario.get(i).toString2()+"\n-------------------------------------\n";
+		 }
+		 return s;
+	 }
 }

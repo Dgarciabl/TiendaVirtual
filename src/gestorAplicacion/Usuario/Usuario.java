@@ -53,29 +53,7 @@ public class Usuario extends Persona {
 	public void eliminarProducto(int indexCarro) {
 		
 	}
-	//Abstract Methods implementation 
-	@Override
-	public void mostrarCategorias() {
-		ArrayList<Categoria> Temp=Main.categorias;
-		System.out.println("-------------------------------------");
-		System.out.println("Categorias:");
-		System.out.println("-------------------------------------");
-		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i+1 +")"+ Temp.get(i).toString());
-			System.out.println("-------------------------------------");
-		}
-	}
-	@Override
-	public void mostrarProductos() {
-		ArrayList<Producto> Temp=Main.productos;
-		System.out.println("-------------------------------------");
-		System.out.println("Productos:");
-		System.out.println("-------------------------------------");
-		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i +")"+ Temp.get(i).getNombre());
-
-		}				
-	}
+	//Abstract Methods implementation
 	@Override
 	public int busqueda(String nombreProducto) {
 		return this.carroCompra.RealizarBusqueda(nombreProducto);
@@ -88,7 +66,13 @@ public class Usuario extends Persona {
 	public void comprar() {
 		
 	}	
-	
+	@Override
+	public String mostrarProductos() {
+		String s=new String();
+		s="-------------------------------------\nProductos:\n-------------------------------------\n";
+		s=s+Main.inventario.toString();
+		return s;
+	}
 	@Override
 	public String toString() {
 		String s = new String();

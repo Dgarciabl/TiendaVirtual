@@ -43,6 +43,46 @@ public class Main {
 		//estadisticos;
 		//menu;
 	}
+	public static void cargarUsuarios() {
+		Usuarios=new ArrayList<Persona>();
+		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
+		Usuarios.add(admon);
+	}
+	public static void cargarProductos() {
+		productos=new ArrayList<Producto>();
+		productos.add(new Producto("Leche Entera","1 Litro",3500,3000));
+		productos.add(new Producto("Leche Deslactosada","1.2 Litros",3500,3000));
+		productos.add(new Producto("Almendras","Enteras con cascara 250gr",8900,3000));
+		productos.add(new Producto("Frijoles","500gr",3500,3000));
+		productos.add(new Producto("Frijoles","400ml",3500,3000));
+		productos.add(new Producto("Portatil Acer","Ryzen 7",2000000,1450000));
+		productos.add(new Producto("Celular Xiaomi","Mejor calida Precio del mercado",1200000,650000));
+		productos.add(new Producto("Horno Micro ondas","Haceb",350000,260000));
+		productos.add(new Producto("Licuadora","Oster",75000,35000));
+	}
+	public static void cargarInventario() {
+		inventario=new Inventario();
+		for (int i=0;i<productos.size();i++) {
+			inventario.AddInventario(new Detalle(productos.get(i),(int)(Math.random() * (100 - 0 + 1) + 0)));
+		}
+	}
+	public static void cargarCategorias() {
+		categorias=new ArrayList<Categoria>();
+		categorias.add(new Categoria("Lacteos","Derivados de la leche"));
+		categorias.add(new Categoria("Granos","Semillas entera"));
+		categorias.add(new Categoria("Enlatados","Empacados para durar"));
+		categorias.add(new Categoria("Tecnologia","El avance es el futuro"));
+		categorias.add(new Categoria("Electrodomesticos","Todo para el hogar"));
+	}
+	public static boolean isNumeric(String s) {
+		try {
+			Integer.parseInt(s);
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
 	public static void cargarMenu() {
 		menu[2]=new MenuDeConsola();
 		menu[1]=new MenuDeConsola();
@@ -141,45 +181,5 @@ public class Main {
 		full.añadirOpcion(new OpcionRecuperacion());
 		full.añadirOpcion(new OpcionCerrarSesion());
 		full.añadirOpcion(new OpcionSalir());
-	}
-	public static void cargarUsuarios() {
-		Usuarios=new ArrayList<Persona>();
-		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
-		Usuarios.add(admon);
-	}
-	public static void cargarProductos() {
-		productos=new ArrayList<Producto>();
-		productos.add(new Producto("Leche Entera","1 Litro",3500,3000));
-		productos.add(new Producto("Leche Deslactosada","1.2 Litros",3500,3000));
-		productos.add(new Producto("Almendras","Enteras con cascara 250gr",8900,3000));
-		productos.add(new Producto("Frijoles","500gr",3500,3000));
-		productos.add(new Producto("Frijoles","400ml",3500,3000));
-		productos.add(new Producto("Portatil Acer","Ryzen 7",2000000,1450000));
-		productos.add(new Producto("Celular Xiaomi","Mejor calida Precio del mercado",1200000,650000));
-		productos.add(new Producto("Horno Micro ondas","Haceb",350000,260000));
-		productos.add(new Producto("Licuadora","Oster",75000,35000));
-	}
-	public static void cargarInventario() {
-		inventario=new Inventario();
-		for (int i=0;i<productos.size();i++) {
-			inventario.AddInventario(new Detalle(productos.get(i),(int)(Math.random() * (100 - 0 + 1) + 0)));
-		}
-	}
-	public static void cargarCategorias() {
-		categorias=new ArrayList<Categoria>();
-		categorias.add(new Categoria("Lacteos","Derivados de la leche"));
-		categorias.add(new Categoria("Granos","Semillas entera"));
-		categorias.add(new Categoria("Enlatados","Empacados para durar"));
-		categorias.add(new Categoria("Tecnologia","El avance es el futuro"));
-		categorias.add(new Categoria("Electrodomesticos","Todo para el hogar"));
-	}
-	public static boolean isNumeric(String s) {
-		try {
-			Integer.parseInt(s);
-		}
-		catch (NumberFormatException e) {
-			return false;
-		}
-		return true;
 	}
 }

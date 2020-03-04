@@ -32,9 +32,6 @@ public class OpcionEliminarCategoriasProducto implements OpcionDeMenu {
 		System.out.println("El usuario no es valido");
 	}
 }
-
-//cuando se elimina un producto busco en el inventario y elimino el detalle
-// al eliminar una categoria elimino esa categoria de todos los productos que la tengan
 	@Override
 	public String toString() {
 		return "Eliminar categoria de Producto";

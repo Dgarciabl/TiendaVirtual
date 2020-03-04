@@ -105,4 +105,13 @@ public class Main {
 	public static void cargarCategorias() {
 		categorias=new ArrayList<Categoria>();
 	}
+	public static boolean isNumeric(String s) {
+		try {
+			Integer.parseInt(s);
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
 }

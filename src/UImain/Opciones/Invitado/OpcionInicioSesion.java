@@ -24,6 +24,11 @@ public class OpcionInicioSesion implements OpcionDeMenu {
 	private boolean Sesion() {
 		System.out.println("Usuario:");
 		String usu=in.next();
+		if (Main.isNumeric(usu)) {
+			System.out.println("El usuario no puede ser un numero");
+			return false;
+		}
+		else {
 		System.out.println("Contraseña:");
 		String key=in.next();
 		if (InicioSesion(usu, key)) {
@@ -31,6 +36,7 @@ public class OpcionInicioSesion implements OpcionDeMenu {
 		}else {
 			return false;
 		}
+	}
 	}
 	@Override
 	public String toString() {

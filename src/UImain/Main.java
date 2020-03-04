@@ -50,6 +50,7 @@ public class Main {
 		//menu invitado
 		menu[2].añadirOpcion(new OpcionInicioSesion());
 		menu[2].añadirOpcion(new OpcionMostrarProductos());
+		menu[2].añadirOpcion(new OpcionMostrarInventario());
 		menu[2].añadirOpcion(new OpcionMostrarCategorias());
 		menu[2].añadirOpcion(new OpcionBuscarProducto());
 		menu[2].añadirOpcion(new OpcionBusqueda());
@@ -58,6 +59,7 @@ public class Main {
 		//menu usuario
 		menu[1].añadirOpcion(new OpcionVerPerfil());
 		menu[1].añadirOpcion(new OpcionMostrarProductos());
+		menu[1].añadirOpcion(new OpcionMostrarInventario());
 		menu[1].añadirOpcion(new OpcionMostrarCategorias());
 		menu[1].añadirOpcion(new OpcionBuscarProducto());
 		menu[1].añadirOpcion(new OpcionBusqueda());
@@ -69,6 +71,7 @@ public class Main {
 		menu[1].añadirOpcion(new OpcionSalir());
 		//menu administrador
 		menu[0].añadirOpcion(new OpcionMostrarProductos());
+		menu[0].añadirOpcion(new OpcionMostrarInventario());
 		menu[0].añadirOpcion(new OpcionMostrarCategorias());
 		menu[0].añadirOpcion(new OpcionMostrarUsuarios());
 		menu[0].añadirOpcion(new OpcionBuscarProducto());

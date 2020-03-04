@@ -14,6 +14,7 @@ public class Main {
 	public static int nivel=2;
 	public static Persona usuario;
 	public static MenuDeConsola[] menu= new MenuDeConsola[3];
+	public static MenuDeConsola full=new  MenuDeConsola();
 	public static void main(String[] args){
 		Scanner in=new Scanner(System.in);
 		Inicio();
@@ -55,11 +56,12 @@ public class Main {
 		menu[2].añadirOpcion(new OpcionRecuperacion());
 		menu[2].añadirOpcion(new OpcionSalir());
 		//menu usuario
+		menu[1].añadirOpcion(new OpcionVerPerfil());
 		menu[1].añadirOpcion(new OpcionMostrarProductos());
 		menu[1].añadirOpcion(new OpcionMostrarCategorias());
 		menu[1].añadirOpcion(new OpcionBuscarProducto());
 		menu[1].añadirOpcion(new OpcionBusqueda());
-		menu[1].añadirOpcion(new OpcionVerPerfil());
+		menu[1].añadirOpcion(new OpcionCambiarContraseña());
 		menu[1].añadirOpcion(new OpcionMostrarCarro());
 		menu[1].añadirOpcion(new OpcionEliminarProductoCarro());
 		menu[1].añadirOpcion(new OpcionComprar());
@@ -88,8 +90,40 @@ public class Main {
 		menu[0].añadirOpcion(new OpcionEliminarCategoria());
 		menu[0].añadirOpcion(new OpcionEliminarDetalle());
 		menu[0].añadirOpcion(new OpcionVerPerfil());
+		menu[0].añadirOpcion(new OpcionCambiarContraseña());
 		menu[0].añadirOpcion(new OpcionCerrarSesion());
 		menu[0].añadirOpcion(new OpcionSalir());
+		//full
+		full.añadirOpcion(new OpcionInicioSesion());
+		full.añadirOpcion(new OpcionMostrarProductos());
+		full.añadirOpcion(new OpcionMostrarCategorias());
+		full.añadirOpcion(new OpcionMostrarUsuarios());
+		full.añadirOpcion(new OpcionBuscarProducto());
+		full.añadirOpcion(new OpcionBusqueda());
+		full.añadirOpcion(new OpcionMostrarCarro());
+		full.añadirOpcion(new OpcionEliminarProductoCarro());
+		full.añadirOpcion(new OpcionComprar());
+		full.añadirOpcion(new OpcionCrearUsuario());
+		full.añadirOpcion(new OpcionCrearCategorias());
+		full.añadirOpcion(new OpcionCrearProductos());
+		full.añadirOpcion(new OpcionCrearExistencias());
+		full.añadirOpcion(new OpcionModificarNombreProducto());
+		full.añadirOpcion(new OpcionModificarDescripcionProducto());
+		full.añadirOpcion(new OpcionModificarPrecioVentaProducto());
+		full.añadirOpcion(new OpcionModificarPrecioCompraProducto());
+		full.añadirOpcion(new OpcionModificarCantidadProducto());
+		full.añadirOpcion(new OpcionModificarCategorias());
+		full.añadirOpcion(new OpcionModificarNombreCategoria());
+		full.añadirOpcion(new OpcionModificarDescripcionCategoria());
+		full.añadirOpcion(new OpcionEliminarUsuario());
+		full.añadirOpcion(new OpcionEliminarProducto());
+		full.añadirOpcion(new OpcionEliminarCategoria());
+		full.añadirOpcion(new OpcionEliminarDetalle());
+		full.añadirOpcion(new OpcionVerPerfil());
+		full.añadirOpcion(new OpcionCambiarContraseña());
+		full.añadirOpcion(new OpcionRecuperacion());
+		full.añadirOpcion(new OpcionCerrarSesion());
+		full.añadirOpcion(new OpcionSalir());
 	}
 	public static void cargarUsuarios() {
 		Usuarios=new ArrayList<Persona>();

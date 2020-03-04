@@ -22,26 +22,25 @@ public class OpcionModificarCategorias implements OpcionDeMenu {
 
 			
 			if(Main.productos.get(x).getCategoria().size()>0) {
+				System.out.println("Categorias:");
 				for(int i=0;i<(Main.productos.get(x).getCategoria()).size(); i++) {
-					System.out.println("Categorias:");
 					System.out.println(i + ". "+(Main.productos.get(x).getCategoriaIndividual(i).getNombre()));
-					System.out.println("Desea o eliminar[0] o agregar[1] categorias?");
-					int c = input.nextInt();
-					if(c==0) {
-						System.out.println("Que categoria del producto desea eliminar?");
-						int y = input.nextInt();
-						admon.delCategoriaProducto(x, Main.productos.get(x).getCategoriaIndividual(y));
-					}else {
-							System.out.println("Que categoria desea añadir?");
-							for(int j=0;j<(Main.categorias.size());j++) {
-								System.out.println(j + ". "+Main.categorias.get(j).getNombre());
-							}
-							int z = input.nextInt();
-							admon.addCategoriaProducto(x, Main.categorias.get(z));
-						}
 					}
-				
-			}else {
+				System.out.println("Desea o eliminar[0] o agregar[1] categorias?");
+				int c = input.nextInt();
+				if(c==0){
+					System.out.println("Que categoria del producto desea eliminar?");
+					int y = input.nextInt();
+					admon.delCategoriaProducto(x, Main.productos.get(x).getCategoriaIndividual(y));
+				}else {
+						System.out.println("Que categoria desea añadir?");
+						for(int j=0;j<(Main.categorias.size());j++) {
+							System.out.println(j + ". "+Main.categorias.get(j).getNombre());
+						}
+						int z = input.nextInt();
+						admon.addCategoriaProducto(x, Main.categorias.get(z));
+					}
+			}else{
 				System.out.println("El producto no cuenta con categorias");
 				System.out.println("Desea agregar una nueva categoria al producto? S/N");
 				String str1 = input.next();
@@ -51,7 +50,17 @@ public class OpcionModificarCategorias implements OpcionDeMenu {
 						System.out.println(j + ". "+Main.categorias.get(j).getNombre());
 					}
 					int z = input.nextInt();
-					admon.addCategoriaProducto(x, Main.categorias.get(z));
+					int h=0;
+					for(int k=0; k<Main.categorias.size();k++){
+						if((Main.categorias.get(z).getNombre()).equals(Main.categorias.get(k).getNombre())){
+							h+=1;
+						}
+					}
+					if(h>1) {
+						System.out.println("La categoria ya existe");
+					}else {
+						admon.addCategoriaProducto(x, Main.categorias.get(z));
+					}
 				}
 				
 			}
@@ -60,6 +69,8 @@ public class OpcionModificarCategorias implements OpcionDeMenu {
 			}
 		}
 	
+	//cuando se elimina un producto busco en el inventario y elimino el detalle
+	// al eliminar una categoria elimino esa categoria de todos los productos que la tengan
 	@Override
 	public String toString() {
 		return "Modificar Categorias";

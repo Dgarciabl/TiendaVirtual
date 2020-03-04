@@ -19,7 +19,7 @@ public class OpcionEliminarCategoriasProducto implements OpcionDeMenu {
 		System.out.println("Que producto desea modificar?");
 		int x = input.nextInt();
 		if(Main.productos.get(x).getCategoria().size()>0) {
-			System.out.println(Persona.mostrarCategorias());
+			Persona.mostrarCategorias();
 			System.out.println("Que categoria del producto desea eliminar?");
 			int c = input.nextInt();
 			//admon.delCategoriaProducto(x, Main.productos.get(x).getCategoriaIndividual(c));

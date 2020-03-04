@@ -32,11 +32,12 @@ public class Detalle {
 			this.cantidad=i;
 		}
 	}	
-	 public void restarCantidad(int amount){
+	 public boolean restarCantidad(int amount){
 		if((this.cantidad - amount)>0) {
 			this.cantidad = this.getCantidad()-amount;
+			return true;
 		}else {
-			System.out.println("La cantidad de productos pedida es superior a la existente");
+			return false;
 		}
 	}
 	 @Override

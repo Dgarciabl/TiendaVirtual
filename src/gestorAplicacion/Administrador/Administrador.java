@@ -149,11 +149,13 @@ public class Administrador extends Persona {
 	
 	public String toString() {
 		String s = new String();
-		s="Perfil: Administrador/nNombre: "+this.getNombre()+"/nEdad"+this.getEdad()+"/nGenero: ";
+		s="Perfil: Administrador\nNombre: "+this.getNombre()+"\nEdad: "+this.getEdad()+"\nGenero: ";
 		if (getGenero()) {
-			s=s+"Masculino/n";
+			s=s+"Masculino\n";
+		}else {
+			s=s+"Femenino\n";
 		}
-		s=s+"Usuario: ";
+		s=s+"Usuario: "+this.getUsuario();
 		return s;
 	}
 }

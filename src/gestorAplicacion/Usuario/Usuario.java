@@ -95,6 +95,8 @@ public class Usuario extends Persona {
 		s="Perfil: Usuario Registrado\nNombre: "+this.getNombre()+"\nEdad"+this.getEdad()+"\nGenero: ";
 		if (getGenero()) {
 			s=s+"Masculino\n";
+		}else {
+			s=s+"Femenino\n";
 		}
 		s=s+"Usuario: "+this.getUsuario()+"\nSaldo: "+this.saldo;
 		return s;

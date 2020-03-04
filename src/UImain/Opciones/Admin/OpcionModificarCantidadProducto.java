@@ -18,11 +18,22 @@ public class OpcionModificarCantidadProducto implements OpcionDeMenu {
 			}
 			System.out.println("Que producto desea modificar?");
 			int x = input.nextInt();
-			System.out.println("Cantidad Actual:");
-			System.out.println(Main.inventario.getInventario().get(x).getCantidad());
-			System.out.println("Cual es la nueva cantidad?");
-			int y = input.nextInt();
-			admon.modificarCantidadProducto(x, y);
+			if(x<Main.inventario.getInventario().size()) {
+				System.out.println("Cantidad Actual:");
+				System.out.println(Main.inventario.getInventario().get(x).getCantidad());
+				System.out.println("Cual es la nueva cantidad?");
+				int y = input.nextInt();
+				if(y>0) {
+					admon.modificarCantidadProducto(x, y);
+				}else {
+					System.out.println("Debe ingresar una cantidad mayor que cero");
+				}
+
+			}else {
+				System.out.println("Ingrese un numero valido");
+			}
+			
+
 		}else {
 			System.out.println("El usuario es invalido");
 		}

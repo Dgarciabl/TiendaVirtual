@@ -19,7 +19,7 @@ public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 			for(int i=0; i<Main.productos.size(); i++){
 				System.out.println(i+". " + Main.productos.get(i).getNombre());
 			}
-
+			try {
 			int x = input.nextInt();
 			
 			if(Main.productos.get(x).getCategoria().size()>0) {
@@ -62,6 +62,13 @@ public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 					int z = input.nextInt();
 					admon.addCategoriaProducto(x, Main.categorias.get(z));
 				}
+			}
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Error en el input, intente nuevamente");
+			}
+			catch (IndexOutOfBoundsException s) {
+				System.out.println("El indice no existe en la lista");
 			}
 		}else {
 				System.out.println("El usuario no es valido");

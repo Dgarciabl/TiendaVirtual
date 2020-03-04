@@ -35,7 +35,10 @@ public class Usuario extends Persona {
 		return this.carroCompra;
 	}
 	public String getCarroToString() {
-		return this.carroCompra.toString();
+		String s=new String();
+		s="-------------------------------------\nProductos en el Carro:\n-------------------------------------\n";
+		s=s+this.carroCompra.toString();
+		return s;
 	}
 	public double getSubtotal() {
 		return this.carroCompra.getSubTotal();

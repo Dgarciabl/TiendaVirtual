@@ -13,5 +13,9 @@ public class OpcionMostrarUsuarios implements OpcionDeMenu {
 			
 		}
 	}
+	@Override
+	public String toString() {
+		return "Mostrar Usuarios";
+	}
 
 }

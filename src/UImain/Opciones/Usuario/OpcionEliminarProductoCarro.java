@@ -12,7 +12,7 @@ public class OpcionEliminarProductoCarro implements OpcionDeMenu {
 		if(Main.usuario instanceof Usuario) {
 			Usuario us1 = (Usuario)Main.usuario;
 			for(int i=0; i<us1.getCarro().getInventario().size(); i++) {
-				System.out.println(i + ". "+us1.getCarro().getInventario().get(i).getProducto().getNombre());
+				System.out.println(us1.getCarroToString());
 			}
 			System.out.println("Que producto desea eliminar del carro?");
 			int x = input.nextInt();
@@ -31,7 +31,7 @@ public class OpcionEliminarProductoCarro implements OpcionDeMenu {
 	
 	@Override
 	public String toString() {
-		return "Eliminar Produco Carro";
+		return "Eliminar Producto Carro";
 	}
 
 }

@@ -56,9 +56,9 @@ public class Carro extends Inventario {
 	public String toString() {
 		String s=new String();
 		for (int i=0; i<numObjetos;i++) {
-			s+=(i+ ") "+inventario.get(i).getProducto().getNombre()+" , Cantidad: "+inventario.get(i).getCantidad()+" , Precio: "+inventario.get(i).getProducto().getPrecioVenta()+" /n");
+			s+=i+ ") "+inventario.get(i).toString()+"\nCantidad: "+inventario.get(i).getCantidad()+"\n";
 		}
-		s+=("Total: "+ this.subTotal);
+		s+="Total: "+ this.subTotal;
 		return s;
 	}
 	

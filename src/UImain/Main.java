@@ -145,30 +145,40 @@ public class Main {
 		menu[0].añadirOpcion(new OpcionSalir());
 		//full
 		full.añadirOpcion(new OpcionInicioSesion());
+		//  mostrar
 		full.añadirOpcion(new OpcionMostrarProductos());
+		full.añadirOpcion(new OpcionMostrarInventario());
 		full.añadirOpcion(new OpcionMostrarCategorias());
 		full.añadirOpcion(new OpcionMostrarUsuarios());
+		full.añadirOpcion(new OpcionMostrarCarro());
+		//  buscar
 		full.añadirOpcion(new OpcionBuscarProducto());
 		full.añadirOpcion(new OpcionBusqueda());
-		full.añadirOpcion(new OpcionMostrarCarro());
-		full.añadirOpcion(new OpcionEliminarProductoCarro());
-		full.añadirOpcion(new OpcionComprar());
+		//  Crear
 		full.añadirOpcion(new OpcionCrearUsuario());
 		full.añadirOpcion(new OpcionCrearCategorias());
 		full.añadirOpcion(new OpcionCrearProductos());
 		full.añadirOpcion(new OpcionCrearExistencias());
-		full.añadirOpcion(new OpcionAñadirOpcionInvitado());
-		full.añadirOpcion(new OpcionAñadirOpcionUsuario());
-		full.añadirOpcion(new OpcionAñadirOpcionAdministrador());
+		//  modificar
+			//  Producto
 		full.añadirOpcion(new OpcionModificarNombreProducto());
 		full.añadirOpcion(new OpcionModificarDescripcionProducto());
 		full.añadirOpcion(new OpcionModificarPrecioVentaProducto());
 		full.añadirOpcion(new OpcionModificarPrecioCompraProducto());
-		full.añadirOpcion(new OpcionModificarCantidadProducto());
 		full.añadirOpcion(new OpcionAñadirCategoriasProducto());
 		full.añadirOpcion(new OpcionEliminarCategoriasProducto());
+			// carro
+		full.añadirOpcion(new OpcionEliminarProductoCarro());
+			//Categoria
 		full.añadirOpcion(new OpcionModificarNombreCategoria());
 		full.añadirOpcion(new OpcionModificarDescripcionCategoria());
+			//Inventario
+		full.añadirOpcion(new OpcionModificarCantidadProducto());
+			//Opciones
+		full.añadirOpcion(new OpcionAñadirOpcionInvitado());
+		full.añadirOpcion(new OpcionAñadirOpcionUsuario());
+		full.añadirOpcion(new OpcionAñadirOpcionAdministrador());
+		//Eliminar
 		full.añadirOpcion(new OpcionEliminarOpcionInvitado());
 		full.añadirOpcion(new OpcionEliminarOpcionUsuario());
 		full.añadirOpcion(new OpcionEliminarOpcionAdministrador());
@@ -176,6 +186,8 @@ public class Main {
 		full.añadirOpcion(new OpcionEliminarProducto());
 		full.añadirOpcion(new OpcionEliminarCategoria());
 		full.añadirOpcion(new OpcionEliminarDetalle());
+		//otros
+		full.añadirOpcion(new OpcionComprar());
 		full.añadirOpcion(new OpcionVerPerfil());
 		full.añadirOpcion(new OpcionCambiarContraseña());
 		full.añadirOpcion(new OpcionRecuperacion());

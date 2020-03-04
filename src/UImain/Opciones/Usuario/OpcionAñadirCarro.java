@@ -13,13 +13,16 @@ public class OpcionAñadirCarro implements OpcionDeMenu {
 			System.out.println(Main.inventario.toString());
 			System.out.println("Ingrese el indice del producto");
 			int op=in.nextInt();
-			System.out.println("ingrese la cantidad que desea agregar");
-			int can=in.nextInt();
-			if (Main.inventario.getInventario().get(op).restarCantidad(can)) {
-				user.getCarro().AddProducto(new Detalle(Main.inventario.getInventario().get(op).getProducto(),can));
-			}else {
-				System.out.println("No hay suficientes existencias");
+			if(op>=0 && op<Main.inventario.getInventario().size()) {
+				System.out.println("ingrese la cantidad que desea agregar");
+				int can=in.nextInt();
+				if (Main.inventario.getInventario().get(op).restarCantidad(can)) {
+					user.getCarro().AddProducto(new Detalle(Main.inventario.getInventario().get(op).getProducto(),can));
+				}else {
+					System.out.println("No hay suficientes existencias");
+				}
 			}
+			
 		}else {
 			System.out.println("No es usuario valido");
 		}

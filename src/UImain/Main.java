@@ -21,7 +21,9 @@ public class Main {
 		while(true) {
 			menu[nivel].lanzarMenu();
 			int op=in.nextInt();
-			menu[nivel].opciones.get(op).ejecutar();
+			if (op>=0 && op<=menu[nivel].opciones.size()) {
+				menu[nivel].opciones.get(op).ejecutar();
+			}
 			if(op==1001001) {
 				break;
 			}

@@ -38,7 +38,7 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 					System.out.println("No se ha encontrado ningun producto");
 					}			
 			}
-			Ing.close();
+			//Ing.close();
 
 		}
 	@Override

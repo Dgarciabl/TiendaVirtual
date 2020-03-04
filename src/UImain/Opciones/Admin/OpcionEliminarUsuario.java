@@ -27,7 +27,7 @@ public class OpcionEliminarUsuario implements OpcionDeMenu {
 		}else {
 			System.out.println("usuario no tiene permiso");
 		}
-		in.close();
+		//in.close();
 	}
 	@Override
 	public String toString() {

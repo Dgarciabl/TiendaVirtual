@@ -6,6 +6,7 @@ import gestorAplicacion.Administrador.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 public class OpcionAñadirOpcionInvitado implements OpcionDeMenu {
 
 	@Override
@@ -29,8 +30,16 @@ public class OpcionAñadirOpcionInvitado implements OpcionDeMenu {
 				}
 			}
 			System.out.println("Selecione el indice de la opcion que desea añadir");
+			try {
 			int op=in.nextInt();
 			Main.menu[2].añadirOpcion(Main.full.opciones.get(dic.get(op)));
+			}
+			catch (InputMismatchException e) {
+				System.out.println("Error en el input, intente nuevamente");
+			}
+			catch (IndexOutOfBoundsException s) {
+				System.out.println("el indice no existe en la lista");
+			}
 		}else {
 			System.out.println("El tipo de usuario no es valido");
 		}

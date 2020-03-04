@@ -1,6 +1,6 @@
 package UImain.Opciones.Admin;
 
-import java.util.Scanner;
+import java.util.*;
 
 import UImain.Main;
 import UImain.OpcionDeMenu;
@@ -29,8 +29,15 @@ public class OpcionAñadirOpcionUsuario implements OpcionDeMenu {
 				}
 			}
 			System.out.println("Selecione el indice de la opcion que desea añadir");
+			try {
 			int op=in.nextInt();
 			Main.menu[1].añadirOpcion(Main.full.opciones.get(dic.get(op)));
+			catch(InputMismatchException e){
+				System.out.println("Error en el input, intente nuevamente");
+			}
+			catch(IndexOutOfBoundsException s) {
+				System.out.println("El indice no existe en la lista");
+			}
 		}else {
 			System.out.println("El tipo de usuario no es valido");
 		}

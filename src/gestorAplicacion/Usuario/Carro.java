@@ -52,15 +52,13 @@ public class Carro extends Inventario {
 	public String GenerarFactura() {
 		String str1 = new String();
 		Usuario us1 = (Usuario)Main.usuario;
-		//incompleto le falta, arreglar al hacer la compra
-		//Muestra saldo Anterio y nuevo saldo
 		double suma = 0;
 		for(int i=0; i<numObjetos;i++) {
 
 			str1+= i+") "+inventario.get(i).getProducto().toString();
 			str1+= "\n Sub Total: "+inventario.get(i).getProducto().getPrecioVenta()*inventario.get(i).getCantidad();
 		}
-		str1+="\nTotal: "+suma+"\nDevuelta: "+(us1.getSaldo()-subTotal);
+		str1+="\nTotal: "+suma+"\nNuevo Saldo: "+(us1.getSaldo()-subTotal);
 		
 		return str1;
 	}

@@ -38,7 +38,18 @@ public class OpcionModificarCategorias implements OpcionDeMenu {
 							System.out.println(j + ". "+Main.categorias.get(j).getNombre());
 						}
 						int z = input.nextInt();
-						admon.addCategoriaProducto(x, Main.categorias.get(z));
+						int h=0;
+						for(int k=0; k<Main.productos.get(x).getCategoria().size();k++){
+							if((Main.productos.get(x).getCategoria().get(k)).equals(Main.categorias.get(k).getNombre())){
+								h+=1;
+							}
+						}
+						if(h>=1) {
+							System.out.println("La categoria ya existe");
+						}else {
+							admon.addCategoriaProducto(x, Main.categorias.get(z));
+						}
+
 					}
 			}else{
 				System.out.println("El producto no cuenta con categorias");
@@ -50,19 +61,8 @@ public class OpcionModificarCategorias implements OpcionDeMenu {
 						System.out.println(j + ". "+Main.categorias.get(j).getNombre());
 					}
 					int z = input.nextInt();
-					int h=0;
-					for(int k=0; k<Main.categorias.size();k++){
-						if((Main.categorias.get(z).getNombre()).equals(Main.categorias.get(k).getNombre())){
-							h+=1;
-						}
-					}
-					if(h>1) {
-						System.out.println("La categoria ya existe");
-					}else {
-						admon.addCategoriaProducto(x, Main.categorias.get(z));
-					}
+					admon.addCategoriaProducto(x, Main.categorias.get(z));
 				}
-				
 			}
 		}else {
 				System.out.println("El usuario no es valido");

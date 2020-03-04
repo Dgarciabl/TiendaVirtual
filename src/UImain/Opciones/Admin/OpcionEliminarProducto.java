@@ -5,6 +5,7 @@ import java.util.*;
 import UImain.Main;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
+import gestorAplicacion.Administrador.Inventario;
 
 public class OpcionEliminarProducto implements OpcionDeMenu {
 	Scanner input = new Scanner(System.in);
@@ -22,6 +23,7 @@ public class OpcionEliminarProducto implements OpcionDeMenu {
 			String str1 = input.next();
 			if(str1.equals("S")) {
 				admon.eliminarProducto(x);
+				Main.inventario.DelInventario(x);
 			}else {
 				System.out.println("Operacion Cancelada");
 			}

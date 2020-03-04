@@ -15,6 +15,7 @@ public class Producto {
 	public Producto(String n,String d, double pv, double pc){
 		this.nombre=n; this.descripcion=d;
 		this.precioVenta=pv; this.precioCompra=pc;
+		categorias=new ArrayList<Categoria>();
 	}
 	
 	//Getters

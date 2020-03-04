@@ -1,13 +1,12 @@
 package UImain.Opciones.Invitado;
 
-import UImain.Main;
 import UImain.OpcionDeMenu;
-
+import gestorAplicacion.Usuario.*;
 public class OpcionMostrarCategorias implements OpcionDeMenu {
 
 	@Override
 	public void ejecutar() {
-		Main.usuario.mostrarCategorias();
+		System.out.println(Persona.mostrarCategorias());
 	}
 	@Override
 	public String toString(){

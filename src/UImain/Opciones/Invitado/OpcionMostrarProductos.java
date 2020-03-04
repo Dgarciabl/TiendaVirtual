@@ -8,7 +8,11 @@ import gestorAplicacion.Usuario.Usuario;
 public class OpcionMostrarProductos implements OpcionDeMenu {
 	@Override
 	public void ejecutar() {
-		Main.usuario.mostrarProductos();
+		if(Main.usuario!=null) {
+			System.out.println(Main.usuario.mostrarProductos());
+		}else {
+			System.out.println("-------------------------------------\nProductos:\n-------------------------------------\n"+Main.inventario.toString());
+		}
 	}
 	@Override
 	public String toString(){

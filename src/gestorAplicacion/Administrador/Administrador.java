@@ -14,45 +14,14 @@ public class Administrador extends Persona {
 	public Administrador(String usuario, String contraseña, String pregunta, String respuesta) {
 		super(usuario, contraseña, pregunta, respuesta);
 	}
+	@Override
+	public String mostrarProductos() {
+		String s=new String();
+		s="-------------------------------------\nProductos:\n-------------------------------------\n";
+		s=s+Main.inventario.toString2();
+		return s;
+	}
 	//Abstract Methods
-	@Override
-	public void mostrarCategorias() {
-		ArrayList<Categoria> Temp=Main.categorias;
-		System.out.println("-------------------------------------");
-		System.out.println("Categorias:");
-		System.out.println("-------------------------------------");
-		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i+1 +")"+ Temp.get(i).getNombre());
-			System.out.println("Descripcion:");
-			System.out.println(Temp.get(i).getDescripcion());
-			System.out.println("-------------------------------------");
-		}
-	}
-	@Override
-	public void mostrarProductos() {
-		ArrayList<Detalle> Temp=Main.inventario.getInventario();
-		System.out.println("-------------------------------------");
-		System.out.println("Inventario:");
-		System.out.println("-------------------------------------");
-		for (int i=0; i<Temp.size();i++) {
-			System.out.println(i+1 +")"+ Temp.get(i).getProducto().getNombre());
-			System.out.println("Descripcion:");
-			System.out.println(Temp.get(i).getProducto().getDescripcion());
-			System.out.println("Precio de Venta: "+Temp.get(i).getProducto().getPrecioVenta());
-			System.out.println("Precio de compra: "+Temp.get(i).getProducto().getPrecioCompra());
-			System.out.println("Unidades Disponibles: "+Temp.get(i).getCantidad());
-			System.out.println("Categorias:");
-			
-			for (int j=0;j<Temp.get(i).getProducto().getCategoria().size();j++) {
-				if(Temp.get(i).getProducto().getCategoria().size() ==0) {
-					System.out.println("El producto no tiene categorias");
-				}else {
-					System.out.println("     "+Temp.get(i).getProducto().getCategoria().get(j));
-				}
-			}
-			System.out.println("-------------------------------------");
-		}
-	}
 	@Override
 	public int busqueda(String nombreProducto) {
 		return Main.inventario.RealizarBusqueda(nombreProducto);

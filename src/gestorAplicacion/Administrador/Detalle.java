@@ -39,5 +39,16 @@ public class Detalle {
 			System.out.println("La cantidad de productos pedida es superior a la existente");
 		}
 	}
+	 @Override
+	 public String toString() {
+		 String s=new String();
+		 s=this.producto.toString()+"\nCantidad: "+this.cantidad;
+		 return s;
+	 }
+	 public String toString2() {
+		 String s=new String();
+		 s=this.producto.toString2()+"\nCantidad: "+this.cantidad;
+		 return s;
+	 }
 
 }

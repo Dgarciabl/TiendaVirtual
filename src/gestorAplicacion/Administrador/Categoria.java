@@ -33,7 +33,7 @@ public class Categoria {
 	@Override
 	public String toString() {
 		String s=new String();
-		s=s+"Nombre: "+this.nombre+"/n"+"Descripcion:/n"+this.descripcion;
+		s=s+"Nombre: "+this.nombre+"\n"+"Descripcion:\n"+this.descripcion;
 		return s;
 	}
 }

@@ -1,6 +1,9 @@
 package gestorAplicacion.Usuario;
+import gestorAplicacion.Administrador.Categoria;
 import gestorAplicacion.Administrador.Producto;
 import java.util.*;
+
+import UImain.Main;
 
 public abstract class Persona {
 	//Attributes
@@ -81,9 +84,18 @@ public abstract class Persona {
 			this.contraseña=contraseñaNueva;
 		}
 	}
+	public static String mostrarCategorias() {
+		ArrayList<Categoria> Temp=Main.categorias;
+		String s=new String();
+		s="-------------------------------------\nCategorias:\n-------------------------------------\n";
+		for (int i=0; i<Temp.size();i++) {
+			s=(i+1)+") "+Temp.get(i).toString()+"\n-------------------------------------\n";
+		}
+		return s;
+	}
+	
 	//abstract methods(OK)
-	public abstract void mostrarCategorias();
-	public abstract void mostrarProductos();
+	public abstract String mostrarProductos();
 	public abstract int busqueda(String nombreProducto);
 	public abstract ArrayList<Producto> busqueda(int indexCategoria);
 }

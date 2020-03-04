@@ -19,6 +19,9 @@ public class OpcionCambiarContraseña implements OpcionDeMenu {
 		}
 		
 	}
+	public String toString() {
+		return "Cambiar Contraseña";
+	}
 	
 
 }

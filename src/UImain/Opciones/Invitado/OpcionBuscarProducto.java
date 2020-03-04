@@ -16,6 +16,10 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 		System.out.println("Ingrese el nombre del producto:");
 		
 			String k=Ing.next();
+			if (Main.isNumeric(k)) {
+				System.out.println("Input incorrecto, intente nuevamente");
+			}
+			else {
 			int j=Main.inventario.RealizarBusqueda(k);
 			Persona Per=Main.usuario;
 			if (Per instanceof Administrador) {
@@ -39,6 +43,7 @@ public class OpcionBuscarProducto implements OpcionDeMenu {
 					}			
 			}
 			//Ing.close();
+			}
 
 		}
 	@Override

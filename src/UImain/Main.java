@@ -144,7 +144,6 @@ public class Main {
 		menu[0].añadirOpcion(new OpcionCerrarSesion());
 		menu[0].añadirOpcion(new OpcionSalir());
 		//full
-		full.añadirOpcion(new OpcionInicioSesion());
 		//  mostrar
 		full.añadirOpcion(new OpcionMostrarProductos());
 		full.añadirOpcion(new OpcionMostrarInventario());
@@ -188,6 +187,7 @@ public class Main {
 		full.añadirOpcion(new OpcionEliminarDetalle());
 		//otros
 		full.añadirOpcion(new OpcionComprar());
+		full.añadirOpcion(new OpcionInicioSesion());
 		full.añadirOpcion(new OpcionVerPerfil());
 		full.añadirOpcion(new OpcionCambiarContraseña());
 		full.añadirOpcion(new OpcionRecuperacion());

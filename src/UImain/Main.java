@@ -47,19 +47,24 @@ public class Main {
 		Usuarios=new ArrayList<Persona>();
 		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
 		Usuarios.add(admon);
+		Administrador admon2 = new Administrador("Jorge", true, 54, "jordi", "soloyolase", "NombrePadre", "Javier");
+		Usuarios.add(admon2);
+		Administrador admon3 = new Administrador("Daniela", false, 28, "dani", "dan","NombreMadre", "Johana");
+		Usuarios.add(admon3);
 		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
 		Usuarios.add(user);
+		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Jorge");
 	}
 	public static void cargarProductos() {
 		productos=new ArrayList<Producto>();
-		productos.add(new Producto("Leche Entera","1 Litro",3500,3000));
-		productos.add(new Producto("Leche Deslactosada","1.2 Litros",3500,3000));
+		productos.add(new Producto("Leche","1 Litro",3500,3000));
+		productos.add(new Producto("Yogur","1.2 Litros",3500,3000));
 		productos.add(new Producto("Almendras","Enteras con cascara 250gr",8900,3000));
 		productos.add(new Producto("Frijoles","500gr",3500,3000));
-		productos.add(new Producto("Frijoles","400ml",3500,3000));
-		productos.add(new Producto("Portatil Acer","Ryzen 7",2000000,1450000));
-		productos.add(new Producto("Celular Xiaomi","Mejor calida Precio del mercado",1200000,650000));
-		productos.add(new Producto("Horno Micro ondas","Haceb",350000,260000));
+		productos.add(new Producto("Lentejas","400ml",3500,3000));
+		productos.add(new Producto("Portatil","Ryzen 7",2000000,1450000));
+		productos.add(new Producto("Celular","Mejor calida Precio del mercado",1200000,650000));
+		productos.add(new Producto("Horno","Haceb",350000,260000));
 		productos.add(new Producto("Licuadora","Oster",75000,35000));
 	}
 	public static void cargarInventario() {

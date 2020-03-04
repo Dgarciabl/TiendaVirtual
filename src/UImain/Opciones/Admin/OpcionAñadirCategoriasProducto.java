@@ -4,6 +4,7 @@ import java.util.*;
 import UImain.Main;
 import UImain.OpcionDeMenu;
 import gestorAplicacion.Administrador.Administrador;
+import gestorAplicacion.Administrador.Categoria;
 
 public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 	Scanner input = new Scanner(System.in);
@@ -32,17 +33,21 @@ public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 				}
 				int z = input.nextInt();
 				int h=0;
+				Boolean boli= false;		
 				for(int k=0; k<Main.productos.get(x).getCategoria().size();k++){
-					if((Main.productos.get(x).getCategoria().get(k)).equals(Main.categorias.get(k).getNombre())){
-						h+=1;
+					Categoria kate = Main.productos.get(x).getCategoria().get(k);
+					for(int l=0;l<Main.categorias.size();l++) {
+						Categoria kaki = Main.categorias.get(l);
+						if(kaki.equals(kate)) {
+							boli=true;
+						}
 					}
 				}
-				if(h>=1) {
+				if(boli) {
 					System.out.println("La categoria ya existe");
 				}else {
 					admon.addCategoriaProducto(x, Main.categorias.get(z));
 				}
-
 			}
 			else{
 				System.out.println("El producto no cuenta con categorias");
@@ -65,5 +70,4 @@ public class OpcionAñadirCategoriasProducto implements OpcionDeMenu {
 	public String toString() {
 		return "Añadir Categoria a Producto";
 	}
-
 }

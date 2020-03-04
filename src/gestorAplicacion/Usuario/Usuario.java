@@ -29,7 +29,7 @@ public class Usuario extends Persona {
 	public String getCarroToString() {
 		String s=new String();
 		s="-------------------------------------\nProductos en el Carro:\n-------------------------------------\n";
-		s=s+this.carroCompra.toString();
+		s=s+(this.carroCompra.toString());
 		return s;
 	}
 	public double getSubtotal() {

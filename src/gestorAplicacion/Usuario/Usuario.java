@@ -14,10 +14,12 @@ public class Usuario extends Persona {
 	public Usuario(String nombre, boolean genero, int edad, String usuario, String contraseña, String pregunta, String respuesta, int saldo) {
 		super(nombre, genero, edad, usuario, contraseña, pregunta, respuesta);
 		this.saldo=saldo;
+		this.carroCompra=new Carro();
 	}
 	public Usuario(String nombre, boolean genero, int edad, String usuario, String contraseña, String pregunta, String respuesta) {
 		super(nombre, genero, edad, usuario, contraseña, pregunta, respuesta);
 		this.saldo=0;
+		this.carroCompra=new Carro();
 	}
 	//Getters
 	public double getSaldo() {

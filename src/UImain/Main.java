@@ -68,8 +68,10 @@ public class Main {
 		//menu administrador
 		menu[0].añadirOpcion(new OpcionMostrarProductos());
 		menu[0].añadirOpcion(new OpcionMostrarCategorias());
+		menu[0].añadirOpcion(new OpcionMostrarUsuarios());
 		menu[0].añadirOpcion(new OpcionBuscarProducto());
 		menu[0].añadirOpcion(new OpcionBusqueda());
+		menu[0].añadirOpcion(new OpcionCrearUsuario());
 		menu[0].añadirOpcion(new OpcionCrearCategorias());
 		menu[0].añadirOpcion(new OpcionCrearProductos());
 		menu[0].añadirOpcion(new OpcionCrearExistencias());
@@ -81,6 +83,7 @@ public class Main {
 		menu[0].añadirOpcion(new OpcionModificarCategorias());
 		menu[0].añadirOpcion(new OpcionModificarNombreCategoria());
 		menu[0].añadirOpcion(new OpcionModificarDescripcionCategoria());
+		menu[0].añadirOpcion(new OpcionEliminarUsuario());
 		menu[0].añadirOpcion(new OpcionEliminarProducto());
 		menu[0].añadirOpcion(new OpcionEliminarCategoria());
 		menu[0].añadirOpcion(new OpcionEliminarDetalle());

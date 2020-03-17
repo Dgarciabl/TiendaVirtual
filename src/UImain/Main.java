@@ -4,6 +4,7 @@ import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import javafx.application.Application;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
@@ -81,7 +82,10 @@ public class Main extends Application {
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
 		Stage principal=new Stage();
-		
+		principal.setTitle("Tienda Virtual");
+		Scene inicio=new Scene(new Label("Hola Mundo!"),500,500);
+		principal.setScene(inicio);
+		principal.show();
 	}
 	@Override
 	public void init() {

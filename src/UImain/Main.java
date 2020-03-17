@@ -3,9 +3,6 @@ package UImain;
 import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
-import UImain.Opciones.Invitado.*;
-import UImain.Opciones.Usuario.*;
-import UImain.Opciones.Admin.*;
 import javafx.application.Application;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -83,7 +80,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
-
+		Stage principal=new Stage();
+		
 	}
 	@Override
 	public void init() {

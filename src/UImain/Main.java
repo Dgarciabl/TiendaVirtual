@@ -31,27 +31,24 @@ public class Main extends Application {
 		Gson gson = builder.create();
 		
 		//Inventario
-		String inventarioFile = "InventarioDB.txt";
 		try {
-			PrintWriter inventarioDB = new PrintWriter(inventarioFile);
+			PrintWriter inventarioDB = new PrintWriter("/BaseDatos/InventarioBD.txt");
 			inventarioDB.println(gson.toJson(inventario));
 			inventarioDB.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("No se pudo crear el archivo de Inventario");
 		}
 		//Categorias
-		String categoriasFile = "CategoriasDB.txt";
 		try {
-			PrintWriter categoriasDB = new PrintWriter(categoriasFile);
+			PrintWriter categoriasDB = new PrintWriter("/BaseDatos/CategoriasBD.txt");
 			categoriasDB.println(gson.toJson(categorias));
 			categoriasDB.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("No se pudo crear el archivo de Categorias");
 		}
 		//Productos
-		String productosFile = "ProductosDB.txt";
 		try {
-			PrintWriter productosDB = new PrintWriter(productosFile);
+			PrintWriter productosDB = new PrintWriter("/BaseDatos/ProductosBD.txt");
 			productosDB.println(gson.toJson(inventario));
 			productosDB.close();
 		} catch (FileNotFoundException e) {

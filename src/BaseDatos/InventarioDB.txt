@@ -8,7 +8,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 6
+      "cantidad": 24
     },
     {
       "producto": {
@@ -18,7 +18,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 6
+      "cantidad": 15
     },
     {
       "producto": {
@@ -28,7 +28,7 @@
         "precioVenta": 8900.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 75
+      "cantidad": 65
     },
     {
       "producto": {
@@ -38,7 +38,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 39
+      "cantidad": 96
     },
     {
       "producto": {
@@ -48,7 +48,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 61
+      "cantidad": 52
     },
     {
       "producto": {
@@ -58,7 +58,7 @@
         "precioVenta": 2000000.0,
         "precioCompra": 1450000.0
       },
-      "cantidad": 36
+      "cantidad": 26
     },
     {
       "producto": {
@@ -68,7 +68,7 @@
         "precioVenta": 1200000.0,
         "precioCompra": 650000.0
       },
-      "cantidad": 56
+      "cantidad": 40
     },
     {
       "producto": {
@@ -78,7 +78,7 @@
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
-      "cantidad": 7
+      "cantidad": 11
     },
     {
       "producto": {
@@ -88,7 +88,7 @@
         "precioVenta": 75000.0,
         "precioCompra": 35000.0
       },
-      "cantidad": 30
+      "cantidad": 81
     }
   ]
 }

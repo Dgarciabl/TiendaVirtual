@@ -31,9 +31,8 @@ public class Main extends Application {
 		GsonBuilder builder = new GsonBuilder();
 		builder.setPrettyPrinting().serializeNulls();
 		Gson gson = builder.create();
-		
-		//Inventario
 		File BaseDatos= new File("src\\\\BaseDatos");
+		//Inventario
 		File inventarioDB = new File(BaseDatos, "InventarioDB.txt");
 		try {
 			if(inventarioDB.exists()) {
@@ -41,15 +40,16 @@ public class Main extends Application {
 				inventarioWriter.println(gson.toJson(inventario));
 				inventarioWriter.close();
 			}else {
-				if(inventarioDB.createNewFile()) {
-					PrintWriter inventarioWriter = new PrintWriter(inventarioDB);
-					inventarioWriter.println(gson.toJson(inventario));
-					inventarioWriter.close();
-				}
+				inventarioDB.createNewFile();
+				PrintWriter inventarioWriter = new PrintWriter(inventarioDB);
+				inventarioWriter.println(gson.toJson(inventario));
+				inventarioWriter.close();
 			}
 			
+		} catch (FileNotFoundException e) {
+			System.out.println("No se pudo encontrar el archivo de Categorias");
 		} catch (IOException e) {
-			System.out.println("No se pudo encontrar el archivo de Inventario");
+				System.out.println("No se pudo crear el archivo de Inventario");
 		}
 		//Categorias
 		File categoriasDB = new File(BaseDatos, "CategoriasDB.txt");
@@ -87,10 +87,24 @@ public class Main extends Application {
 		} catch (IOException e) {
 				System.out.println("No se pudo crear el archivo de Inventario");
 		}
-		
-		//Usuarios;
-		//estadisticos;
-		//menu;
+		//Usuarios
+		File usuariosDB = new File(BaseDatos, "UsuariosDB.txt");
+		try {
+			if(usuariosDB.exists()) {
+				PrintWriter usuariosWriter = new PrintWriter(usuariosDB);
+				usuariosWriter.println(gson.toJson(Usuarios));
+				usuariosWriter.close();
+			}else {
+				usuariosDB.createNewFile();
+				PrintWriter usuariosWriter = new PrintWriter(usuariosDB);
+				usuariosWriter.println(gson.toJson(Usuarios));
+				usuariosWriter.close();
+			}		
+		} catch (FileNotFoundException e) {
+				System.out.println("No se pudo encontrar el archivo de Categorias");
+			} catch (IOException e) {
+				System.out.println("No se pudo crear el archivo de Inventario");
+		}
 	}
 	public static void cargarUsuarios() {
 		Usuarios=new ArrayList<Persona>();

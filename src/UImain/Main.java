@@ -33,7 +33,7 @@ public class Main extends Application {
 		Gson gson = builder.create();
 		
 		//Inventario
-		File BaseDatos= new File("BaseDatos");
+		File BaseDatos= new File("src\\\\BaseDatos");
 		File inventarioDB = new File(BaseDatos, "InventarioDB.txt");
 		try {
 			if(inventarioDB.exists()) {
@@ -48,10 +48,8 @@ public class Main extends Application {
 				}
 			}
 			
-		} catch (FileNotFoundException e) {
-			System.out.println("No se pudo encontrar el archivo de Inventario");
 		} catch (IOException e) {
-				System.out.println("No se pudo crear el archivo de Inventario");
+			System.out.println("No se pudo encontrar el archivo de Inventario");
 		}
 		//Categorias
 		File categoriasDB = new File(BaseDatos, "CategoriasDB.txt");

@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Lacteos",
+    "descripcion": "Derivados de la leche"
+  },
+  {
+    "nombre": "Granos",
+    "descripcion": "Semillas entera"
+  },
+  {
+    "nombre": "Enlatados",
+    "descripcion": "Empacados para durar"
+  },
+  {
+    "nombre": "Tecnologia",
+    "descripcion": "El avance es el futuro"
+  },
+  {
+    "nombre": "Electrodomesticos",
+    "descripcion": "Todo para el hogar"
+  }
+]

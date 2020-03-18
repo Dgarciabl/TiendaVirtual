@@ -26,23 +26,39 @@ public class Main extends Application {
 		//}
 	}
 	public static void montarDB() {
-		//Inventario
 		GsonBuilder builder = new GsonBuilder();
 		builder.setPrettyPrinting().serializeNulls();
 		Gson gson = builder.create();
 		
-		String fileName = "DataBase.txt";
+		//Inventario
+		String inventarioFile = "InventarioDB.txt";
 		try {
-			PrintWriter dataBase = new PrintWriter(fileName);
-			dataBase.println(gson.toJson(inventario));
-			dataBase.close();
+			PrintWriter inventarioDB = new PrintWriter(inventarioFile);
+			inventarioDB.println(gson.toJson(inventario));
+			inventarioDB.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("No se pudo crear el archivo");
+			System.out.println("No se pudo crear el archivo de Inventario");
+		}
+		//Categorias
+		String categoriasFile = "CategoriasDB.txt";
+		try {
+			PrintWriter categoriasDB = new PrintWriter(categoriasFile);
+			categoriasDB.println(gson.toJson(categorias));
+			categoriasDB.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("No se pudo crear el archivo de Categorias");
+		}
+		//Productos
+		String productosFile = "ProductosDB.txt";
+		try {
+			PrintWriter productosDB = new PrintWriter(productosFile);
+			productosDB.println(gson.toJson(inventario));
+			productosDB.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("No se pudo crear el archivo de Productos");
 		}
 		
 		//Usuarios;
-		//categorias;
-		//productos;
 		//estadisticos;
 		//menu;
 	}

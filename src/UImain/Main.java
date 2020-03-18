@@ -1,5 +1,6 @@
 package UImain;
-
+import java.io.*;
+import com.google.gson.*;
 import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
@@ -18,11 +19,18 @@ public class Main extends Application {
 	public static int nivel=2;
 	public static Persona usuario;
 	public static void main(String[] args){
-		while(true) {
-			launch();
-		}
+		inicio();
+		montarDB();
+		//while(true) {
+		//	launch();
+		//}
 	}
-	public void montarDB() {
+	public static void montarDB() {
+		GsonBuilder builder = new GsonBuilder();
+		builder.setPrettyPrinting().serializeNulls();
+		Gson gson = builder.create();
+		File f=new File("/BaseDatos/inventario.txt",gson.toJson(inventario));
+		System.out.println(gson.toJson(inventario));
 		//Usuarios;
 		//inventario;
 		//categorias;
@@ -87,8 +95,8 @@ public class Main extends Application {
 		principal.setScene(inicio);
 		principal.show();
 	}
-	@Override
-	public void init() {
+	
+	public static void inicio() {
 		cargarUsuarios();
 		cargarProductos();
 		cargarCategorias();

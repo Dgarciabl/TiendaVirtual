@@ -26,11 +26,11 @@ public class Main extends Application {
 		//}
 	}
 	public static void montarDB() {
+		//Inventario
 		GsonBuilder builder = new GsonBuilder();
 		builder.setPrettyPrinting().serializeNulls();
 		Gson gson = builder.create();
-//		File f=new File("/BaseDatos/inventario.txt",gson.toJson(inventario));
-		System.out.println(gson.toJson(inventario));
+		
 		String fileName = "DataBase.txt";
 		try {
 			PrintWriter dataBase = new PrintWriter(fileName);
@@ -39,8 +39,8 @@ public class Main extends Application {
 		} catch (FileNotFoundException e) {
 			System.out.println("No se pudo crear el archivo");
 		}
+		
 		//Usuarios;
-		//inventario;
 		//categorias;
 		//productos;
 		//estadisticos;

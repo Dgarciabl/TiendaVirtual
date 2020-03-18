@@ -171,4 +171,25 @@ public class Main extends Application {
 		cargarInventario();
 	}
 	
+	public Scene Inicial() {
+		
+		
+		
+		
+		return new Scene(new Button());
+	}
+	public Scene Usuario() {
+		
+		
+		
+		
+		return new Scene(new Button());
+	}
+	public Scene Administrador() {
+		
+		
+		
+		
+		return new Scene(new Button());
+	}
 }

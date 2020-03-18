@@ -178,6 +178,13 @@ public class Main extends Application {
 		
 		return new Scene(new Button());
 	}
+	public Scene Invitado() {
+		
+		
+		
+		
+		return new Scene(new Button());
+	}
 	public Scene Usuario() {
 		
 		

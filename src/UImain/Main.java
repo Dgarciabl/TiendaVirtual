@@ -1,5 +1,7 @@
 package UImain;
 import java.io.*;
+import java.nio.file.Files;
+
 import com.google.gson.*;
 import java.util.*;
 import gestorAplicacion.Usuario.*;
@@ -31,31 +33,61 @@ public class Main extends Application {
 		Gson gson = builder.create();
 		
 		//Inventario
-		String inventarioFile = "InventarioDB.txt";
+		File BaseDatos= new File("BaseDatos");
+		File inventarioDB = new File(BaseDatos, "InventarioDB.txt");
 		try {
-			PrintWriter inventarioDB = new PrintWriter(inventarioFile);
-			inventarioDB.println(gson.toJson(inventario));
-			inventarioDB.close();
+			if(inventarioDB.exists()) {
+				PrintWriter inventarioWriter = new PrintWriter(inventarioDB);
+				inventarioWriter.println(gson.toJson(inventario));
+				inventarioWriter.close();
+			}else {
+				if(inventarioDB.createNewFile()) {
+					PrintWriter inventarioWriter = new PrintWriter(inventarioDB);
+					inventarioWriter.println(gson.toJson(inventario));
+					inventarioWriter.close();
+				}
+			}
+			
 		} catch (FileNotFoundException e) {
-			System.out.println("No se pudo crear el archivo de Inventario");
+			System.out.println("No se pudo encontrar el archivo de Inventario");
+		} catch (IOException e) {
+				System.out.println("No se pudo crear el archivo de Inventario");
 		}
 		//Categorias
-		String categoriasFile = "CategoriasDB.txt";
+		File categoriasDB = new File(BaseDatos, "CategoriasDB.txt");
 		try {
-			PrintWriter categoriasDB = new PrintWriter(categoriasFile);
-			categoriasDB.println(gson.toJson(categorias));
-			categoriasDB.close();
+			if(categoriasDB.exists()) {
+				PrintWriter categoriasWriter = new PrintWriter(categoriasDB);
+				categoriasWriter.println(gson.toJson(categorias));
+				categoriasWriter.close();
+			}else {
+				categoriasDB.createNewFile();
+				PrintWriter categoriasWriter = new PrintWriter(categoriasDB);
+				categoriasWriter.println(gson.toJson(categorias));
+				categoriasWriter.close();
+			}
 		} catch (FileNotFoundException e) {
-			System.out.println("No se pudo crear el archivo de Categorias");
+			System.out.println("No se pudo encontrar el archivo de Categorias");
+		} catch (IOException e) {
+				System.out.println("No se pudo crear el archivo de Inventario");
 		}
 		//Productos
-		String productosFile = "ProductosDB.txt";
+		File productosDB = new File(BaseDatos, "ProductosDB.txt");
 		try {
-			PrintWriter productosDB = new PrintWriter(productosFile);
-			productosDB.println(gson.toJson(inventario));
-			productosDB.close();
+			if(productosDB.exists()) {
+				PrintWriter productosWriter = new PrintWriter(productosDB);
+				productosWriter.println(gson.toJson(inventario));
+				productosWriter.close();
+			}else {
+				productosDB.createNewFile();
+				PrintWriter productosWriter = new PrintWriter(productosDB);
+				productosWriter.println(gson.toJson(inventario));
+				productosWriter.close();
+			}	
 		} catch (FileNotFoundException e) {
-			System.out.println("No se pudo crear el archivo de Productos");
+			System.out.println("No se pudo encontrar el archivo de Productos");
+		} catch (IOException e) {
+				System.out.println("No se pudo crear el archivo de Inventario");
 		}
 		
 		//Usuarios;

@@ -1,0 +1,94 @@
+{
+  "inventario": [
+    {
+      "producto": {
+        "nombre": "Leche",
+        "descripcion": "1 Litro",
+        "categorias": [],
+        "precioVenta": 3500.0,
+        "precioCompra": 3000.0
+      },
+      "cantidad": 10
+    },
+    {
+      "producto": {
+        "nombre": "Yogur",
+        "descripcion": "1.2 Litros",
+        "categorias": [],
+        "precioVenta": 3500.0,
+        "precioCompra": 3000.0
+      },
+      "cantidad": 72
+    },
+    {
+      "producto": {
+        "nombre": "Almendras",
+        "descripcion": "Enteras con cascara 250gr",
+        "categorias": [],
+        "precioVenta": 8900.0,
+        "precioCompra": 3000.0
+      },
+      "cantidad": 33
+    },
+    {
+      "producto": {
+        "nombre": "Frijoles",
+        "descripcion": "500gr",
+        "categorias": [],
+        "precioVenta": 3500.0,
+        "precioCompra": 3000.0
+      },
+      "cantidad": 25
+    },
+    {
+      "producto": {
+        "nombre": "Lentejas",
+        "descripcion": "400ml",
+        "categorias": [],
+        "precioVenta": 3500.0,
+        "precioCompra": 3000.0
+      },
+      "cantidad": 50
+    },
+    {
+      "producto": {
+        "nombre": "Portatil",
+        "descripcion": "Ryzen 7",
+        "categorias": [],
+        "precioVenta": 2000000.0,
+        "precioCompra": 1450000.0
+      },
+      "cantidad": 88
+    },
+    {
+      "producto": {
+        "nombre": "Celular",
+        "descripcion": "Mejor calida Precio del mercado",
+        "categorias": [],
+        "precioVenta": 1200000.0,
+        "precioCompra": 650000.0
+      },
+      "cantidad": 35
+    },
+    {
+      "producto": {
+        "nombre": "Horno",
+        "descripcion": "Haceb",
+        "categorias": [],
+        "precioVenta": 350000.0,
+        "precioCompra": 260000.0
+      },
+      "cantidad": 51
+    },
+    {
+      "producto": {
+        "nombre": "Licuadora",
+        "descripcion": "Oster",
+        "categorias": [],
+        "precioVenta": 75000.0,
+        "precioCompra": 35000.0
+      },
+      "cantidad": 0
+    }
+  ]
+}

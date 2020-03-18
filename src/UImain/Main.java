@@ -29,8 +29,16 @@ public class Main extends Application {
 		GsonBuilder builder = new GsonBuilder();
 		builder.setPrettyPrinting().serializeNulls();
 		Gson gson = builder.create();
-		File f=new File("/BaseDatos/inventario.txt",gson.toJson(inventario));
+//		File f=new File("/BaseDatos/inventario.txt",gson.toJson(inventario));
 		System.out.println(gson.toJson(inventario));
+		String fileName = "DataBase.txt";
+		try {
+			PrintWriter dataBase = new PrintWriter(fileName);
+			dataBase.println(gson.toJson(inventario));
+			dataBase.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("No se pudo crear el archivo");
+		}
 		//Usuarios;
 		//inventario;
 		//categorias;

@@ -1,39 +1,48 @@
 package UImain;
 
 import javafx.scene.layout.Pane;
-
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 public class FieldPane extends Pane {
-	String tituloCriterio;
-	String[] criterios;
-	String tituloValores;
-	String[] valores;
-	boolean[] habilitado;
-	/**  crea un nuevo objeto de tipo FieldPanel
-	 *   @arg tituloCriterios titulo para la columna "Criterio"
-	 *   @arg criterios array con los nombres de los criterios
-	 *   @arg tituloValores titulo para la columna "valor"
-	 *   @arg valores array con los valores iniciales; Si 'null', no hay valores iniciales
-	 *   @arg habilitado array con los campos no-editables por el usuario; Si 'null', todos son editables
-	 */
+	GridPane child=new GridPane();
 	public FieldPane(String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado) {
-		this.tituloCriterio=tituloCriterios;
-		this.criterios=criterios;
-		this.tituloValores=tituloValores;
-		if(valores==null) {
-			this.valores=new String[criterios.length];
-		}else {
-			this.valores=valores;
+		child.add(new Label(tituloCriterios), 0, 0);
+		for(int i=0;i<criterios.length;i++){
+			child.add(new Label(criterios[i]), 0, i+1);
 		}
-		if(habilitado==null) {
-			this.habilitado=new boolean[criterios.length];
-		}else {
-			this.habilitado=habilitado;
+		child.add(new Label(tituloValores), 1, 0);
+		if (habilitado==null) {
+			habilitado=new boolean[criterios.length];
+			for(int i=0;i<criterios.length;i++) {
+				habilitado[i]=true;
+			}
 		}
+		if (valores==null) {
+			for(int i=0;i<criterios.length;i++){
+				TextField hijo=new TextField();
+				hijo.setEditable(habilitado[i]);
+				child.add(hijo, 1, i+1);
+			}
+		}else {
+			for(int i=0;i<criterios.length;i++){
+				if(valores[i]==null) {
+					TextField hijo=new TextField();
+					hijo.setEditable(habilitado[i]);
+					child.add(hijo, 1, i+1);
+				}else {
+					TextField hijo=new TextField(valores[i]);
+					hijo.setEditable(habilitado[i]);
+					child.add(hijo, 1, i+1);
+				}
+			}
+		}
+		
 	}
 	/**  @arg criterio el criterio cuyo valor se quiere obtener
 	 *   @return el valor del criterio cuyo nombre es 'criterio'
 	*/
 	public String getValue(String criterio) {
-		return tituloCriterio;
+		return "";
 	}
 } 

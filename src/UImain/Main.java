@@ -22,10 +22,8 @@ public class Main extends Application {
 	public static Persona usuario;
 	public static void main(String[] args){
 		inicio();
-		montarDB();
-		//while(true) {
-		//	launch();
-		//}
+		//montarDB();
+		launch();
 	}
 	public static void montarDB() {
 		GsonBuilder builder = new GsonBuilder();
@@ -153,24 +151,21 @@ public class Main extends Application {
 		}
 		return true;
 	}
-	
-	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		Stage principal=new Stage();
-		principal.setTitle("Tienda Virtual");
-		Scene inicio=new Scene(new Label("Hola Mundo!"),500,500);
-		principal.setScene(inicio);
-		principal.show();
-	}
-	
 	public static void inicio() {
 		cargarUsuarios();
 		cargarProductos();
 		cargarCategorias();
 		cargarInventario();
 	}
-	
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		Stage principal=new Stage();
+		principal.setTitle("Tienda Virtual");
+		Scene inicio=Invitado();
+		principal.setScene(inicio);
+		principal.show();
+	}
 	public Scene Inicial() {
 		
 		
@@ -179,11 +174,22 @@ public class Main extends Application {
 		return new Scene(new Button());
 	}
 	public Scene Invitado() {
+		Scene invitado;
+		BorderPane principal=new BorderPane();
+		//Top
+		HBox menu=new HBox();
+		Button archivo=new Button("Archivo");
+		Button consultas=new Button("Procesos y Consultas");
+		Button ayuda=new Button("Ayuda");
+		menu.getChildren().add(archivo);
+		menu.getChildren().add(consultas);
+		menu.getChildren().add(ayuda);
+		principal.setTop(menu);
+		//Center
 		
-		
-		
-		
-		return new Scene(new Button());
+		//Setting the scene
+		invitado=new Scene(principal, 250,250);
+		return invitado;
 	}
 	public Scene Usuario() {
 		

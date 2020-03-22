@@ -187,7 +187,7 @@ public class Main extends Application {
 		//Center
 		
 		//Setting the scene
-		invitado=new Scene(principal, 250,250);
+		invitado=new Scene(principal, 400,400);
 		return invitado;
 	}
 	public Scene Usuario(Usuario usu) {
@@ -203,7 +203,7 @@ public class Main extends Application {
 		//Center
 		
 		//Setting the scene
-		usuario=new Scene(principal, 250,250);
+		usuario=new Scene(principal, 400,400);
 		return usuario;
 	}
 	public Scene Administrador(Administrador admon) {
@@ -219,7 +219,32 @@ public class Main extends Application {
 		//Center
 		
 		//Setting the scene
-		administrador=new Scene(principal, 250,250);
+		administrador=new Scene(principal, 400,400);
 		return administrador;
+	}
+	public static VBox archivo(Persona pers) {
+		VBox archivo=new VBox();
+		if(pers==null) {
+			
+		}else if(pers instanceof Usuario) {
+			String[] categorias=new String[4];
+			categorias[0]="Nombre: ";
+			categorias[1]="Edad: ";
+			categorias[2]="Genero: ";
+			categorias[3]="Saldo: ";
+			boolean[] habilitado=new boolean[4];
+			for(int i=0;i<4;i++) {habilitado[i]=false;}
+			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", null, habilitado);
+		}else if (pers instanceof Administrador) {
+			String[] categorias=new String[3];
+			categorias[0]="Nombre: ";
+			categorias[1]="Edad: ";
+			categorias[2]="Genero: ";
+			boolean[] habilitado=new boolean[3];
+			for(int i=0;i<4;i++) {habilitado[i]=false;}
+			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", null, habilitado);
+		}
+		
+		return archivo;
 	}
 }

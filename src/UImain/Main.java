@@ -177,13 +177,10 @@ public class Main extends Application {
 		Scene invitado;
 		BorderPane principal=new BorderPane();
 		//Top
-		HBox menu=new HBox();
-		Button archivo=new Button("Archivo");
-		Button consultas=new Button("Procesos y Consultas");
-		Button ayuda=new Button("Ayuda");
-		menu.getChildren().add(archivo);
-		menu.getChildren().add(consultas);
-		menu.getChildren().add(ayuda);
+		Menu archivo=new Menu("Archivo");
+		Menu consultas=new Menu("Procesos y Consultas");
+		Menu ayuda=new Menu("Ayuda");
+		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
 		principal.setTop(menu);
 		//Center
 		
@@ -195,13 +192,10 @@ public class Main extends Application {
 		Scene usuario;
 		BorderPane principal=new BorderPane();
 		//Top
-		HBox menu=new HBox();
-		Button archivo=new Button("Archivo");
-		Button consultas=new Button("Procesos y Consultas");
-		Button ayuda=new Button("Ayuda");
-		menu.getChildren().add(archivo);
-		menu.getChildren().add(consultas);
-		menu.getChildren().add(ayuda);
+		Menu archivo=new Menu("Archivo");
+		Menu consultas=new Menu("Procesos y Consultas");
+		Menu ayuda=new Menu("Ayuda");
+		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
 		principal.setTop(menu);
 		//Center
 		
@@ -213,13 +207,10 @@ public class Main extends Application {
 		Scene administrador;
 		BorderPane principal=new BorderPane();
 		//Top
-		HBox menu=new HBox();
-		Button archivo=new Button("Archivo");
-		Button consultas=new Button("Procesos y Consultas");
-		Button ayuda=new Button("Ayuda");
-		menu.getChildren().add(archivo);
-		menu.getChildren().add(consultas);
-		menu.getChildren().add(ayuda);
+		Menu archivo=new Menu("Archivo");
+		Menu consultas=new Menu("Procesos y Consultas");
+		Menu ayuda=new Menu("Ayuda");
+		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
 		principal.setTop(menu);
 		//Center
 		

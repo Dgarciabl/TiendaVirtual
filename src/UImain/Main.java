@@ -180,7 +180,10 @@ public class Main extends Application {
 		mainStage.setTitle("Invitado");
 		//Top
 		Menu archivo=new Menu("Archivo");
+//Consultas
 		Menu consultas=new Menu("Procesos y Consultas");
+		
+//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
 		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
 		principal.setTop(menu);

@@ -182,7 +182,14 @@ public class Main extends Application {
 		Menu archivo=new Menu("Archivo");
 //Consultas
 		Menu consultas=new Menu("Procesos y Consultas");
-		
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,Busqueda);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		MenuItem OpcionSalir = new MenuItem("Salir");
+		consultas.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario,OpcionSalir);
 //Ayuda		
 		Menu ayuda=new Menu("Ayuda");
 		MenuBar menu=new MenuBar(archivo,consultas,ayuda);

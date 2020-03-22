@@ -192,17 +192,39 @@ public class Main extends Application {
 		return invitado;
 	}
 	public Scene Usuario() {
+		Scene usuario;
+		BorderPane principal=new BorderPane();
+		//Top
+		HBox menu=new HBox();
+		Button archivo=new Button("Archivo");
+		Button consultas=new Button("Procesos y Consultas");
+		Button ayuda=new Button("Ayuda");
+		menu.getChildren().add(archivo);
+		menu.getChildren().add(consultas);
+		menu.getChildren().add(ayuda);
+		principal.setTop(menu);
+		//Center
 		
-		
-		
-		
-		return new Scene(new Button());
+		//Setting the scene
+		usuario=new Scene(principal, 250,250);
+		return usuario;
 	}
 	public Scene Administrador() {
+		Scene administrador;
+		BorderPane principal=new BorderPane();
+		//Top
+		HBox menu=new HBox();
+		Button archivo=new Button("Archivo");
+		Button consultas=new Button("Procesos y Consultas");
+		Button ayuda=new Button("Ayuda");
+		menu.getChildren().add(archivo);
+		menu.getChildren().add(consultas);
+		menu.getChildren().add(ayuda);
+		principal.setTop(menu);
+		//Center
 		
-		
-		
-		
-		return new Scene(new Button());
+		//Setting the scene
+		administrador=new Scene(principal, 250,250);
+		return administrador;
 	}
 }

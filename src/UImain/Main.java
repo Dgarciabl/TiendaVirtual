@@ -13,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.stage.*;
 
 public class Main extends Application {
+	Stage mainStage;
 	public static ArrayList<Persona> Usuarios;
 	public static Inventario inventario;
 	public static ArrayList<Categoria> categorias;
@@ -160,11 +161,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
-		Stage principal=new Stage();
-		principal.setTitle("Tienda Virtual");
+		mainStage=new Stage();
+		mainStage.setTitle("Tienda Virtual");
 		Scene inicio=Invitado();
-		principal.setScene(inicio);
-		principal.show();
+		mainStage.setScene(inicio);
+		mainStage.show();
 	}
 	public Scene Inicial() {
 		
@@ -176,6 +177,7 @@ public class Main extends Application {
 	public Scene Invitado() {
 		Scene invitado;
 		BorderPane principal=new BorderPane();
+		mainStage.setTitle("Invitado");
 		//Top
 		Menu archivo=new Menu("Archivo");
 		Menu consultas=new Menu("Procesos y Consultas");
@@ -188,9 +190,10 @@ public class Main extends Application {
 		invitado=new Scene(principal, 250,250);
 		return invitado;
 	}
-	public Scene Usuario() {
+	public Scene Usuario(Usuario usu) {
 		Scene usuario;
 		BorderPane principal=new BorderPane();
+		mainStage.setTitle(usu.getNombre());
 		//Top
 		Menu archivo=new Menu("Archivo");
 		Menu consultas=new Menu("Procesos y Consultas");
@@ -203,9 +206,10 @@ public class Main extends Application {
 		usuario=new Scene(principal, 250,250);
 		return usuario;
 	}
-	public Scene Administrador() {
+	public Scene Administrador(Administrador admon) {
 		Scene administrador;
 		BorderPane principal=new BorderPane();
+		mainStage.setTitle(admon.getNombre());
 		//Top
 		Menu archivo=new Menu("Archivo");
 		Menu consultas=new Menu("Procesos y Consultas");

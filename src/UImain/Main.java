@@ -9,12 +9,15 @@ import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 
 public class Main extends Application {
+	Stage mainStage;
 	public static ArrayList<Persona> Usuarios;
 	public static Inventario inventario;
 	public static ArrayList<Categoria> categorias;
@@ -206,11 +209,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
-		Stage principal=new Stage();
-		principal.setTitle("Tienda Virtual");
+		mainStage=new Stage();
+		mainStage.setTitle("Tienda Virtual");
 		Scene inicio=Invitado();
-		principal.setScene(inicio);
-		principal.show();
+		mainStage.setScene(inicio);
+		mainStage.show();
 	}
 	public Scene Inicial() {
 		
@@ -222,46 +225,164 @@ public class Main extends Application {
 	public Scene Invitado() {
 		Scene invitado;
 		BorderPane principal=new BorderPane();
+		mainStage.setTitle("Invitado");
 		//Top
 		Menu archivo=new Menu("Archivo");
-		Menu consultas=new Menu("Procesos y Consultas");
+//Consultas
+		Menu consultasInvitado = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");}
+		BuscarProducto.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				Scene busqueda;
+				FieldPane buscar=new FieldPane(" ", new String[] {"Nombre del Producto: "}, " ", null, null);
+				Button buscador=new Button("Buscar");
+				buscador.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						// TODO Auto-generated method stub
+						TextField s=(TextField)(buscar.getChild().getChildren().get(1));
+						Main.inventario.RealizarBusqueda(s.getText());
+					}
+				
+				});
+				
+				
+				busqueda=new Scene();
+			}
+		
+		});
+		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
+//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
+		MenuBar menu=new MenuBar(archivo,consultasInvitado,ayuda);
 		principal.setTop(menu);
 		//Center
 		
 		//Setting the scene
-		invitado=new Scene(principal, 250,250);
+		invitado=new Scene(principal, 400,400);
 		return invitado;
 	}
-	public Scene Usuario() {
+	public Scene Usuario(Usuario usu) {
 		Scene usuario;
 		BorderPane principal=new BorderPane();
+		mainStage.setTitle(usu.getNombre());
 		//Top
 		Menu archivo=new Menu("Archivo");
-		Menu consultas=new Menu("Procesos y Consultas");
+		Menu consultasUsuario = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(buscarProducto,Busqueda);
+		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
+		MenuItem mostrarCarro = new MenuItem("Mostrar productos del Carro");
+		MenuItem addCarro = new MenuItem("Añadir productos al carro");
+		MenuItem delCarro = new MenuItem("Quitar producto del carro");
+		Menu opcionCarro = new Menu("Carro");
+		opcionCarro.getItems().addAll(mostrarCarro,addCarro,delCarro);
+		MenuItem Comprar = new MenuItem("Comprar");
+		MenuItem addSaldo = new MenuItem("Añadir Saldo");		
+		MenuItem setContrasena = new MenuItem("Cambiar Contraseña");
+		MenuItem verPerfil = new MenuItem("Ver perfil");
+		MenuItem cerrarSesion = new MenuItem("Cerrar Sesion");
+		MenuItem opcionSalir = new MenuItem("Salir");
+		Menu Perfil = new Menu("Perfil");
+		Perfil.getItems().addAll(verPerfil,setContrasena,cerrarSesion,opcionSalir);
+		consultasUsuario.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario,opcionCarro,Comprar,addSaldo,Perfil);
+		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
+		
+		
+		MenuBar menu=new MenuBar(archivo,consultasUsuario,ayuda);
 		principal.setTop(menu);
+		
 		//Center
 		
 		//Setting the scene
-		usuario=new Scene(principal, 250,250);
+		usuario=new Scene(principal, 400,400);
 		return usuario;
 	}
-	public Scene Administrador() {
+	public Scene Administrador(Administrador admon) {
 		Scene administrador;
 		BorderPane principal=new BorderPane();
+		mainStage.setTitle(admon.getNombre());
 		//Top
 		Menu archivo=new Menu("Archivo");
-		Menu consultas=new Menu("Procesos y Consultas");
+		Menu consultasAdmin = new Menu("Procesos y Consultas");
+		//Producto		;
+		Menu setProducto = new Menu("Modificar Producto");
+		MenuItem crearProducto = new MenuItem("Crear Producto");
+		MenuItem delProducto = new MenuItem("Eliminar Producto");
+		MenuItem addCategorias = new MenuItem("Añadir categorias");
+		MenuItem delCategorias = new MenuItem("Eliminar categorias");
+		MenuItem setNombre = new MenuItem("Cambiar nombre");
+		MenuItem setDescripcion = new MenuItem("Cambiar descripción");
+		MenuItem setPrecioCompra = new MenuItem("Cambiar precio de compra");
+		MenuItem setPrecioVenta = new MenuItem("Cambiar precio de Venta");
+		MenuItem setCantidad = new MenuItem("Modificar Cantidad de Existencias");
+		setProducto.getItems().addAll(crearProducto,delProducto,addCategorias,delCategorias,setNombre,setDescripcion,setPrecioCompra,setPrecioVenta,setCantidad);
+		//Categorias 
+		Menu setCategorias = new Menu("Modificar Categorias");
+		MenuItem crearCategoria = new MenuItem("Crear Categorias");
+		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
+		MenuBar menu=new MenuBar(archivo,consultasAdmin,ayuda);
 		principal.setTop(menu);
 		//Center
 		
 		//Setting the scene
-		administrador=new Scene(principal, 250,250);
+		administrador=new Scene(principal, 400,400);
 		return administrador;
+	}
+	public static VBox archivo(Persona pers) {
+		VBox archivo=new VBox();
+		if(pers==null) {
+			
+		}else if(pers instanceof Usuario) {
+			String[] categorias=new String[4];
+			categorias[0]="Nombre: ";
+			categorias[1]="Edad: ";
+			categorias[2]="Genero: ";
+			categorias[3]="Saldo: ";
+			String[] valores=new String[4];
+			valores[0]=pers.getNombre();
+			valores[1]=String.valueOf(pers.getEdad());
+			if(pers.getGenero()) {
+				valores[2]="Masculino";
+			}else {
+				valores[2]="Femenino";
+			}
+			valores[3]=String.valueOf(((Usuario)pers).getSaldo());
+			boolean[] habilitado=new boolean[4];
+			for(int i=0;i<4;i++) {habilitado[i]=false;}
+			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+		}else if (pers instanceof Administrador) {
+			String[] categorias=new String[3];
+			categorias[0]="Nombre: ";
+			categorias[1]="Edad: ";
+			categorias[2]="Genero: ";
+			String[] valores=new String[3];
+			valores[0]=pers.getNombre();
+			valores[1]=String.valueOf(pers.getEdad());
+			if(pers.getGenero()) {
+				valores[2]="Masculino";
+			}else {
+				valores[2]="Femenino";
+			}
+			boolean[] habilitado=new boolean[3];
+			for(int i=0;i<4;i++) {habilitado[i]=false;}
+			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+		}
+		
+		return archivo;
 	}
 }

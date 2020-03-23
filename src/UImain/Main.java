@@ -17,7 +17,7 @@ import javafx.scene.layout.*;
 import javafx.stage.*;
 
 public class Main extends Application {
-	Stage mainStage;
+	//App data
 	public static ArrayList<Persona> Usuarios;
 	public static Inventario inventario;
 	public static ArrayList<Categoria> categorias;
@@ -25,10 +25,29 @@ public class Main extends Application {
 	public static Estadistica estadisticos;
 	public static int nivel=2;
 	public static Persona usuario;
+	//Graphic interfaces
+	Stage mainStage;
+	
+	
+	//Main
 	public static void main(String[] args){
 		inicio();
 		//montarDB();
 		launch();
+	}
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		mainStage=new Stage();
+		mainStage.setTitle("Tienda Virtual");
+		Scene inicio=Invitado();
+		mainStage.setScene(inicio);
+		mainStage.show();
+	}
+	//Database
+	public static void inicio() {
+		//cargarUsuarios();
+		CargarDB();
 	}
 	public static void montarDB() {
 		GsonBuilder builder = new GsonBuilder();
@@ -109,7 +128,6 @@ public class Main extends Application {
 				System.out.println("No se pudo crear el archivo de Inventario");
 		}
 	}
-	
 	public static void CargarDB() {
 		inventario=new Inventario();
 		productos=new ArrayList<Producto>();
@@ -161,32 +179,7 @@ public class Main extends Application {
 		Usuarios.add(user);
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Jorge");
 	}
-	public static void cargarProductos() {
-		productos=new ArrayList<Producto>();
-		productos.add(new Producto("Leche","1 Litro",3500,3000));
-		productos.add(new Producto("Yogur","1.2 Litros",3500,3000));
-		productos.add(new Producto("Almendras","Enteras con cascara 250gr",8900,3000));
-		productos.add(new Producto("Frijoles","500gr",3500,3000));
-		productos.add(new Producto("Lentejas","400ml",3500,3000));
-		productos.add(new Producto("Portatil","Ryzen 7",2000000,1450000));
-		productos.add(new Producto("Celular","Mejor calida Precio del mercado",1200000,650000));
-		productos.add(new Producto("Horno","Haceb",350000,260000));
-		productos.add(new Producto("Licuadora","Oster",75000,35000));
-	}
-	public static void cargarInventario() {
-		inventario=new Inventario();
-		for (int i=0;i<productos.size();i++) {
-			inventario.AddInventario(new Detalle(productos.get(i),(int)(Math.random() * (100 - 0 + 1) + 0)));
-		}
-	}
-	public static void cargarCategorias() {
-		categorias=new ArrayList<Categoria>();
-		categorias.add(new Categoria("Lacteos","Derivados de la leche"));
-		categorias.add(new Categoria("Granos","Semillas entera"));
-		categorias.add(new Categoria("Enlatados","Empacados para durar"));
-		categorias.add(new Categoria("Tecnologia","El avance es el futuro"));
-		categorias.add(new Categoria("Electrodomesticos","Todo para el hogar"));
-	}
+	//Utilities
 	public static boolean isNumeric(String s) {
 		try {
 			Integer.parseInt(s);
@@ -196,22 +189,8 @@ public class Main extends Application {
 		}
 		return true;
 	}
-	public static void inicio() {
-		//cargarUsuarios();
-		//cargarProductos();
-		//cargarCategorias();
-		//cargarInventario();
-		CargarDB();
-	}
-	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		mainStage=new Stage();
-		mainStage.setTitle("Tienda Virtual");
-		Scene inicio=Invitado();
-		mainStage.setScene(inicio);
-		mainStage.show();
-	}
+	//Interfaces Graficas
+		//Scenes
 	public Scene Inicial() {
 		
 		
@@ -342,6 +321,7 @@ public class Main extends Application {
 		administrador=new Scene(principal, 400,400);
 		return administrador;
 	}
+		//Panes
 	public static VBox archivo(Persona pers) {
 		VBox archivo=new VBox();
 		if(pers==null) {

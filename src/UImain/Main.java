@@ -213,16 +213,20 @@ public class Main extends Application {
 		busqueda.getItems().addAll(buscarProducto,Busqueda);
 		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
 		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
-		MenuItem mostrarCarro = new MenuItem("Mostrar productos en el Carro");
+		MenuItem mostrarCarro = new MenuItem("Mostrar productos del Carro");
 		MenuItem addCarro = new MenuItem("Añadir productos al carro");
 		MenuItem delCarro = new MenuItem("Quitar producto del carro");
+		Menu opcionCarro = new Menu("Carro");
+		opcionCarro.getItems().addAll(mostrarCarro,addCarro,delCarro);
 		MenuItem Comprar = new MenuItem("Comprar");
-		MenuItem addSaldo = new MenuItem("Añadir Saldo");
+		MenuItem addSaldo = new MenuItem("Añadir Saldo");		
 		MenuItem setContrasena = new MenuItem("Cambiar Contraseña");
-		MenuItem verPerfil = new MenuItem("Perfil");
+		MenuItem verPerfil = new MenuItem("Ver perfil");
 		MenuItem cerrarSesion = new MenuItem("Cerrar Sesion");
 		MenuItem opcionSalir = new MenuItem("Salir");
-		consultasUsuario.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario,mostrarCarro,addCarro,delCarro,Comprar,addSaldo,setContrasena,verPerfil,cerrarSesion,opcionSalir);
+		Menu Perfil = new Menu("Perfil");
+		Perfil.getItems().addAll(verPerfil,setContrasena,cerrarSesion,opcionSalir);
+		consultasUsuario.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario,opcionCarro,Comprar,addSaldo,Perfil);
 		
 		Menu ayuda=new Menu("Ayuda");
 		

@@ -232,17 +232,34 @@ public class Main extends Application {
 			categorias[1]="Edad: ";
 			categorias[2]="Genero: ";
 			categorias[3]="Saldo: ";
+			String[] valores=new String[4];
+			valores[0]=pers.getNombre();
+			valores[1]=String.valueOf(pers.getEdad());
+			if(pers.getGenero()) {
+				valores[2]="Masculino";
+			}else {
+				valores[2]="Femenino";
+			}
+			valores[3]=String.valueOf(((Usuario)pers).getSaldo());
 			boolean[] habilitado=new boolean[4];
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
-			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", null, habilitado);
+			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
 		}else if (pers instanceof Administrador) {
 			String[] categorias=new String[3];
 			categorias[0]="Nombre: ";
 			categorias[1]="Edad: ";
 			categorias[2]="Genero: ";
+			String[] valores=new String[3];
+			valores[0]=pers.getNombre();
+			valores[1]=String.valueOf(pers.getEdad());
+			if(pers.getGenero()) {
+				valores[2]="Masculino";
+			}else {
+				valores[2]="Femenino";
+			}
 			boolean[] habilitado=new boolean[3];
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
-			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", null, habilitado);
+			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
 		}
 		
 		return archivo;

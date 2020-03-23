@@ -182,10 +182,10 @@ public class Main extends Application {
 		mainStage.setTitle("Invitado");
 		//Top
 		Menu archivo=new Menu("Archivo");
-//Consultas
+			//Consultas
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
-		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");}
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
 		BuscarProducto.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -200,13 +200,15 @@ public class Main extends Application {
 					public void handle(ActionEvent event) {
 						// TODO Auto-generated method stub
 						TextField s=(TextField)(buscar.getChild().getChildren().get(1));
-						Main.inventario.RealizarBusqueda(s.getText());
+						int j=Main.inventario.RealizarBusqueda(s.getText());
+						
 					}
 				
 				});
+				VBox central=new VBox();
 				
 				
-				busqueda=new Scene();
+				busqueda=new Scene(central,400,400);
 			}
 		
 		});
@@ -215,11 +217,11 @@ public class Main extends Application {
 		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
 		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
 		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
-//Ayuda		
+			//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
 		MenuBar menu=new MenuBar(archivo,consultasInvitado,ayuda);
 		principal.setTop(menu);
-		//Center
+			//Center
 		
 		//Setting the scene
 		invitado=new Scene(principal, 400,400);

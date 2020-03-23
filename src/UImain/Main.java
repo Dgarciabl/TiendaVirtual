@@ -27,7 +27,7 @@ public class Main extends Application {
 	public static Persona usuario;
 	public static void main(String[] args){
 		inicio();
-		//montarDB();
+		montarDB();
 		launch();
 	}
 	public static void montarDB() {
@@ -121,7 +121,7 @@ public class Main extends Application {
 		Categoria c;
 		//Productos
 		try {
-			i = g.fromJson(new FileReader("src\\\\BaseDatos\\ProductosDB.txt"), Inventario.class);
+			i = g.fromJson(new FileReader("src\\BaseDatos\\ProductosDB.txt"), Inventario.class);
 			ArrayList<Detalle> arr=i.getInventario();
 			for (int s=0;s<arr.size();s++) {
 				p=arr.get(s).getProducto(); productos.add(p);

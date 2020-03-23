@@ -180,9 +180,19 @@ public class Main extends Application {
 		mainStage.setTitle("Invitado");
 		//Top
 		Menu archivo=new Menu("Archivo");
-		Menu consultas=new Menu("Procesos y Consultas");
+//Consultas
+		Menu consultasInvitado = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,Busqueda);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		MenuItem OpcionSalir = new MenuItem("Salir");
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario,OpcionSalir);
+//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
+		MenuBar menu=new MenuBar(archivo,consultasInvitado,ayuda);
 		principal.setTop(menu);
 		//Center
 		
@@ -196,10 +206,34 @@ public class Main extends Application {
 		mainStage.setTitle(usu.getNombre());
 		//Top
 		Menu archivo=new Menu("Archivo");
-		Menu consultas=new Menu("Procesos y Consultas");
+		Menu consultasUsuario = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(buscarProducto,Busqueda);
+		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
+		MenuItem mostrarCarro = new MenuItem("Mostrar productos del Carro");
+		MenuItem addCarro = new MenuItem("Añadir productos al carro");
+		MenuItem delCarro = new MenuItem("Quitar producto del carro");
+		Menu opcionCarro = new Menu("Carro");
+		opcionCarro.getItems().addAll(mostrarCarro,addCarro,delCarro);
+		MenuItem Comprar = new MenuItem("Comprar");
+		MenuItem addSaldo = new MenuItem("Añadir Saldo");		
+		MenuItem setContrasena = new MenuItem("Cambiar Contraseña");
+		MenuItem verPerfil = new MenuItem("Ver perfil");
+		MenuItem cerrarSesion = new MenuItem("Cerrar Sesion");
+		MenuItem opcionSalir = new MenuItem("Salir");
+		Menu Perfil = new Menu("Perfil");
+		Perfil.getItems().addAll(verPerfil,setContrasena,cerrarSesion,opcionSalir);
+		consultasUsuario.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario,opcionCarro,Comprar,addSaldo,Perfil);
+		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
+		
+		
+		MenuBar menu=new MenuBar(archivo,consultasUsuario,ayuda);
 		principal.setTop(menu);
+		
 		//Center
 		
 		//Setting the scene

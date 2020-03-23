@@ -1,8 +1,10 @@
 package UImain;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
@@ -107,6 +109,49 @@ public class Main extends Application {
 				System.out.println("No se pudo crear el archivo de Inventario");
 		}
 	}
+	
+	public static void CargarDB() {
+		inventario=new Inventario();
+		productos=new ArrayList<Producto>();
+		categorias=new ArrayList<Categoria>();
+		Gson g=new Gson();
+		Inventario i;
+		Detalle d;
+		Producto p;
+		Categoria c;
+		//Productos
+		try {
+			i = g.fromJson(new FileReader("src\\\\BaseDatos\\ProductosDB.txt"), Inventario.class);
+			ArrayList<Detalle> arr=i.getInventario();
+			for (int s=0;s<arr.size();s++) {
+				p=arr.get(s).getProducto(); productos.add(p);
+				
+			}
+		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		//Inventario
+		try {
+			i=g.fromJson(new FileReader("src\\\\BaseDatos\\InventarioDB.txt"), Inventario.class);
+			inventario=i;
+		}
+		catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		//Categorias
+		try {
+			Type tipoCat=new TypeToken<ArrayList<Categoria>>() {}.getType();			
+			categorias=g.fromJson(new FileReader("src\\\\BaseDatos\\CategoriasDB.txt"), tipoCat);
+		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Usuarios(Pospuesto)
+		
+		
+	}
 	public static void cargarUsuarios() {
 		Usuarios=new ArrayList<Persona>();
 		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
@@ -155,10 +200,11 @@ public class Main extends Application {
 		return true;
 	}
 	public static void inicio() {
-		cargarUsuarios();
-		cargarProductos();
-		cargarCategorias();
-		cargarInventario();
+		//cargarUsuarios();
+		//cargarProductos();
+		//cargarCategorias();
+		//cargarInventario();
+		CargarDB();
 	}
 	@Override
 	public void start(Stage arg0) throws Exception {

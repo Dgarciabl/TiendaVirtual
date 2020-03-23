@@ -246,9 +246,25 @@ public class Main extends Application {
 		mainStage.setTitle(admon.getNombre());
 		//Top
 		Menu archivo=new Menu("Archivo");
-		Menu consultas=new Menu("Procesos y Consultas");
+		Menu consultasAdmin = new Menu("Procesos y Consultas");
+		//Producto		;
+		Menu setProducto = new Menu("Modificar Producto");
+		MenuItem crearProducto = new MenuItem("Crear Producto");
+		MenuItem delProducto = new MenuItem("Eliminar Producto");
+		MenuItem addCategorias = new MenuItem("Añadir categorias");
+		MenuItem delCategorias = new MenuItem("Eliminar categorias");
+		MenuItem setNombre = new MenuItem("Cambiar nombre");
+		MenuItem setDescripcion = new MenuItem("Cambiar descripción");
+		MenuItem setPrecioCompra = new MenuItem("Cambiar precio de compra");
+		MenuItem setPrecioVenta = new MenuItem("Cambiar precio de Venta");
+		MenuItem setCantidad = new MenuItem("Modificar Cantidad de Existencias");
+		setProducto.getItems().addAll(crearProducto,delProducto,addCategorias,delCategorias,setNombre,setDescripcion,setPrecioCompra,setPrecioVenta,setCantidad);
+		//Categorias 
+		Menu setCategorias = new Menu("Modificar Categorias");
+		MenuItem crearCategoria = new MenuItem("Crear Categorias");
+		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultas,ayuda);
+		MenuBar menu=new MenuBar(archivo,consultasAdmin,ayuda);
 		principal.setTop(menu);
 		//Center
 		

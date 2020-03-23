@@ -203,47 +203,8 @@ public class Main extends Application {
 		BorderPane principal=new BorderPane();
 		mainStage.setTitle("Invitado");
 		//Top
-		Menu archivo=new Menu("Archivo");
-			//Consultas
-		Menu consultasInvitado = new Menu("Procesos y Consultas");
-		Menu busqueda = new Menu("Busqueda");
-		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
-		BuscarProducto.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				Scene busqueda;
-				FieldPane buscar=new FieldPane(" ", new String[] {"Nombre del Producto: "}, " ", null, null);
-				Button buscador=new Button("Buscar");
-				buscador.setOnAction(new EventHandler<ActionEvent>() {
-					
-					@Override
-					public void handle(ActionEvent event) {
-						// TODO Auto-generated method stub
-						TextField s=(TextField)(buscar.getChild().getChildren().get(1));
-						int j=Main.inventario.RealizarBusqueda(s.getText());
-						
-					}
-				
-				});
-				VBox central=new VBox();
-				
-				
-				busqueda=new Scene(central,400,400);
-			}
-		
-		});
-		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
-		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
-		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
-		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
-		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
-			//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultasInvitado,ayuda);
-		principal.setTop(menu);
-			//Center
+		principal.setTop(menuInvitado());
+		//center
 		
 		//Setting the scene
 		invitado=new Scene(principal, 400,400);
@@ -322,6 +283,71 @@ public class Main extends Application {
 		return administrador;
 	}
 		//Panes
+			//menus
+	public static MenuBar menuInvitado() {
+		MenuBar menu;
+		Menu archivo=new Menu("Archivo");
+		//Consultas
+		Menu consultasInvitado = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
+		//Ayuda		
+		Menu ayuda=new Menu("Ayuda");
+		menu=new MenuBar(archivo,consultasInvitado,ayuda);
+		return (menu);
+	}
+	public static MenuBar menuUsuario() {
+		MenuBar menu;
+		Menu archivo=new Menu("Archivo");
+		//Consultas
+		Menu consultasInvitado = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		
+		/** completar
+		 * 
+		 */
+		
+		
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
+		//Ayuda		
+		Menu ayuda=new Menu("Ayuda");
+		menu=new MenuBar(archivo,consultasInvitado,ayuda);
+		return (menu);
+	}
+	public static MenuBar menuAdiministrador() {
+		MenuBar menu;
+		Menu archivo=new Menu("Archivo");
+		//Consultas
+		Menu consultasInvitado = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		
+		/** completar
+		 * 
+		 */
+		
+		
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
+		//Ayuda		
+		Menu ayuda=new Menu("Ayuda");
+		menu=new MenuBar(archivo,consultasInvitado,ayuda);
+		return (menu);
+	}
+			//Archivo
 	public static VBox archivo(Persona pers) {
 		VBox archivo=new VBox();
 		if(pers==null) {
@@ -364,4 +390,32 @@ public class Main extends Application {
 		
 		return archivo;
 	}
+			//Consultas
+				//Busqueda
+	public static VBox BuscarNombre() {
+		
+		/** completar
+		 * 
+		 */
+		
+		return new VBox();
+	}
+	public static VBox BuscarCategoria() {
+		
+		/** completar
+		 * 
+		 */
+		
+		return new VBox();
+	}
+				//Mostrar
+	/** completar
+	 * 
+	 */
+				//Carro
+	/** completar
+	 * 
+	 */
+				
+	
 }

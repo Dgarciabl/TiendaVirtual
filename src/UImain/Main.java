@@ -77,12 +77,12 @@ public class Main extends Application {
 		try {
 			if(productosDB.exists()) {
 				PrintWriter productosWriter = new PrintWriter(productosDB);
-				productosWriter.println(gson.toJson(inventario));
+				productosWriter.println(gson.toJson(productos));
 				productosWriter.close();
 			}else {
 				productosDB.createNewFile();
 				PrintWriter productosWriter = new PrintWriter(productosDB);
-				productosWriter.println(gson.toJson(inventario));
+				productosWriter.println(gson.toJson(productos));
 				productosWriter.close();
 			}	
 		} catch (FileNotFoundException e) {

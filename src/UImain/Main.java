@@ -7,6 +7,7 @@ import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -184,18 +185,33 @@ public class Main extends Application {
 //Consultas
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
-		busqueda.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");}
+		BuscarProducto.setOnAction(new EventHandler<ActionEvent>() {
 			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				Scene busqueda;
+				FieldPane buscar=new FieldPane(" ", new String[] {"Nombre del Producto: "}, " ", null, null);
+				Button buscador=new Button("Buscar");
+				buscador.setOnAction(new EventHandler<ActionEvent>() {
+					
+					@Override
+					public void handle(ActionEvent event) {
+						// TODO Auto-generated method stub
+						TextField s=(TextField)(buscar.getChild().getChildren().get(1));
+						Main.inventario.RealizarBusqueda(s.getText());
+					}
+				
+				});
+				
+				
+				busqueda=new Scene();
+			}
+		
 		});
-		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
-		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
-		busqueda.getItems().addAll(BuscarProducto,Busqueda);
+		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
 		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
 		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
 		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);

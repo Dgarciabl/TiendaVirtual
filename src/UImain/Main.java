@@ -7,6 +7,7 @@ import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -183,13 +184,21 @@ public class Main extends Application {
 //Consultas
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
+		busqueda.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
 		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
 		busqueda.getItems().addAll(BuscarProducto,Busqueda);
 		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
 		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
-		MenuItem OpcionSalir = new MenuItem("Salir");
-		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario,OpcionSalir);
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
 //Ayuda		
 		Menu ayuda=new Menu("Ayuda");
 		MenuBar menu=new MenuBar(archivo,consultasInvitado,ayuda);

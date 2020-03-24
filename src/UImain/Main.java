@@ -260,8 +260,8 @@ public class Main extends Application {
 		principal.setTop(menuInvitado());
 		//center
 		
-		principal.setCenter(archivo(usuario));
-		
+		//principal.setCenter(archivo(usuario));
+		principal.setCenter(crearProducto());
 		//principal.setCenter(MostrarCarro());
 		//principal.setCenter(mostrarInventario());
 		//Setting the scene
@@ -272,8 +272,49 @@ public class Main extends Application {
 		Scene usuario;
 		BorderPane principal=new BorderPane();
 		mainStage.setTitle(usu.getNombre());
+		principal.setTop(menuUsuario());
+		//Center
+		
+		//Setting the scene
+		usuario=new Scene(principal, 400,400);
+		return usuario;
+	}
+	public Scene Administrador(Administrador admon) {
+		Scene administrador;
+		BorderPane principal=new BorderPane();
+		mainStage.setTitle(admon.getNombre());
 		//Top
+
+		principal.setTop(menuAdministrador());
+		//Center
+		
+		//Setting the scene
+		administrador=new Scene(principal, 400,400);
+		return administrador;
+	}
+		//Panes
+			//menus
+	public static MenuBar menuInvitado() {
+		MenuBar menu;
 		Menu archivo=new Menu("Archivo");
+		//Consultas
+		Menu consultasInvitado = new Menu("Procesos y Consultas");
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
+		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
+		//Ayuda		
+		Menu ayuda=new Menu("Ayuda");
+		menu=new MenuBar(archivo,consultasInvitado,ayuda);
+		return (menu);
+	}
+	public static MenuBar menuUsuario() {
+		MenuBar menu;
+		Menu archivo=new Menu("Archivo");
+		//Consultas
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
@@ -296,26 +337,15 @@ public class Main extends Application {
 		Perfil.getItems().addAll(verPerfil,setContrasena,cerrarSesion,opcionSalir);
 		consultasUsuario.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario,opcionCarro,Comprar,addSaldo,Perfil);
 		
+		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
-		
-		
-		MenuBar menu=new MenuBar(archivo,consultasUsuario,ayuda);
-		principal.setTop(menu);
-		
-		//Center
-		
-		//Setting the scene
-		usuario=new Scene(principal, 400,400);
-		return usuario;
+		menu=new MenuBar(archivo,consultasUsuario,ayuda);
+		return (menu);
 	}
-	public Scene Administrador(Administrador admon) {
-		Scene administrador;
-		BorderPane principal=new BorderPane();
-		mainStage.setTitle(admon.getNombre());
-		//Top
+	public static MenuBar menuAdministrador() {
 		Menu archivo = new Menu("Archivo");
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
-		//Producto		;
+		//Producto
 		Menu setProducto = new Menu("Modificar Producto");
 		MenuItem crearProducto = new MenuItem("Crear Producto");
 		MenuItem delProducto = new MenuItem("Eliminar Producto");
@@ -359,76 +389,6 @@ public class Main extends Application {
 		
 		Menu ayuda=new Menu("Ayuda");
 		MenuBar menu=new MenuBar(archivo,consultasAdmin,ayuda);
-		principal.setTop(menu);
-		//Center
-		
-		//Setting the scene
-		administrador=new Scene(principal, 400,400);
-		return administrador;
-	}
-		//Panes
-			//menus
-	public static MenuBar menuInvitado() {
-		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		//Consultas
-		Menu consultasInvitado = new Menu("Procesos y Consultas");
-		Menu busqueda = new Menu("Busqueda");
-		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
-		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
-		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
-		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
-		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
-		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
-		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasInvitado,ayuda);
-		return (menu);
-	}
-	public static MenuBar menuUsuario() {
-		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		//Consultas
-		Menu consultasInvitado = new Menu("Procesos y Consultas");
-		Menu busqueda = new Menu("Busqueda");
-		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
-		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
-		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
-		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
-		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
-		
-		/** completar
-		 * 
-		 */
-		
-		
-		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
-		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasInvitado,ayuda);
-		return (menu);
-	}
-	public static MenuBar menuAdiministrador() {
-		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		//Consultas
-		Menu consultasInvitado = new Menu("Procesos y Consultas");
-		Menu busqueda = new Menu("Busqueda");
-		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
-		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
-		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
-		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
-		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
-		
-		/** completar
-		 * 
-		 */
-		
-		
-		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
-		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasInvitado,ayuda);
 		return (menu);
 	}
 			//Archivo
@@ -637,19 +597,23 @@ public class Main extends Application {
 		Label titulo = new Label("Crear producto");
 		titulo.setAlignment(Pos.TOP_CENTER);
 		titulo.setPadding(new Insets(5));
-		String [] campos = new String[4];
+		String [] campos = new String[5];
 		campos[0] = "Nombre";
 		campos[1] = "Descripcion";
 		campos[2] = "Precio original";
 		campos[3] = "Precio de venta";
 		campos[4] = "Categorias";
-		FieldPane columnas = new FieldPane(" ",campos, " ", campos, null);
+		String [] empty = new String[5];
+		
+		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
 		botones.add(salir, 0, 0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
+		botones.setAlignment(Pos.TOP_CENTER);
 		crearProducto.getChildren().addAll(titulo,columnas.getChild(),botones);
+		crearProducto.setAlignment(Pos.TOP_CENTER);
 		/** completar
 		 * julian
 		 */

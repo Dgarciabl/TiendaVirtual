@@ -447,7 +447,7 @@ public class Main extends Application {
 			valores[0]="Version 1";
 			boolean[] habilitado=new boolean[1];
 			for(int i=0;i<1;i++) {habilitado[i]=false;}
-			presentacion=new FieldPane("Inforación", categorias, "Publica", valores, habilitado);
+			presentacion=new FieldPane("Información", categorias, "Publica", valores, habilitado);
 			Botones.add(salir, 0, 0);
 		}else if(pers instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
@@ -467,7 +467,7 @@ public class Main extends Application {
 			valores[3]=String.valueOf(((Usuario)pers).getSaldo());
 			boolean[] habilitado=new boolean[4];
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
-			presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
 			Botones.add(editar, 1, 0);
 			Botones.add(añadirSaldo, 0, 0);
@@ -487,7 +487,7 @@ public class Main extends Application {
 			}
 			boolean[] habilitado=new boolean[3];
 			for(int i=0;i<3;i++) {habilitado[i]=false;}
-			presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 1, 0);
 			Botones.add(editar, 0, 0);
 		}else {
@@ -629,6 +629,8 @@ public class Main extends Application {
 	}
 				//crear
 	public static VBox crearProducto() {
+		
+		
 		
 		/** completar
 		 * julian

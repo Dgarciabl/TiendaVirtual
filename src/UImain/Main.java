@@ -11,6 +11,8 @@ import gestorAplicacion.Administrador.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -32,7 +34,7 @@ public class Main extends Application {
 	//Main
 	public static void main(String[] args){
 		inicio();
-		//montarDB();
+		montarDB();
 		launch();
 	}
 	@Override
@@ -46,7 +48,7 @@ public class Main extends Application {
 	}
 	//Database
 	public static void inicio() {
-		//cargarUsuarios();
+		cargarUsuarios();
 		CargarDB();
 	}
 	public static void montarDB() {
@@ -109,18 +111,49 @@ public class Main extends Application {
 		} catch (IOException e) {
 				System.out.println("No se pudo crear el archivo de Inventario");
 		}
+		
+		//preprocessing
+		ArrayList<Usuario> usrs=new ArrayList<Usuario>();
+		ArrayList<Administrador> admins=new ArrayList<Administrador>();
+		
+		for (int i=0;i<Usuarios.size();i++) {
+			if(Usuarios.get(i) instanceof Usuario) {
+				usrs.add((Usuario)Usuarios.get(i));
+			}else {
+				admins.add((Administrador)Usuarios.get(i));
+			}
+		}
+		
 		//Usuarios
 		File usuariosDB = new File(BaseDatos, "UsuariosDB.txt");
 		try {
 			if(usuariosDB.exists()) {
 				PrintWriter usuariosWriter = new PrintWriter(usuariosDB);
-				usuariosWriter.println(gson.toJson(Usuarios));
+				usuariosWriter.println(gson.toJson(usrs));
 				usuariosWriter.close();
 			}else {
 				usuariosDB.createNewFile();
 				PrintWriter usuariosWriter = new PrintWriter(usuariosDB);
-				usuariosWriter.println(gson.toJson(Usuarios));
+				usuariosWriter.println(gson.toJson(usrs));
 				usuariosWriter.close();
+			}		
+		} catch (FileNotFoundException e) {
+				System.out.println("No se pudo encontrar el archivo de Categorias");
+			} catch (IOException e) {
+				System.out.println("No se pudo crear el archivo de Inventario");
+		}
+		//Administradores
+		File AdministradoresDB = new File(BaseDatos, "AdministradoresDB.txt");
+		try {
+			if(AdministradoresDB.exists()) {
+				PrintWriter AdministradoresWriter = new PrintWriter(AdministradoresDB);
+				AdministradoresWriter.println(gson.toJson(admins));
+				AdministradoresWriter.close();
+			}else {
+				AdministradoresDB.createNewFile();
+				PrintWriter AdministradoresWriter = new PrintWriter(AdministradoresDB);
+				AdministradoresWriter.println(gson.toJson(admins));
+				AdministradoresWriter.close();
 			}		
 		} catch (FileNotFoundException e) {
 				System.out.println("No se pudo encontrar el archivo de Categorias");
@@ -178,6 +211,8 @@ public class Main extends Application {
 		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
 		Usuarios.add(user);
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Jorge");
+		Usuarios.add(user2);
+		usuario=user2;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -205,7 +240,7 @@ public class Main extends Application {
 		//Top
 		principal.setTop(menuInvitado());
 		//center
-		
+		principal.setCenter(archivo(usuario));
 		//Setting the scene
 		invitado=new Scene(principal, 400,400);
 		return invitado;
@@ -349,16 +384,33 @@ public class Main extends Application {
 	}
 			//Archivo
 	public static VBox archivo(Persona pers) {
+		String[] categorias;
+		String[] valores;
 		VBox archivo=new VBox();
+		FieldPane presentacion;
+		GridPane Botones=new GridPane();
+		Label titulo=new Label();
+		Button salir=new Button("Salir");
+		Button editar=new Button("Editar");
+		Button añadirSaldo=new Button("Añadir Saldo");
 		if(pers==null) {
-			
+			titulo.setText("Perfil de Invitado");
+			categorias=new String[1];
+			valores=new String[1];
+			categorias[0]="Tienda Virtual";
+			valores[0]="Version 1";
+			boolean[] habilitado=new boolean[1];
+			for(int i=0;i<1;i++) {habilitado[i]=false;}
+			presentacion=new FieldPane("Inforación", categorias, "Publica", valores, habilitado);
+			Botones.add(salir, 0, 0);
 		}else if(pers instanceof Usuario) {
-			String[] categorias=new String[4];
+			titulo.setText("Perfil de Usuario");
+			categorias=new String[4];
+			valores=new String[4];
 			categorias[0]="Nombre: ";
 			categorias[1]="Edad: ";
 			categorias[2]="Genero: ";
 			categorias[3]="Saldo: ";
-			String[] valores=new String[4];
 			valores[0]=pers.getNombre();
 			valores[1]=String.valueOf(pers.getEdad());
 			if(pers.getGenero()) {
@@ -369,13 +421,17 @@ public class Main extends Application {
 			valores[3]=String.valueOf(((Usuario)pers).getSaldo());
 			boolean[] habilitado=new boolean[4];
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
-			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+			presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+			Botones.add(salir, 2, 0);
+			Botones.add(editar, 1, 0);
+			Botones.add(añadirSaldo, 0, 0);
 		}else if (pers instanceof Administrador) {
-			String[] categorias=new String[3];
+			titulo.setText("Perfil de Administrador");
+			categorias=new String[3];
+			valores=new String[3];
 			categorias[0]="Nombre: ";
 			categorias[1]="Edad: ";
 			categorias[2]="Genero: ";
-			String[] valores=new String[3];
 			valores[0]=pers.getNombre();
 			valores[1]=String.valueOf(pers.getEdad());
 			if(pers.getGenero()) {
@@ -385,9 +441,26 @@ public class Main extends Application {
 			}
 			boolean[] habilitado=new boolean[3];
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
-			FieldPane presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+			presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
+			Botones.add(salir, 1, 0);
+			Botones.add(editar, 0, 0);
+		}else {
+			titulo.setText("Esto es un Error");
+			categorias=new String[1];
+			valores=new String[1];
+			categorias[0]="Por Favor Contactar al Administrador";
+			valores[0]="Version 1";
+			boolean[] habilitado=new boolean[1];
+			for(int i=0;i<1;i++) {habilitado[i]=false;}
+			presentacion=new FieldPane("Inforación", categorias, "Publica", valores,habilitado);
+			Botones.add(salir, 0, 0);
 		}
-		
+		titulo.setPadding(new Insets(5));
+		Botones.setAlignment(Pos.CENTER);
+		Botones.setPadding(new Insets(8,8,8,8));
+		Botones.setHgap(5);
+		archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
+		archivo.setAlignment(Pos.TOP_CENTER);
 		return archivo;
 	}
 			//Consultas

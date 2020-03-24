@@ -1,6 +1,8 @@
 package UImain;
 
 import javafx.scene.layout.Pane;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -37,7 +39,10 @@ public class FieldPane extends Pane {
 				}
 			}
 		}
-		
+		child.setAlignment(Pos.CENTER);
+		child.setHgap(10);
+		child.setVgap(8);
+		child.setPadding(new Insets(8,8,8,8));
 	}
 	/**  @arg criterio el criterio cuyo valor se quiere obtener
 	 *   @return el valor del criterio cuyo nombre es 'criterio'

@@ -2,3 +2,4 @@
 bin/BaseDatos/CategoriasDB.txt
 bin/BaseDatos/InventarioDB.txt
 bin/BaseDatos/ProductosDB.txt
+bin/UImain/Main.class

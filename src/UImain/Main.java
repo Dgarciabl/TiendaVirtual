@@ -228,7 +228,7 @@ public class Main extends Application {
 		Usuarios.add(admon3);
 		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
 		Usuarios.add(user);
-		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Jorge");
+		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
 		Usuarios.add(user);
 		//usuario=user2;
 		usuario=admon;
@@ -273,8 +273,8 @@ public class Main extends Application {
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
-		MenuItem Busqueda = new MenuItem("Busqueda por Categorias");
-		busqueda.getItems().addAll(buscarProducto,Busqueda);
+		MenuItem busquedaCategorias = new MenuItem("Busqueda por Categorias");
+		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
 		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
 		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
 		MenuItem mostrarCarro = new MenuItem("Mostrar productos del Carro");
@@ -309,7 +309,7 @@ public class Main extends Application {
 		BorderPane principal=new BorderPane();
 		mainStage.setTitle(admon.getNombre());
 		//Top
-		Menu archivo=new Menu("Archivo");
+		Menu archivo = new Menu("Archivo");
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
 		//Producto		;
 		Menu setProducto = new Menu("Modificar Producto");
@@ -326,6 +326,32 @@ public class Main extends Application {
 		//Categorias 
 		Menu setCategorias = new Menu("Modificar Categorias");
 		MenuItem crearCategoria = new MenuItem("Crear Categorias");
+		MenuItem delCategoria = new MenuItem("Eliminar Categorias");
+		MenuItem setDescripcionCategoria = new MenuItem("Cambiar descripción");
+		MenuItem setNombreCategoria = new MenuItem("Cambiar nombre");
+		setCategorias.getItems().addAll(crearCategoria, delCategoria, setDescripcionCategoria, setNombreCategoria);
+		//Usuarios
+		Menu setUsuarios = new Menu("Usuarios");
+		MenuItem addUsuario = new MenuItem("Crear usuario");
+		MenuItem delUsuario = new MenuItem("Eliminar usuario");
+		Menu setOpciones = new Menu("Modificar Opciones");
+		Menu opcionAdmin = new Menu("Administrador");
+		MenuItem addOpcionAdmin = new MenuItem("Agregar opcion");
+		MenuItem delOpcionAdmin = new MenuItem("Eliminar pcion");
+		opcionAdmin.getItems().addAll(addOpcionAdmin,delOpcionAdmin);
+		Menu opcionUsuario = new Menu("Usuario");
+		MenuItem addOpcionUsuario = new MenuItem("Agregar opcion");
+		MenuItem delOpcionUsuario = new MenuItem("Eliminar opcion");
+		opcionAdmin.getItems().addAll(addOpcionUsuario,delOpcionUsuario);
+		Menu opcionInvitado = new Menu("Invitado");
+		MenuItem addOpcionInvitado = new MenuItem("Agregar opcion");
+		MenuItem delOpcionInvitado = new MenuItem("Eliminar opcion");
+		opcionAdmin.getItems().addAll(addOpcionInvitado,delOpcionInvitado);
+		
+		setOpciones.getItems().addAll(opcionAdmin,opcionUsuario,opcionInvitado);
+		setUsuarios.getItems().addAll(addUsuario,delUsuario,setOpciones);
+		consultasAdmin.getItems().addAll(setProducto,setCategorias,setUsuarios);
+		
 		
 		Menu ayuda=new Menu("Ayuda");
 		MenuBar menu=new MenuBar(archivo,consultasAdmin,ayuda);

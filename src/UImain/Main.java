@@ -231,7 +231,7 @@ public class Main extends Application {
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
 		Usuarios.add(user);
 		//usuario=user2;
-		//usuario=admon;
+		usuario=admon;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -257,7 +257,7 @@ public class Main extends Application {
 		BorderPane principal=new BorderPane();
 		mainStage.setTitle("Invitado");
 		//Top
-		principal.setTop(menuInvitado());
+		principal.setTop(menuAdministrador());
 		//center
 		
 		principal.setCenter(archivo(usuario));
@@ -318,15 +318,12 @@ public class Main extends Application {
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
-		MenuItem busquedaCategorias = new MenuItem("Busqueda por Categorias");
+		MenuItem busquedaCategorias = new MenuItem("Busqueda por categorias");
 		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
 		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
 		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
-		MenuItem mostrarCarro = new MenuItem("Mostrar productos del Carro");
-		MenuItem addCarro = new MenuItem("Añadir productos al carro");
-		MenuItem delCarro = new MenuItem("Quitar producto del carro");
-		Menu opcionCarro = new Menu("Carro");
-		opcionCarro.getItems().addAll(mostrarCarro,addCarro,delCarro);
+		MenuItem mostrarCarro = new MenuItem("Mostrar productos del carro");
+		MenuItem showCarro = new MenuItem("Mostrar productos del carro");
 		MenuItem Comprar = new MenuItem("Comprar");
 		MenuItem addSaldo = new MenuItem("Añadir Saldo");		
 		MenuItem setContrasena = new MenuItem("Cambiar Contraseña");
@@ -335,7 +332,7 @@ public class Main extends Application {
 		MenuItem opcionSalir = new MenuItem("Salir");
 		Menu Perfil = new Menu("Perfil");
 		Perfil.getItems().addAll(verPerfil,setContrasena,cerrarSesion,opcionSalir);
-		consultasUsuario.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario,opcionCarro,Comprar,addSaldo,Perfil);
+		consultasUsuario.getItems().addAll(showCarro,mostrarInventario,mostrarCategorias,busqueda,Comprar,addSaldo,Perfil);
 		
 		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
@@ -346,45 +343,26 @@ public class Main extends Application {
 		Menu archivo = new Menu("Archivo");
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
 		//Producto
-		Menu setProducto = new Menu("Modificar Producto");
-		MenuItem crearProducto = new MenuItem("Crear Producto");
-		MenuItem delProducto = new MenuItem("Eliminar Producto");
-		MenuItem addCategorias = new MenuItem("Añadir categorias");
-		MenuItem delCategorias = new MenuItem("Eliminar categorias");
-		MenuItem setNombre = new MenuItem("Cambiar nombre");
-		MenuItem setDescripcion = new MenuItem("Cambiar descripción");
-		MenuItem setPrecioCompra = new MenuItem("Cambiar precio de compra");
-		MenuItem setPrecioVenta = new MenuItem("Cambiar precio de Venta");
-		MenuItem setCantidad = new MenuItem("Modificar Cantidad de Existencias");
-		setProducto.getItems().addAll(crearProducto,delProducto,addCategorias,delCategorias,setNombre,setDescripcion,setPrecioCompra,setPrecioVenta,setCantidad);
-		//Categorias 
-		Menu setCategorias = new Menu("Modificar Categorias");
-		MenuItem crearCategoria = new MenuItem("Crear Categorias");
-		MenuItem delCategoria = new MenuItem("Eliminar Categorias");
-		MenuItem setDescripcionCategoria = new MenuItem("Cambiar descripción");
-		MenuItem setNombreCategoria = new MenuItem("Cambiar nombre");
-		setCategorias.getItems().addAll(crearCategoria, delCategoria, setDescripcionCategoria, setNombreCategoria);
-		//Usuarios
-		Menu setUsuarios = new Menu("Usuarios");
-		MenuItem addUsuario = new MenuItem("Crear usuario");
-		MenuItem delUsuario = new MenuItem("Eliminar usuario");
-		Menu setOpciones = new Menu("Modificar Opciones");
-		Menu opcionAdmin = new Menu("Administrador");
-		MenuItem addOpcionAdmin = new MenuItem("Agregar opcion");
-		MenuItem delOpcionAdmin = new MenuItem("Eliminar pcion");
-		opcionAdmin.getItems().addAll(addOpcionAdmin,delOpcionAdmin);
-		Menu opcionUsuario = new Menu("Usuario");
-		MenuItem addOpcionUsuario = new MenuItem("Agregar opcion");
-		MenuItem delOpcionUsuario = new MenuItem("Eliminar opcion");
-		opcionAdmin.getItems().addAll(addOpcionUsuario,delOpcionUsuario);
-		Menu opcionInvitado = new Menu("Invitado");
-		MenuItem addOpcionInvitado = new MenuItem("Agregar opcion");
-		MenuItem delOpcionInvitado = new MenuItem("Eliminar opcion");
-		opcionAdmin.getItems().addAll(addOpcionInvitado,delOpcionInvitado);
+		Menu mostrarExistencias = new Menu("Mostrar existencias");
+		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
+		MenuItem mostrarProductos = new MenuItem("Mostrar productos");
+		MenuItem mostrarCategorias = new MenuItem("Mostar categorias");
+		MenuItem mostrarUsuarios = new MenuItem("Mostrar usuarios");
+		mostrarExistencias.getItems().addAll(mostrarInventario,mostrarProductos,mostrarCategorias,mostrarUsuarios);
+		Menu busqueda = new Menu("Busqueda");
+		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
+		MenuItem busquedaCategorias = new MenuItem("Busqueda por categorias");
+		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
 		
-		setOpciones.getItems().addAll(opcionAdmin,opcionUsuario,opcionInvitado);
-		setUsuarios.getItems().addAll(addUsuario,delUsuario,setOpciones);
-		consultasAdmin.getItems().addAll(setProducto,setCategorias,setUsuarios);
+		//Crear 
+		
+		Menu crearExistencias = new Menu("Crear existencias");
+		MenuItem crearUsuario = new MenuItem("Crear usuario");
+		MenuItem crearProducto = new MenuItem("Crear producto");
+		MenuItem crearCategoria = new MenuItem("Crear categoria");
+		crearExistencias.getItems().addAll(crearUsuario,crearProducto,crearCategoria);
+		
+		consultasAdmin.getItems().addAll(mostrarExistencias, busqueda, crearExistencias);
 		
 		
 		Menu ayuda=new Menu("Ayuda");

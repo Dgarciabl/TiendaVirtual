@@ -231,7 +231,7 @@ public class Main extends Application {
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
 		Usuarios.add(user);
 		//usuario=user2;
-		usuario=admon;
+		//usuario=admon;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -260,6 +260,7 @@ public class Main extends Application {
 		principal.setTop(menuInvitado());
 		//center
 		principal.setCenter(archivo(usuario));
+		//principal.setCenter(mostrarInventario());
 		//Setting the scene
 		invitado=new Scene(principal, 400,400);
 		return invitado;
@@ -558,7 +559,6 @@ public class Main extends Application {
 		
 		return inv;
 	}
-	
 	public static VBox mostrarCategorias() {
 		VBox cat=new VBox();
 		
@@ -581,30 +581,6 @@ public class Main extends Application {
 				
 		return cat;
 	}
-	
-	public static VBox MostrarCarro() {
-		VBox car=new VBox();
-		
-		Label lis1=new Label("Carro"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
-		
-		GridPane g=new GridPane(); g.setHgap(5);
-		
-		//TextField t: Muestra la ArrayList carro del usuario
-		//Textfield b: Muestra la cantidad de productos y el subtotal
-		TextField t=new TextField("ListaProdCar"); TextField b=new TextField("Items y Subtotal:");
-		t.setPrefHeight(100); b.setPrefHeight(50);
-		
-		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
-		g.add(new Label("Productos añadidos:"), 0, 0); g.add(new Label("Subtotal:"), 1, 0);
-		g.add(t,0, 1); g.add(b, 1, 1);
-		g.add(new Button("Comprar"), 1, 2);
-		car.getChildren().addAll(lis1,g);
-		g.setAlignment(Pos.CENTER);
-		car.setAlignment(Pos.TOP_CENTER);	
-		
-		return car;
-	}
-	
 	public static VBox mostrarProductos() {
 		//casi seguro esta esta mala porque nunca diferencio bien Producto e inventario :v
 		VBox prod=new VBox();
@@ -628,10 +604,41 @@ public class Main extends Application {
 		
 		return prod;
 	}
-	/** completar
-	 * 
-	 */
 				//Carro
+	public static VBox MostrarCarro() {
+		VBox car=new VBox();
+		
+		Label lis1=new Label("Carro"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		
+		GridPane g=new GridPane(); g.setHgap(5);
+		
+		//TextField t: Muestra la ArrayList carro del usuario
+		//Textfield b: Muestra la cantidad de productos y el subtotal
+		TextField t=new TextField("ListaProdCar"); TextField b=new TextField("Items y Subtotal:");
+		t.setPrefHeight(100); b.setPrefHeight(50);
+		
+		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
+		g.add(new Label("Productos añadidos:"), 0, 0); g.add(new Label("Subtotal:"), 1, 0);
+		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(new Button("Comprar"), 1, 2);
+		car.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.CENTER);
+		car.setAlignment(Pos.TOP_CENTER);	
+		
+		return car;
+	}
+				//crear
+	public static VBox crearProducto() {
+		
+		/** completar
+		 * julian
+		 */
+		
+		return new VBox();
+	}
+	
+	
+	
 	/** completar
 	 * 
 	 */

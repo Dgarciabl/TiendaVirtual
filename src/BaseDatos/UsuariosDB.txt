@@ -21,12 +21,12 @@
       "numObjetos": 0,
       "inventario": []
     },
-    "nombre": "superuser",
+    "nombre": "Pablo",
     "genero": true,
     "edad": 0,
-    "usuario": "user",
-    "contraseña": "user",
-    "preguntaRecuperacion": "user",
-    "respuestaRecuperacion": "user"
+    "usuario": "holasoypablo",
+    "contraseña": "bat123",
+    "preguntaRecuperacion": "NombrePadre",
+    "respuestaRecuperacion": "Jorge"
   }
 ]

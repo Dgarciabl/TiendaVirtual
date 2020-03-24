@@ -50,6 +50,7 @@ public class Main extends Application {
 	public static void inicio() {
 		//cargarUsuarios();
 		CargarDB();
+		usuario=Usuarios.get(3);
 	}
 	public static void montarDB() {
 		GsonBuilder builder = new GsonBuilder();
@@ -211,7 +212,6 @@ public class Main extends Application {
 			
 			admTemp=g.fromJson(new FileReader("src\\BaseDatos\\AdministradoresDB.txt"), tipoAdm);
 			Usuarios.addAll(admTemp);
-			usuario=Usuarios.get(0);
 		}
 		catch(JsonIOException | JsonSyntaxException | FileNotFoundException e) {
 			e.printStackTrace();
@@ -511,14 +511,96 @@ public class Main extends Application {
 		return principal;
 	}
 				//Mostrar
+	public static VBox mostrarInventario() {
+		VBox inv=new VBox();
+		Label lis1=new Label("Mostrar Inventario"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		
+		GridPane g=new GridPane(); g.setHgap(5);
+		
+		//TextField t: Muestra Inventario
+		//TextField b: Muestra Descripcion de producto y cantidad
+		TextField t=new TextField("ListaProd"); TextField b=new TextField("Descripcion");
+		t.setPrefHeight(100); b.setPrefHeight(100);
+		
+		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
+		g.add(new Label("Inventario:"), 0, 0); g.add(new Label("Descripcion y cantidad:"), 1, 0);
+		g.add(t,0, 1); g.add(b, 1, 1,2,1);
+		g.add(new Button("Editar inventario(Admin)"), 1, 2);
+		inv.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.CENTER);
+		inv.setAlignment(Pos.TOP_CENTER);
+		
+		return inv;
+	}
+	
+	public static VBox mostrarCategorias() {
+		VBox cat=new VBox();
+		
+		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		
+		GridPane g=new GridPane(); g.setHgap(5);
+		
+		//TextField t: Muestra la ArrayList categorias
+		//TextField b: Muestra descripcion de la categoria
+		TextField t=new TextField("ListaCat"); TextField b=new TextField("Descripcion");
+		t.setPrefHeight(100); b.setPrefHeight(100);
+		
+		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
+		g.add(new Label("Lista de de categorias:"), 0, 0); g.add(new Label("Descripcion:"), 1, 0);
+		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(new Button("Busqueda por categoria"), 1, 2);
+		cat.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.CENTER);
+		cat.setAlignment(Pos.TOP_CENTER);
+				
+		return cat;
+	}
+	
+	public static VBox MostrarCarro() {
+		VBox car=new VBox();
+		
+		Label lis1=new Label("Carro"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		
+		GridPane g=new GridPane(); g.setHgap(5);
+		
+		//TextField t: Muestra la ArrayList carro del usuario
+		//Textfield b: Muestra la cantidad de productos y el subtotal
+		TextField t=new TextField("ListaProdCar"); TextField b=new TextField("Items y Subtotal:");
+		t.setPrefHeight(100); b.setPrefHeight(50);
+		
+		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
+		g.add(new Label("Productos añadidos:"), 0, 0); g.add(new Label("Subtotal:"), 1, 0);
+		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(new Button("Comprar"), 1, 2);
+		car.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.CENTER);
+		car.setAlignment(Pos.TOP_CENTER);	
+		
+		return car;
+	}
+	
 	public static VBox mostrarProductos() {
+		//casi seguro esta esta mala porque nunca diferencio bien Producto e inventario :v
+		VBox prod=new VBox();
 		
-		/** no tocar 
-		 * cano trabajando
-		 * 
-		 */
+		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		
-		return new VBox();
+		GridPane g=new GridPane(); g.setHgap(5);
+		
+		//TextField t: Muestra la ArrayList Productos
+		//TextField b: Muestra descripcion del producto
+		TextField t=new TextField("ListaProd"); TextField b=new TextField("Descripcion");
+		t.setPrefHeight(100); b.setPrefHeight(100);
+		
+		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
+		g.add(new Label("Lista de de productos:"), 0, 0); g.add(new Label("Descripcion:"), 1, 0);
+		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(new Button("Añadir al carro"), 1, 2);
+		prod.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.CENTER);
+		prod.setAlignment(Pos.TOP_CENTER);
+		
+		return prod;
 	}
 	/** completar
 	 * 

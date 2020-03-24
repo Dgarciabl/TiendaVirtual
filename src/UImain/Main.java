@@ -260,8 +260,8 @@ public class Main extends Application {
 		principal.setTop(menuInvitado());
 		//center
 		
-		//principal.setCenter(archivo(usuario));
-		principal.setCenter(crearProducto());
+		principal.setCenter(archivo(usuario));
+		//principal.setCenter(crearProducto());
 		//principal.setCenter(MostrarCarro());
 		//principal.setCenter(mostrarInventario());
 		//Setting the scene
@@ -614,12 +614,35 @@ public class Main extends Application {
 		botones.setAlignment(Pos.TOP_CENTER);
 		crearProducto.getChildren().addAll(titulo,columnas.getChild(),botones);
 		crearProducto.setAlignment(Pos.TOP_CENTER);
-		/** completar
-		 * julian
-		 */
 		
 		return crearProducto;
 	}
+	public static VBox crearCategoria() {
+		VBox crearCategoria = new VBox();
+		Label title = new Label("Crear Categoria");
+		title.setAlignment(Pos.TOP_CENTER);
+		title.setPadding(new Insets(5));
+		String[] campos = new String [2];
+		campos[0] = "Nombre";
+		campos[1] = "Descripcion";
+		String [] empty = new String[2];
+		
+		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
+		GridPane botones = new GridPane();
+		Button salir = new Button("Salir");
+		botones.add(salir, 0, 0);
+		botones.setPadding(new Insets(8,8,8,8));
+		botones.setHgap(5);
+		botones.setAlignment(Pos.TOP_CENTER);
+		crearCategoria.getChildren().addAll(title,columnas.getChild(),botones);
+		crearCategoria.setAlignment(Pos.TOP_CENTER);
+		
+		return crearCategoria();
+		
+	}
+	
+
+	
 	
 	
 	

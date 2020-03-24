@@ -644,7 +644,12 @@ public class Main extends Application {
 		campos[3] = "Precio de venta";
 		campos[4] = "Categorias";
 		FieldPane columnas = new FieldPane(" ",campos, " ", campos, null);
-		
+		GridPane botones = new GridPane();
+		Button salir = new Button("Salir");
+		botones.add(salir, 0, 0);
+		botones.setPadding(new Insets(8,8,8,8));
+		botones.setHgap(5);
+		crearProducto.getChildren().addAll(titulo,campos.getChild(),botones);
 		/** completar
 		 * julian
 		 */

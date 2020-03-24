@@ -34,7 +34,7 @@ public class Main extends Application {
 	//Main
 	public static void main(String[] args){
 		inicio();
-		montarDB();
+		//montarDB();
 		launch();
 	}
 	@Override
@@ -48,7 +48,7 @@ public class Main extends Application {
 	}
 	//Database
 	public static void inicio() {
-		cargarUsuarios();
+		//cargarUsuarios();
 		CargarDB();
 	}
 	public static void montarDB() {
@@ -165,11 +165,9 @@ public class Main extends Application {
 		inventario=new Inventario();
 		productos=new ArrayList<Producto>();
 		categorias=new ArrayList<Categoria>();
+		Usuarios=new ArrayList<Persona>();
 		Gson g=new Gson();
 		Inventario i;
-		Detalle d;
-		Producto p;
-		Categoria c;
 		//Productos
 		try {
 			Type tipoPro=new TypeToken<ArrayList<Producto>>() {}.getType();
@@ -181,7 +179,7 @@ public class Main extends Application {
 		
 		//Inventario
 		try {
-			i=g.fromJson(new FileReader("src\\\\BaseDatos\\InventarioDB.txt"), Inventario.class);
+			i=g.fromJson(new FileReader("src\\BaseDatos\\InventarioDB.txt"), Inventario.class);
 			inventario=i;
 		}
 		catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
@@ -190,13 +188,29 @@ public class Main extends Application {
 		//Categorias
 		try {
 			Type tipoCat=new TypeToken<ArrayList<Categoria>>() {}.getType();			
-			categorias=g.fromJson(new FileReader("src\\\\BaseDatos\\CategoriasDB.txt"), tipoCat);
+			categorias=g.fromJson(new FileReader("src\\BaseDatos\\CategoriasDB.txt"), tipoCat);
 		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//Usuarios(Pospuesto)
+		//Usuarios
+		try {
+			ArrayList<Usuario> usuTemp=new ArrayList<Usuario>();
+			ArrayList<Administrador>admTemp=new ArrayList<Administrador>();
+		
+			Type tipoUsu=new TypeToken<ArrayList<Usuario>>() {}.getType();
+			Type tipoAdm=new TypeToken<ArrayList<Administrador>>() {}.getType();
+		
+			usuTemp=g.fromJson(new FileReader("src\\BaseDatos\\UsuariosDB.txt"), tipoUsu);
+			admTemp=g.fromJson(new FileReader("src\\BaseDatos\\AdministradoresDB.txt"), tipoAdm);
+			
+			Usuarios.addAll(usuTemp);
+			Usuarios.addAll(admTemp);
+			usuario=Usuarios.get(0);
+		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		
 	}

@@ -501,7 +501,7 @@ public class Main extends Application {
 			valores[0]="Version 1";
 			boolean[] habilitado=new boolean[1];
 			for(int i=0;i<1;i++) {habilitado[i]=false;}
-			presentacion=new FieldPane("Inforación", categorias, "Publica", valores,habilitado);
+			presentacion=new FieldPane("Información", categorias, "Publica", valores,habilitado);
 			Botones.add(salir, 0, 0);
 		}
 		titulo.setPadding(new Insets(5));
@@ -649,7 +649,7 @@ public class Main extends Application {
 		botones.add(salir, 0, 0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
-		crearProducto.getChildren().addAll(titulo,campos.getChild(),botones);
+		crearProducto.getChildren().addAll(titulo,columnas.getChild(),botones);
 		/** completar
 		 * julian
 		 */

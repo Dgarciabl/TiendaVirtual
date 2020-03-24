@@ -196,22 +196,26 @@ public class Main extends Application {
 		
 		//Usuarios
 		try {
-			ArrayList<Usuario> usuTemp=new ArrayList<Usuario>();
-			ArrayList<Administrador>admTemp=new ArrayList<Administrador>();
-		
+			ArrayList<Usuario> usuTemp=new ArrayList<Usuario>();		
 			Type tipoUsu=new TypeToken<ArrayList<Usuario>>() {}.getType();
-			Type tipoAdm=new TypeToken<ArrayList<Administrador>>() {}.getType();
 		
-			usuTemp=g.fromJson(new FileReader("src\\BaseDatos\\UsuariosDB.txt"), tipoUsu);
-			admTemp=g.fromJson(new FileReader("src\\BaseDatos\\AdministradoresDB.txt"), tipoAdm);
-			
+			usuTemp=g.fromJson(new FileReader("src\\BaseDatos\\UsuariosDB.txt"), tipoUsu);			
 			Usuarios.addAll(usuTemp);
-			Usuarios.addAll(admTemp);
-			usuario=Usuarios.get(0);
+
 		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+		try {
+			ArrayList<Administrador>admTemp=new ArrayList<Administrador>();
+			Type tipoAdm=new TypeToken<ArrayList<Administrador>>() {}.getType();
+			
+			admTemp=g.fromJson(new FileReader("src\\BaseDatos\\AdministradoresDB.txt"), tipoAdm);
+			Usuarios.addAll(admTemp);
+			usuario=Usuarios.get(0);
+		}
+		catch(JsonIOException | JsonSyntaxException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	public static void cargarUsuarios() {

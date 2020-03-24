@@ -511,6 +511,15 @@ public class Main extends Application {
 		return principal;
 	}
 				//Mostrar
+	public static Vbox mostrarProductos() {
+		
+		/** no tocar 
+		 * cano trabajando
+		 * 
+		 */
+		
+		return new VBox();
+	}
 	/** completar
 	 * 
 	 */

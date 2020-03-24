@@ -9,3 +9,4 @@ bin/BaseDatos/InventarioDB.txt
 bin/BaseDatos/CategoriasDB.txt
 bin/UImain/Main.class
 bin/UImain/Main.class
+*.class

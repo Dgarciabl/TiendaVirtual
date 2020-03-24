@@ -229,8 +229,9 @@ public class Main extends Application {
 		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
 		Usuarios.add(user);
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Jorge");
-		Usuarios.add(user2);
-		usuario=user2;
+		Usuarios.add(user);
+		//usuario=user2;
+		usuario=admon;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -458,7 +459,7 @@ public class Main extends Application {
 				valores[2]="Femenino";
 			}
 			boolean[] habilitado=new boolean[3];
-			for(int i=0;i<4;i++) {habilitado[i]=false;}
+			for(int i=0;i<3;i++) {habilitado[i]=false;}
 			presentacion=new FieldPane("Inforación", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 1, 0);
 			Botones.add(editar, 0, 0);
@@ -484,20 +485,30 @@ public class Main extends Application {
 			//Consultas
 				//Busqueda
 	public static VBox BuscarNombre() {
-		
-		/** completar
-		 * 
-		 */
-		
-		return new VBox();
+		VBox principal=new VBox();
+		String[] categorias= {"Nombre del Producto:"};
+		FieldPane buscador=new FieldPane("Busqueda por",categorias,"nombre", null, null);
+		buscador.getChild().setAlignment(Pos.TOP_CENTER);
+		buscador.getChild().setPadding(new Insets(5));
+		Button buscar=new Button("Buscar");
+		buscar.setAlignment(Pos.CENTER);
+		principal.getChildren().addAll(buscador,buscar);
+		return principal;
 	}
 	public static VBox BuscarCategoria() {
+		VBox principal=new VBox();
+		Label titulo=new Label("Seleccione la Categoria:");
+		titulo.setAlignment(Pos.TOP_CENTER);
+		titulo.setPadding(new Insets(5));
+		GridPane buscador=new GridPane();
+		buscador.setAlignment(Pos.TOP_CENTER);
+		buscador.setPadding(new Insets(5));
+		buscador.add(new Label("Seleccione la Categoria"), 0, 0);
 		
-		/** completar
-		 * 
-		 */
-		
-		return new VBox();
+		Button buscar=new Button("Buscar");
+		buscar.setAlignment(Pos.CENTER);
+		principal.getChildren().addAll(titulo,buscador,buscar);
+		return principal;
 	}
 				//Mostrar
 	/** completar

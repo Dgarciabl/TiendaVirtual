@@ -259,7 +259,10 @@ public class Main extends Application {
 		//Top
 		principal.setTop(menuInvitado());
 		//center
+		
 		principal.setCenter(archivo(usuario));
+		
+		//principal.setCenter(MostrarCarro());
 		//principal.setCenter(mostrarInventario());
 		//Setting the scene
 		invitado=new Scene(principal, 400,400);
@@ -630,13 +633,23 @@ public class Main extends Application {
 				//crear
 	public static VBox crearProducto() {
 		
-		
+		VBox crearProducto = new VBox();
+		Label titulo = new Label("Crear producto");
+		titulo.setAlignment(Pos.TOP_CENTER);
+		titulo.setPadding(new Insets(5));
+		String [] campos = new String[4];
+		campos[0] = "Nombre";
+		campos[1] = "Descripcion";
+		campos[2] = "Precio original";
+		campos[3] = "Precio de venta";
+		campos[4] = "Categorias";
+		FieldPane columnas = new FieldPane(" ",campos, " ", campos, null);
 		
 		/** completar
 		 * julian
 		 */
 		
-		return new VBox();
+		return crearProducto;
 	}
 	
 	

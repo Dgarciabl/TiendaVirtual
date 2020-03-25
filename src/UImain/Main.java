@@ -650,19 +650,19 @@ public class Main extends Application {
 	}
 	public static void mostrarCategorias() {
 		VBox cat=new VBox();
+		ListView listacat=new ListView();
+		listacat.getItems().addAll(categorias);
+		String[]desc= {""}; String[]Valor=new String[1];
+		FieldPane Shower=new FieldPane("",desc,"",null,null);
+		Shower.getChild().setAlignment(Pos.TOP_CENTER);
+		Shower.getChild().setPadding(new Insets(5));
 		
 		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		
 		GridPane g=new GridPane(); g.setHgap(5);
 		
-		//TextField t: Muestra la ArrayList categorias
-		//TextField b: Muestra descripcion de la categoria
-		TextField t=new TextField("ListaCat"); TextField b=new TextField("Descripcion");
-		t.setPrefHeight(100); b.setPrefHeight(100);
-		
-		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
 		g.add(new Label("Lista de de categorias:"), 0, 0); g.add(new Label("Descripcion:"), 1, 0);
-		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(listacat,0, 1); g.add(Shower.getChild(), 1, 1);
 		g.add(new Button("Busqueda por categoria"), 1, 2);
 		cat.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);

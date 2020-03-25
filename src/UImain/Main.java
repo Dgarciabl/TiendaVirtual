@@ -292,10 +292,28 @@ public class Main extends Application {
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem BuscarProducto = new MenuItem("Busqueda por nombre");
+		BuscarProducto.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent evento) {
+				BuscarNombre();
+			}
+		});
 		MenuItem BuscarCategoria = new MenuItem("Busqueda por Categorias");
+		BuscarCategoria.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				BuscarCategoria();	
+			}
+		});
 		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
 		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
+		/** completar
+		 * 
+		 */
 		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
+		/** completar
+		 * 
+		 */
 		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
 		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
@@ -309,12 +327,33 @@ public class Main extends Application {
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
+		buscarProducto.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				BuscarNombre();				
+			}
+		});
 		MenuItem busquedaCategorias = new MenuItem("Busqueda por categorias");
+		busquedaCategorias.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				BuscarCategoria();	
+			}
+		});
 		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
 		Menu mostrarExistencias = new Menu("Mostrar");
 		MenuItem mostrarCategorias = new MenuItem("Mostrar categorias");
+		/** completar
+		 * 
+		 */
 		MenuItem mostrarInventario = new MenuItem("Mostrar inventario");
+		/** completar
+		 * 
+		 */
 		MenuItem mostrarCarro = new MenuItem("Mostrar productos del carro");
+		/** completar
+		 * 
+		 */
 		mostrarExistencias.getItems().addAll(mostrarCarro,mostrarInventario,mostrarCategorias);
 		consultasUsuario.getItems().addAll(mostrarExistencias,busqueda);
 		
@@ -329,19 +368,52 @@ public class Main extends Application {
 		//Producto
 		Menu mostrarExistencias = new Menu("Mostrar");
 		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
+		/** completar
+		 * 
+		 */
 		MenuItem mostrarProductos = new MenuItem("Mostrar productos");
+		/** completar
+		 * 
+		 */
 		MenuItem mostrarCategorias = new MenuItem("Mostar categorias");
+		/** completar
+		 * 
+		 */
 		MenuItem mostrarUsuarios = new MenuItem("Mostrar usuarios");
+		/** completar
+		 * 
+		 */
 		mostrarExistencias.getItems().addAll(mostrarInventario,mostrarProductos,mostrarCategorias,mostrarUsuarios);
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
+		buscarProducto.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				BuscarNombre();				
+			}
+		});
 		MenuItem busquedaCategorias = new MenuItem("Busqueda por categorias");
+		busquedaCategorias.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				BuscarCategoria();	
+			}
+		});
 		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
 		
 		//Crear 
 		
 		Menu crearExistencias = new Menu("Crear");
 		MenuItem crearUsuario = new MenuItem("Crear usuario");
+		crearUsuario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+								
+			}
+		});
 		MenuItem crearProducto = new MenuItem("Crear producto");
 		MenuItem crearCategoria = new MenuItem("Crear categoria");
 		crearExistencias.getItems().addAll(crearUsuario,crearProducto,crearCategoria);

@@ -819,7 +819,7 @@ public class Main extends Application {
 	public static void MostrarCarro() {
 		VBox car=new VBox();
 		ListView carro=new ListView();
-		Usuario usut=(Usuario) usuario; carro.getItems().addAll(usut.getCarro());
+		Usuario usut=(Usuario) usuario; carro.getItems().addAll(usut.getCarro().getInventario());
 		String[] criterios= {"Total de objetos:","Subtotal:"};
 		String[] Valores=new String[2]; Valores[0]=Integer.toString(usut.getCarro().getNumObjetos());
 		Valores[1]=Double.toString(usut.getCarro().getSubTotal());

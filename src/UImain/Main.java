@@ -38,7 +38,7 @@ public class Main extends Application {
 	//Main
 	public static void main(String[] args){
 		inicio();
-		//montarDB();
+		montarDB();
 		launch();
 	}
 	@Override
@@ -48,14 +48,18 @@ public class Main extends Application {
 		mainStage.setTitle("Tienda Virtual");
 		Escenas();
 		archivo();
-		mainStage.setScene(sceneAdministrador);
+		if (usuario==null) {
+			mainStage.setScene(sceneInvitado);
+		}else if(usuario instanceof Usuario) {
+			mainStage.setScene(sceneUsuario);
+		}else if(usuario instanceof Administrador) {
+			mainStage.setScene(sceneAdministrador);
+		}
 		mainStage.show();
 	}
 	//Database
 	public static void inicio() {
-		//cargarUsuarios();
 		CargarDB();
-		usuario=Usuarios.get(3);
 	}
 	public static void montarDB() {
 		GsonBuilder builder = new GsonBuilder();
@@ -236,7 +240,7 @@ public class Main extends Application {
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
 		Usuarios.add(user);
 		//usuario=user2;
-		usuario=admon;
+		//usuario=admon;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -533,7 +537,7 @@ public class Main extends Application {
 		}
 	}
 			//Consultas
-			//Busqueda
+				//Busqueda
 	public static void BuscarNombre() {
 		VBox principal=new VBox();
 		String[] categorias= {"Nombre del Producto:"};
@@ -550,8 +554,7 @@ public class Main extends Application {
 		}else if(usuario instanceof Administrador) {
 			principalAdministrador.setCenter(principal);
 		}
-	}
-	
+	}	
 	public static void BuscarCategoria() {
 		VBox principal=new VBox();
 		Label titulo=new Label("Seleccione la Categoria:");

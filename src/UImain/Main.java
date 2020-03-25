@@ -439,9 +439,12 @@ public class Main extends Application {
 			principalInvitado.setCenter(principal);
 		}else if(usuario instanceof Usuario) {
 			principalUsuario.setCenter(principal);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(principal);
 		}
 	}
-	public static VBox BuscarCategoria() {
+	
+	public static void BuscarCategoria() {
 		VBox principal=new VBox();
 		Label titulo=new Label("Seleccione la Categoria:");
 		titulo.setAlignment(Pos.TOP_CENTER);
@@ -454,7 +457,13 @@ public class Main extends Application {
 		Button buscar=new Button("Buscar");
 		buscar.setAlignment(Pos.CENTER);
 		principal.getChildren().addAll(titulo,buscador,buscar);
-		return principal;
+		if (usuario==null) {
+			principalInvitado.setCenter(principal);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(principal);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(principal);
+		}
 	}
 				//Mostrar
 	public static VBox mostrarInventario() {
@@ -547,7 +556,7 @@ public class Main extends Application {
 		return car;
 	}
 				//crear
-	public static VBox crearProducto() {
+	public static void crearProducto() {
 		
 		VBox crearProducto = new VBox();
 		Label titulo = new Label("Crear producto");
@@ -571,9 +580,15 @@ public class Main extends Application {
 		crearProducto.getChildren().addAll(titulo,columnas.getChild(),botones);
 		crearProducto.setAlignment(Pos.TOP_CENTER);
 		
-		return crearProducto;
+		if (usuario==null) {
+			principalInvitado.setCenter(crearProducto);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(crearProducto);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(crearProducto);
+		}
 	}
-	public static VBox crearCategoria() {
+	public static void crearCategoria() {
 		VBox crearCategoria = new VBox();
 		Label title = new Label("Crear Categoria");
 		title.setAlignment(Pos.TOP_CENTER);
@@ -593,7 +608,13 @@ public class Main extends Application {
 		crearCategoria.getChildren().addAll(title,columnas.getChild(),botones);
 		crearCategoria.setAlignment(Pos.TOP_CENTER);
 		
-		return crearCategoria();
+		if (usuario==null) {
+			principalInvitado.setCenter(crearCategoria);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(crearCategoria);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(crearCategoria);
+		}
 		
 	}
 	

@@ -908,7 +908,8 @@ public class Main extends Application {
 	}
 	public static void ayuda() {
 		Alert info = new Alert(AlertType.INFORMATION);
-		info.setTitle("Creado por: ");
+		info.setHeaderText("Creado por");
+		info.setTitle("Equipo 1");
 		info.setContentText("David Andres Cano \n David Garcia Blandon \n Juan Pablo Buitrago Dias \n Julian Esteban Fernandez Montoya");
 		info.show();
 	}

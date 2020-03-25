@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.*;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
+import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -541,14 +542,54 @@ public class Main extends Application {
 			//Consultas
 				//Busqueda
 	public static void BuscarNombre() {
-		VBox principal=new VBox();
+		BorderPane principal=new BorderPane();
+		
 		String[] categorias= {"Nombre del Producto:"};
-		FieldPane buscador=new FieldPane("Busqueda por",categorias,"nombre", null, null);
+		FieldPane buscador=new FieldPane("Busqueda por Nombre",categorias,"", null, null);
 		buscador.getChild().setAlignment(Pos.TOP_CENTER);
-		buscador.getChild().setPadding(new Insets(5));
 		Button buscar=new Button("Buscar");
-		buscar.setAlignment(Pos.CENTER);
-		principal.getChildren().addAll(buscador.getChild(),buscar);
+		buscador.getChild().add(buscar,1,3);
+		principal.setCenter(buscador.getChild());
+		buscar.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				try {
+					if (((TextField)buscador.getChild().getChildren().get(3)).getText().contentEquals("")) {
+						throw new FormularioIncompletoError();
+					}
+					Label mensaje=new Label();
+					int j=Main.inventario.RealizarBusqueda(((TextField)buscador.getChild().getChildren().get(3)).getText());
+					if (j!=-1) {
+						mensaje.setText("Producto Encontrado");
+						String[] criterios= {"Nombre:","Descripcion:","Precio:","Cantidad:"};
+						String[] valores=new String[4];
+						valores[0]=inventario.getInventario().get(j).getProducto().getNombre();
+						valores[1]=inventario.getInventario().get(j).getProducto().getDescripcion();
+						valores[2]=String.valueOf(inventario.getInventario().get(j).getProducto().getPrecioVenta());
+						valores[3]=String.valueOf(inventario.getInventario().get(j).getCantidad());
+						boolean[] habilitado=new boolean[4];
+						for(int i=0;i<4;i++) {habilitado[i]=false;}
+						FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
+						if (usuario==null) {
+							principal.setBottom(new VBox(mensaje,resultado.getChild()));
+						}else if(usuario instanceof Usuario) {
+							principal.setBottom(new VBox(mensaje,resultado.getChild()));
+						}else if(usuario instanceof Administrador) {
+							principal.setBottom(new VBox(mensaje,resultado.getChild()));
+						}
+					}else {
+						mensaje.setText("Producto no Encontrado");
+						mensaje.setAlignment(Pos.TOP_CENTER);
+						principal.setBottom(mensaje);
+					}	
+				}catch(FormularioIncompletoError err){
+					
+				}
+			}
+		});
+		
+		
+		
 		if (usuario==null) {
 			principalInvitado.setCenter(principal);
 		}else if(usuario instanceof Usuario) {

@@ -19,7 +19,18 @@
     "carroCompra": {
       "subTotal": 0.0,
       "numObjetos": 0,
-      "inventario": []
+      "inventario": [
+        {
+          "producto": {
+            "nombre": "Leche",
+            "descripcion": "1 Litro",
+            "categorias": [],
+            "precioVenta": 3500.0,
+            "precioCompra": 3000.0
+          },
+          "cantidad": 12
+        }
+      ]
     },
     "nombre": "Pablo",
     "genero": true,

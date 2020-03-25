@@ -28,9 +28,13 @@ public class Main extends Application {
 	public static int nivel=2;
 	public static Persona usuario;
 	//Graphic interfaces
-	Stage mainStage;
-	
-	
+	static Stage mainStage;
+	static Scene sceneInvitado;
+	static BorderPane principalInvitado;
+	static Scene sceneUsuario;
+	static BorderPane principalUsuario;
+	static Scene sceneAdministrador;
+	static BorderPane principalAdministrador;
 	//Main
 	public static void main(String[] args){
 		inicio();
@@ -42,8 +46,11 @@ public class Main extends Application {
 		// TODO Auto-generated method stub
 		mainStage=new Stage();
 		mainStage.setTitle("Tienda Virtual");
-		Scene inicio=Invitado();
-		mainStage.setScene(inicio);
+		Invitado();
+		Usuario();
+		Administrador();
+		archivo();
+		mainStage.setScene(sceneUsuario);
 		mainStage.show();
 	}
 	//Database
@@ -230,8 +237,8 @@ public class Main extends Application {
 		Usuarios.add(user);
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
 		Usuarios.add(user);
-		//usuario=user2;
-		usuario=admon;
+		usuario=user2;
+		//usuario=admon;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -252,45 +259,23 @@ public class Main extends Application {
 		
 		return new Scene(new Button());
 	}
-	public Scene Invitado() {
-		Scene invitado;
-		BorderPane principal=new BorderPane();
-		mainStage.setTitle("Invitado");
+	public void Invitado() {
+		principalInvitado=new BorderPane();
+		sceneInvitado=new Scene(principalInvitado, 400,400);
 		//Top
-		principal.setTop(menuAdministrador());
-		//center
-		
-		principal.setCenter(archivo(usuario));
-		//principal.setCenter(crearProducto());
-		//principal.setCenter(MostrarCarro());
-		//principal.setCenter(mostrarInventario());
-		//Setting the scene
-		invitado=new Scene(principal, 400,400);
-		return invitado;
+		principalInvitado.setTop(menuAdministrador());
 	}
-	public Scene Usuario(Usuario usu) {
-		Scene usuario;
-		BorderPane principal=new BorderPane();
-		mainStage.setTitle(usu.getNombre());
-		principal.setTop(menuUsuario());
-		//Center
-		
-		//Setting the scene
-		usuario=new Scene(principal, 400,400);
-		return usuario;
-	}
-	public Scene Administrador(Administrador admon) {
-		Scene administrador;
-		BorderPane principal=new BorderPane();
-		mainStage.setTitle(admon.getNombre());
+	public void Usuario() {
+		principalUsuario=new BorderPane();
+		sceneUsuario=new Scene(principalUsuario, 400,400);
 		//Top
-
-		principal.setTop(menuAdministrador());
-		//Center
-		
-		//Setting the scene
-		administrador=new Scene(principal, 400,400);
-		return administrador;
+		principalUsuario.setTop(menuUsuario());
+	}
+	public void Administrador() {
+		principalAdministrador=new BorderPane();
+		sceneAdministrador=new Scene(principalAdministrador, 400,400);
+		//Top
+		principalAdministrador.setTop(menuAdministrador());
 	}
 		//Panes
 			//menus
@@ -370,7 +355,7 @@ public class Main extends Application {
 		return (menu);
 	}
 			//Archivo
-	public static VBox archivo(Persona pers) {
+	public static void archivo() {
 		String[] categorias;
 		String[] valores;
 		VBox archivo=new VBox();
@@ -380,7 +365,11 @@ public class Main extends Application {
 		Button salir=new Button("Salir");
 		Button editar=new Button("Editar");
 		Button añadirSaldo=new Button("Añadir Saldo");
-		if(pers==null) {
+		titulo.setPadding(new Insets(5));
+		Botones.setAlignment(Pos.CENTER);
+		Botones.setPadding(new Insets(8,8,8,8));
+		Botones.setHgap(5);
+		if(usuario==null) {
 			titulo.setText("Perfil de Invitado");
 			categorias=new String[1];
 			valores=new String[1];
@@ -390,7 +379,10 @@ public class Main extends Application {
 			for(int i=0;i<1;i++) {habilitado[i]=false;}
 			presentacion=new FieldPane("Información", categorias, "Publica", valores, habilitado);
 			Botones.add(salir, 0, 0);
-		}else if(pers instanceof Usuario) {
+			archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
+			archivo.setAlignment(Pos.TOP_CENTER);
+			((BorderPane)sceneInvitado.getRoot()).setCenter(archivo);
+		}else if(usuario instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
 			categorias=new String[4];
 			valores=new String[4];
@@ -398,30 +390,33 @@ public class Main extends Application {
 			categorias[1]="Edad: ";
 			categorias[2]="Genero: ";
 			categorias[3]="Saldo: ";
-			valores[0]=pers.getNombre();
-			valores[1]=String.valueOf(pers.getEdad());
-			if(pers.getGenero()) {
+			valores[0]=usuario.getNombre();
+			valores[1]=String.valueOf(usuario.getEdad());
+			if(usuario.getGenero()) {
 				valores[2]="Masculino";
 			}else {
 				valores[2]="Femenino";
 			}
-			valores[3]=String.valueOf(((Usuario)pers).getSaldo());
+			valores[3]=String.valueOf(((Usuario)usuario).getSaldo());
 			boolean[] habilitado=new boolean[4];
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
 			Botones.add(editar, 1, 0);
 			Botones.add(añadirSaldo, 0, 0);
-		}else if (pers instanceof Administrador) {
+			archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
+			archivo.setAlignment(Pos.TOP_CENTER);
+			((BorderPane)sceneUsuario.getRoot()).setCenter(archivo);
+		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
 			categorias=new String[3];
 			valores=new String[3];
 			categorias[0]="Nombre: ";
 			categorias[1]="Edad: ";
 			categorias[2]="Genero: ";
-			valores[0]=pers.getNombre();
-			valores[1]=String.valueOf(pers.getEdad());
-			if(pers.getGenero()) {
+			valores[0]=usuario.getNombre();
+			valores[1]=String.valueOf(usuario.getEdad());
+			if(usuario.getGenero()) {
 				valores[2]="Masculino";
 			}else {
 				valores[2]="Femenino";
@@ -431,24 +426,10 @@ public class Main extends Application {
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 1, 0);
 			Botones.add(editar, 0, 0);
-		}else {
-			titulo.setText("Esto es un Error");
-			categorias=new String[1];
-			valores=new String[1];
-			categorias[0]="Por Favor Contactar al Administrador";
-			valores[0]="Version 1";
-			boolean[] habilitado=new boolean[1];
-			for(int i=0;i<1;i++) {habilitado[i]=false;}
-			presentacion=new FieldPane("Información", categorias, "Publica", valores,habilitado);
-			Botones.add(salir, 0, 0);
+			archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
+			archivo.setAlignment(Pos.TOP_CENTER);
+			((BorderPane)sceneAdministrador.getRoot()).setCenter(archivo);
 		}
-		titulo.setPadding(new Insets(5));
-		Botones.setAlignment(Pos.CENTER);
-		Botones.setPadding(new Insets(8,8,8,8));
-		Botones.setHgap(5);
-		archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
-		archivo.setAlignment(Pos.TOP_CENTER);
-		return archivo;
 	}
 			//Consultas
 				//Busqueda

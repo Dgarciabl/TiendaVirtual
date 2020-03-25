@@ -237,8 +237,8 @@ public class Main extends Application {
 		Usuarios.add(user);
 		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
 		Usuarios.add(user);
-		usuario=user2;
-		//usuario=admon;
+		//usuario=user2;
+		usuario=admon;
 	}
 	//Utilities
 	public static boolean isNumeric(String s) {
@@ -263,7 +263,7 @@ public class Main extends Application {
 		principalInvitado=new BorderPane();
 		sceneInvitado=new Scene(principalInvitado, 400,400);
 		//Top
-		principalInvitado.setTop(menuAdministrador());
+		principalInvitado.setTop(menuInvitado());
 	}
 	public void Usuario() {
 		principalUsuario=new BorderPane();
@@ -306,15 +306,21 @@ public class Main extends Application {
 			}
 		});
 		busqueda.getItems().addAll(BuscarProducto,BuscarCategoria);
-		MenuItem MostrarCategorias = new MenuItem("Mostrar Categorias");
-		/** completar
-		 * 
-		 */
-		MenuItem MostrarInventario = new MenuItem("Mostrar Inventario");
-		/** completar
-		 * 
-		 */
-		consultasInvitado.getItems().addAll(busqueda,MostrarCategorias,MostrarInventario);
+		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
+		mostrarCategorias.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarCategorias();
+			}
+		});
+		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
+		mostrarInventario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarInventario();
+			}
+		});
+		consultasInvitado.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario);
 		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
 		menu=new MenuBar(archivo,consultasInvitado,ayuda);
@@ -343,17 +349,26 @@ public class Main extends Application {
 		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
 		Menu mostrarExistencias = new Menu("Mostrar");
 		MenuItem mostrarCategorias = new MenuItem("Mostrar categorias");
-		/** completar
-		 * 
-		 */
+		mostrarCategorias.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarCategorias();
+			}
+		});
 		MenuItem mostrarInventario = new MenuItem("Mostrar inventario");
-		/** completar
-		 * 
-		 */
+		mostrarInventario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarInventario();
+			}
+		});
 		MenuItem mostrarCarro = new MenuItem("Mostrar productos del carro");
-		/** completar
-		 * 
-		 */
+		mostrarCarro.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				MostrarCarro();
+			}
+		});
 		mostrarExistencias.getItems().addAll(mostrarCarro,mostrarInventario,mostrarCategorias);
 		consultasUsuario.getItems().addAll(mostrarExistencias,busqueda);
 		
@@ -368,17 +383,26 @@ public class Main extends Application {
 		//Producto
 		Menu mostrarExistencias = new Menu("Mostrar");
 		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
-		/** completar
-		 * 
-		 */
+		mostrarInventario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarInventario();
+			}
+		});
 		MenuItem mostrarProductos = new MenuItem("Mostrar productos");
-		/** completar
-		 * 
-		 */
+		mostrarProductos.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarProductos();
+			}
+		});
 		MenuItem mostrarCategorias = new MenuItem("Mostar categorias");
-		/** completar
-		 * 
-		 */
+		mostrarCategorias.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mostrarCategorias();
+			}
+		});
 		MenuItem mostrarUsuarios = new MenuItem("Mostrar usuarios");
 		/** completar
 		 * 
@@ -415,7 +439,19 @@ public class Main extends Application {
 			}
 		});
 		MenuItem crearProducto = new MenuItem("Crear producto");
+		crearProducto.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent event) {
+				crearProducto();
+			}
+		});
 		MenuItem crearCategoria = new MenuItem("Crear categoria");
+		crearCategoria.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				crearCategoria();
+			}			
+		});
 		crearExistencias.getItems().addAll(crearUsuario,crearProducto,crearCategoria);
 		
 		consultasAdmin.getItems().addAll(mostrarExistencias, busqueda, crearExistencias);
@@ -503,7 +539,7 @@ public class Main extends Application {
 		}
 	}
 			//Consultas
-				//Busqueda
+			//Busqueda
 	public static void BuscarNombre() {
 		VBox principal=new VBox();
 		String[] categorias= {"Nombre del Producto:"};
@@ -544,7 +580,7 @@ public class Main extends Application {
 		}
 	}
 				//Mostrar
-	public static VBox mostrarInventario() {
+	public static void mostrarInventario() {
 		VBox inv=new VBox();
 		Label lis1=new Label("Mostrar Inventario"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		
@@ -563,9 +599,16 @@ public class Main extends Application {
 		g.setAlignment(Pos.CENTER);
 		inv.setAlignment(Pos.TOP_CENTER);
 		
-		return inv;
+		if (usuario==null) {
+			principalInvitado.setCenter(inv);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(inv);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(inv);
+		}
+		
 	}
-	public static VBox mostrarCategorias() {
+	public static void mostrarCategorias() {
 		VBox cat=new VBox();
 		
 		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
@@ -585,9 +628,16 @@ public class Main extends Application {
 		g.setAlignment(Pos.CENTER);
 		cat.setAlignment(Pos.TOP_CENTER);
 				
-		return cat;
+		if (usuario==null) {
+			principalInvitado.setCenter(cat);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(cat);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(cat);
+		}
+		
 	}
-	public static VBox mostrarProductos() {
+	public static void mostrarProductos() {
 		//casi seguro esta esta mala porque nunca diferencio bien Producto e inventario :v
 		VBox prod=new VBox();
 		
@@ -608,10 +658,17 @@ public class Main extends Application {
 		g.setAlignment(Pos.CENTER);
 		prod.setAlignment(Pos.TOP_CENTER);
 		
-		return prod;
+		if (usuario==null) {
+			principalInvitado.setCenter(prod);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(prod);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(prod);
+		}
+		
 	}
 				//Carro
-	public static VBox MostrarCarro() {
+	public static void MostrarCarro() {
 		VBox car=new VBox();
 		
 		Label lis1=new Label("Carro"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
@@ -630,8 +687,15 @@ public class Main extends Application {
 		car.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		car.setAlignment(Pos.TOP_CENTER);	
+
+		if (usuario==null) {
+			principalInvitado.setCenter(car);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(car);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(car);
+		}
 		
-		return car;
 	}
 				//crear
 	public static void crearProducto() {
@@ -695,10 +759,6 @@ public class Main extends Application {
 		}
 		
 	}
-	
-
-	
-	
 	
 	
 	/** completar

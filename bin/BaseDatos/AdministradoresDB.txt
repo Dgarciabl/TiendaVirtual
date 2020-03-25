@@ -1,0 +1,29 @@
+[
+  {
+    "nombre": "superadmin",
+    "genero": true,
+    "edad": 0,
+    "usuario": "root",
+    "contraseña": "root",
+    "preguntaRecuperacion": "root",
+    "respuestaRecuperacion": "root"
+  },
+  {
+    "nombre": "Jorge",
+    "genero": true,
+    "edad": 54,
+    "usuario": "jordi",
+    "contraseña": "soloyolase",
+    "preguntaRecuperacion": "NombrePadre",
+    "respuestaRecuperacion": "Javier"
+  },
+  {
+    "nombre": "Daniela",
+    "genero": false,
+    "edad": 28,
+    "usuario": "dani",
+    "contraseña": "dan",
+    "preguntaRecuperacion": "NombreMadre",
+    "respuestaRecuperacion": "Johana"
+  }
+]

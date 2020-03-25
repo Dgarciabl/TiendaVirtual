@@ -282,6 +282,12 @@ public class Main extends Application {
 	public static MenuBar menuInvitado() {
 		MenuBar menu;
 		Menu archivo=new Menu("Archivo");
+		archivo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent evento) {
+				archivo();
+			}
+		});
 		//Consultas
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");

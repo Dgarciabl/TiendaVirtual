@@ -262,7 +262,7 @@ public class Main extends Application {
 		return resultado;
 	}
 	//Interfaces Graficas
-		//Scenes
+	//Scenes
 	public void Escenas() {
 		//Inicial
 		principalInicial=new GridPane();
@@ -284,13 +284,25 @@ public class Main extends Application {
 			//menus
 	public static MenuBar menuInvitado() {
 		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		archivo.setOnAction(new EventHandler<ActionEvent>() {
+		//Archivo
+		Menu archivoInvitado = new Menu("Archivo");
+		MenuItem perfilInvitado = new MenuItem("Perfil");
+		perfilInvitado.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent evento) {
+			public void handle(ActionEvent event) {
 				archivo();
 			}
 		});
+		MenuItem logOutInvitado = new MenuItem("Cerrar Sesion");
+		logOutInvitado.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		archivoInvitado.getItems().addAll(perfilInvitado,logOutInvitado);
 		//Consultas
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
@@ -331,13 +343,25 @@ public class Main extends Application {
 	}
 	public static MenuBar menuUsuario() {
 		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		archivo.setOnAction(new EventHandler<ActionEvent>() {
+		//Archivo
+		Menu archivoUsuario = new Menu("Archivo");
+		MenuItem perfilUsuario = new MenuItem("Perfil");
+		perfilUsuario.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent evento) {
+			public void handle(ActionEvent event) {
 				archivo();
 			}
 		});
+		MenuItem logOutUsuario = new MenuItem("Cerrar Sesion");
+		logOutUsuario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		archivoUsuario.getItems().addAll(perfilUsuario,logOutUsuario);
 		//Consultas
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
@@ -387,13 +411,25 @@ public class Main extends Application {
 		return (menu);
 	}
 	public static MenuBar menuAdministrador() {
-		Menu archivo = new Menu("Archivo");
-		archivo.setOnAction(new EventHandler<ActionEvent>() {
+		//Archivo
+		Menu archivoAdmin = new Menu("Archivo");
+		MenuItem perfilAdmin = new MenuItem("Perfil");
+		perfilAdmin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent evento) {
+			public void handle(ActionEvent event) {
 				archivo();
 			}
 		});
+		MenuItem logOutAdmin = new MenuItem("Cerrar Sesion");
+		logOutAdmin.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		archivoAdmin.getItems().addAll(perfilAdmin,logOutAdmin);
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
 		//Producto
 		Menu mostrarExistencias = new Menu("Mostrar");
@@ -477,6 +513,8 @@ public class Main extends Application {
 		return (menu);
 	}
 			//Archivo
+	
+
 	public static void archivo() {
 		String[] categorias;
 		String[] valores;

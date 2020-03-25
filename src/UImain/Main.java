@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
+import java.util.function.Consumer;
+
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
@@ -68,7 +70,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(0);
+		usuario=Usuarios.get(1);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -259,7 +261,7 @@ public class Main extends Application {
 		boolean[] habilitado=new boolean[4];
 		for(int i=0;i<4;i++) {habilitado[i]=false;}
 		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
-		resultado.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		resultado.getChild().setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return resultado;
 	}
 	public static FieldPane categoricas(int j) {
@@ -272,7 +274,7 @@ public class Main extends Application {
 		return res;
 	}
 	//Interfaces Graficas
-		//Scenes
+	//Scenes
 	public void Escenas() {
 		//Inicial
 		principalInicial=new GridPane();
@@ -294,13 +296,25 @@ public class Main extends Application {
 			//menus
 	public static MenuBar menuInvitado() {
 		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		archivo.setOnAction(new EventHandler<ActionEvent>() {
+		//Archivo
+		Menu archivoInvitado = new Menu("Archivo");
+		MenuItem perfilInvitado = new MenuItem("Perfil");
+		perfilInvitado.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent evento) {
+			public void handle(ActionEvent event) {
 				archivo();
 			}
 		});
+		MenuItem logOutInvitado = new MenuItem("Cerrar Sesion");
+		logOutInvitado.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		archivoInvitado.getItems().addAll(perfilInvitado,logOutInvitado);
 		//Consultas
 		Menu consultasInvitado = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
@@ -335,19 +349,41 @@ public class Main extends Application {
 		});
 		consultasInvitado.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario);
 		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasInvitado,ayuda);
+		Menu ayudaInvitado = new Menu("Ayuda");
+		MenuItem aboutInvitado = new Menu("Acerca de");
+		aboutInvitado.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		menu=new MenuBar(archivoInvitado,consultasInvitado,ayudaInvitado);
 		return (menu);
 	}
 	public static MenuBar menuUsuario() {
 		MenuBar menu;
-		Menu archivo=new Menu("Archivo");
-		archivo.setOnAction(new EventHandler<ActionEvent>() {
+		//Archivo
+		Menu archivoUsuario = new Menu("Archivo");
+		MenuItem perfilUsuario = new MenuItem("Perfil");
+		perfilUsuario.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent evento) {
+			public void handle(ActionEvent event) {
 				archivo();
 			}
 		});
+		MenuItem logOutUsuario = new MenuItem("Cerrar Sesion");
+		logOutUsuario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		archivoUsuario.getItems().addAll(perfilUsuario,logOutUsuario);
 		//Consultas
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
@@ -392,18 +428,40 @@ public class Main extends Application {
 		consultasUsuario.getItems().addAll(mostrarExistencias,busqueda);
 		
 		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasUsuario,ayuda);
+		Menu ayudaUsuario = new Menu("Ayuda");
+		MenuItem aboutUsuario = new Menu("Acerca de");
+		aboutUsuario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		menu=new MenuBar(archivoUsuario,consultasUsuario,ayudaUsuario);
 		return (menu);
 	}
 	public static MenuBar menuAdministrador() {
-		Menu archivo = new Menu("Archivo");
-		archivo.setOnAction(new EventHandler<ActionEvent>() {
+		//Archivo
+		Menu archivoAdmin = new Menu("Archivo");
+		MenuItem perfilAdmin = new MenuItem("Perfil");
+		perfilAdmin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent evento) {
+			public void handle(ActionEvent event) {
 				archivo();
 			}
 		});
+		MenuItem logOutAdmin = new MenuItem("Cerrar Sesion");
+		logOutAdmin.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		archivoAdmin.getItems().addAll(perfilAdmin,logOutAdmin);
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
 		//Producto
 		Menu mostrarExistencias = new Menu("Mostrar");
@@ -482,11 +540,24 @@ public class Main extends Application {
 		consultasAdmin.getItems().addAll(mostrarExistencias, busqueda, crearExistencias);
 		
 		
-		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultasAdmin,ayuda);
+		//Ayuda		
+		Menu ayudaAdmin = new Menu("Ayuda");
+		MenuItem aboutAdmin = new Menu("Acerca de");
+		aboutAdmin.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		MenuBar menu=new MenuBar(archivoAdmin,consultasAdmin,ayudaAdmin);
 		return (menu);
 	}
 			//Archivo
+	
+
 	public static void archivo() {
 		String[] categorias;
 		String[] valores;
@@ -589,15 +660,30 @@ public class Main extends Application {
 							principal.setBottom(new VBox(resultado,mensaje));
 						}else if(usuario instanceof Usuario) {
 							Button añadir=new Button("Añadir al Carro");
-							resultado.add(añadir, 1, 4);
+							añadir.setOnAction(new EventHandler<ActionEvent>() {
+								@Override
+								public void handle(ActionEvent arg0) {
+									TextInputDialog confirmacion=new TextInputDialog();
+									confirmacion.setTitle("Confirmar Adicion");
+									confirmacion.setHeaderText("Confirmar la cantidad a añadir");
+									confirmacion.setContentText("Cantidad:");
+									Optional<String> respuesta=confirmacion.showAndWait();
+									respuesta.ifPresent(new Consumer<String>() {
+							            @Override public void accept(String user) {
+							                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));;
+							            }
+							        });
+								}
+							});
+							resultado.add(añadir, 1, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
 						}else if(usuario instanceof Administrador) {
 							Button editar=new Button("Editar");
 							Button elimExist=new Button("Eliminar del Inventario");
 							Button eliminar=new Button("Eliminar");
-							resultado.add(editar, 0, 4);
-							resultado.add(elimExist, 1, 4);
-							resultado.add(eliminar, 2, 4);
+							resultado.add(editar, 0, 5);
+							resultado.add(elimExist, 1, 5);
+							resultado.add(eliminar, 2, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
 						}
 					}else {

@@ -600,6 +600,13 @@ public class Main extends Application {
 			for(int i=0;i<4;i++) {habilitado[i]=false;}
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
+			editar.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					boolean[] habilitado = {true,true,true,false};
+					presentacion.setHabilitado(habilitado);
+				}
+			});
 			Botones.add(editar, 1, 0);
 			Botones.add(añadirSaldo, 0, 0);
 		}else if (usuario instanceof Administrador) {
@@ -624,6 +631,7 @@ public class Main extends Application {
 		}
 		archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
 		archivo.setAlignment(Pos.TOP_CENTER);
+
 		if (usuario==null) {
 			principalInvitado.setCenter(archivo);
 		}else if(usuario instanceof Usuario) {

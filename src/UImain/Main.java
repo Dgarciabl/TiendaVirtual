@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
+import java.util.function.Consumer;
+
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
@@ -67,6 +69,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
+		usuario=Usuarios.get(1);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -257,7 +260,7 @@ public class Main extends Application {
 		boolean[] habilitado=new boolean[4];
 		for(int i=0;i<4;i++) {habilitado[i]=false;}
 		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
-		resultado.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		resultado.getChild().setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return resultado;
 	}
 	//Interfaces Graficas
@@ -578,15 +581,30 @@ public class Main extends Application {
 							principal.setBottom(new VBox(resultado,mensaje));
 						}else if(usuario instanceof Usuario) {
 							Button añadir=new Button("Añadir al Carro");
-							resultado.add(añadir, 1, 4);
+							añadir.setOnAction(new EventHandler<ActionEvent>() {
+								@Override
+								public void handle(ActionEvent arg0) {
+									TextInputDialog confirmacion=new TextInputDialog();
+									confirmacion.setTitle("Confirmar Adicion");
+									confirmacion.setHeaderText("Confirmar la cantidad a añadir");
+									confirmacion.setContentText("Cantidad:");
+									Optional<String> respuesta=confirmacion.showAndWait();
+									respuesta.ifPresent(new Consumer<String>() {
+							            @Override public void accept(String user) {
+							                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));;
+							            }
+							        });
+								}
+							});
+							resultado.add(añadir, 1, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
 						}else if(usuario instanceof Administrador) {
 							Button editar=new Button("Editar");
 							Button elimExist=new Button("Eliminar del Inventario");
 							Button eliminar=new Button("Eliminar");
-							resultado.add(editar, 0, 4);
-							resultado.add(elimExist, 1, 4);
-							resultado.add(eliminar, 2, 4);
+							resultado.add(editar, 0, 5);
+							resultado.add(elimExist, 1, 5);
+							resultado.add(eliminar, 2, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
 						}
 					}else {

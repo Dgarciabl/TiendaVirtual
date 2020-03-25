@@ -70,7 +70,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(1);
+		//usuario=Usuarios.get(1);
 	}
 	public static void finalizar() {
 		montarDB();

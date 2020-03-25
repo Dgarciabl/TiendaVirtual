@@ -426,7 +426,7 @@ public class Main extends Application {
 	}
 			//Consultas
 				//Busqueda
-	public static VBox BuscarNombre() {
+	public static void BuscarNombre() {
 		VBox principal=new VBox();
 		String[] categorias= {"Nombre del Producto:"};
 		FieldPane buscador=new FieldPane("Busqueda por",categorias,"nombre", null, null);
@@ -435,7 +435,11 @@ public class Main extends Application {
 		Button buscar=new Button("Buscar");
 		buscar.setAlignment(Pos.CENTER);
 		principal.getChildren().addAll(buscador,buscar);
-		return principal;
+		if (usuario==null) {
+			principalInvitado.setCenter(principal);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(principal);
+		}
 	}
 	public static VBox BuscarCategoria() {
 		VBox principal=new VBox();

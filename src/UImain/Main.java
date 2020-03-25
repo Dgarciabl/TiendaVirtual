@@ -68,6 +68,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
+		usuario=Usuarios.get(0);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -260,6 +261,15 @@ public class Main extends Application {
 		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
 		resultado.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return resultado;
+	}
+	public static FieldPane categoricas(int j) {
+		String[] Criterios= {"Descripcion:"};
+		String[] Valores= new String[1];
+		Valores[0]=categorias.get(j).getDescripcion();
+		boolean[] habilitado=new boolean[1]; habilitado[0]=false;
+		FieldPane res=new FieldPane("",Criterios,"",Valores,habilitado);
+		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		return res;
 	}
 	//Interfaces Graficas
 		//Scenes
@@ -659,30 +669,27 @@ public class Main extends Application {
 	}
 	public static void mostrarCategorias() {
 		VBox cat=new VBox();
-		
+		ListView listacat=new ListView();
+		for (int k=0;k<categorias.size();k++) {listacat.getItems().add(categorias.get(k).getNombre());}
 		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		
 		GridPane g=new GridPane(); g.setHgap(5);
 		
-		//TextField t: Muestra la ArrayList categorias
-		//TextField b: Muestra descripcion de la categoria
-		TextField t=new TextField("ListaCat"); TextField b=new TextField("Descripcion");
-		t.setPrefHeight(100); b.setPrefHeight(100);
-		
-		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
-		g.add(new Label("Lista de de categorias:"), 0, 0); g.add(new Label("Descripcion:"), 1, 0);
-		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(new Label("Lista de categorias:"), 0, 0);
+		g.add(listacat,0, 1); 
 		g.add(new Button("Busqueda por categoria"), 1, 2);
 		cat.getChildren().addAll(lis1,g);
-		g.setAlignment(Pos.CENTER);
+		g.setAlignment(Pos.TOP_CENTER);
 		cat.setAlignment(Pos.TOP_CENTER);
 		
 		listacat.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			public void handle (MouseEvent e) {
-				
+				int s=listacat.getSelectionModel().getSelectedIndex();
+				FieldPane desc=categoricas(s);
+				g.add(desc.getChild(), 1, 1);
 			}
 		});
-			
+		
 				
 		if (usuario==null) {
 			principalInvitado.setCenter(cat);
@@ -694,7 +701,6 @@ public class Main extends Application {
 		
 	}
 	public static void mostrarProductos() {
-		//casi seguro esta esta mala porque nunca diferencio bien Producto e inventario :v
 		VBox prod=new VBox();
 		
 		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
@@ -726,19 +732,20 @@ public class Main extends Application {
 				//Carro
 	public static void MostrarCarro() {
 		VBox car=new VBox();
+		ListView carro=new ListView();
+		Usuario usut=(Usuario) usuario; carro.getItems().addAll(usut.getCarro());
+		String[] criterios= {"Total de objetos:","Subtotal:"};
+		String[] Valores=new String[2]; Valores[0]=Integer.toString(usut.getCarro().getNumObjetos());
+		Valores[1]=Double.toString(usut.getCarro().getSubTotal());
+		boolean[] Habilitado=new boolean[2]; for (int l=0;l<Habilitado.length;l++) {Habilitado[l]=false;} 
+		FieldPane f=new FieldPane("",criterios,"",Valores,Habilitado);
 		
 		Label lis1=new Label("Carro"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		
 		GridPane g=new GridPane(); g.setHgap(5);
 		
-		//TextField t: Muestra la ArrayList carro del usuario
-		//Textfield b: Muestra la cantidad de productos y el subtotal
-		TextField t=new TextField("ListaProdCar"); TextField b=new TextField("Items y Subtotal:");
-		t.setPrefHeight(100); b.setPrefHeight(50);
-		
-		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
 		g.add(new Label("Productos añadidos:"), 0, 0); g.add(new Label("Subtotal:"), 1, 0);
-		g.add(t,0, 1); g.add(b, 1, 1);
+		g.add(carro,0, 1); g.add(f.getChild(), 1, 1);
 		g.add(new Button("Comprar"), 1, 2);
 		car.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);

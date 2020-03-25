@@ -46,11 +46,9 @@ public class Main extends Application {
 		// TODO Auto-generated method stub
 		mainStage=new Stage();
 		mainStage.setTitle("Tienda Virtual");
-		Invitado();
-		Usuario();
-		Administrador();
+		Escenas();
 		archivo();
-		mainStage.setScene(sceneUsuario);
+		mainStage.setScene(sceneAdministrador);
 		mainStage.show();
 	}
 	//Database
@@ -259,22 +257,18 @@ public class Main extends Application {
 		
 		return new Scene(new Button());
 	}
-	public void Invitado() {
+	public void Escenas() {
+		//Invitado
 		principalInvitado=new BorderPane();
 		sceneInvitado=new Scene(principalInvitado, 400,400);
-		//Top
 		principalInvitado.setTop(menuInvitado());
-	}
-	public void Usuario() {
+		//Usuario
 		principalUsuario=new BorderPane();
 		sceneUsuario=new Scene(principalUsuario, 400,400);
-		//Top
 		principalUsuario.setTop(menuUsuario());
-	}
-	public void Administrador() {
+		//Administrador
 		principalAdministrador=new BorderPane();
 		sceneAdministrador=new Scene(principalAdministrador, 400,400);
-		//Top
 		principalAdministrador.setTop(menuAdministrador());
 	}
 		//Panes

@@ -341,7 +341,7 @@ public class Main extends Application {
 		consultasInvitado.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario);
 		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasInvitado,ayuda);
+		menu=new MenuBar(archivoInvitado,consultasInvitado,ayuda);
 		return (menu);
 	}
 	public static MenuBar menuUsuario() {
@@ -410,7 +410,7 @@ public class Main extends Application {
 		
 		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivo,consultasUsuario,ayuda);
+		menu=new MenuBar(archivoUsuario,consultasUsuario,ayuda);
 		return (menu);
 	}
 	public static MenuBar menuAdministrador() {
@@ -512,7 +512,7 @@ public class Main extends Application {
 		
 		
 		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivo,consultasAdmin,ayuda);
+		MenuBar menu=new MenuBar(archivoAdmin,consultasAdmin,ayuda);
 		return (menu);
 	}
 			//Archivo

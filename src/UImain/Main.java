@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
+import javafx.scene.input.MouseEvent;
 
 public class Main extends Application {
 	//App data
@@ -653,17 +654,13 @@ public class Main extends Application {
 	public static void mostrarInventario() {
 		VBox inv=new VBox();
 		Label lis1=new Label("Mostrar Inventario"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		ListView listainv=new ListView();
+		listainv.getItems().addAll(inventario.getInventario());
 		
 		GridPane g=new GridPane(); g.setHgap(5);
 		
-		//TextField t: Muestra Inventario
-		//TextField b: Muestra Descripcion de producto y cantidad
-		TextField t=new TextField("ListaProd"); TextField b=new TextField("Descripcion");
-		t.setPrefHeight(100); b.setPrefHeight(100);
-		
-		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
 		g.add(new Label("Inventario:"), 0, 0); g.add(new Label("Descripcion y cantidad:"), 1, 0);
-		g.add(t,0, 1); g.add(b, 1, 1,2,1);
+		g.add(listainv,0, 1);
 		g.add(new Button("Editar inventario(Admin)"), 1, 2);
 		inv.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
@@ -697,6 +694,13 @@ public class Main extends Application {
 		cat.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		cat.setAlignment(Pos.TOP_CENTER);
+		
+		listacat.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			public void handle (MouseEvent e) {
+				
+			}
+		});
+			
 				
 		if (usuario==null) {
 			principalInvitado.setCenter(cat);

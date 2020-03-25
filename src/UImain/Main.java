@@ -29,17 +29,23 @@ public class Main extends Application {
 	public static Persona usuario;
 	//Graphic interfaces
 	static Stage mainStage;
+		//Inicial
+	static Scene sceneInicial;
+	static GridPane principalInicial;
+		//Invitado
 	static Scene sceneInvitado;
 	static BorderPane principalInvitado;
+		//Usuario
 	static Scene sceneUsuario;
 	static BorderPane principalUsuario;
+		//Administrador
 	static Scene sceneAdministrador;
 	static BorderPane principalAdministrador;
 	//Main
 	public static void main(String[] args){
 		inicio();
-		montarDB();
 		launch();
+		finalizar();
 	}
 	@Override
 	public void start(Stage arg0) throws Exception {
@@ -60,6 +66,9 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
+	}
+	public static void finalizar() {
+		montarDB();
 	}
 	public static void montarDB() {
 		GsonBuilder builder = new GsonBuilder();
@@ -227,21 +236,6 @@ public class Main extends Application {
 		}
 		
 	}
-	public static void cargarUsuarios() {
-		Usuarios=new ArrayList<Persona>();
-		Administrador admon=new Administrador("superadmin", true, 0, "root", "root", "root", "root");
-		Usuarios.add(admon);
-		Administrador admon2 = new Administrador("Jorge", true, 54, "jordi", "soloyolase", "NombrePadre", "Javier");
-		Usuarios.add(admon2);
-		Administrador admon3 = new Administrador("Daniela", false, 28, "dani", "dan","NombreMadre", "Johana");
-		Usuarios.add(admon3);
-		Usuario user=new Usuario("superuser", true, 0, "user", "user", "user", "user");
-		Usuarios.add(user);
-		Usuario user2 = new Usuario("Pablo",true,19, "holasoypablo","bat123", "NombrePadre", "Mauricio");
-		Usuarios.add(user);
-		//usuario=user2;
-		//usuario=admon;
-	}
 	//Utilities
 	public static boolean isNumeric(String s) {
 		try {
@@ -254,14 +248,10 @@ public class Main extends Application {
 	}
 	//Interfaces Graficas
 		//Scenes
-	public Scene Inicial() {
-		
-		
-		
-		
-		return new Scene(new Button());
-	}
 	public void Escenas() {
+		//Inicial
+		principalInicial=new GridPane();
+		sceneInicial=new Scene(principalInicial, 400,400);
 		//Invitado
 		principalInvitado=new BorderPane();
 		sceneInvitado=new Scene(principalInvitado, 400,400);
@@ -327,6 +317,12 @@ public class Main extends Application {
 	public static MenuBar menuUsuario() {
 		MenuBar menu;
 		Menu archivo=new Menu("Archivo");
+		archivo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent evento) {
+				archivo();
+			}
+		});
 		//Consultas
 		Menu consultasUsuario = new Menu("Procesos y Consultas");
 		Menu busqueda = new Menu("Busqueda");
@@ -377,6 +373,12 @@ public class Main extends Application {
 	}
 	public static MenuBar menuAdministrador() {
 		Menu archivo = new Menu("Archivo");
+		archivo.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent evento) {
+				archivo();
+			}
+		});
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
 		//Producto
 		Menu mostrarExistencias = new Menu("Mostrar");
@@ -464,7 +466,7 @@ public class Main extends Application {
 		String[] categorias;
 		String[] valores;
 		VBox archivo=new VBox();
-		FieldPane presentacion;
+		FieldPane presentacion=null;
 		GridPane Botones=new GridPane();
 		Label titulo=new Label();
 		Button salir=new Button("Salir");
@@ -484,9 +486,6 @@ public class Main extends Application {
 			for(int i=0;i<1;i++) {habilitado[i]=false;}
 			presentacion=new FieldPane("Información", categorias, "Publica", valores, habilitado);
 			Botones.add(salir, 0, 0);
-			archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
-			archivo.setAlignment(Pos.TOP_CENTER);
-			((BorderPane)sceneInvitado.getRoot()).setCenter(archivo);
 		}else if(usuario instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
 			categorias=new String[4];
@@ -509,9 +508,6 @@ public class Main extends Application {
 			Botones.add(salir, 2, 0);
 			Botones.add(editar, 1, 0);
 			Botones.add(añadirSaldo, 0, 0);
-			archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
-			archivo.setAlignment(Pos.TOP_CENTER);
-			((BorderPane)sceneUsuario.getRoot()).setCenter(archivo);
 		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
 			categorias=new String[3];
@@ -531,9 +527,15 @@ public class Main extends Application {
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 1, 0);
 			Botones.add(editar, 0, 0);
-			archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
-			archivo.setAlignment(Pos.TOP_CENTER);
-			((BorderPane)sceneAdministrador.getRoot()).setCenter(archivo);
+		}
+		archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
+		archivo.setAlignment(Pos.TOP_CENTER);
+		if (usuario==null) {
+			principalInvitado.setCenter(archivo);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(archivo);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(archivo);
 		}
 	}
 			//Consultas
@@ -546,7 +548,7 @@ public class Main extends Application {
 		buscador.getChild().setPadding(new Insets(5));
 		Button buscar=new Button("Buscar");
 		buscar.setAlignment(Pos.CENTER);
-		principal.getChildren().addAll(buscador,buscar);
+		principal.getChildren().addAll(buscador.getChild(),buscar);
 		if (usuario==null) {
 			principalInvitado.setCenter(principal);
 		}else if(usuario instanceof Usuario) {

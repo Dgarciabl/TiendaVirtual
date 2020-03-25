@@ -274,6 +274,31 @@ public class Main extends Application {
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
 	}
+	public static FieldPane inventateEsta (int j) {
+		if (usuario==null || usuario instanceof Usuario ) {
+		String[] Criterios= {"Descripcion:","Precio:","Unidades disponibles:"};
+		String[] Valores=new String[3];
+		Valores[0]=inventario.getInventario(j).getProducto().getDescripcion();
+		Valores[1]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
+		Valores[2]=Integer.toString(inventario.getInventario(j).getCantidad());
+		boolean[] Hab=new boolean[3]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
+		FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
+		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		return res;
+		}
+		else {
+			String[] Criterios= {"Descripcion:","Precio de compra:","Precio de venta:","Unidades disponibles:"};
+			String[] Valores=new String[4];
+			Valores[0]=inventario.getInventario(j).getProducto().getDescripcion();
+			Valores[1]=Double.toString(inventario.getInventario(j).getProducto().getPrecioCompra());
+			Valores[2]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
+			Valores[3]=Integer.toString(inventario.getInventario(j).getCantidad());
+			boolean[] Hab=new boolean[4]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
+			FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
+			res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+			return res;
+		}
+	}
 	//Interfaces Graficas
 	//Scenes
 	public void Escenas() {
@@ -676,7 +701,8 @@ public class Main extends Application {
 									Optional<String> respuesta=confirmacion.showAndWait();
 									respuesta.ifPresent(new Consumer<String>() {
 							            @Override public void accept(String user) {
-							                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));;
+							                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));
+							                ((Usuario) usuario).getCarro().actualizar();
 							            }
 							        });
 								}
@@ -739,16 +765,30 @@ public class Main extends Application {
 		VBox inv=new VBox();
 		Label lis1=new Label("Mostrar Inventario"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		ListView listainv=new ListView();
-		listainv.getItems().addAll(inventario.getInventario());
+		for (int k=0;k<inventario.getInventario().size();k++) {listainv.getItems().add(inventario.getInventario().get(k).getProducto().getNombre());}
+		
 		
 		GridPane g=new GridPane(); g.setHgap(5);
 		
 		g.add(new Label("Inventario:"), 0, 0); g.add(new Label("Descripcion y cantidad:"), 1, 0);
 		g.add(listainv,0, 1);
-		g.add(new Button("Editar inventario(Admin)"), 1, 2);
+		if (usuario instanceof Usuario) {
+			g.add(new Button("Añadir al carro"), 1, 2);
+		}
+		else if (usuario instanceof Administrador) {
+		g.add(new Button("Editar inventario"), 1, 2);
+		}
 		inv.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		inv.setAlignment(Pos.TOP_CENTER);
+		
+		listainv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle (MouseEvent e) {
+				int s=listainv.getSelectionModel().getSelectedIndex();
+				FieldPane f=inventateEsta(s);
+				g.add(f.getChild(), 1, 1);
+			}
+		});
 		
 		if (usuario==null) {
 			principalInvitado.setCenter(inv);
@@ -794,23 +834,32 @@ public class Main extends Application {
 	}
 	public static void mostrarProductos() {
 		VBox prod=new VBox();
+		ListView listaprod=new ListView();
+		for (int k=0;k<productos.size();k++) {listaprod.getItems().add(productos.get(k).getNombre());}
 		
-		Label lis1=new Label("Mostrar Categorias"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		Label lis1=new Label("Mostrar Productos"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
 		
 		GridPane g=new GridPane(); g.setHgap(5);
 		
-		//TextField t: Muestra la ArrayList Productos
-		//TextField b: Muestra descripcion del producto
-		TextField t=new TextField("ListaProd"); TextField b=new TextField("Descripcion");
-		t.setPrefHeight(100); b.setPrefHeight(100);
-		
-		t.setPadding(new Insets(5)); b.setPadding(new Insets(5));
 		g.add(new Label("Lista de de productos:"), 0, 0); g.add(new Label("Descripcion:"), 1, 0);
-		g.add(t,0, 1); g.add(b, 1, 1);
-		g.add(new Button("Añadir al carro"), 1, 2);
+		g.add(listaprod,0, 1);
+		if (usuario instanceof Usuario) {	
+			g.add(new Button("Añadir al carro"), 1, 2);
+		}
+		else if (usuario instanceof Administrador) {
+			g.add(new Button("Editar productos"), 1, 2);
+		}
 		prod.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		prod.setAlignment(Pos.TOP_CENTER);
+		
+		listaprod.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent e) {
+				int s=listaprod.getSelectionModel().getSelectedIndex();
+				FieldPane f=productor(s);
+				g.add(f.getChild(), 1, 1);
+			}
+		});
 		
 		if (usuario==null) {
 			principalInvitado.setCenter(prod);

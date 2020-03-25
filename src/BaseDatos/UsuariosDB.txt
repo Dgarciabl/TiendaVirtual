@@ -17,8 +17,8 @@
   {
     "saldo": 0.0,
     "carroCompra": {
-      "subTotal": 0.0,
-      "numObjetos": 0,
+      "subTotal": 1249000.0,
+      "numObjetos": 3,
       "inventario": [
         {
           "producto": {
@@ -29,6 +29,26 @@
             "precioCompra": 3000.0
           },
           "cantidad": 12
+        },
+        {
+          "producto": {
+            "nombre": "Yogur",
+            "descripcion": "1.2 Litros",
+            "categorias": [],
+            "precioVenta": 3500.0,
+            "precioCompra": 3000.0
+          },
+          "cantidad": 2
+        },
+        {
+          "producto": {
+            "nombre": "Celular",
+            "descripcion": "Mejor calida Precio del mercado",
+            "categorias": [],
+            "precioVenta": 1200000.0,
+            "precioCompra": 650000.0
+          },
+          "cantidad": 1
         }
       ]
     },

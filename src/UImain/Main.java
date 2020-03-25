@@ -305,19 +305,12 @@ public class Main extends Application {
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
 		MenuItem busquedaCategorias = new MenuItem("Busqueda por categorias");
 		busqueda.getItems().addAll(buscarProducto,busquedaCategorias);
-		MenuItem mostrarCategorias = new MenuItem("Mostrar Categorias");
-		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
+		Menu mostrarExistencias = new Menu("Mostrar");
+		MenuItem mostrarCategorias = new MenuItem("Mostrar categorias");
+		MenuItem mostrarInventario = new MenuItem("Mostrar inventario");
 		MenuItem mostrarCarro = new MenuItem("Mostrar productos del carro");
-		MenuItem showCarro = new MenuItem("Mostrar productos del carro");
-		MenuItem Comprar = new MenuItem("Comprar");
-		MenuItem addSaldo = new MenuItem("Añadir Saldo");		
-		MenuItem setContrasena = new MenuItem("Cambiar Contraseña");
-		MenuItem verPerfil = new MenuItem("Ver perfil");
-		MenuItem cerrarSesion = new MenuItem("Cerrar Sesion");
-		MenuItem opcionSalir = new MenuItem("Salir");
-		Menu Perfil = new Menu("Perfil");
-		Perfil.getItems().addAll(verPerfil,setContrasena,cerrarSesion,opcionSalir);
-		consultasUsuario.getItems().addAll(showCarro,mostrarInventario,mostrarCategorias,busqueda,Comprar,addSaldo,Perfil);
+		mostrarExistencias.getItems().addAll(mostrarCarro,mostrarInventario,mostrarCategorias);
+		consultasUsuario.getItems().addAll(mostrarExistencias,busqueda);
 		
 		//Ayuda		
 		Menu ayuda=new Menu("Ayuda");
@@ -328,7 +321,7 @@ public class Main extends Application {
 		Menu archivo = new Menu("Archivo");
 		Menu consultasAdmin = new Menu("Procesos y Consultas");
 		//Producto
-		Menu mostrarExistencias = new Menu("Mostrar existencias");
+		Menu mostrarExistencias = new Menu("Mostrar");
 		MenuItem mostrarInventario = new MenuItem("Mostrar Inventario");
 		MenuItem mostrarProductos = new MenuItem("Mostrar productos");
 		MenuItem mostrarCategorias = new MenuItem("Mostar categorias");
@@ -341,7 +334,7 @@ public class Main extends Application {
 		
 		//Crear 
 		
-		Menu crearExistencias = new Menu("Crear existencias");
+		Menu crearExistencias = new Menu("Crear");
 		MenuItem crearUsuario = new MenuItem("Crear usuario");
 		MenuItem crearProducto = new MenuItem("Crear producto");
 		MenuItem crearCategoria = new MenuItem("Crear categoria");

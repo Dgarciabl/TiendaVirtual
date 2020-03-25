@@ -17,6 +17,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
@@ -345,12 +346,11 @@ public class Main extends Application {
 		aboutInvitado.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				ayuda();
 			}
 			
 		});
+		ayudaInvitado.getItems().addAll(aboutInvitado);
 		menu=new MenuBar(archivoInvitado,consultasInvitado,ayudaInvitado);
 		return (menu);
 	}
@@ -424,12 +424,11 @@ public class Main extends Application {
 		aboutUsuario.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				ayuda();
 			}
 			
 		});
+		ayudaUsuario.getItems().addAll(aboutUsuario);
 		menu=new MenuBar(archivoUsuario,consultasUsuario,ayudaUsuario);
 		return (menu);
 	}
@@ -537,12 +536,11 @@ public class Main extends Application {
 		aboutAdmin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				ayuda();
 			}
 			
 		});
+		ayudaAdmin.getItems().addAll(aboutAdmin);
 		MenuBar menu=new MenuBar(archivoAdmin,consultasAdmin,ayudaAdmin);
 		return (menu);
 	}
@@ -902,7 +900,12 @@ public class Main extends Application {
 		}
 		
 	}
-	
+	public static void ayuda() {
+		Alert info = new Alert(AlertType.INFORMATION);
+		info.setTitle("Creado por: ");
+		info.setContentText("David Andres Cano \n David Garcia Blandon \n Juan Pablo Buitrago Dias \n Julian Esteban Fernandez Montoya");
+		info.show();
+	}
 	
 	/** completar
 	 * 

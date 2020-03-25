@@ -340,8 +340,18 @@ public class Main extends Application {
 		});
 		consultasInvitado.getItems().addAll(busqueda,mostrarCategorias,mostrarInventario);
 		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivoInvitado,consultasInvitado,ayuda);
+		Menu ayudaInvitado = new Menu("Ayuda");
+		MenuItem aboutInvitado = new Menu("Acerca de");
+		aboutInvitado.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		menu=new MenuBar(archivoInvitado,consultasInvitado,ayudaInvitado);
 		return (menu);
 	}
 	public static MenuBar menuUsuario() {
@@ -409,8 +419,18 @@ public class Main extends Application {
 		consultasUsuario.getItems().addAll(mostrarExistencias,busqueda);
 		
 		//Ayuda		
-		Menu ayuda=new Menu("Ayuda");
-		menu=new MenuBar(archivoUsuario,consultasUsuario,ayuda);
+		Menu ayudaUsuario = new Menu("Ayuda");
+		MenuItem aboutUsuario = new Menu("Acerca de");
+		aboutUsuario.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		menu=new MenuBar(archivoUsuario,consultasUsuario,ayudaUsuario);
 		return (menu);
 	}
 	public static MenuBar menuAdministrador() {
@@ -511,8 +531,19 @@ public class Main extends Application {
 		consultasAdmin.getItems().addAll(mostrarExistencias, busqueda, crearExistencias);
 		
 		
-		Menu ayuda=new Menu("Ayuda");
-		MenuBar menu=new MenuBar(archivoAdmin,consultasAdmin,ayuda);
+		//Ayuda		
+		Menu ayudaAdmin = new Menu("Ayuda");
+		MenuItem aboutAdmin = new Menu("Acerca de");
+		aboutAdmin.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		MenuBar menu=new MenuBar(archivoAdmin,consultasAdmin,ayudaAdmin);
 		return (menu);
 	}
 			//Archivo

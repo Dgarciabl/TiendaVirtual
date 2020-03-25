@@ -29,6 +29,16 @@
             "precioCompra": 3000.0
           },
           "cantidad": 12
+        },
+        {
+          "producto": {
+            "nombre": "Yogur",
+            "descripcion": "1.2 Litros",
+            "categorias": [],
+            "precioVenta": 3500.0,
+            "precioCompra": 3000.0
+          },
+          "cantidad": 2
         }
       ]
     },

@@ -1168,10 +1168,13 @@ public class Main extends Application {
 		campos[1] = "Descripcion";
 		campos[2] = "Precio original";
 		campos[3] = "Precio de venta";
-		campos[4] = "Categorias";
+		campos[4] = "Categoria";
 		String [] empty = new String[5];
 		
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
+		columnas.getChild().getChildren().remove(columnas.getBox(4));
+		ComboBox cats=new ComboBox();
+		columnas.getChild().add(cats, 2, 5);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
 		salir.setOnAction(new EventHandler<ActionEvent>() {

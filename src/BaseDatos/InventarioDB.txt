@@ -4,7 +4,7 @@
       "producto": {
         "nombre": "Leche",
         "descripcion": "1 Litro",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -14,7 +14,7 @@
       "producto": {
         "nombre": "Yogur",
         "descripcion": "1.2 Litros",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -24,7 +24,7 @@
       "producto": {
         "nombre": "Almendras",
         "descripcion": "Enteras con cascara 250gr",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 8900.0,
         "precioCompra": 3000.0
       },
@@ -34,7 +34,7 @@
       "producto": {
         "nombre": "Frijoles",
         "descripcion": "500gr",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -44,7 +44,7 @@
       "producto": {
         "nombre": "Lentejas",
         "descripcion": "400ml",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -54,7 +54,7 @@
       "producto": {
         "nombre": "Portatil",
         "descripcion": "Ryzen 7",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 2000000.0,
         "precioCompra": 1450000.0
       },
@@ -64,7 +64,7 @@
       "producto": {
         "nombre": "Celular",
         "descripcion": "Mejor calida Precio del mercado",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 1200000.0,
         "precioCompra": 650000.0
       },
@@ -74,7 +74,7 @@
       "producto": {
         "nombre": "Horno",
         "descripcion": "Haceb",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
@@ -84,7 +84,7 @@
       "producto": {
         "nombre": "Licuadora",
         "descripcion": "Oster",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 75000.0,
         "precioCompra": 35000.0
       },

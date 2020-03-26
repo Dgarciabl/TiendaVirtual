@@ -434,16 +434,13 @@ public class Main extends Application {
 		descripcion.getItems().addAll(sistema);
 		Menu salir = new Menu("Salir");
 		MenuItem opcion = new MenuItem("Salir");
-		salir.getItems().addAll(opcion);
-		salir.setOnAction(new EventHandler<ActionEvent>() {
+		opcion.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				System.exit(0);
 			}	
 		});
-
+		salir.getItems().addAll(opcion);
 		mainMenu = new MenuBar(descripcion,salir);
 		return mainMenu;
 	}
@@ -710,6 +707,12 @@ public class Main extends Application {
 		GridPane Botones=new GridPane();
 		Label titulo=new Label();
 		Button salir=new Button("Salir");
+		salir.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.exit(0);
+			}
+		});
 		Button editar=new Button("Editar");
 		Button añadirSaldo=new Button("Añadir Saldo");
 		titulo.setPadding(new Insets(5));
@@ -1177,6 +1180,12 @@ public class Main extends Application {
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
+		salir.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.exit(0);
+			}
+		});
 		botones.add(salir, 0, 0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
@@ -1205,6 +1214,12 @@ public class Main extends Application {
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
+		salir.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.exit(0);
+			}
+		});
 		botones.add(salir, 0, 0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);

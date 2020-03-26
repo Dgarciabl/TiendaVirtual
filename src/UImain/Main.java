@@ -351,8 +351,8 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent event){
 				
-				if( hojaActual != 4){
-					hojaActual +=1 ;
+				if( hojaActual != 3){
+					hojaActual +=1;
 					creadores.setText(hojaVida[hojaActual]);
 				}else {
 					hojaActual = 0;
@@ -405,10 +405,11 @@ public class Main extends Application {
 		login.getChildren().addAll(title,columnas.getChild(),botones);
 		login.setAlignment(Pos.TOP_CENTER);
 		
-		Label bienvenida = new Label("\n \n \n Bienvenido\n a la \ntienda virtual");
+		Label bienvenida = new Label("\n \n \n    Bienvenido\n    a la \n    tienda virtual");
 		bienvenida.setTextAlignment(TextAlignment.CENTER);
 		bienvenida.setFont(new Font("Arial",20));
 		bienvenida.setTextFill(Color.BLUE);
+		bienvenida.setMaxWidth(Double.MAX_VALUE);
 		mainPane.setRight(login);
 		mainPane.setLeft(bienvenida);
 		mainPane.setBottom(creadores);

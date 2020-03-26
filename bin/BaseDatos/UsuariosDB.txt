@@ -28,5 +28,20 @@
     "contraseña": null,
     "preguntaRecuperacion": "NombrePadre",
     "respuestaRecuperacion": "Jorge"
+  },
+  {
+    "saldo": 540000.0,
+    "carroCompra": {
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
+    },
+    "nombre": "Julian",
+    "genero": true,
+    "edad": 20,
+    "usuario": "m",
+    "contraseña": "julianfm",
+    "preguntaRecuperacion": "soloyolase",
+    "respuestaRecuperacion": "perro"
   }
 ]

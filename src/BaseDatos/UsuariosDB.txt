@@ -10,14 +10,14 @@
     "genero": true,
     "edad": 0,
     "usuario": "user",
-    "contraseña": "user",
+    "contraseÃ±a": "user",
     "preguntaRecuperacion": "user",
     "respuestaRecuperacion": "user"
   },
   {
     "saldo": 0.0,
     "carroCompra": {
-      "subTotal": 1551700.0,
+      "subTotal": 35000.0,
       "numObjetos": 3,
       "inventario": [
         {
@@ -28,7 +28,7 @@
             "precioVenta": 3500.0,
             "precioCompra": 3000.0
           },
-          "cantidad": 12
+          "cantidad": 2
         },
         {
           "producto": {
@@ -38,17 +38,17 @@
             "precioVenta": 3500.0,
             "precioCompra": 3000.0
           },
-          "cantidad": 2
+          "cantidad": 5
         },
         {
           "producto": {
-            "nombre": "Almendras",
-            "descripcion": "Enteras con cascara 250gr",
+            "nombre": "Frijoles",
+            "descripcion": "500gr",
             "categorias": [],
-            "precioVenta": 8900.0,
+            "precioVenta": 3500.0,
             "precioCompra": 3000.0
           },
-          "cantidad": 23
+          "cantidad": 3
         }
       ]
     },
@@ -56,7 +56,7 @@
     "genero": true,
     "edad": 0,
     "usuario": "holasoypablo",
-    "contraseña": "bat123",
+    "contraseÃ±a": "bat123",
     "preguntaRecuperacion": "NombrePadre",
     "respuestaRecuperacion": "Jorge"
   }

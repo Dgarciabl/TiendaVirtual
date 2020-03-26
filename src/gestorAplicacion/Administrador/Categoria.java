@@ -28,7 +28,11 @@ public class Categoria {
 	void setNombre(String d) {
 		this.nombre=d;
 	}
-	
+	public boolean equalsto(Categoria cat) {
+		if(cat.getNombre().equals(this.nombre)&&cat.getDescripcion().equals(this.descripcion)) {
+			return true;
+		}else {return false;}
+	}
 	
 	@Override
 	public String toString() {

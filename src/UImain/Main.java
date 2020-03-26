@@ -318,6 +318,39 @@ public class Main extends Application {
 		sceneAdministrador=new Scene(principalAdministrador, 400,400);
 		principalAdministrador.setTop(menuAdministrador());
 	}
+	public BorderPane principal() {
+		BorderPane mainPane = new BorderPane();
+		//Menus
+		MenuBar mainMenu;
+		Menu logOut = new Menu("Salir");
+		MenuItem funciona = new MenuItem("Salir");
+		funciona.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+			
+		});
+		logOut.getItems().addAll(funciona);
+		Menu about = new Menu("Descripcion");
+		MenuItem funcionamiento = new MenuItem("Sisema");
+		funcionamiento.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		about.getItems().addAll(about);
+		mainMenu = new MenuBar(logOut,about);
+		mainPane.setTop(mainMenu);
+		return mainPane;
+	}
+	
 		//Panes
 			//menus
 	public static MenuBar menuInvitado() {
@@ -629,7 +662,7 @@ public class Main extends Application {
 				@Override
 				public void handle(ActionEvent event) {
 					boolean[] habilitado = {true,true,true,false};
-					presentacion.setHabilitado(habilitado);
+					//presentacion.setHabilitado(habilitado);
 				}
 			});
 			Botones.add(editar, 1, 0);

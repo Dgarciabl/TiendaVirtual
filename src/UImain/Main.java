@@ -74,7 +74,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(3);
+		usuario=Usuarios.get(0);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -314,7 +314,11 @@ public class Main extends Application {
 						nivel = 1;
 					}
 					return true;
+				}else {
+					System.out.println("la contrasena no existe");
 				}
+			}else {
+				System.out.println("usuario inexistente");
 			}
 		}
 		return false;
@@ -377,8 +381,8 @@ public class Main extends Application {
 		iniciarS.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String usu = columnas.getValue("Usuario");
-				String password = columnas.getValue("Contraseña");
+				String usu = columnas.getValue(campos[0]);
+				String password = columnas.getValue(campos[1]);
 				if (Main.isNumeric(usu)) {
 					System.out.println("El usuario no puede ser un numero");
 				}else if(InicioSesion(usu,password)) {

@@ -253,14 +253,13 @@ public class Main extends Application {
 		return true;
 	}
 	public static FieldPane productor(int j) {
-		String[] criterios= {"Nombre:","Descripcion:","Precio:","Cantidad:"};
-		String[] valores=new String[4];
-		valores[0]=inventario.getInventario().get(j).getProducto().getNombre();
-		valores[1]=inventario.getInventario().get(j).getProducto().getDescripcion();
-		valores[2]=String.valueOf(inventario.getInventario().get(j).getProducto().getPrecioVenta());
-		valores[3]=String.valueOf(inventario.getInventario().get(j).getCantidad());
-		boolean[] habilitado=new boolean[4];
-		for(int i=0;i<4;i++) {habilitado[i]=false;}
+		String[] criterios= {"Descripcion:","Precio de compra:","Precio de venta:"};
+		String[] valores=new String[3];
+		valores[0]=productos.get(j).getDescripcion();
+		valores[1]=Double.toString(productos.get(j).getPrecioCompra());
+		valores[2]=Double.toString(productos.get(j).getPrecioVenta());
+		boolean[] habilitado=new boolean[3];
+		for(int i=0;i<3;i++) {habilitado[i]=false;}
 		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
 		resultado.getChild().setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return resultado;
@@ -628,7 +627,7 @@ public class Main extends Application {
 		Botones.setHgap(5);
 		if(usuario instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
-			categorias=new String[] {"Nombre: ","Edad: ","Genero: ","Saldo: "};
+			categorias=new String[] {"Nombre:","Edad:","Genero:","Saldo:"};
 			if(usuario.getGenero()) {
 				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino",String.valueOf(((Usuario)usuario).getSaldo())};
 			}else {
@@ -637,11 +636,11 @@ public class Main extends Application {
 			boolean[] habilitado=new boolean[] {false,false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
-			Botones.add(editar, 1, 0);
-			Botones.add(añadirSaldo, 0, 0);
+			Botones.add(editar, 0, 0);
+			Botones.add(añadirSaldo, 1, 0);
 		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
-			categorias=new String[] {"Nombre: ","Edad: ","Genero: "};
+			categorias=new String[] {"Nombre:","Edad:","Genero:"};
 			if(usuario.getGenero()) {
 				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino"};
 			}else {
@@ -661,8 +660,33 @@ public class Main extends Application {
 		editar.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				boolean[] habilitado = {true,true,true,false};
-				presentacion.setHabilitado(habilitado);
+				boolean[] desbloqueo;
+				if (usuario instanceof Usuario) {
+					desbloqueo =new boolean[]  {true,true,true,false};
+				}else if(usuario instanceof Administrador) {
+					desbloqueo =new boolean[]  {true,true,true};
+				}else {
+					desbloqueo =new boolean[]  {false};
+				}
+				presentacion.setHabilitado(desbloqueo);
+				Button guardar=new Button("Guardar Cambios");
+				Botones.getChildren().remove(editar);
+				Botones.add(guardar,0,0);
+				guardar.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						usuario.setNombre(presentacion.getValue("Nombre:"));
+						usuario.setEdad(Integer.parseInt(presentacion.getValue("Edad:")));
+						
+						if(presentacion.getValue("Genero:").equals("Masculino")) {
+							usuario.setGenero(true);
+						}else if (presentacion.getValue("Genero:").equals("Femenino")) {
+							usuario.setGenero(false);
+						}else {
+							throws new GeneroNoValido();
+						}
+					}
+				});
 			}
 		});
 		if (usuario==null) {
@@ -801,10 +825,7 @@ public class Main extends Application {
 			});
 			
 		}
-		else if (usuario instanceof Administrador) {
-			Button editar=new Button("Editar");
-		g.add(editar, 1, 2);
-		}
+
 		inv.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		inv.setAlignment(Pos.TOP_CENTER);
@@ -814,6 +835,31 @@ public class Main extends Application {
 				int s=listainv.getSelectionModel().getSelectedIndex();
 				FieldPane f=inventateEsta(s);
 				g.add(f.getChild(), 1, 1);
+				if (usuario instanceof Administrador) {
+					Button editar=new Button("Opciones");
+					g.add(editar, 1, 2);
+					editar.setOnAction(new EventHandler<ActionEvent>() {
+						public void handle(ActionEvent e) {
+							HBox info=new HBox();
+							FieldPane l=inventateEsta(s);
+							Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
+							info.getChildren().addAll(l.getChild(),b1,b2);
+							g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
+							b2.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle(ActionEvent e) {
+									Alert a=new Alert(AlertType.CONFIRMATION);
+									a.setTitle("Eliminar producto");
+									a.setHeaderText("¿Eliminar el producto del inventario?");
+									Optional<ButtonType>res=a.showAndWait();
+									if (res.get()==ButtonType.OK) {
+										inventario.DelInventario(s);
+										productos.remove(s);
+									}
+								}
+							});
+						}
+					});
+				}
 			}
 		});
 		
@@ -836,7 +882,9 @@ public class Main extends Application {
 		
 		g.add(new Label("Lista de categorias:"), 0, 0);
 		g.add(listacat,0, 1); 
+		if (usuario==null|| usuario instanceof Usuario) {
 		g.add(new Button("Busqueda por categoria"), 1, 2);
+		}
 		cat.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.TOP_CENTER);
 		cat.setAlignment(Pos.TOP_CENTER);
@@ -846,6 +894,30 @@ public class Main extends Application {
 				int s=listacat.getSelectionModel().getSelectedIndex();
 				FieldPane desc=categoricas(s);
 				g.add(desc.getChild(), 1, 1);
+				if (usuario instanceof Administrador) {
+					Button editar=new Button("Opciones");
+					g.add(editar, 1, 2);
+					editar.setOnAction(new EventHandler<ActionEvent>() {
+						public void handle(ActionEvent e) {
+							HBox info=new HBox();
+							FieldPane l=categoricas(s);
+							Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
+							info.getChildren().addAll(l.getChild(),b1,b2);
+							g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
+							b2.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle(ActionEvent e) {
+									Alert a=new Alert(AlertType.CONFIRMATION);
+									a.setTitle("Eliminar producto");
+									a.setHeaderText("¿Eliminar la categoria?");
+									Optional<ButtonType>res=a.showAndWait();
+									if (res.get()==ButtonType.OK) {
+										categorias.remove(s);
+									}
+								}
+							});
+						}
+					});
+				}
 			}
 		});
 		
@@ -870,12 +942,6 @@ public class Main extends Application {
 		
 		g.add(new Label("Lista de de productos:"), 0, 0); g.add(new Label("Descripcion:"), 1, 0);
 		g.add(listaprod,0, 1);
-		if (usuario instanceof Usuario) {	
-			g.add(new Button("Añadir al carro"), 1, 2);
-		}
-		else if (usuario instanceof Administrador) {
-			g.add(new Button("Editar productos"), 1, 2);
-		}
 		prod.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		prod.setAlignment(Pos.TOP_CENTER);
@@ -885,6 +951,30 @@ public class Main extends Application {
 				int s=listaprod.getSelectionModel().getSelectedIndex();
 				FieldPane f=productor(s);
 				g.add(f.getChild(), 1, 1);
+				Button opciones=new Button("Opciones");
+				g.add(opciones, 1, 2);
+				opciones.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle (ActionEvent e) {
+						HBox info=new HBox();
+						FieldPane l=productor(s);
+						Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
+						info.getChildren().addAll(l.getChild(),b1,b2);
+						g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
+						b2.setOnAction(new EventHandler<ActionEvent>() {
+							public void handle(ActionEvent e) {
+								Alert a=new Alert(AlertType.CONFIRMATION);
+								a.setTitle("Eliminar producto");
+								a.setHeaderText("¿Eliminar el producto?");
+								Optional<ButtonType>res=a.showAndWait();
+								if (res.get()==ButtonType.OK) {
+									String nom=productos.get(s).getNombre();
+									int w=inventario.RealizarBusqueda(nom);
+									productos.remove(s); inventario.DelInventario(w);
+								}
+							}
+						});
+					}
+				});
 			}
 		});
 		
@@ -918,7 +1008,19 @@ public class Main extends Application {
 		g.add(Comprar, 1, 2);
 		car.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
-		car.setAlignment(Pos.TOP_CENTER);	
+		car.setAlignment(Pos.TOP_CENTER);
+		Comprar.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				Alert a =new Alert(AlertType.CONFIRMATION);
+				a.setTitle("Comprar");
+				a.setHeaderText(usut.getCarro().GenerarFactura());
+				a.setContentText("¿Finalizar compra?");
+				Optional<ButtonType> res=a.showAndWait();
+				if (res.get()==ButtonType.OK) {
+					usut.comprar();
+				}
+			}
+		});
 		
 		carro.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle (MouseEvent e) {

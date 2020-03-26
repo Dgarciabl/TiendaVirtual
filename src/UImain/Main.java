@@ -71,7 +71,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(1);
+		//usuario=Usuarios.get(1);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -611,13 +611,11 @@ public class Main extends Application {
 		return (menu);
 	}
 			//Archivo
-	
-
 	public static void archivo() {
 		String[] categorias;
 		String[] valores;
 		VBox archivo=new VBox();
-		FieldPane presentacion=null;
+		FieldPane presentacion;
 		GridPane Botones=new GridPane();
 		Label titulo=new Label();
 		Button salir=new Button("Salir");
@@ -627,68 +625,45 @@ public class Main extends Application {
 		Botones.setAlignment(Pos.CENTER);
 		Botones.setPadding(new Insets(8,8,8,8));
 		Botones.setHgap(5);
-		if(usuario==null) {
-			titulo.setText("Perfil de Invitado");
-			categorias=new String[1];
-			valores=new String[1];
-			categorias[0]="Tienda Virtual";
-			valores[0]="Version 1";
-			boolean[] habilitado=new boolean[1];
-			for(int i=0;i<1;i++) {habilitado[i]=false;}
-			presentacion=new FieldPane("Información", categorias, "Publica", valores, habilitado);
-			Botones.add(salir, 0, 0);
-		}else if(usuario instanceof Usuario) {
+		if(usuario instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
-			categorias=new String[4];
-			valores=new String[4];
-			categorias[0]="Nombre: ";
-			categorias[1]="Edad: ";
-			categorias[2]="Genero: ";
-			categorias[3]="Saldo: ";
-			valores[0]=usuario.getNombre();
-			valores[1]=String.valueOf(usuario.getEdad());
+			categorias=new String[] {"Nombre: ","Edad: ","Genero: ","Saldo: "};
 			if(usuario.getGenero()) {
-				valores[2]="Masculino";
+				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino",String.valueOf(((Usuario)usuario).getSaldo())};
 			}else {
-				valores[2]="Femenino";
+				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Femenino",String.valueOf(((Usuario)usuario).getSaldo())};
 			}
-			valores[3]=String.valueOf(((Usuario)usuario).getSaldo());
-			boolean[] habilitado=new boolean[4];
-			for(int i=0;i<4;i++) {habilitado[i]=false;}
+			boolean[] habilitado=new boolean[] {false,false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
-			editar.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					boolean[] habilitado = {true,true,true,false};
-					//presentacion.setHabilitado(habilitado);
-				}
-			});
 			Botones.add(editar, 1, 0);
 			Botones.add(añadirSaldo, 0, 0);
 		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
-			categorias=new String[3];
-			valores=new String[3];
-			categorias[0]="Nombre: ";
-			categorias[1]="Edad: ";
-			categorias[2]="Genero: ";
-			valores[0]=usuario.getNombre();
-			valores[1]=String.valueOf(usuario.getEdad());
+			categorias=new String[] {"Nombre: ","Edad: ","Genero: "};
 			if(usuario.getGenero()) {
-				valores[2]="Masculino";
+				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino"};
 			}else {
-				valores[2]="Femenino";
+				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Femenino"};
 			}
-			boolean[] habilitado=new boolean[3];
-			for(int i=0;i<3;i++) {habilitado[i]=false;}
+			boolean[] habilitado=new boolean[] {false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 1, 0);
 			Botones.add(editar, 0, 0);
+		}else {
+			titulo.setText("Perfil de Invitado");
+			presentacion=new FieldPane("Información", new String[] {"Tienda Virtual",}, "Publica", new String[] {"Version 1"}, new boolean[] {false});
+			Botones.add(salir, 0, 0);
 		}
 		archivo.getChildren().addAll(titulo,presentacion.getChild(),Botones);
 		archivo.setAlignment(Pos.TOP_CENTER);
-
+		editar.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				boolean[] habilitado = {true,true,true,false};
+				presentacion.setHabilitado(habilitado);
+			}
+		});
 		if (usuario==null) {
 			principalInvitado.setCenter(archivo);
 		}else if(usuario instanceof Usuario) {

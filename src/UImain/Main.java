@@ -656,10 +656,7 @@ public class Main extends Application {
 		crearUsuario.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
-								
+				crearUsuario();
 			}
 		});
 		MenuItem crearProducto = new MenuItem("Crear producto");
@@ -1233,6 +1230,72 @@ public class Main extends Application {
 		}
 		
 	}
+	public static void crearUsuario() {
+		VBox crearUsuario = new VBox();
+		Label title = new Label("Crear Usuario");
+		title.setAlignment(Pos.TOP_CENTER);
+		title.setPadding(new Insets(5));
+		String[] campos = new String [8];
+		campos[0] = "Nombre";
+		campos[1] = "Edad";
+		campos[2] = "Genero (m/f)";
+		campos[3] = "Usuario";
+		campos[4]  = "Contrasena";
+		campos[5] = "Pregunta de recuperacion";
+		campos[6] = "Resupuesta";
+		campos[7] = "Saldo";
+		
+		String [] empty = new String[8];
+		
+		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
+		GridPane botones = new GridPane();
+		Button salir = new Button("Salir");
+		salir.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				finalizar();
+			}
+		});
+		Button crear = new Button("Crear");
+		crear.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String nombre = columnas.getValue(0);
+				boolean genero;
+				int edad = Integer.valueOf(columnas.getValue(1));
+				if(columnas.getValue(2).equals("m")){
+					genero = true;
+				}else {
+					genero = false;
+				}
+				String usuario = columnas.getValue(2);
+				String contrasena = columnas.getValue(3);
+				String question = columnas.getValue(4);
+				String answer = columnas.getValue(5);
+				int saldo = Integer.valueOf(columnas.getValue(7)); 
+				Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
+				Usuarios.add(usuariocreado);
+				montarDB();
+			}
+		});
+		botones.add(salir, 0, 0);
+		botones.add(crear, 1, 0);
+		botones.setPadding(new Insets(8,8,8,8));
+		botones.setHgap(5);
+		botones.setAlignment(Pos.TOP_CENTER);
+		crearUsuario.getChildren().addAll(title,columnas.getChild(),botones);
+		crearUsuario.setAlignment(Pos.TOP_CENTER);
+		
+		if (usuario==null) {
+			principalInvitado.setCenter(crearUsuario);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(crearUsuario);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(crearUsuario);
+		}
+	}
+	
+	
 	public static void ayuda() {
 		Alert info = new Alert(AlertType.INFORMATION);
 		info.setHeaderText("Desarrollado por");

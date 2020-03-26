@@ -10,7 +10,7 @@
     "genero": true,
     "edad": 0,
     "usuario": "user",
-    "contraseña": "user",
+    "contraseña": null,
     "preguntaRecuperacion": "user",
     "respuestaRecuperacion": "user"
   },
@@ -25,7 +25,7 @@
     "genero": true,
     "edad": 0,
     "usuario": "holasoypablo",
-    "contraseña": "bat123",
+    "contraseña": null,
     "preguntaRecuperacion": "NombrePadre",
     "respuestaRecuperacion": "Jorge"
   }

@@ -59,6 +59,7 @@ public class Main extends Application {
 		mainStage=new Stage();
 		mainStage.setTitle("Tienda Virtual");
 		Escenas();
+		principal();
 		archivo();
 		if (usuario==null) {
 			mainStage.setScene(sceneInvitado);
@@ -68,11 +69,12 @@ public class Main extends Application {
 			mainStage.setScene(sceneAdministrador);
 		}
 		mainStage.show();
+		
 	}
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(1);
+		usuario=Usuarios.get(3);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -299,6 +301,27 @@ public class Main extends Application {
 			return res;
 		}
 	}
+
+	public static boolean InicioSesion(String usu, String key) {
+		Persona temp;
+		for (int i=0;i<Main.Usuarios.size();i++) {
+			temp=Main.Usuarios.get(i);
+			if (usu.equals(temp.getUsuario())){
+				if (temp.comprobarContraseña(key)) {
+					usuario = temp;
+					if(usuario instanceof Administrador) {
+						nivel = 0;
+					}else {
+						nivel = 1;
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	
 	//Interfaces Graficas
 	//Scenes
 	public void Escenas() {
@@ -318,7 +341,7 @@ public class Main extends Application {
 		sceneAdministrador=new Scene(principalAdministrador, 400,400);
 		principalAdministrador.setTop(menuAdministrador());
 	}
-	public BorderPane principal() {
+	public static void principal() {
 		BorderPane mainPane = new BorderPane();
 		//Menus
 		MenuBar mainMenu;
@@ -356,8 +379,7 @@ public class Main extends Application {
 			@Override
 			public void handle(MouseEvent event){
 				
-				if( hojaActual != 4) {
-					
+				if( hojaActual != 4){
 					hojaActual +=1 ;
 					creadores.setText(hojaVida[hojaActual]);
 				}else {
@@ -372,16 +394,41 @@ public class Main extends Application {
 		title.setAlignment(Pos.TOP_CENTER);
 		title.setPadding(new Insets(5));
 		String[] campos = new String [2];
-		campos[0] = "Nombre";
-		campos[1] = "Contrasena";
+		campos[0] = "Usuario";
+		campos[1] = "Contraseña";
 		String [] empty = new String[2];
 		
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
 		Button iniciarS = new Button("Iniciar Sesion");
+		iniciarS.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String usu = columnas.getValue("Usuario");
+				String password = columnas.getValue("Contraseña");
+				if (Main.isNumeric(usu)) {
+					System.out.println("El usuario no puede ser un numero");
+				}else if(InicioSesion(usu,password)) {
+					if(usuario instanceof Usuario) {
+						mainStage.setScene(sceneUsuario);
+					}else if (usuario instanceof Administrador) {
+						mainStage.setScene(sceneAdministrador);
+					}
+				}
+				
+			}
+		});
+		Button logInvitado = new Button("Entrar como invitado");
+		logInvitado.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mainStage.setScene(sceneInvitado);
+			}
+		});
 		botones.add(salir, 0, 0);
 		botones.add(iniciarS, 0, 1);
+		botones.add(logInvitado, 0, 2);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
 		botones.setAlignment(Pos.TOP_CENTER);
@@ -392,8 +439,8 @@ public class Main extends Application {
 		mainPane.setRight(creadores);
 		mainPane.setLeft(login);
 		mainPane.setBottom(bienvenida);
-		
-		return mainPane;
+		Scene principal = new Scene(mainPane,400,400);
+		sceneInicial = principal;
 	}
 	
 		//Panes
@@ -413,9 +460,7 @@ public class Main extends Application {
 		logOutInvitado.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				mainStage.setScene(sceneInicial);
 			}
 		});
 		archivoInvitado.getItems().addAll(perfilInvitado,logOutInvitado);
@@ -481,9 +526,7 @@ public class Main extends Application {
 		logOutUsuario.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				mainStage.setScene(sceneInicial);
 			}
 		});
 		archivoUsuario.getItems().addAll(perfilUsuario,logOutUsuario);
@@ -558,9 +601,7 @@ public class Main extends Application {
 		logOutAdmin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				mainStage.setScene(sceneInicial);
 			}
 		});
 		archivoAdmin.getItems().addAll(perfilAdmin,logOutAdmin);

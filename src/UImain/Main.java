@@ -729,7 +729,7 @@ public class Main extends Application {
 						}else if (presentacion.getValue("Genero:").equals("Femenino")) {
 							usuario.setGenero(false);
 						}else {
-							throws new GeneroNoValido();
+							//throws new GeneroNoValido();
 						}
 					}
 				});
@@ -1064,7 +1064,21 @@ public class Main extends Application {
 				a.setContentText("¿Finalizar compra?");
 				Optional<ButtonType> res=a.showAndWait();
 				if (res.get()==ButtonType.OK) {
-					usut.comprar();
+					boolean b=usut.comprar();
+					if (b==true) {
+						Alert ex=new Alert(AlertType.INFORMATION);
+						ex.setTitle("Compra exitosa");
+						ex.setHeaderText("¡Exito en la compra!");
+						ex.show();
+						MostrarCarro();
+					}
+					else {
+						Alert err=new Alert(AlertType.ERROR);
+						err.setTitle("Error");
+						err.setHeaderText("¡Saldo insuficiente!");
+						err.show();
+						
+					}
 				}
 			}
 		});

@@ -15,42 +15,11 @@
     "respuestaRecuperacion": "user"
   },
   {
-    "saldo": 0.0,
+    "saldo": 7200.0,
     "carroCompra": {
-      "subTotal": 35000.0,
-      "numObjetos": 3,
-      "inventario": [
-        {
-          "producto": {
-            "nombre": "Leche",
-            "descripcion": "1 Litro",
-            "categorias": [],
-            "precioVenta": 3500.0,
-            "precioCompra": 3000.0
-          },
-          "cantidad": 2
-        },
-        {
-          "producto": {
-            "nombre": "Yogur",
-            "descripcion": "1.2 Litros",
-            "categorias": [],
-            "precioVenta": 3500.0,
-            "precioCompra": 3000.0
-          },
-          "cantidad": 5
-        },
-        {
-          "producto": {
-            "nombre": "Frijoles",
-            "descripcion": "500gr",
-            "categorias": [],
-            "precioVenta": 3500.0,
-            "precioCompra": 3000.0
-          },
-          "cantidad": 3
-        }
-      ]
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
     },
     "nombre": "Pablo",
     "genero": true,

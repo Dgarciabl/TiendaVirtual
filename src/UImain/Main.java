@@ -67,7 +67,6 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(2);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -387,13 +386,13 @@ public class Main extends Application {
 							mainStage.setScene(sceneAdministrador);
 						}
 					}
-				
 			}
 		});
 		Button logInvitado = new Button("Entrar como invitado");
 		logInvitado.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				archivo();
 				mainStage.setScene(sceneInvitado);
 			}
 		});

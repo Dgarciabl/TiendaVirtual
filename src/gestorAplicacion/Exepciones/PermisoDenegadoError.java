@@ -4,7 +4,5 @@ public class PermisoDenegadoError extends ExcepcionUsuario {
 	public PermisoDenegadoError() {
 		super();  //aqui debera llamar a errorAplicacion e imprimir “Manejo de errores de la Aplicación:”
 	}
-	public String toString() {
-		return("Permiso Denegado");	
-	}
+
 }

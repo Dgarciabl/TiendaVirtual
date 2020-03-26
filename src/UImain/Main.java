@@ -72,7 +72,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		//usuario=Usuarios.get(1);
+		usuario=Usuarios.get(3);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -729,7 +729,7 @@ public class Main extends Application {
 						}else if (presentacion.getValue("Genero:").equals("Femenino")) {
 							usuario.setGenero(false);
 						}else {
-							throws new GeneroNoValido();
+							//throws new GeneroNoValido();
 						}
 					}
 				});

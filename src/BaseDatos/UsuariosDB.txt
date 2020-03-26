@@ -17,7 +17,7 @@
   {
     "saldo": 0.0,
     "carroCompra": {
-      "subTotal": 1249000.0,
+      "subTotal": 1551700.0,
       "numObjetos": 3,
       "inventario": [
         {
@@ -42,13 +42,13 @@
         },
         {
           "producto": {
-            "nombre": "Celular",
-            "descripcion": "Mejor calida Precio del mercado",
+            "nombre": "Almendras",
+            "descripcion": "Enteras con cascara 250gr",
             "categorias": [],
-            "precioVenta": 1200000.0,
-            "precioCompra": 650000.0
+            "precioVenta": 8900.0,
+            "precioCompra": 3000.0
           },
-          "cantidad": 1
+          "cantidad": 23
         }
       ]
     },

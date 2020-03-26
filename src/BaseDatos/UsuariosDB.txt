@@ -17,7 +17,7 @@
   {
     "saldo": 0.0,
     "carroCompra": {
-      "subTotal": 1249000.0,
+      "subTotal": 35000.0,
       "numObjetos": 3,
       "inventario": [
         {
@@ -28,7 +28,7 @@
             "precioVenta": 3500.0,
             "precioCompra": 3000.0
           },
-          "cantidad": 12
+          "cantidad": 2
         },
         {
           "producto": {
@@ -38,17 +38,17 @@
             "precioVenta": 3500.0,
             "precioCompra": 3000.0
           },
-          "cantidad": 2
+          "cantidad": 5
         },
         {
           "producto": {
-            "nombre": "Celular",
-            "descripcion": "Mejor calida Precio del mercado",
+            "nombre": "Frijoles",
+            "descripcion": "500gr",
             "categorias": [],
-            "precioVenta": 1200000.0,
-            "precioCompra": 650000.0
+            "precioVenta": 3500.0,
+            "precioCompra": 3000.0
           },
-          "cantidad": 1
+          "cantidad": 3
         }
       ]
     },

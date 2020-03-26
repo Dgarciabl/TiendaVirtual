@@ -71,7 +71,7 @@ public class Main extends Application {
 	//Database
 	public static void inicio() {
 		CargarDB();
-		//usuario=Usuarios.get(1);
+		usuario=Usuarios.get(1);
 	}
 	public static void finalizar() {
 		montarDB();
@@ -792,8 +792,9 @@ public class Main extends Application {
 					Optional<String> respuesta=confirmacion.showAndWait();
 					respuesta.ifPresent(new Consumer<String>() {
 			            @Override public void accept(String user) {
-			                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));
-			                ((Usuario) usuario).getCarro().actualizar();
+			                ((Usuario) usuario).getCarro().AddProducto(new Detalle(inventario.getInventario().get(j).getProducto(),Integer.valueOf(respuesta.get())));
+			                inventario.getInventario().get(j).restarCantidad(Integer.valueOf(respuesta.get()));
+			                mostrarInventario();
 			            }
 			        });
 				}
@@ -1009,8 +1010,9 @@ public class Main extends Application {
 						a.setHeaderText("¿Eliminar el producto?");
 						Optional<ButtonType>res=a.showAndWait();
 						if (res.get()==ButtonType.OK) {
-							usut.getCarro().DelInventario(j);
-							usut.getCarro().actualizar();
+							usut.getCarro().DelProducto(j);
+							MostrarCarro();
+
 						}
 
 					}

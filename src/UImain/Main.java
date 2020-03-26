@@ -628,7 +628,7 @@ public class Main extends Application {
 		Botones.setHgap(5);
 		if(usuario instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
-			categorias=new String[] {"Nombre: ","Edad: ","Genero: ","Saldo: "};
+			categorias=new String[] {"Nombre:","Edad:","Genero:","Saldo:"};
 			if(usuario.getGenero()) {
 				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino",String.valueOf(((Usuario)usuario).getSaldo())};
 			}else {
@@ -637,11 +637,11 @@ public class Main extends Application {
 			boolean[] habilitado=new boolean[] {false,false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
-			Botones.add(editar, 1, 0);
-			Botones.add(añadirSaldo, 0, 0);
+			Botones.add(editar, 0, 0);
+			Botones.add(añadirSaldo, 1, 0);
 		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
-			categorias=new String[] {"Nombre: ","Edad: ","Genero: "};
+			categorias=new String[] {"Nombre:","Edad:","Genero:"};
 			if(usuario.getGenero()) {
 				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino"};
 			}else {
@@ -661,8 +661,33 @@ public class Main extends Application {
 		editar.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				boolean[] habilitado = {true,true,true,false};
-				presentacion.setHabilitado(habilitado);
+				boolean[] desbloqueo;
+				if (usuario instanceof Usuario) {
+					desbloqueo =new boolean[]  {true,true,true,false};
+				}else if(usuario instanceof Administrador) {
+					desbloqueo =new boolean[]  {true,true,true};
+				}else {
+					desbloqueo =new boolean[]  {false};
+				}
+				presentacion.setHabilitado(desbloqueo);
+				Button guardar=new Button("Guardar Cambios");
+				Botones.getChildren().remove(editar);
+				Botones.add(guardar,0,0);
+				guardar.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						usuario.setNombre(presentacion.getValue("Nombre:"));
+						usuario.setEdad(Integer.parseInt(presentacion.getValue("Edad:")));
+						
+						if(presentacion.getValue("Genero:").equals("Masculino")) {
+							usuario.setGenero(true);
+						}else if (presentacion.getValue("Genero:").equals("Femenino")) {
+							usuario.setGenero(false);
+						}else {
+							throws new GeneroNoValido();
+						}
+					}
+				});
 			}
 		});
 		if (usuario==null) {

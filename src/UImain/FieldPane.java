@@ -58,7 +58,8 @@ public class FieldPane extends Pane {
 	 *   @return el valor del criterio cuyo nombre es 'criterio'
 	*/
 	public String getValue(String criterio) {
-		return "";
+		int j=titulos.indexOf(new Label(criterio));
+		return String.valueOf(vals.get(j));
 	}
 	public void setHabilitado(boolean[] habilitado) {
 		for(int i=0;i<vals.size();i++) {

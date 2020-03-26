@@ -1156,7 +1156,7 @@ public class Main extends Application {
 		}
 		
 	}
-				//crear
+	//crear
 	public static void crearProducto() {
 		
 		VBox crearProducto = new VBox();
@@ -1180,7 +1180,25 @@ public class Main extends Application {
 				finalizar();
 			}
 		});
-		botones.add(salir, 0, 0);
+		Button crear = new Button("Crear");
+		crear.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String nombre = columnas.getValue(0);
+				String descripcion = columnas.getValue(1);
+				int oPrice = Integer.valueOf(columnas.getValue(2));
+				int sPrice = Integer.valueOf(columnas.getValue(3));
+				Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice);
+				productos.add(productoCreado);
+				Alert info = new Alert(AlertType.INFORMATION);
+				info.setHeaderText("Producto creado");
+				info.setTitle("Información");
+				info.show();
+			}
+			
+		});
+		botones.add(crear, 1, 0);
+		botones.add(salir,0,0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
 		botones.setAlignment(Pos.TOP_CENTER);
@@ -1275,7 +1293,10 @@ public class Main extends Application {
 				int saldo = Integer.valueOf(columnas.getValue(7)); 
 				Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
 				Usuarios.add(usuariocreado);
-				montarDB();
+				Alert info = new Alert(AlertType.INFORMATION);
+				info.setHeaderText("Producto creado");
+				info.setTitle("Información");
+				info.show();
 			}
 		});
 		botones.add(salir, 0, 0);
@@ -1307,6 +1328,4 @@ public class Main extends Application {
 	/** completar
 	 * 
 	 */
-				
-	
 }

@@ -59,6 +59,7 @@ public class Main extends Application {
 		mainStage=new Stage();
 		mainStage.setTitle("Tienda Virtual");
 		Escenas();
+		principal();
 		archivo();
 		if (usuario==null) {
 			mainStage.setScene(sceneInvitado);
@@ -68,6 +69,7 @@ public class Main extends Application {
 			mainStage.setScene(sceneAdministrador);
 		}
 		mainStage.show();
+		
 	}
 	//Database
 	public static void inicio() {
@@ -339,7 +341,7 @@ public class Main extends Application {
 		sceneAdministrador=new Scene(principalAdministrador, 400,400);
 		principalAdministrador.setTop(menuAdministrador());
 	}
-	public static Scene principal() {
+	public static void principal() {
 		BorderPane mainPane = new BorderPane();
 		//Menus
 		MenuBar mainMenu;
@@ -438,7 +440,7 @@ public class Main extends Application {
 		mainPane.setLeft(login);
 		mainPane.setBottom(bienvenida);
 		Scene principal = new Scene(mainPane,400,400);
-		return principal;
+		sceneInicial = principal;
 	}
 	
 		//Panes
@@ -458,7 +460,7 @@ public class Main extends Application {
 		logOutInvitado.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				mainStage.setScene(principal());
+				mainStage.setScene(sceneInicial);
 			}
 		});
 		archivoInvitado.getItems().addAll(perfilInvitado,logOutInvitado);
@@ -524,7 +526,7 @@ public class Main extends Application {
 		logOutUsuario.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				mainStage.setScene(principal());
+				mainStage.setScene(sceneInicial);
 			}
 		});
 		archivoUsuario.getItems().addAll(perfilUsuario,logOutUsuario);
@@ -599,7 +601,7 @@ public class Main extends Application {
 		logOutAdmin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				mainStage.setScene(principal());
+				mainStage.setScene(sceneInicial);
 			}
 		});
 		archivoAdmin.getItems().addAll(perfilAdmin,logOutAdmin);

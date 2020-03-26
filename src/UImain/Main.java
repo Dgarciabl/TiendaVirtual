@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 
 public class Main extends Application {
 	//App data
+	public static int hojaActual;
 	public static ArrayList<Persona> Usuarios;
 	public static Inventario inventario;
 	public static ArrayList<Categoria> categorias;
@@ -324,15 +325,14 @@ public class Main extends Application {
 		Menu logOut = new Menu("Salir");
 		MenuItem funciona = new MenuItem("Salir");
 		funciona.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent event) {
 				/** completar
 				 * 
 				 */
 			}
-			
 		});
+		
 		logOut.getItems().addAll(funciona);
 		Menu about = new Menu("Descripcion");
 		MenuItem funcionamiento = new MenuItem("Sisema");
@@ -347,6 +347,52 @@ public class Main extends Application {
 		about.getItems().addAll(about);
 		mainMenu = new MenuBar(logOut,about);
 		mainPane.setTop(mainMenu);
+		//Derecha
+		String[] hojaVida = new String[4];
+		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
+		hojaActual = 0;
+		Label creadores = new Label(hojaVida[hojaActual]);
+		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				
+				if( hojaActual != 4) {
+					
+					hojaActual +=1 ;
+					creadores.setText(hojaVida[hojaActual]);
+				}else {
+					hojaActual = 0;
+					creadores.setText(hojaVida[hojaActual]);
+				}
+			}
+		});
+		//Izquierda
+		VBox login = new VBox();
+		Label title = new Label(" ");
+		title.setAlignment(Pos.TOP_CENTER);
+		title.setPadding(new Insets(5));
+		String[] campos = new String [2];
+		campos[0] = "Nombre";
+		campos[1] = "Contrasena";
+		String [] empty = new String[2];
+		
+		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
+		GridPane botones = new GridPane();
+		Button salir = new Button("Salir");
+		Button iniciarS = new Button("Iniciar Sesion");
+		botones.add(salir, 0, 0);
+		botones.add(iniciarS, 0, 1);
+		botones.setPadding(new Insets(8,8,8,8));
+		botones.setHgap(5);
+		botones.setAlignment(Pos.TOP_CENTER);
+		login.getChildren().addAll(title,columnas.getChild(),botones);
+		login.setAlignment(Pos.TOP_CENTER);
+		
+		Label bienvenida = new Label("Bienvenido a la tienda virtual");
+		mainPane.setRight(creadores);
+		mainPane.setLeft(login);
+		mainPane.setBottom(bienvenida);
+		
 		return mainPane;
 	}
 	
@@ -627,7 +673,7 @@ public class Main extends Application {
 		Botones.setHgap(5);
 		if(usuario instanceof Usuario) {
 			titulo.setText("Perfil de Usuario");
-			categorias=new String[] {"Nombre: ","Edad: ","Genero: ","Saldo: "};
+			categorias=new String[] {"Nombre:","Edad:","Genero:","Saldo:"};
 			if(usuario.getGenero()) {
 				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino",String.valueOf(((Usuario)usuario).getSaldo())};
 			}else {
@@ -636,11 +682,11 @@ public class Main extends Application {
 			boolean[] habilitado=new boolean[] {false,false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
 			Botones.add(salir, 2, 0);
-			Botones.add(editar, 1, 0);
-			Botones.add(añadirSaldo, 0, 0);
+			Botones.add(editar, 0, 0);
+			Botones.add(añadirSaldo, 1, 0);
 		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
-			categorias=new String[] {"Nombre: ","Edad: ","Genero: "};
+			categorias=new String[] {"Nombre:","Edad:","Genero:"};
 			if(usuario.getGenero()) {
 				valores=new String[] {usuario.getNombre(),String.valueOf(usuario.getEdad()),"Masculino"};
 			}else {
@@ -660,8 +706,33 @@ public class Main extends Application {
 		editar.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				boolean[] habilitado = {true,true,true,false};
-				presentacion.setHabilitado(habilitado);
+				boolean[] desbloqueo;
+				if (usuario instanceof Usuario) {
+					desbloqueo =new boolean[]  {true,true,true,false};
+				}else if(usuario instanceof Administrador) {
+					desbloqueo =new boolean[]  {true,true,true};
+				}else {
+					desbloqueo =new boolean[]  {false};
+				}
+				presentacion.setHabilitado(desbloqueo);
+				Button guardar=new Button("Guardar Cambios");
+				Botones.getChildren().remove(editar);
+				Botones.add(guardar,0,0);
+				guardar.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						usuario.setNombre(presentacion.getValue("Nombre:"));
+						usuario.setEdad(Integer.parseInt(presentacion.getValue("Edad:")));
+						
+						if(presentacion.getValue("Genero:").equals("Masculino")) {
+							usuario.setGenero(true);
+						}else if (presentacion.getValue("Genero:").equals("Femenino")) {
+							usuario.setGenero(false);
+						}else {
+							throws new GeneroNoValido();
+						}
+					}
+				});
 			}
 		});
 		if (usuario==null) {

@@ -31,11 +31,7 @@ public class OpcionInicioSesion implements OpcionDeMenu {
 		else {
 		System.out.println("Contraseña:");
 		String key=in.next();
-		if (InicioSesion(usu, key)) {
-			return true;
-		}else {
-			return false;
-		}
+		return InicioSesion(usu,key);		
 	}
 	}
 	@Override

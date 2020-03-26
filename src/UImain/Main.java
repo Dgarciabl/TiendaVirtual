@@ -11,6 +11,7 @@ import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -1173,7 +1174,14 @@ public class Main extends Application {
 		
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		columnas.getChild().getChildren().remove(columnas.getBox(4));
-		ComboBox cats=new ComboBox();
+		String[] categ = new String[categorias.size()];
+		for(int i = 0; i<categorias.size(); i++) {
+			categ[i]= categorias.get(i).getNombre();
+		}
+
+		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categ));
+		cats.setValue("Ninguno");
+		cats.setPromptText("Categorias");
 		columnas.getChild().add(cats, 2, 5);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");

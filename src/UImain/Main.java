@@ -768,12 +768,12 @@ public class Main extends Application {
 				guardar.setOnAction(new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent arg0) {
-						usuario.setNombre(presentacion.getValue("Nombre:"));
-						usuario.setEdad(Integer.parseInt(presentacion.getValue("Edad:")));
+						usuario.setNombre(presentacion.getValue(0));
+						usuario.setEdad(Integer.parseInt(presentacion.getValue(1)));
 						
-						if(presentacion.getValue("Genero:").equals("Masculino")) {
+						if(presentacion.getValue(2).equals("Masculino")) {
 							usuario.setGenero(true);
-						}else if (presentacion.getValue("Genero:").equals("Femenino")) {
+						}else if (presentacion.getValue(2).equals("Femenino")) {
 							usuario.setGenero(false);
 						}else {
 							//throws new GeneroNoValido();

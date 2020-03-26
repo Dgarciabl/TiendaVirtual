@@ -325,7 +325,6 @@ public class Main extends Application {
 		//Inicial
 		principalInicial=new BorderPane();
 		sceneInicial=new Scene(principalInicial, 400,400);
-		principalInicial.setTop(menuPrincipal());
 		//Invitado
 		principalInvitado=new BorderPane();
 		sceneInvitado=new Scene(principalInvitado, 400,400);
@@ -341,7 +340,6 @@ public class Main extends Application {
 	}
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
-		//mainPane.setTop(mainMenu);
 		//Derecha
 		String[] hojaVida = new String[4];
 		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
@@ -408,19 +406,20 @@ public class Main extends Application {
 		login.setAlignment(Pos.TOP_CENTER);
 		
 		Label bienvenida = new Label("Bienvenido a la tienda virtual");
-		//mainPane.setRight(creadores);
-		//mainPane.setLeft(login);
-		//mainPane.setBottom(bienvenida);
-		mainPane.setCenter(login);
+		mainPane.setRight(creadores);
+		mainPane.setLeft(login);
+		mainPane.setBottom(bienvenida);
+		mainPane.setTop(menuPrincipal());
+		//mainPane.setCenter(login);
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;
 	}
 	
 	public static MenuBar menuPrincipal() {
 		MenuBar mainMenu;
-		Menu logOut = new Menu("Salir");
-		MenuItem funciona = new MenuItem("Salir");
-		funciona.setOnAction(new EventHandler<ActionEvent>() {
+		Menu descripcion = new Menu("Descripción");
+		MenuItem sistema = new Menu("Sistema");
+		sistema.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				/** completar
@@ -428,20 +427,20 @@ public class Main extends Application {
 				 */
 			}
 		});
-		
-		logOut.getItems().addAll(funciona);
-		Menu about = new Menu("Descripcion");
-		MenuItem funcionamiento = new MenuItem("Sisema");
-		funcionamiento.setOnAction(new EventHandler<ActionEvent>() {
+		descripcion.getItems().addAll(sistema);
+		Menu salir = new Menu("Salir");
+		MenuItem opcion = new MenuItem("Salir");
+		salir.getItems().addAll(opcion);
+		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				/** completar
 				 * 
 				 */
-			}
+			}	
 		});
-		about.getItems().addAll(about);
-		mainMenu = new MenuBar(logOut,about);
+
+		mainMenu = new MenuBar(descripcion,salir);
 		return mainMenu;
 	}
 		//Panes

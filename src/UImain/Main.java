@@ -61,23 +61,18 @@ public class Main extends Application {
 		mainStage.setTitle("Tienda Virtual");
 		Escenas();
 		principal();
-		archivo();
-		if (usuario==null) {
-			mainStage.setScene(sceneInvitado);
-		}else if(usuario instanceof Usuario) {
-			mainStage.setScene(sceneUsuario);
-		}else if(usuario instanceof Administrador) {
-			mainStage.setScene(sceneAdministrador);
-		}
+		mainStage.setScene(sceneInicial);
 		mainStage.show();
 	}
 	//Database
 	public static void inicio() {
 		CargarDB();
-		usuario=Usuarios.get(0);
+		usuario=Usuarios.get(2);
 	}
 	public static void finalizar() {
 		montarDB();
+		System.exit(0);
+
 	}
 	public static void montarDB() {
 		GsonBuilder builder = new GsonBuilder();
@@ -303,8 +298,8 @@ public class Main extends Application {
 	}
 	public static boolean InicioSesion(String usu, String key) {
 		Persona temp;
-		for (int i=0;i<Main.Usuarios.size();i++) {
-			temp=Main.Usuarios.get(i);
+		for (int i=0;i<Usuarios.size();i++) {
+			temp=Usuarios.get(i);
 			if (usu.equals(temp.getUsuario())){
 				if (temp.comprobarContraseña(key)) {
 					usuario = temp;
@@ -315,10 +310,8 @@ public class Main extends Application {
 					}
 					return true;
 				}else {
-					System.out.println("la contrasena no existe");
+					System.out.println("la contrasena es incorrecta");
 				}
-			}else {
-				System.out.println("usuario inexistente");
 			}
 		}
 		return false;
@@ -381,17 +374,20 @@ public class Main extends Application {
 		iniciarS.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String usu = columnas.getValue(campos[0]);
-				String password = columnas.getValue(campos[1]);
-				if (Main.isNumeric(usu)) {
-					System.out.println("El usuario no puede ser un numero");
-				}else if(InicioSesion(usu,password)) {
-					if(usuario instanceof Usuario) {
-						mainStage.setScene(sceneUsuario);
-					}else if (usuario instanceof Administrador) {
-						mainStage.setScene(sceneAdministrador);
+				String usu = columnas.getValue(0);
+				String password = columnas.getValue(1);
+
+					if (Main.isNumeric(usu)) {
+						System.out.println("El usuario no puede ser un numero");
+					}else if(InicioSesion(usu,password)) {
+						archivo();
+						if(usuario instanceof Usuario) {
+							mainStage.setScene(sceneUsuario);
+						}else if (usuario instanceof Administrador) {
+							mainStage.setScene(sceneAdministrador);
+						}
 					}
-				}
+				
 			}
 		});
 		Button logInvitado = new Button("Entrar como invitado");
@@ -430,9 +426,7 @@ public class Main extends Application {
 		sistema.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
+				Label systemDesd = new Label("");
 			}
 		});
 		descripcion.getItems().addAll(sistema);
@@ -441,7 +435,7 @@ public class Main extends Application {
 		opcion.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.exit(0);
+				finalizar();
 			}	
 		});
 		salir.getItems().addAll(opcion);
@@ -714,7 +708,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.exit(0);
+				finalizar();
 			}
 		});
 		Button editar=new Button("Editar");
@@ -1187,7 +1181,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.exit(0);
+				finalizar();
 			}
 		});
 		botones.add(salir, 0, 0);
@@ -1221,7 +1215,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				System.exit(0);
+				finalizar();
 			}
 		});
 		botones.add(salir, 0, 0);

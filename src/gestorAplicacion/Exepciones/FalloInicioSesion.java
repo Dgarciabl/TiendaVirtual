@@ -1,5 +1,8 @@
 package gestorAplicacion.Exepciones;
 
-public class FalloInicioSesion {
+public class FalloInicioSesion extends ExcepcionUsuario{
+	public FalloInicioSesion() {
+		super();
+		}
 
 }

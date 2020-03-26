@@ -37,7 +37,7 @@ public class Main extends Application {
 	static Stage mainStage;
 		//Inicial
 	static Scene sceneInicial;
-	static GridPane principalInicial;
+	static BorderPane principalInicial;
 		//Invitado
 	static Scene sceneInvitado;
 	static BorderPane principalInvitado;
@@ -55,7 +55,6 @@ public class Main extends Application {
 	}
 	@Override
 	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
 		mainStage=new Stage();
 		mainStage.setTitle("Tienda Virtual");
 		Escenas();
@@ -69,7 +68,6 @@ public class Main extends Application {
 			mainStage.setScene(sceneAdministrador);
 		}
 		mainStage.show();
-		
 	}
 	//Database
 	public static void inicio() {
@@ -301,7 +299,6 @@ public class Main extends Application {
 			return res;
 		}
 	}
-
 	public static boolean InicioSesion(String usu, String key) {
 		Persona temp;
 		for (int i=0;i<Main.Usuarios.size();i++) {
@@ -326,8 +323,9 @@ public class Main extends Application {
 	//Scenes
 	public void Escenas() {
 		//Inicial
-		principalInicial=new GridPane();
+		principalInicial=new BorderPane();
 		sceneInicial=new Scene(principalInicial, 400,400);
+		principalInicial.setTop(menuPrincipal());
 		//Invitado
 		principalInvitado=new BorderPane();
 		sceneInvitado=new Scene(principalInvitado, 400,400);
@@ -343,33 +341,7 @@ public class Main extends Application {
 	}
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
-		//Menus
-		MenuBar mainMenu;
-		Menu logOut = new Menu("Salir");
-		MenuItem funciona = new MenuItem("Salir");
-		funciona.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
-			}
-		});
-		
-		logOut.getItems().addAll(funciona);
-		Menu about = new Menu("Descripcion");
-		MenuItem funcionamiento = new MenuItem("Sisema");
-		funcionamiento.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				/** completar
-				 * 
-				 */
-			}
-		});
-		about.getItems().addAll(about);
-		mainMenu = new MenuBar(logOut,about);
-		mainPane.setTop(mainMenu);
+		//mainPane.setTop(mainMenu);
 		//Derecha
 		String[] hojaVida = new String[4];
 		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
@@ -436,13 +408,42 @@ public class Main extends Application {
 		login.setAlignment(Pos.TOP_CENTER);
 		
 		Label bienvenida = new Label("Bienvenido a la tienda virtual");
-		mainPane.setRight(creadores);
-		mainPane.setLeft(login);
-		mainPane.setBottom(bienvenida);
+		//mainPane.setRight(creadores);
+		//mainPane.setLeft(login);
+		//mainPane.setBottom(bienvenida);
+		mainPane.setCenter(login);
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;
 	}
 	
+	public static MenuBar menuPrincipal() {
+		MenuBar mainMenu;
+		Menu logOut = new Menu("Salir");
+		MenuItem funciona = new MenuItem("Salir");
+		funciona.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		
+		logOut.getItems().addAll(funciona);
+		Menu about = new Menu("Descripcion");
+		MenuItem funcionamiento = new MenuItem("Sisema");
+		funcionamiento.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				/** completar
+				 * 
+				 */
+			}
+		});
+		about.getItems().addAll(about);
+		mainMenu = new MenuBar(logOut,about);
+		return mainMenu;
+	}
 		//Panes
 			//menus
 	public static MenuBar menuInvitado() {

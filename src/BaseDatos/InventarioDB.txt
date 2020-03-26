@@ -2,20 +2,20 @@
   "inventario": [
     {
       "producto": {
-        "nombre": "Leche",
-        "descripcion": "1 Litro",
+        "nombre": "Lacteo",
+        "descripcion": "1 litro",
         "categorias": [],
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 44
+      "cantidad": 46
     },
     {
       "producto": {
         "nombre": "Yogur",
         "descripcion": "1.2 Litros",
         "categorias": [],
-        "precioVenta": 3500.0,
+        "precioVenta": 3700.0,
         "precioCompra": 3000.0
       },
       "cantidad": 31
@@ -78,7 +78,7 @@
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
-      "cantidad": 11
+      "cantidad": 15
     },
     {
       "producto": {

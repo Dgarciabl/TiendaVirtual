@@ -1,7 +1,7 @@
 [
   {
-    "nombre": "Leche",
-    "descripcion": "1 Litro",
+    "nombre": "Lacteo",
+    "descripcion": "1 litro",
     "categorias": [],
     "precioVenta": 3500.0,
     "precioCompra": 3000.0
@@ -10,7 +10,7 @@
     "nombre": "Yogur",
     "descripcion": "1.2 Litros",
     "categorias": [],
-    "precioVenta": 3500.0,
+    "precioVenta": 3700.0,
     "precioCompra": 3000.0
   },
   {

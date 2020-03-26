@@ -20,6 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.*;
 import javafx.scene.input.MouseEvent;
 
@@ -360,7 +362,8 @@ public class Main extends Application {
 		});
 		//Izquierda
 		VBox login = new VBox();
-		Label title = new Label(" ");
+		Label title = new Label("");
+		
 		title.setAlignment(Pos.TOP_CENTER);
 		title.setPadding(new Insets(5));
 		String[] campos = new String [2];
@@ -368,9 +371,8 @@ public class Main extends Application {
 		campos[1] = "Contraseña";
 		String [] empty = new String[2];
 		
-		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
+		FieldPane columnas = new FieldPane("",campos, "Iniciar Sesion", empty, null);
 		GridPane botones = new GridPane();
-		Button salir = new Button("Salir");
 		Button iniciarS = new Button("Iniciar Sesion");
 		iniciarS.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -386,7 +388,6 @@ public class Main extends Application {
 						mainStage.setScene(sceneAdministrador);
 					}
 				}
-				
 			}
 		});
 		Button logInvitado = new Button("Entrar como invitado");
@@ -396,23 +397,25 @@ public class Main extends Application {
 				mainStage.setScene(sceneInvitado);
 			}
 		});
-		botones.add(salir, 0, 0);
-		botones.add(iniciarS, 0, 1);
-		botones.add(logInvitado, 0, 2);
+		botones.add(iniciarS, 0, 0);
+		botones.add(logInvitado, 1, 0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
 		botones.setAlignment(Pos.TOP_CENTER);
 		login.getChildren().addAll(title,columnas.getChild(),botones);
 		login.setAlignment(Pos.TOP_CENTER);
 		
-		Label bienvenida = new Label("Bienvenido a la tienda virtual");
-		mainPane.setRight(creadores);
-		mainPane.setLeft(login);
-		mainPane.setBottom(bienvenida);
+		Label bienvenida = new Label("\n \n \n Bienvenido\n a la \ntienda virtual");
+		bienvenida.setTextAlignment(TextAlignment.CENTER);
+		bienvenida.setFont(new Font("Arial",20));
+		bienvenida.setTextFill(Color.BLUE);
+		mainPane.setRight(login);
+		mainPane.setLeft(bienvenida);
+		mainPane.setBottom(creadores);
 		mainPane.setTop(menuPrincipal());
-		//mainPane.setCenter(login);
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;
+		
 	}
 	
 	public static MenuBar menuPrincipal() {

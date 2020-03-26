@@ -2,7 +2,7 @@ package gestorAplicacion.Exepciones;
 
 public class ErrorAplicacion extends Exception {
 	public ErrorAplicacion() {
-		super();
+		super("Manejo de errores de la aplicacion:");
 	}
 
 }

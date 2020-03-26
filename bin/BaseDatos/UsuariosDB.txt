@@ -8,9 +8,9 @@
     },
     "nombre": "superuser",
     "genero": true,
-    "edad": 0,
+    "edad": 20,
     "usuario": "user",
-    "contraseña": null,
+    "contraseña": "user",
     "preguntaRecuperacion": "user",
     "respuestaRecuperacion": "user"
   },

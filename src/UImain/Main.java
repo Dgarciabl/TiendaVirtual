@@ -806,10 +806,29 @@ public class Main extends Application {
 		g.add(new Label("Inventario:"), 0, 0); g.add(new Label("Descripcion y cantidad:"), 1, 0);
 		g.add(listainv,0, 1);
 		if (usuario instanceof Usuario) {
-			g.add(new Button("Añadir al carro"), 1, 2);
+			Button añadir=new Button("Añadir al carro");
+			g.add(añadir, 1, 2);
+			añadir.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle (ActionEvent e) {
+					int j=listainv.getSelectionModel().getSelectedIndex();
+					TextInputDialog confirmacion=new TextInputDialog();
+					confirmacion.setTitle("Confirmar Adicion");
+					confirmacion.setHeaderText("Confirmar la cantidad a añadir");
+					confirmacion.setContentText("Cantidad:");
+					Optional<String> respuesta=confirmacion.showAndWait();
+					respuesta.ifPresent(new Consumer<String>() {
+			            @Override public void accept(String user) {
+			                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));
+			                ((Usuario) usuario).getCarro().actualizar();
+			            }
+			        });
+				}
+			});
+			
 		}
 		else if (usuario instanceof Administrador) {
-		g.add(new Button("Editar inventario"), 1, 2);
+			Button editar=new Button("Editar");
+		g.add(editar, 1, 2);
 		}
 		inv.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
@@ -919,11 +938,33 @@ public class Main extends Application {
 		GridPane g=new GridPane(); g.setHgap(5);
 		
 		g.add(new Label("Productos añadidos:"), 0, 0); g.add(new Label("Subtotal:"), 1, 0);
-		g.add(carro,0, 1); g.add(f.getChild(), 1, 1);
-		g.add(new Button("Comprar"), 1, 2);
+		g.add(carro,0, 1); g.add(f.getChild(), 1, 1,2,1);
+		Button Comprar=new Button("Comprar");
+		g.add(Comprar, 1, 2);
 		car.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.CENTER);
 		car.setAlignment(Pos.TOP_CENTER);	
+		
+		carro.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle (MouseEvent e) {
+				int j=carro.getSelectionModel().getSelectedIndex();
+				Button eliminar= new Button("eliminar del carro");
+				g.add(eliminar, 2, 2);
+				eliminar.setOnAction(new EventHandler <ActionEvent>() {
+					public void handle(ActionEvent e) {
+						Alert a=new Alert(AlertType.CONFIRMATION);
+						a.setTitle("Eliminar producto");
+						a.setHeaderText("¿Eliminar el producto?");
+						Optional<ButtonType>res=a.showAndWait();
+						if (res.get()==ButtonType.OK) {
+							usut.getCarro().DelInventario(j);
+							usut.getCarro().actualizar();
+						}
+
+					}
+				});
+			}
+		});
 
 		if (usuario==null) {
 			principalInvitado.setCenter(car);

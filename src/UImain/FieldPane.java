@@ -59,7 +59,9 @@ public class FieldPane extends Pane {
 	*/
 	public String getValue(int index) {
 		return vals.get(index).getText();
-		
+	}
+	public TextField getBox(int i) {
+		return vals.get(i);
 	}
 	public void setHabilitado(boolean[] habilitado) {
 		for(int i=0;i<vals.size();i++) {

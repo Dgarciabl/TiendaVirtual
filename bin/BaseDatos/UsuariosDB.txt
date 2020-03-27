@@ -1,6 +1,6 @@
 [
   {
-    "saldo": 2000.0,
+    "saldo": 7000.0,
     "carroCompra": {
       "subTotal": 0.0,
       "numObjetos": 0,

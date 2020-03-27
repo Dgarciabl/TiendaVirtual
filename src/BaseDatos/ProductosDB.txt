@@ -93,8 +93,8 @@
     "nombre": "Papitas",
     "descripcion": "saladas",
     "categorias": {
-      "nombre": "Lacteos",
-      "descripcion": "Derivados de la leche"
+      "nombre": "Comestibles",
+      "descripcion": "comida para comer"
     },
     "precioVenta": 700.0,
     "precioCompra": 2000.0
@@ -103,8 +103,8 @@
     "nombre": "Audifonos",
     "descripcion": "Buena calidad de sonido",
     "categorias": {
-      "nombre": "Lacteos",
-      "descripcion": "Derivados de la leche"
+      "nombre": "Tecnologia",
+      "descripcion": "El avance es el futuro"
     },
     "precioVenta": 2000.0,
     "precioCompra": 3000.0

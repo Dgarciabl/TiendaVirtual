@@ -1447,7 +1447,22 @@ public class Main extends Application {
 				finalizar();
 			}
 		});
+		Button crear = new Button("Crear");
+		crear.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String nombre = columnas.getValue(0);
+				String descripcion = columnas.getValue(1);
+				Categoria categoriaCreada = new Categoria(nombre,descripcion);
+				categorias.add(categoriaCreada);
+				Alert info = new Alert(AlertType.INFORMATION);
+				info.setHeaderText("Categoria creado");
+				info.setTitle("Información");
+				info.show();
+			}
+		});
 		botones.add(salir, 0, 0);
+		botones.add(crear, 0, 1);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
 		botones.setAlignment(Pos.TOP_CENTER);

@@ -389,9 +389,9 @@ public class Main extends Application {
 		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
 		hojaActual = 0;
 		
-		GridPane[] creadores = new GridPane[4];
+		/*GridPane[] creadores = new GridPane[4];
 		Label julian = new Label("Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre");
-		Label creadores = new Label(hojaVida[hojaActual]);
+		*/Label creadores = new Label(hojaVida[hojaActual]);
 		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event){

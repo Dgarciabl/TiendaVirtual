@@ -669,12 +669,12 @@ public class Main extends Application {
 				confirmacion.setContentText("Usuario:");
 				Optional<String> respuesta=confirmacion.showAndWait();
 				respuesta.ifPresent(new Consumer<String>() {
-
 					@Override
 					public void accept(String t) {
 						String usName = respuesta.get();
 						for(int i=0; i<Usuarios.size();i++) {
-							if(Usuarios.get(i).getNombre().equals("usName")) {
+							if(Usuarios.get(i).getUsuario().equals(usName)) {
+								int user=i;
 								TextInputDialog confirmacion=new TextInputDialog();
 		        				confirmacion.setTitle("Opciones de recuperación");
 		        				confirmacion.setHeaderText("Pregunta de recuperación: "+Usuarios.get(i).getPregunta());
@@ -684,12 +684,33 @@ public class Main extends Application {
 									@Override
 									public void accept(String t) {
 										String answer = respuesta.get();
-										if(answer.equals(Usuarios.get(i).comprobarRespuesta(answer))) {
-											
+										if(Usuarios.get(user).comprobarRespuesta(answer)) {
+											TextInputDialog nuevaContraseña=new TextInputDialog();
+											nuevaContraseña.setTitle("Recuperacion Exitosa");
+											nuevaContraseña.setHeaderText("La respuesta es correcta");
+											nuevaContraseña.setContentText("Nueva Contraseña:");
+					        				Optional<String> contraseña=nuevaContraseña.showAndWait();
+					        				respuesta.ifPresent(new Consumer<String>() {
+												@Override
+												public void accept(String t) {
+													String key = contraseña.get();
+													Usuarios.get(user).recuperarContraseña(answer,key);
+												}
+					        				});
+										}else {
+											Alert erronea=new Alert(AlertType.ERROR);
+											erronea.setHeaderText("Respuesta Incorrecta");
+											erronea.setContentText("Intente mas Tarde");
+											erronea.show();
 										}
 										
 									}
 		        				});
+							}else {
+								Alert erronea=new Alert(AlertType.ERROR);
+								erronea.setHeaderText("Usuario no Encontrado");
+								erronea.setContentText("Intente mas Tarde");
+								erronea.show();
 							}
 						}
 						

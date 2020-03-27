@@ -43,5 +43,35 @@
     "contraseña": "julianfm",
     "preguntaRecuperacion": "soloyolase",
     "respuestaRecuperacion": "perro"
+  },
+  {
+    "saldo": 54.0,
+    "carroCompra": {
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
+    },
+    "nombre": "ju",
+    "genero": true,
+    "edad": 18,
+    "usuario": "li",
+    "contraseña": "li",
+    "preguntaRecuperacion": "an",
+    "respuestaRecuperacion": "hola"
+  },
+  {
+    "saldo": 54000.0,
+    "carroCompra": {
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
+    },
+    "nombre": "xlr",
+    "genero": false,
+    "edad": 8,
+    "usuario": "xlr8",
+    "contraseña": "xlr8",
+    "preguntaRecuperacion": "ben10",
+    "respuestaRecuperacion": "anime"
   }
 ]

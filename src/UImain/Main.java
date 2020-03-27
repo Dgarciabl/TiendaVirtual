@@ -68,7 +68,6 @@ public class Main extends Application {
 		principal();
 		mainStage.setScene(sceneInicial);
 		mainStage.show();
-		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 	}
 	//Database
 	public static void inicio() {
@@ -374,25 +373,24 @@ public class Main extends Application {
 	public void Escenas() {
 		//Inicial
 		principalInicial=new BorderPane();
-		sceneInicial=new Scene(principalInicial, 800,800);
+		sceneInicial=new Scene(principalInicial, 400,400);
 		//Invitado
 		principalInvitado=new BorderPane();
-		sceneInvitado=new Scene(principalInvitado, 800,800);
+		sceneInvitado=new Scene(principalInvitado, 400,400);
 		principalInvitado.setTop(menuInvitado());
 		//Usuario
 		principalUsuario=new BorderPane();
-		sceneUsuario=new Scene(principalUsuario, 800,800);
+		sceneUsuario=new Scene(principalUsuario, 400,400);
 		principalUsuario.setTop(menuUsuario());
 		//Administrador
 		principalAdministrador=new BorderPane();
-		sceneAdministrador=new Scene(principalAdministrador, 800,800);
+		sceneAdministrador=new Scene(principalAdministrador, 400,400);
 		principalAdministrador.setTop(menuAdministrador());
 	}
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
 //Abajo
-		Label[] hojaVida = new Label[4];		
-		GridPane biografia = new GridPane();
+		Label[] hojaVida = new Label[4];
 		//Texto
 		hojaVida[0] = new Label( "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sisemas");
 		hojaVida[1] = new Label("David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos");
@@ -401,7 +399,6 @@ public class Main extends Application {
 		hojaActual = 0;
 		//Imagenes
 		ImageView[] fotos = new ImageView[4];
-
 		try {
 			Image buitragoI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\buitrago.jpg"));
 			ImageView buitragoImg = new ImageView(buitragoI);
@@ -414,7 +411,6 @@ public class Main extends Application {
 			info.setTitle("No se pudo encontrar la imagen");
 			info.setContentText("");
 			info.show();
-			e.printStackTrace();
 		}
 		try {
 			Image canoI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\cano.jpg"));
@@ -428,7 +424,6 @@ public class Main extends Application {
 			info.setTitle("No se pudo encontrar la imagen");
 			info.setContentText("");
 			info.show();
-			e.printStackTrace();
 		}
 		try {
 			Image julianI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\julian.jpg"));
@@ -442,7 +437,6 @@ public class Main extends Application {
 			info.setTitle("No se pudo encontrar la imagen");
 			info.setContentText("");
 			info.show();
-			e.printStackTrace();
 		}
 		try {
 			Image davidI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\david.jpg"));
@@ -456,7 +450,6 @@ public class Main extends Application {
 			info.setTitle("No se pudo encontrar la imagen");
 			info.setContentText("");
 			info.show();
-			e.printStackTrace();
 		}
 		HBox[] descripciones = new HBox[4];
 		HBox buitrago = new HBox();
@@ -496,14 +489,9 @@ public class Main extends Application {
 				mainPane.setBottom(descripciones[0]);
 			}
 		});
-		
-		
-		
 //Derecha
 		VBox login = new VBox();
 		Label title = new Label("");
-		
-		
 		title.setAlignment(Pos.TOP_CENTER);
 		title.setPadding(new Insets(5));
 		String[] campos = new String [2];

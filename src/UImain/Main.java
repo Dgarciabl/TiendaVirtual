@@ -517,6 +517,7 @@ public class Main extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				mainStage.setScene(sceneInicial);
+				usuario = null;
 			}
 		});
 		archivoInvitado.getItems().addAll(perfilInvitado,logOutInvitado);
@@ -583,6 +584,7 @@ public class Main extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				mainStage.setScene(sceneInicial);
+				usuario = null;
 			}
 		});
 		archivoUsuario.getItems().addAll(perfilUsuario,logOutUsuario);
@@ -658,6 +660,7 @@ public class Main extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				mainStage.setScene(sceneInicial);
+				usuario = null;
 			}
 		});
 		archivoAdmin.getItems().addAll(perfilAdmin,logOutAdmin);

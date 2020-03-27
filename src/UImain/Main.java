@@ -2120,7 +2120,7 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Alert al = new Alert(AlertType.NONE);
+				Alert al = new Alert(AlertType.ERROR);
 				try {
 					String nombre = columnas.getValue(0);
 					String descripcion = columnas.getValue(1);
@@ -2222,7 +2222,7 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Alert al = new Alert(AlertType.NONE);
+				Alert al = new Alert(AlertType.ERROR);
 				try {
 					String nombre = columnas.getValue(0);
 					String descripcion = columnas.getValue(1);
@@ -2260,7 +2260,7 @@ public class Main extends Application {
 					al.setTitle("Nombre duplicado");
 				}
 				al.show();
-				for(int i=0; i<3;i++) {
+				for(int i=0; i<2;i++) {
 					columnas.getBox(i).clear();
 				}
 			}
@@ -2312,7 +2312,7 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Alert al = new Alert(AlertType.NONE);
+				Alert al = new Alert(AlertType.ERROR);
 				try {
 					String nombre = columnas.getValue(0);
 					int edad = Integer.valueOf(columnas.getValue(1));

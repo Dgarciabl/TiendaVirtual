@@ -90,16 +90,6 @@
     "precioCompra": 35000.0
   },
   {
-    "nombre": "Papitas",
-    "descripcion": "saladas",
-    "categorias": {
-      "nombre": "Comestibles",
-      "descripcion": "comida para comer"
-    },
-    "precioVenta": 700.0,
-    "precioCompra": 2000.0
-  },
-  {
     "nombre": "Audifonos",
     "descripcion": "Buena calidad de sonido",
     "categorias": {

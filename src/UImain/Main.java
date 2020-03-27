@@ -549,12 +549,72 @@ public class Main extends Application {
 		botones.setAlignment(Pos.TOP_CENTER);
 		login.getChildren().addAll(title,columnas.getChild(),botones);
 		login.setAlignment(Pos.TOP_CENTER);
+//Bienvenida
 		
-		Label bienvenida = new Label("\n \n \n    Bienvenido\n    a la \n    tienda virtual");
+		Label bienvenida = new Label("Bienvenido\na la\ntienda virtual");
 		bienvenida.setTextAlignment(TextAlignment.CENTER);
-		bienvenida.setFont(new Font("Arial",20));
+		bienvenida.setFont(new Font("Arial",18));
 		bienvenida.setTextFill(Color.BLUE);
 		bienvenida.setMaxWidth(Double.MAX_VALUE);
+		ImageView[] imagenes = new ImageView[6];
+		try {
+			Image uno = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\1.png"));
+			ImageView unoImg = new ImageView(uno);
+			imagenes[0] = unoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image dos = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\2.png"));
+			ImageView dosImg = new ImageView(dos);
+			imagenes[1] = dosImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image tres = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\3.png"));
+			ImageView tresImg = new ImageView(tres);
+			imagenes[2] = tresImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image cuatro = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\4.png"));
+			ImageView cuatroImg = new ImageView(cuatro);
+			imagenes[3] = cuatroImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image cinco = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\5.png"));
+			ImageView cincoImg = new ImageView(cinco);
+			imagenes[5] = cincoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		
+		
+//General		
 		mainPane.setRight(login);
 		mainPane.setLeft(bienvenida);
 		mainPane.setTop(menuPrincipal());

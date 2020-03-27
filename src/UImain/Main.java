@@ -25,6 +25,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.*;
 import javafx.scene.input.MouseEvent;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 public class Main extends Application {
 	//App data
@@ -916,6 +918,8 @@ public class Main extends Application {
 	}	
 	public static void BuscarCategoria() {
 		VBox principal=new VBox();
+		String[]categoriasT=new String[categorias.size()];
+		for (int i=0;i<categoriasT.length;i++) {categoriasT[i]=categorias.get(i).getNombre();}
 		Label titulo=new Label("Seleccione la Categoria:");
 		titulo.setAlignment(Pos.TOP_CENTER);
 		titulo.setPadding(new Insets(5));
@@ -923,10 +927,26 @@ public class Main extends Application {
 		buscador.setAlignment(Pos.TOP_CENTER);
 		buscador.setPadding(new Insets(5));
 		buscador.add(new Label("Seleccione la Categoria"), 0, 0);
+		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categoriasT));
+		cats.setPromptText("Categorias");
 		
-		Button buscar=new Button("Buscar");
-		buscar.setAlignment(Pos.CENTER);
-		principal.getChildren().addAll(titulo,buscador,buscar);
+		cats.valueProperty().addListener(new ChangeListener<String>() {
+			public void changed (ObservableValue s1,String s2,String s3) {
+				int ind=cats.getSelectionModel().getSelectedIndex();
+				Button buscar=new Button("Buscar");
+				buscar.setAlignment(Pos.CENTER);
+				principal.getChildren().add(buscar);
+				buscar.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
+						ArrayList<Producto> pt=inventario.RealizarBusqueda(ind);
+						ListView listaprod=new ListView(); listaprod.getItems().addAll(pt);
+						principal.getChildren().add(listaprod);
+					}
+				});
+			}
+		});
+		principal.getChildren().addAll(titulo,cats);
+		principal.setAlignment(Pos.TOP_CENTER);
 		if (usuario==null) {
 			principalInvitado.setCenter(principal);
 		}else if(usuario instanceof Usuario) {

@@ -738,35 +738,45 @@ public class Main extends Application {
 			        				respuesta.ifPresent(new Consumer<String>() {
 										@Override
 										public void accept(String t) {
-											String answer = respuesta.get();
-											if(Usuarios.get(user).comprobarRespuesta(answer)) {
-												TextInputDialog nuevaContraseña=new TextInputDialog();
-												nuevaContraseña.setTitle("Recuperacion Exitosa");
-												nuevaContraseña.setHeaderText("La respuesta es correcta");
-												nuevaContraseña.setContentText("Nueva Contraseña:");
-						        				Optional<String> contraseña=nuevaContraseña.showAndWait();
-						        				respuesta.ifPresent(new Consumer<String>() {
-													@Override
-													public void accept(String t) {
-														String key = contraseña.get();
-														try {
-															if(key==null || key.isEmpty()) {
-																throw new FormularioIncompletoError();
+											try {
+												String answer = respuesta.get();
+												if(answer==null || answer.isEmpty()) {
+													throw new FormularioIncompletoError();
+												}
+												if(Usuarios.get(user).comprobarRespuesta(answer)) {
+													TextInputDialog nuevaContraseña=new TextInputDialog();
+													nuevaContraseña.setTitle("Recuperacion Exitosa");
+													nuevaContraseña.setHeaderText("La respuesta es correcta");
+													nuevaContraseña.setContentText("Nueva Contraseña:");
+							        				Optional<String> contraseña=nuevaContraseña.showAndWait();
+							        				respuesta.ifPresent(new Consumer<String>() {
+														@Override
+														public void accept(String t) {
+															String key = contraseña.get();
+															try {
+																if(key==null || key.isEmpty()) {
+																	throw new FormularioIncompletoError();
+																}
+																Usuarios.get(user).recuperarContraseña(answer,key);
+															}catch(FormularioIncompletoError e) {
+																Alert erronea=new Alert(AlertType.ERROR);
+																erronea.setHeaderText(e.getMessage());
+																erronea.setContentText("Ingrese una contraseña");
+																erronea.show();
 															}
-															Usuarios.get(user).recuperarContraseña(answer,key);
-														}catch(FormularioIncompletoError e) {
-															Alert erronea=new Alert(AlertType.ERROR);
-															erronea.setHeaderText(e.getMessage());
-															erronea.setContentText("Ingrese una contraseña");
-															erronea.show();
+															
 														}
-														
-													}
-						        				});
-											}else {
+							        				});
+												}else {
+													Alert erronea=new Alert(AlertType.ERROR);
+													erronea.setHeaderText("Respuesta Incorrecta");
+													erronea.setContentText("Intente mas Tarde");
+													erronea.show();
+												}
+											}catch(FormularioIncompletoError e) {
 												Alert erronea=new Alert(AlertType.ERROR);
-												erronea.setHeaderText("Respuesta Incorrecta");
-												erronea.setContentText("Intente mas Tarde");
+												erronea.setHeaderText(e.getMessage());
+												erronea.setContentText("Ingrese una contraseña");
 												erronea.show();
 											}
 											

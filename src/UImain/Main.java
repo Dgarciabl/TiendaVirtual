@@ -577,7 +577,23 @@ public class Main extends Application {
 			}	
 		});
 		salir.getItems().addAll(opcion);
-		mainMenu = new MenuBar(descripcion,salir);
+		Menu ayuda = new Menu("Ayuda");
+		MenuItem contacto = new MenuItem("Contacto");
+		contacto.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub	
+			}
+		});
+		MenuItem recuperar = new MenuItem("Recuperar contraseña");
+		recuperar.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub	
+			}
+		});
+		ayuda.getItems().addAll(contacto,recuperar);
+		mainMenu = new MenuBar(descripcion,ayuda,salir);
 		return mainMenu;
 	}
 		//Panes

@@ -330,8 +330,8 @@ public class Main extends Application {
 		}
 	}
 	public static FieldPane stosMortales(int j) {
-		String[] Criterios= {"Nombre;","Edad:","Genero:","Nick:","Pregunta recuperacion"};
-		String[] Valores=new String[5];
+		String[] Criterios= {"Nombre;","Edad:","Genero:","Nick:","Saldo:", "Pregunta recuperacion"};
+		String[] Valores=new String[6];
 		Valores[0]=Usuarios.get(j).getNombre();
 		Valores[1]=Integer.toString(Usuarios.get(j).getEdad());
 		if (Usuarios.get(j).getGenero()==true) {
@@ -341,8 +341,15 @@ public class Main extends Application {
 			Valores[2]="Femenino";
 		}
 		Valores[3]=Usuarios.get(j).getUsuario();
-		Valores[4]=Usuarios.get(j).getPregunta();
-		boolean[] Hab=new boolean[5]; for (int i=0;i<Hab.length;i++) {Hab[i]=false;}
+		if (Usuarios.get(j) instanceof Usuario) {
+			Usuario usut=(Usuario) Usuarios.get(j);
+			Valores[4]=Double.toString((usut.getSaldo()));
+		}
+		else {
+			Valores[4]="No tiene";
+		}
+		Valores[5]=Usuarios.get(j).getPregunta();
+		boolean[] Hab=new boolean[6]; for (int i=0;i<Hab.length;i++) {Hab[i]=false;}
 		FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
@@ -1065,10 +1072,8 @@ public class Main extends Application {
 							resultado.add(añadir, 1, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
 						}else if(usuario instanceof Administrador) {
-							Button editar=new Button("Editar");
 							Button elimExist=new Button("Eliminar del Inventario");
-							Button eliminar=new Button("Eliminar");
-							resultado.add(editar, 0, 5);
+							Button eliminar=new Button("Eliminar producto");
 							resultado.add(elimExist, 1, 5);
 							resultado.add(eliminar, 2, 5);
 							principal.setBottom(new VBox(resultado,mensaje));

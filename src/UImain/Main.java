@@ -2041,6 +2041,10 @@ public class Main extends Application {
 					al.setHeaderText("Producto creado");
 					al.setTitle("Información");
 					
+				}catch(FormularioIncompletoError e2) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e2.getMessage());
+					al.setTitle("Formulario Incompleto");
 				}catch (NumberFormatException e1){
 					try {
 						throw new InputError();
@@ -2049,10 +2053,6 @@ public class Main extends Application {
 						al.setHeaderText(e4.getMessage());
 						al.setTitle("Input Error");
 					}
-				}catch(FormularioIncompletoError e2) {
-					al.setAlertType(AlertType.ERROR);
-					al.setHeaderText(e2.getMessage());
-					al.setTitle("Formulario Incompleto");
 				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());
@@ -2125,6 +2125,10 @@ public class Main extends Application {
 					al.setHeaderText("Categoria creada");
 					al.setTitle("Información");
 
+				}catch(FormularioIncompletoError e2) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e2.getMessage());
+					al.setTitle("Formulario Incompleto");
 				}catch (NumberFormatException e1){
 					try {
 						throw new InputError();
@@ -2133,10 +2137,6 @@ public class Main extends Application {
 						al.setHeaderText(e4.getMessage());
 						al.setTitle("Input Error");
 					}
-				}catch(FormularioIncompletoError e2) {
-					al.setAlertType(AlertType.ERROR);
-					al.setHeaderText(e2.getMessage());
-					al.setTitle("Formulario Incompleto");
 				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());
@@ -2243,6 +2243,10 @@ public class Main extends Application {
 					Usuarios.add(usuariocreado);
 					al.setHeaderText("Usuario creado");
 					al.setTitle("Información");
+				}catch(FormularioIncompletoError e2) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e2.getMessage());
+					al.setTitle("Formulario Incompleto");
 				}catch (NumberFormatException e1){
 					try {
 						throw new InputError();
@@ -2251,10 +2255,6 @@ public class Main extends Application {
 						al.setHeaderText(e4.getMessage());
 						al.setTitle("Input Error");
 					}
-				}catch(FormularioIncompletoError e2) {
-					al.setAlertType(AlertType.ERROR);
-					al.setHeaderText(e2.getMessage());
-					al.setTitle("Formulario Incompleto");
 				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());

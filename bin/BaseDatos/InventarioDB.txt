@@ -78,7 +78,7 @@
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
-      "cantidad": 11
+      "cantidad": 15
     },
     {
       "producto": {

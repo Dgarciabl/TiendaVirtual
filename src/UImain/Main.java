@@ -11,6 +11,9 @@ import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -28,6 +31,7 @@ import javafx.scene.input.MouseEvent;
 public class Main extends Application {
 	//App data
 	public static int hojaActual;
+	public static int indice;
 	public static ArrayList<Persona> Usuarios;
 	public static Inventario inventario;
 	public static ArrayList<Categoria> categorias;
@@ -256,7 +260,20 @@ public class Main extends Application {
 		valores[1]=Double.toString(productos.get(j).getPrecioCompra());
 		valores[2]=Double.toString(productos.get(j).getPrecioVenta());
 		boolean[] habilitado=new boolean[3];
-		for(int i=0;i<3;i++) {habilitado[i]=false;}
+		for(int i=0;i<habilitado.length;i++) {habilitado[i]=false;}
+		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
+		resultado.getChild().setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		return resultado;
+	}
+	public static FieldPane productorNom(int j) {
+		String[] criterios= {"Nombre:","Descripcion:","Precio de compra:","Precio de venta:"};
+		String[] valores=new String[4];
+		valores[0]=productos.get(j).getNombre();
+		valores[1]=productos.get(j).getDescripcion();
+		valores[2]=Double.toString(productos.get(j).getPrecioCompra());
+		valores[3]=Double.toString(productos.get(j).getPrecioVenta());
+		boolean[] habilitado=new boolean[4];
+		for(int i=0;i<habilitado.length;i++) {habilitado[i]=false;}
 		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
 		resultado.getChild().setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return resultado;
@@ -266,6 +283,16 @@ public class Main extends Application {
 		String[] Valores= new String[1];
 		Valores[0]=categorias.get(j).getDescripcion();
 		boolean[] habilitado=new boolean[1]; habilitado[0]=false;
+		FieldPane res=new FieldPane("",Criterios,"",Valores,habilitado);
+		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		return res;
+	}
+	public static FieldPane categoricasNom(int j) {
+		String[] Criterios= {"Nombre:","Descripcion:"};
+		String[] Valores= new String[2];
+		Valores[0]=categorias.get(j).getNombre();
+		Valores[1]=categorias.get(j).getDescripcion();
+		boolean[] habilitado=new boolean[2]; habilitado[0]=false; habilitado[1]=false;
 		FieldPane res=new FieldPane("",Criterios,"",Valores,habilitado);
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
@@ -283,17 +310,36 @@ public class Main extends Application {
 		return res;
 		}
 		else {
-			String[] Criterios= {"Descripcion:","Precio de compra:","Precio de venta:","Unidades disponibles:"};
-			String[] Valores=new String[4];
-			Valores[0]=inventario.getInventario(j).getProducto().getDescripcion();
-			Valores[1]=Double.toString(inventario.getInventario(j).getProducto().getPrecioCompra());
-			Valores[2]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
-			Valores[3]=Integer.toString(inventario.getInventario(j).getCantidad());
-			boolean[] Hab=new boolean[4]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
+			String[] Criterios= {"Nombre:","Descripcion:","Precio de compra:","Precio de venta:","Unidades disponibles:"};
+			String[] Valores=new String[5];
+			Valores[0]=inventario.getInventario(j).getProducto().getNombre();
+			Valores[1]=inventario.getInventario(j).getProducto().getDescripcion();
+			Valores[2]=Double.toString(inventario.getInventario(j).getProducto().getPrecioCompra());
+			Valores[3]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
+			Valores[4]=Integer.toString(inventario.getInventario(j).getCantidad());
+			boolean[] Hab=new boolean[5]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
 			FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
 			res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 			return res;
 		}
+	}
+	public static FieldPane stosMortales(int j) {
+		String[] Criterios= {"Nombre;","Edad:","Genero:","Nick:","Pregunta recuperacion"};
+		String[] Valores=new String[5];
+		Valores[0]=Usuarios.get(j).getNombre();
+		Valores[1]=Integer.toString(Usuarios.get(j).getEdad());
+		if (Usuarios.get(j).getGenero()==true) {
+			Valores[2]= "Masculino";
+		}
+		else {
+			Valores[2]="Femenino";
+		}
+		Valores[3]=Usuarios.get(j).getUsuario();
+		Valores[4]=Usuarios.get(j).getPregunta();
+		boolean[] Hab=new boolean[5]; for (int i=0;i<Hab.length;i++) {Hab[i]=false;}
+		FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
+		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		return res;
 	}
 	public static boolean InicioSesion(String usu, String key) {
 		Persona temp;
@@ -628,9 +674,11 @@ public class Main extends Application {
 			}
 		});
 		MenuItem mostrarUsuarios = new MenuItem("Mostrar usuarios");
-		/** completar
-		 * 
-		 */
+		mostrarUsuarios.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle (ActionEvent e) {
+				mostrarUsuarios();
+			}
+		});
 		mostrarExistencias.getItems().addAll(mostrarInventario,mostrarProductos,mostrarCategorias,mostrarUsuarios);
 		Menu busqueda = new Menu("Busqueda");
 		MenuItem buscarProducto = new MenuItem("Busqueda por nombre");
@@ -934,6 +982,26 @@ public class Main extends Application {
 							Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
 							info.getChildren().addAll(l.getChild(),b1,b2);
 							g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
+							b1.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle(ActionEvent e) {
+									boolean[]Des= {true,true,true,true,true};
+									l.setHabilitado(Des);
+									Button save=new Button("Guardar cambios");
+									info.getChildren().add(save);
+									save.setOnAction(new EventHandler<ActionEvent>() {
+										public void handle (ActionEvent e) {
+											Administrador adm=(Administrador) usuario;
+											adm.modificarNombreProducto(s,l.getValue(0));
+											adm.modificarDescripcionProducto(s, l.getValue(1));
+											adm.modificarPrecioCompra(s, Double.parseDouble(l.getValue(2)));
+											adm.modificarPrecioVenta(s, Double.parseDouble(l.getValue(3)));
+											adm.modificarCantidadProducto(s, Integer.parseInt(l.getValue(4)));
+											mostrarInventario();
+										
+										}
+									});
+								}
+							});
 							b2.setOnAction(new EventHandler<ActionEvent>() {
 								public void handle(ActionEvent e) {
 									Alert a=new Alert(AlertType.CONFIRMATION);
@@ -972,7 +1040,13 @@ public class Main extends Application {
 		g.add(new Label("Lista de categorias:"), 0, 0);
 		g.add(listacat,0, 1); 
 		if (usuario==null|| usuario instanceof Usuario) {
-		g.add(new Button("Busqueda por categoria"), 1, 2);
+			Button buscat=new Button("Busqueda por categoria");
+		g.add(buscat, 1, 2);
+		buscat.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle (ActionEvent e) {
+				BuscarCategoria();
+			}
+		});
 		}
 		cat.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.TOP_CENTER);
@@ -989,10 +1063,27 @@ public class Main extends Application {
 					editar.setOnAction(new EventHandler<ActionEvent>() {
 						public void handle(ActionEvent e) {
 							HBox info=new HBox();
-							FieldPane l=categoricas(s);
+							FieldPane l=categoricasNom(s);
 							Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
 							info.getChildren().addAll(l.getChild(),b1,b2);
 							g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
+							b1.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle(ActionEvent e) {
+									boolean[]Des= {true,true};
+									l.setHabilitado(Des);
+									Button save=new Button("Guardar cambios");
+									info.getChildren().add(save);
+									save.setOnAction(new EventHandler<ActionEvent>() {
+										public void handle (ActionEvent e) {
+											Administrador adm=(Administrador) usuario;
+											adm.modificarNombreCategoria(s, l.getValue(0));
+											adm.modificarDescripcionCategoria(s, l.getValue(1));
+											mostrarCategorias();
+										
+										}
+									});
+								}
+							});
 							b2.setOnAction(new EventHandler<ActionEvent>() {
 								public void handle(ActionEvent e) {
 									Alert a=new Alert(AlertType.CONFIRMATION);
@@ -1045,10 +1136,29 @@ public class Main extends Application {
 				opciones.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle (ActionEvent e) {
 						HBox info=new HBox();
-						FieldPane l=productor(s);
+						FieldPane l=productorNom(s);
 						Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
 						info.getChildren().addAll(l.getChild(),b1,b2);
 						g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
+						b1.setOnAction(new EventHandler<ActionEvent>() {
+							public void handle(ActionEvent e) {
+								boolean[]Des= {true,true,true,true};
+								l.setHabilitado(Des);
+								Button save=new Button("Guardar cambios");
+								info.getChildren().add(save);
+								save.setOnAction(new EventHandler<ActionEvent>() {
+									public void handle (ActionEvent e) {
+										Administrador adm=(Administrador) usuario;
+										adm.modificarNombreProducto(s,l.getValue(0));
+										adm.modificarDescripcionProducto(s, l.getValue(1));
+										adm.modificarPrecioCompra(s, Double.parseDouble(l.getValue(2)));
+										adm.modificarPrecioVenta(s, Double.parseDouble(l.getValue(3)));
+										mostrarProductos();
+									
+									}
+								});
+							}
+						});
 						b2.setOnAction(new EventHandler<ActionEvent>() {
 							public void handle(ActionEvent e) {
 								Alert a=new Alert(AlertType.CONFIRMATION);
@@ -1156,7 +1266,61 @@ public class Main extends Application {
 		}
 		
 	}
-	//crear
+	public static void mostrarUsuarios() {
+		VBox usu=new VBox();
+		ListView listausu=new ListView();
+		for (int k=0;k<Usuarios.size();k++) {listausu.getItems().add(Usuarios.get(k).getUsuario());}
+		
+		Label lis1=new Label("Mostrar usuarios"); lis1.setAlignment(Pos.TOP_CENTER); lis1.setPadding(new Insets(5));
+		GridPane g=new GridPane();
+		g.add(new Label("Lista de usuarios"), 0, 0);
+		g.add(listausu, 0, 1);
+		usu.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.TOP_CENTER);
+		usu.setAlignment(Pos.TOP_CENTER);
+		
+		listausu.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle (MouseEvent e) {
+				int s=listausu.getSelectionModel().getSelectedIndex();
+				FieldPane f=stosMortales(s);
+				g.add(f.getChild(), 1, 1);
+				Button opciones=new Button("Eliminar usuario");
+				g.add(opciones, 1, 2);
+				opciones.setOnAction(new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent w){
+						Alert a=new Alert(AlertType.CONFIRMATION);
+						a.setTitle("Eliminar usuario");
+						a.setHeaderText("¿Eliminar el usuario?");
+						Optional<ButtonType>res=a.showAndWait();
+						if (res.get()==ButtonType.OK) {
+							if (Usuarios.get(s).equals(usuario)) {
+								Alert b=new Alert(AlertType.ERROR);
+								b.setTitle("Error");
+								b.setHeaderText("¡No puedes eliminarte a ti mismo!");
+								b.show();
+								mostrarUsuarios();
+							}
+							else {
+							Usuarios.remove(s);
+							mostrarUsuarios();
+							}
+
+						}
+					}
+				});
+			}
+		});
+		if (usuario==null) {
+			principalInvitado.setCenter(usu);
+		}else if(usuario instanceof Usuario) {
+			principalUsuario.setCenter(usu);
+		}else if(usuario instanceof Administrador) {
+			principalAdministrador.setCenter(usu);
+		}		
+		
+	}
+				//crear
+
 	public static void crearProducto() {
 		
 		VBox crearProducto = new VBox();
@@ -1173,14 +1337,33 @@ public class Main extends Application {
 		
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		columnas.getChild().getChildren().remove(columnas.getBox(4));
-		ComboBox cats=new ComboBox();
-		columnas.getChild().add(cats, 2, 5);
+
+		String[] categ = new String[categorias.size()];
+		for(int i = 0; i<categorias.size(); i++) {
+			categ[i]= categorias.get(i).getNombre();
+		}
+		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categ));
+		cats.setPromptText("Categorias");
+		cats.setValue("Ninguno");
+		cats.valueProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue observable, String oldValue, String newValue) {
+				for(int i=0; i<categorias.size();i++) {
+					if(categorias.get(i).getNombre().equals(newValue)) {
+						indice = i;
+					}
+				}
+			}
+			
+		});
+		
+		columnas.getChild().add(cats, 1, 5);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				finalizar();
+				archivo();
 			}
 		});
 		Button crear = new Button("Crear");
@@ -1191,7 +1374,7 @@ public class Main extends Application {
 				String descripcion = columnas.getValue(1);
 				int oPrice = Integer.valueOf(columnas.getValue(2));
 				int sPrice = Integer.valueOf(columnas.getValue(3));
-				Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice);
+				Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice,categorias.get(indice));
 				productos.add(productoCreado);
 				Alert info = new Alert(AlertType.INFORMATION);
 				info.setHeaderText("Producto creado");
@@ -1232,7 +1415,22 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				finalizar();
+				archivo();
+			}
+		});
+		Button crear = new Button("Crear");
+		crear.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				String nombre = columnas.getValue(0);
+				String descripcion = columnas.getValue(1);
+				Categoria categoriaCreada = new Categoria(nombre,descripcion);
+				Alert info = new Alert(AlertType.INFORMATION);
+				info.setHeaderText("Categoria creado");
+				info.setTitle("Información");
+				info.show();
+				categorias.add(categoriaCreada);
+				
 			}
 		});
 		botones.add(salir, 0, 0);
@@ -1297,7 +1495,7 @@ public class Main extends Application {
 				Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
 				Usuarios.add(usuariocreado);
 				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Producto creado");
+				info.setHeaderText("Usuario creado");
 				info.setTitle("Información");
 				info.show();
 			}

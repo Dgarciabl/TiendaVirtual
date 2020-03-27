@@ -1690,6 +1690,9 @@ public class Main extends Application {
 										public void handle (ActionEvent e) {
 											try {
 											Administrador adm=(Administrador) usuario;
+											if (l.getValue(0).equals("") || l.getValue(1).equals("")) {
+												throw new FormularioIncompletoError();
+											}
 											if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==false) {
 												throw new InputError();
 											}
@@ -1702,8 +1705,14 @@ public class Main extends Application {
 												fallo.setHeaderText(error.getMessage());
 												fallo.setTitle("Fallo en inputs");
 												fallo.show();
+												mostrarCategorias();											
+											}
+											catch (FormularioIncompletoError error) {
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error.getMessage());
+												fallo.setTitle("Fallo en inputs");
+												fallo.show();
 												mostrarCategorias();
-												
 											}
 										
 										}

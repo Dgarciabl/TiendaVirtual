@@ -677,6 +677,7 @@ public class Main extends Application {
 							if(isNumeric(usName)) {
 								throw new InputError();
 							}
+							boolean encontrado=false;
 							for(int i=0; i<Usuarios.size();i++) {
 								if(Usuarios.get(i).getUsuario().equals(usName)) {
 									int user=i;
@@ -699,7 +700,18 @@ public class Main extends Application {
 													@Override
 													public void accept(String t) {
 														String key = contraseña.get();
-														Usuarios.get(user).recuperarContraseña(answer,key);
+														try {
+															if(key==null || key.isEmpty()) {
+																throw new FormularioIncompletoError();
+															}
+															Usuarios.get(user).recuperarContraseña(answer,key);
+														}catch(FormularioIncompletoError e) {
+															Alert erronea=new Alert(AlertType.ERROR);
+															erronea.setHeaderText(e.getMessage());
+															erronea.setContentText("Ingrese una contraseña");
+															erronea.show();
+														}
+														
 													}
 						        				});
 											}else {
@@ -711,12 +723,14 @@ public class Main extends Application {
 											
 										}
 			        				});
-								}else {
-									Alert erronea=new Alert(AlertType.ERROR);
-									erronea.setHeaderText("Usuario no Encontrado");
-									erronea.setContentText("Intente mas Tarde");
-									erronea.show();
+			        				encontrado=true;
 								}
+							}
+							if (!encontrado) {
+								Alert erronea=new Alert(AlertType.ERROR);
+								erronea.setHeaderText("Usuario no Encontrado");
+								erronea.setContentText("Intente mas Tarde");
+								erronea.show();
 							}
 						}catch(InputError err) {
 							Alert erronea=new Alert(AlertType.ERROR);

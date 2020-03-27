@@ -1126,12 +1126,26 @@ public class Main extends Application {
 							Optional<String>res2=act.showAndWait();
 							res2.ifPresent(new Consumer<String>() {
 								public void accept(String e) {
+									try {
+										if (res2.get().equals("")) {
+											throw new FormularioIncompletoError();
+										}
+										else {
 									usuario.setContraseña(res.get(), res2.get());
 									Alert a=new Alert(AlertType.CONFIRMATION);
 									a.setTitle("Cambiar Contraseña");
 									a.setHeaderText("Contrtaseña cambiada correctamente");
 									a.show();
 									archivo();
+										}
+									}
+									catch (FormularioIncompletoError error) {
+										Alert fallo=new Alert(AlertType.ERROR);
+										fallo.setHeaderText(error.getMessage());
+										fallo.setTitle("Fallo en inputs");
+										fallo.show();
+										archivo();
+									}
 								}
 							});
 						}
@@ -1236,9 +1250,12 @@ public class Main extends Application {
 						
 						if(presentacion.getValue(2).equals("Masculino")) {
 							usuario.setGenero(true);
+							archivo();
 						}else if (presentacion.getValue(2).equals("Femenino")) {
 							usuario.setGenero(false);
-						}else {
+							archivo();
+						}
+						else {
 							//throws new GeneroNoValido();
 						}
 					}
@@ -1671,10 +1688,23 @@ public class Main extends Application {
 									info.getChildren().add(save);
 									save.setOnAction(new EventHandler<ActionEvent>() {
 										public void handle (ActionEvent e) {
+											try {
 											Administrador adm=(Administrador) usuario;
+											if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==false) {
+												throw new InputError();
+											}
 											adm.modificarNombreCategoria(s, l.getValue(0));
 											adm.modificarDescripcionCategoria(s, l.getValue(1));
 											mostrarCategorias();
+											}
+											catch (InputError error) {
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error.getMessage());
+												fallo.setTitle("Fallo en inputs");
+												fallo.show();
+												mostrarCategorias();
+												
+											}
 										
 										}
 									});
@@ -2131,7 +2161,6 @@ public class Main extends Application {
 						al.setHeaderText(e4.getMessage());
 						al.setTitle("Input Error");
 					}
-
 				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());

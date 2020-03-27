@@ -6,9 +6,9 @@
       "numObjetos": 0,
       "inventario": []
     },
-    "nombre": "superuser",
+    "nombre": "hola",
     "genero": true,
-    "edad": 20,
+    "edad": 21,
     "usuario": "user",
     "contraseña": "user",
     "preguntaRecuperacion": "user",

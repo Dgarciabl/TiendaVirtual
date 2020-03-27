@@ -390,7 +390,10 @@ public class Main extends Application {
 		hojaActual = 0;
 		
 		/*GridPane[] creadores = new GridPane[4];
-		Label julian = new Label("Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre");
+		Label julian = new Label("Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre, practico natación y me gusta aprender cosas nuevas");
+		Label buitrago = new Label("Juan Pablo Buitrago Díaz: 19 años, amantes de los juegos y salir con buena compañía, estudiante de tercer semestre ingenieria en sisemas");
+		Label david = new Label("David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial");
+		
 		*/Label creadores = new Label(hojaVida[hojaActual]);
 		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -1480,7 +1483,7 @@ public class Main extends Application {
 				Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
 				Usuarios.add(usuariocreado);
 				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Producto creado");
+				info.setHeaderText("Usuario creado");
 				info.setTitle("Información");
 				info.show();
 			}

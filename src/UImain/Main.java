@@ -2126,6 +2126,15 @@ public class Main extends Application {
 			public void handle(ActionEvent event) {
 				Alert al = new Alert(AlertType.INFORMATION);
 				try {
+					if(columnas.getValue(2)==null || columnas.getValue(2).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(3)==null || columnas.getValue(3).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(5)==null || columnas.getValue(5).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
 					String nombre = columnas.getValue(0);
 					String descripcion = columnas.getValue(1);
 					int oPrice = Integer.valueOf(columnas.getValue(2));
@@ -2143,17 +2152,7 @@ public class Main extends Application {
 					}
 					if(descripcion==null || descripcion.isEmpty()) {
 						throw  new FormularioIncompletoError();
-					}
-					if(columnas.getValue(2)==null || columnas.getValue(2).isEmpty()) {
-						throw  new FormularioIncompletoError();
-					}
-					if(columnas.getValue(3)==null || columnas.getValue(3).isEmpty()) {
-						throw  new FormularioIncompletoError();
-					}
-					if(columnas.getValue(5)==null || columnas.getValue(5).isEmpty()) {
-						throw  new FormularioIncompletoError();
-					}
-					
+					}					
 					Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice,categorias.get(indice));
 					productos.add(productoCreado);	
 					Detalle detalleCreado = new Detalle(productos.get(indice2),cantidad);
@@ -2238,6 +2237,12 @@ public class Main extends Application {
 					if(nombre==null || nombre.isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
+					if(isNumeric(nombre)) {
+						throw new InputError();
+					}
+					if(isNumeric(descripcion)) {
+						throw new InputError();
+					}
 					if(descripcion ==null || descripcion.isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
@@ -2250,14 +2255,10 @@ public class Main extends Application {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e2.getMessage());
 					al.setTitle("Formulario Incompleto");
-				}catch (NumberFormatException e1){
-					try {
-						throw new InputError();
-					}catch(InputError e4) {
-						al.setAlertType(AlertType.ERROR);
-						al.setHeaderText(e4.getMessage());
-						al.setTitle("Input Error");
-					}
+				}catch (InputError e1){
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e1.getMessage());
+					al.setTitle("Input Error");
 				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());

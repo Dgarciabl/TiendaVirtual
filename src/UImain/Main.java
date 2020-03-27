@@ -7,9 +7,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
-import gestorAplicacion.Exepciones.FalloInicioSesion;
-import gestorAplicacion.Exepciones.FormularioIncompletoError;
-import gestorAplicacion.Exepciones.InputError;
+import gestorAplicacion.Exepciones.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -1281,7 +1279,10 @@ public class Main extends Application {
 									respuesta.ifPresent(new Consumer<String>() {
 							            @Override public void accept(String user) {
 							            	try {
-							            	if (isNumeric(respuesta.get())==false) {
+							            	if (respuesta.get().equals("")) {
+							            		throw new FormularioIncompletoError();
+							            	}
+							            	else if (isNumeric(respuesta.get())==false) {
 							            		throw new InputError();
 							            	}
 							            	else {
@@ -1296,6 +1297,13 @@ public class Main extends Application {
 												fallo.show();
 												BuscarNombre();
 							            	}
+							            	catch(FormularioIncompletoError error2){
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error2.getMessage());
+												fallo.setTitle("Fallo en inputs");
+												fallo.show();
+												BuscarNombre();
+											}
 							            }
 							        });
 								}
@@ -1401,10 +1409,34 @@ public class Main extends Application {
 										Optional<String> respuesta=confirmacion.showAndWait();
 										respuesta.ifPresent(new Consumer<String>() {
 								            @Override public void accept(String user) {
+								            	try {
+								            		if (respuesta.get().equals("")) {
+								            			throw new FormularioIncompletoError();
+								            		}
+								            		else if (isNumeric(respuesta.get())==false) {
+								            			throw new InputError();
+								            		}
+								            		else {
 								                ((Usuario) usuario).getCarro().AddProducto(new Detalle(pt.get(t),Integer.valueOf(respuesta.get())));
 								                int bis=inventario.RealizarBusqueda(pt.get(t).getNombre());
 								                inventario.getInventario(bis).restarCantidad(Integer.valueOf(respuesta.get()));
 								                BuscarCategoria();
+								            		}
+								            	}
+								            	catch (InputError error) {
+													Alert fallo=new Alert(AlertType.ERROR);
+													fallo.setHeaderText(error.getMessage());
+													fallo.setTitle("Fallo en inputs");
+													fallo.show();
+													BuscarCategoria();
+								            	}
+								            	catch (FormularioIncompletoError error) {
+													Alert fallo=new Alert(AlertType.ERROR);
+													fallo.setHeaderText(error.getMessage());
+													fallo.setTitle("Fallo en inputs");
+													fallo.show();
+													BuscarCategoria();
+								            	}
 								            }
 								        });
 									}
@@ -1504,10 +1536,18 @@ public class Main extends Application {
 										public void handle (ActionEvent e) {
 											try {
 												Administrador adm=(Administrador) usuario;
-											if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==true) {
+												Inventario invT=inventario;
+												invT.getInventario().remove(s);
+												if (l.getValue(0).equals("") || l.getValue(1).equals("") || l.getValue(2).equals("") || l.getValue(3).equals("") || l.getValue(4).equals("")) {
+													throw new FormularioIncompletoError();
+												}
+												if (invT.RealizarBusqueda(l.getValue(0))!=-1) {
+													throw new NombreDuplicado();
+												}
+												if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==true) {
 												throw new InputError();
-											}
-											else {
+												}
+												else {
 												adm.modificarNombreProducto(s,l.getValue(0));
 												adm.modificarDescripcionProducto(s, l.getValue(1));
 												if (isNumericDouble(l.getValue(2))==false || isNumericDouble(l.getValue(3))==false || isNumeric(l.getValue(4))==false) {
@@ -1525,6 +1565,20 @@ public class Main extends Application {
 												Alert fallo=new Alert(AlertType.ERROR);
 												fallo.setHeaderText(error.getMessage());
 												fallo.setTitle("Fallo en inputs");
+												fallo.show();
+												mostrarInventario();
+											}
+											catch (FormularioIncompletoError error) {
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error.getMessage());
+												fallo.setTitle("Fallo en inputs");
+												fallo.show();
+												mostrarInventario();
+											}
+											catch (NombreDuplicado error) {
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error.getMessage());
+												fallo.setTitle("Nombre Duplicado");
 												fallo.show();
 												mostrarInventario();
 											}
@@ -1723,7 +1777,17 @@ public class Main extends Application {
 								save.setOnAction(new EventHandler<ActionEvent>() {
 									public void handle (ActionEvent e) {
 										try {
+											ArrayList<Producto>prodT=productos;
+											prodT.remove(s);
 											Administrador adm=(Administrador) usuario;
+										if (l.getValue(0).equals("") || l.getValue(1).equals("") || l.getValue(2).equals("") || l.getValue(3).equals("")) {
+											throw new FormularioIncompletoError();
+										}
+										for (int lel=0;lel<prodT.size();lel++) {
+											if (prodT.get(lel).getNombre().equals(l.getValue(0))) {
+												throw new NombreDuplicado();
+											}
+										}
 										if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==true) {
 											throw new InputError();
 										}
@@ -1744,6 +1808,20 @@ public class Main extends Application {
 											Alert fallo=new Alert(AlertType.ERROR);
 											fallo.setHeaderText(error.getMessage());
 											fallo.setTitle("Fallo en inputs");
+											fallo.show();
+											mostrarProductos();
+										}
+										catch (FormularioIncompletoError error) {
+											Alert fallo=new Alert(AlertType.ERROR);
+											fallo.setHeaderText(error.getMessage());
+											fallo.setTitle("Fallo en inputs");
+											fallo.show();
+											mostrarProductos();
+										}
+										catch (NombreDuplicado error) {
+											Alert fallo=new Alert(AlertType.ERROR);
+											fallo.setHeaderText(error.getMessage());
+											fallo.setTitle("Nombre duplicado");
 											fallo.show();
 											mostrarProductos();
 										}
@@ -2002,7 +2080,7 @@ public class Main extends Application {
 
 					for(int i=0;i<productos.size();i++) {
 						if(productos.get(i).getNombre().equals(nombre)) {
-							throw  new NombreDuplicadoError();
+							throw new NombreDuplicado();
 						}
 					}
 					if(nombre==null || nombre.isEmpty()) {
@@ -2041,7 +2119,7 @@ public class Main extends Application {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e2.getMessage());
 					al.setTitle("Formulario Incompleto");
-				}catch(NombreDuplicadoError e3) {
+				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());
 					al.setTitle("Nombre duplicado");

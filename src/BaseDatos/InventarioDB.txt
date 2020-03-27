@@ -3,7 +3,7 @@
     {
       "producto": {
         "nombre": "Leche",
-        "descripcion": "1 Litro",
+        "descripcion": "2 Litros",
         "categorias": {
           "nombre": "Lacteos",
           "descripcion": "Derivados de la leche"
@@ -12,32 +12,6 @@
         "precioCompra": 3000.0
       },
       "cantidad": 35
-    },
-    {
-      "producto": {
-        "nombre": "Yogur",
-        "descripcion": "1.2 Litros",
-        "categorias": {
-          "nombre": "Lacteos",
-          "descripcion": "Derivados de la leche"
-        },
-        "precioVenta": 3500.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 30
-    },
-    {
-      "producto": {
-        "nombre": "Almendras",
-        "descripcion": "Enteras con cascara 250gr",
-        "categorias": {
-          "nombre": "Granos",
-          "descripcion": "Semillas entera"
-        },
-        "precioVenta": 8900.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 44
     },
     {
       "producto": {
@@ -128,7 +102,7 @@
         "precioVenta": 2000.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 10
+      "cantidad": 9
     }
   ]
 }

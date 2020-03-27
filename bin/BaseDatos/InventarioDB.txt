@@ -115,7 +115,20 @@
         "precioVenta": 75000.0,
         "precioCompra": 35000.0
       },
-      "cantidad": 73
+      "cantidad": 71
+    },
+    {
+      "producto": {
+        "nombre": "Audifonos",
+        "descripcion": "Buena calidad de sonido",
+        "categorias": {
+          "nombre": "Tecnologia",
+          "descripcion": "El avance es el futuro"
+        },
+        "precioVenta": 2000.0,
+        "precioCompra": 3000.0
+      },
+      "cantidad": 10
     }
   ]
 }

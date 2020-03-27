@@ -60,7 +60,21 @@ public class Usuario extends Persona {
 		return this.carroCompra.RealizarBusqueda(indexCategoria);
 	}
 	//Methods
-	public void comprar() {
+	public boolean comprar() {
+		double Subt=carroCompra.getSubTotal();
+		int Totalobj=carroCompra.getNumObjetos();
+		
+		if (saldo>Subt) {
+			saldo-=Subt;
+			
+			while(carroCompra.getInventario().size()>0) {
+				carroCompra.DelProducto(0);
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
 		
 	}	
 	@Override

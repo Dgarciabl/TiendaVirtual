@@ -4,57 +4,75 @@
       "producto": {
         "nombre": "Leche",
         "descripcion": "1 Litro",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Lacteos",
+          "descripcion": "Derivados de la leche"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 24
+      "cantidad": 40
     },
     {
       "producto": {
         "nombre": "Yogur",
         "descripcion": "1.2 Litros",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Lacteos",
+          "descripcion": "Derivados de la leche"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 15
+      "cantidad": 31
     },
     {
       "producto": {
         "nombre": "Almendras",
         "descripcion": "Enteras con cascara 250gr",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Granos",
+          "descripcion": "Semillas entera"
+        },
         "precioVenta": 8900.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 65
+      "cantidad": 46
     },
     {
       "producto": {
         "nombre": "Frijoles",
         "descripcion": "500gr",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Granos",
+          "descripcion": "Semillas entera"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 96
+      "cantidad": 87
     },
     {
       "producto": {
         "nombre": "Lentejas",
         "descripcion": "400ml",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Enlatados",
+          "descripcion": "Empacados para durar"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 52
+      "cantidad": 44
     },
     {
       "producto": {
         "nombre": "Portatil",
         "descripcion": "Ryzen 7",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Tecnologia",
+          "descripcion": "El avance es el futuro"
+        },
         "precioVenta": 2000000.0,
         "precioCompra": 1450000.0
       },
@@ -64,7 +82,10 @@
       "producto": {
         "nombre": "Celular",
         "descripcion": "Mejor calida Precio del mercado",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Tecnologia",
+          "descripcion": "El avance es el futuro"
+        },
         "precioVenta": 1200000.0,
         "precioCompra": 650000.0
       },
@@ -74,21 +95,24 @@
       "producto": {
         "nombre": "Horno",
         "descripcion": "Haceb",
-        "categorias": [],
+        "categorias": null,
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
-      "cantidad": 11
+      "cantidad": 15
     },
     {
       "producto": {
         "nombre": "Licuadora",
         "descripcion": "Oster",
-        "categorias": [],
+        "categorias": {
+          "nombre": "Electrodomesticos",
+          "descripcion": "Todo para el hogar"
+        },
         "precioVenta": 75000.0,
         "precioCompra": 35000.0
       },
-      "cantidad": 81
+      "cantidad": 73
     }
   ]
 }

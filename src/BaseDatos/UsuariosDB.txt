@@ -1,32 +1,5 @@
 [
   {
-    "nombre": "superadmin",
-    "genero": true,
-    "edad": 0,
-    "usuario": "root",
-    "contraseña": "root",
-    "preguntaRecuperacion": "root",
-    "respuestaRecuperacion": "root"
-  },
-  {
-    "nombre": "Jorge",
-    "genero": true,
-    "edad": 54,
-    "usuario": "jordi",
-    "contraseña": "soloyolase",
-    "preguntaRecuperacion": "NombrePadre",
-    "respuestaRecuperacion": "Javier"
-  },
-  {
-    "nombre": "Daniela",
-    "genero": false,
-    "edad": 28,
-    "usuario": "dani",
-    "contraseña": "dan",
-    "preguntaRecuperacion": "NombreMadre",
-    "respuestaRecuperacion": "Johana"
-  },
-  {
     "saldo": 0.0,
     "carroCompra": {
       "subTotal": 0.0,
@@ -35,10 +8,40 @@
     },
     "nombre": "superuser",
     "genero": true,
-    "edad": 0,
+    "edad": 20,
     "usuario": "user",
     "contraseña": "user",
     "preguntaRecuperacion": "user",
     "respuestaRecuperacion": "user"
+  },
+  {
+    "saldo": 7200.0,
+    "carroCompra": {
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
+    },
+    "nombre": "Pablo",
+    "genero": true,
+    "edad": 0,
+    "usuario": "holasoypablo",
+    "contraseña": null,
+    "preguntaRecuperacion": "NombrePadre",
+    "respuestaRecuperacion": "Jorge"
+  },
+  {
+    "saldo": 540000.0,
+    "carroCompra": {
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
+    },
+    "nombre": "Julian",
+    "genero": true,
+    "edad": 20,
+    "usuario": "m",
+    "contraseña": "julianfm",
+    "preguntaRecuperacion": "soloyolase",
+    "respuestaRecuperacion": "perro"
   }
 ]

@@ -46,15 +46,10 @@ public class Inventario {
 	public ArrayList<Producto> RealizarBusqueda(int indexCategoria) {
 		Categoria Ind=Main.categorias.get(indexCategoria);
 		ArrayList<Producto> Lis=Main.productos; ArrayList<Producto> Regreso=new ArrayList<Producto>();
-		
 		for (int i=0;i<Lis.size();i++) {
-			Producto Temp=Lis.get(i);
-			ArrayList<Categoria> Temp2=Temp.getCategoria();
-			for (int j=0;j<Temp2.size();j++) {
-				Categoria Cat=Temp2.get(j);
-				if (Ind.getNombre().equals(Cat.getNombre())) {
-					Regreso.add(Temp);
-				}
+			Producto temp=Lis.get(i);
+			if(temp.getCategoria().equalsto(Ind)) {
+				Regreso.add(temp);
 			}
 		}
 		return Regreso;

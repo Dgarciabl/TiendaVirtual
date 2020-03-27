@@ -1,94 +1,99 @@
-{
-  "inventario": [
-    {
-      "producto": {
-        "nombre": "Leche",
-        "descripcion": "1 Litro",
-        "categorias": [],
-        "precioVenta": 3500.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 24
+[
+  {
+    "nombre": "Leche",
+    "descripcion": "1 Litro",
+    "categorias": {
+      "nombre": "Lacteos",
+      "descripcion": "Derivados de la leche"
     },
-    {
-      "producto": {
-        "nombre": "Yogur",
-        "descripcion": "1.2 Litros",
-        "categorias": [],
-        "precioVenta": 3500.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 15
+    "precioVenta": 3500.0,
+    "precioCompra": 3000.0
+  },
+  {
+    "nombre": "Yogur",
+    "descripcion": "1.2 Litros",
+    "categorias": {
+      "nombre": "Lacteos",
+      "descripcion": "Derivados de la leche"
     },
-    {
-      "producto": {
-        "nombre": "Almendras",
-        "descripcion": "Enteras con cascara 250gr",
-        "categorias": [],
-        "precioVenta": 8900.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 65
+    "precioVenta": 3500.0,
+    "precioCompra": 3000.0
+  },
+  {
+    "nombre": "Almendras",
+    "descripcion": "Enteras con cascara 250gr",
+    "categorias": {
+      "nombre": "Granos",
+      "descripcion": "Semillas entera"
     },
-    {
-      "producto": {
-        "nombre": "Frijoles",
-        "descripcion": "500gr",
-        "categorias": [],
-        "precioVenta": 3500.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 96
+    "precioVenta": 8900.0,
+    "precioCompra": 3000.0
+  },
+  {
+    "nombre": "Frijoles",
+    "descripcion": "500gr",
+    "categorias": {
+      "nombre": "Enlatados",
+      "descripcion": "Empacados para durar"
     },
-    {
-      "producto": {
-        "nombre": "Lentejas",
-        "descripcion": "400ml",
-        "categorias": [],
-        "precioVenta": 3500.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 52
+    "precioVenta": 3500.0,
+    "precioCompra": 3000.0
+  },
+  {
+    "nombre": "Lentejas",
+    "descripcion": "400ml",
+    "categorias": {
+      "nombre": "Enlatados",
+      "descripcion": "Empacados para durar"
     },
-    {
-      "producto": {
-        "nombre": "Portatil",
-        "descripcion": "Ryzen 7",
-        "categorias": [],
-        "precioVenta": 2000000.0,
-        "precioCompra": 1450000.0
-      },
-      "cantidad": 26
+    "precioVenta": 3500.0,
+    "precioCompra": 3000.0
+  },
+  {
+    "nombre": "Portatil",
+    "descripcion": "Ryzen 7",
+    "categorias": {
+      "nombre": "Tecnologia",
+      "descripcion": "El avance es el futuro"
     },
-    {
-      "producto": {
-        "nombre": "Celular",
-        "descripcion": "Mejor calida Precio del mercado",
-        "categorias": [],
-        "precioVenta": 1200000.0,
-        "precioCompra": 650000.0
-      },
-      "cantidad": 40
+    "precioVenta": 2000000.0,
+    "precioCompra": 1450000.0
+  },
+  {
+    "nombre": "Celular",
+    "descripcion": "Mejor calida Precio del mercado",
+    "categorias": {
+      "nombre": "Tecnologia",
+      "descripcion": "El avance es el futuro"
     },
-    {
-      "producto": {
-        "nombre": "Horno",
-        "descripcion": "Haceb",
-        "categorias": [],
-        "precioVenta": 350000.0,
-        "precioCompra": 260000.0
-      },
-      "cantidad": 11
+    "precioVenta": 1200000.0,
+    "precioCompra": 650000.0
+  },
+  {
+    "nombre": "Horno",
+    "descripcion": "Haceb",
+    "categorias": {
+      "nombre": "Electrodomesticos",
+      "descripcion": "Todo para el hogar"
     },
-    {
-      "producto": {
-        "nombre": "Licuadora",
-        "descripcion": "Oster",
-        "categorias": [],
-        "precioVenta": 75000.0,
-        "precioCompra": 35000.0
-      },
-      "cantidad": 81
-    }
-  ]
-}
+    "precioVenta": 350000.0,
+    "precioCompra": 260000.0
+  },
+  {
+    "nombre": "Licuadora",
+    "descripcion": "Oster",
+    "categorias": null,
+    "precioVenta": 75000.0,
+    "precioCompra": 35000.0
+  },
+  {
+    "nombre": "Papitas",
+    "descripcion": "saladas",
+    "categorias": {
+      "nombre": "Lacteos",
+      "descripcion": "Derivados de la leche"
+    },
+    "precioVenta": 700.0,
+    "precioCompra": 2000.0
+  }
+]

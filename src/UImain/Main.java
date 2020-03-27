@@ -397,6 +397,7 @@ public class Main extends Application {
 		hojaActual = 0;
 		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 		
+		
 		Label creadores = new Label(hojaVida[hojaActual]);
 		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -786,6 +787,42 @@ public class Main extends Application {
 			}
 			boolean[] habilitado=new boolean[] {false,false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
+			añadirSaldo.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					TextInputDialog confirmacion=new TextInputDialog();
+					confirmacion.setTitle("Confirmar Adicion");
+					confirmacion.setHeaderText("Confirmar la cantidad a añadir");
+					confirmacion.setContentText("Cantidad:");
+					Optional<String> respuesta=confirmacion.showAndWait();
+					respuesta.ifPresent(new Consumer<String>() {
+			            @Override 
+			            public void accept(String user) {
+			            	String saldo = respuesta.get();
+							if(isNumeric(saldo)) {
+								int saldoI = Integer.valueOf(saldo);
+								if(saldoI>0){
+									((Usuario) usuario).actualizarSaldo(saldoI);
+									archivo();
+								}else {
+									Alert info = new Alert(AlertType.ERROR);
+									info.setHeaderText("Debe Ingresar un valor mayor a cero");
+									info.setTitle("Error");
+									info.setContentText("");
+									info.show();
+								}
+							}else {
+								Alert info = new Alert(AlertType.ERROR);
+								info.setHeaderText("Debe Ingresar numeros en este campo");
+								info.setTitle("Debe Ingresar numeros en este campo");
+								info.setContentText("");
+								info.show();
+							}
+			            	
+			            }
+			            });
+					}
+			});
 			Botones.add(salir, 2, 0);
 			Botones.add(editar, 0, 0);
 			Botones.add(añadirSaldo, 1, 0);

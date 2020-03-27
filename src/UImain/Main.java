@@ -1378,7 +1378,7 @@ public class Main extends Application {
 		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categ));
 		cats.setValue("Ninguno");
 		cats.setPromptText("Categorias");
-		columnas.getChild().add(cats, 2, 5);
+		columnas.getChild().add(cats, 1, 5);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
 		salir.setOnAction(new EventHandler<ActionEvent>() {

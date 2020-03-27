@@ -55,6 +55,13 @@ public class Administrador extends Persona {
 		Main.productos.get(index).setDescripcion(description);
 		Main.inventario.getInventario(index).getProducto().setDescripcion(description);
 	}
+	public void addCategoriaProducto(int index, Categoria cat1){
+		Main.productos.get(index).setCategoria(cat1);
+		Main.inventario.getInventario(index).getProducto().setCategoria(cat1);
+	}
+	public void delCategoriaProducto(int index, Categoria cat1){
+		Main.productos.get(index).getCategoria();
+	}
 	public void setCategoriaProducto(int index,Categoria cat1){
 		Main.productos.get(index).setCategoria(cat1);
 	}

@@ -557,14 +557,17 @@ public class Main extends Application {
 	}
 	
 	public static MenuBar menuPrincipal() {
-		//Sistema contacto y recuperar cotrasena
 		MenuBar mainMenu;
 		Menu descripcion = new Menu("Descripción");
 		MenuItem sistema = new Menu("Sistema");
 		sistema.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Label systemDesd = new Label("");
+				Alert info = new Alert(AlertType.INFORMATION);
+				info.setTitle("Sistema");
+				info.setHeaderText("Descripcion del sistema");
+				info.setContentText("El análisis que hicimos estuvo enfocado al modelo de una tienda virtual \nun sistema en el que un usuario pudiera buscar y ver productos \npara posteriormente comprarlos y así mismo \ndebía existir un administrador con capacidad de manejar los productos y las opciones del usuario \nDebido a que se necesita un usuario y una cuenta para ingresar en el sistema \ntambién diseñamos una cuenta de invitado \nquien podría ver las características generales del sistema \npara luego acceder a ellas por medio de una cuenta de usuario.");
+				info.show();
 			}
 		});
 		descripcion.getItems().addAll(sistema);

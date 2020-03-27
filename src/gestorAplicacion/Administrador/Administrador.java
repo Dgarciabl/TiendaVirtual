@@ -62,6 +62,9 @@ public class Administrador extends Persona {
 	public void delCategoriaProducto(int index, Categoria cat1){
 		Main.productos.get(index).getCategoria();
 	}
+	public void setCategoriaProducto(int index,Categoria cat1){
+		Main.productos.get(index).setCategoria(cat1);
+	}
 	public void modificarPrecioCompra(int index, double price) {
 		Main.productos.get(index).setPrecioCompra(price);
 		Main.inventario.getInventario(index).getProducto().setPrecioCompra(price);

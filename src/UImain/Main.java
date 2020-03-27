@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
+import gestorAplicacion.Exepciones.FalloInicioSesion;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -346,7 +347,7 @@ public class Main extends Application {
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
 	}
-	public static boolean InicioSesion(String usu, String key) {
+	public static boolean InicioSesion(String usu, String key) throws FalloInicioSesion{
 		Persona temp;
 		for (int i=0;i<Usuarios.size();i++) {
 			temp=Usuarios.get(i);
@@ -360,10 +361,7 @@ public class Main extends Application {
 					}
 					return true;
 				}else {
-					Alert info = new Alert(AlertType.ERROR);
-					info.setHeaderText("Usuario o contraseña incorrecta");
-					info.setTitle("Usuario Invalido");
-					info.show();
+					throw new FalloInicioSesion();
 				}
 			}
 		}
@@ -510,7 +508,7 @@ public class Main extends Application {
 			public void handle(ActionEvent event) {
 				String usu = columnas.getValue(0);
 				String password = columnas.getValue(1);
-
+				try {
 					if (Main.isNumeric(usu)) {
 						System.out.println("El usuario no puede ser un numero");
 					}else if(InicioSesion(usu,password)) {
@@ -521,6 +519,12 @@ public class Main extends Application {
 							mainStage.setScene(sceneAdministrador);
 						}
 					}
+				}catch(FalloInicioSesion fallo) {
+					Alert info = new Alert(AlertType.ERROR);
+					info.setHeaderText(fallo.getMessage());
+					info.setTitle("Usuario o Contraseña Invalido");
+					info.show();
+				}
 			}
 		});
 		Button logInvitado = new Button("Entrar como invitado");

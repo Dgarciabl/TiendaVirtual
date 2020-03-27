@@ -2132,11 +2132,6 @@ public class Main extends Application {
 						al.setTitle("Input Error");
 					}
 
-				}catch(FormularioIncompletoError e2) {
-					al.setAlertType(AlertType.ERROR);
-					al.setHeaderText(e2.getMessage());
-					al.setTitle("Formulario Incompleto");
-
 				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());

@@ -8,7 +8,7 @@
     },
     "nombre": "pablo",
     "genero": true,
-    "edad": 21,
+    "edad": 24,
     "usuario": "user",
     "contraseña": "user",
     "preguntaRecuperacion": "user",

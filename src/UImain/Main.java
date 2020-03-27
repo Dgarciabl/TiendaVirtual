@@ -67,7 +67,7 @@ public class Main extends Application {
 		principal();
 		mainStage.setScene(sceneInicial);
 		mainStage.show();
-		Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
+		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 	}
 	//Database
 	public static void inicio() {

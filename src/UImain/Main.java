@@ -2314,6 +2314,13 @@ public class Main extends Application {
 			public void handle(ActionEvent event) {
 				Alert al = new Alert(AlertType.ERROR);
 				try {
+					if(columnas.getValue(1)==null || columnas.getValue(1).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(7)==null || columnas.getValue(7).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					
 					String nombre = columnas.getValue(0);
 					int edad = Integer.valueOf(columnas.getValue(1));
 					boolean genero;
@@ -2335,9 +2342,7 @@ public class Main extends Application {
 					if(nombre==null || nombre.isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
-					if(columnas.getValue(1)==null || columnas.getValue(1).isEmpty()) {
-						throw  new FormularioIncompletoError();
-					}
+
 					if(columnas.getValue(2)==null || columnas.getValue(2).isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
@@ -2353,9 +2358,7 @@ public class Main extends Application {
 					if(answer==null || answer.isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
-					if(columnas.getValue(7)==null || columnas.getValue(7).isEmpty()) {
-						throw  new FormularioIncompletoError();
-					}
+
 					Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
 					Usuarios.add(usuariocreado);
 					al.setHeaderText("Usuario creado");

@@ -53,11 +53,8 @@ public class Administrador extends Persona {
 	public void modificarDescripcionProducto(int index, String description) {
 		Main.productos.get(index).setDescripcion(description);
 	}
-	public void addCategoriaProducto(int index, Categoria cat1){
-		Main.productos.get(index).getCategoria().add(cat1);
-	}
-	public void delCategoriaProducto(int index, Categoria cat1){
-		Main.productos.get(index).getCategoria().remove(cat1);
+	public void setCategoriaProducto(int index,Categoria cat1){
+		Main.productos.get(index).setCategoria(cat1);
 	}
 	public void modificarPrecioCompra(int index, double price) {
 		Main.productos.get(index).setPrecioCompra(price);

@@ -32,6 +32,7 @@ public class Main extends Application {
 	//App data
 	public static int hojaActual;
 	public static int indice;
+	public static int indice2;
 	public static ArrayList<Persona> Usuarios;
 	public static Inventario inventario;
 	public static ArrayList<Categoria> categorias;
@@ -74,6 +75,7 @@ public class Main extends Application {
 	}
 	public static void finalizar() {
 		montarDB();
+		usuario = null;
 		System.exit(0);
 
 	}
@@ -384,10 +386,13 @@ public class Main extends Application {
 	}
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
-		//Derecha
+		//Abajo
 		String[] hojaVida = new String[4];
 		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
 		hojaActual = 0;
+		
+		GridPane[] creadores = new GridPane[4];
+		Label julian = new Label("Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre");
 		Label creadores = new Label(hojaVida[hojaActual]);
 		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -402,7 +407,7 @@ public class Main extends Application {
 				}
 			}
 		});
-		//Izquierda
+		//Derecha
 		VBox login = new VBox();
 		Label title = new Label("");
 		
@@ -1321,13 +1326,14 @@ public class Main extends Application {
 		Label titulo = new Label("Crear producto");
 		titulo.setAlignment(Pos.TOP_CENTER);
 		titulo.setPadding(new Insets(5));
-		String [] campos = new String[5];
+		String [] campos = new String[6];
 		campos[0] = "Nombre";
 		campos[1] = "Descripcion";
 		campos[2] = "Precio original";
 		campos[3] = "Precio de venta";
 		campos[4] = "Categoria";
-		String [] empty = new String[5];
+		campos[5] = "Cantidad";
+		String [] empty = new String[6];
 		
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		columnas.getChild().getChildren().remove(columnas.getBox(4));
@@ -1368,8 +1374,16 @@ public class Main extends Application {
 				String descripcion = columnas.getValue(1);
 				int oPrice = Integer.valueOf(columnas.getValue(2));
 				int sPrice = Integer.valueOf(columnas.getValue(3));
+				int cantidad = Integer.valueOf(columnas.getValue(6));
 				Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice,categorias.get(indice));
 				productos.add(productoCreado);
+				for(int i=0;i<productos.size();i++) {
+					if(productos.get(i).getNombre().equals(nombre)) {
+						indice2 = i;
+					}
+				}
+				Detalle detalleCreado = new Detalle(productos.get(indice2),cantidad);
+				inventario.AddInventario(detalleCreado);
 				Alert info = new Alert(AlertType.INFORMATION);
 				info.setHeaderText("Producto creado");
 				info.setTitle("Información");

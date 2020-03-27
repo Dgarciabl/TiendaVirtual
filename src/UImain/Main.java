@@ -1964,11 +1964,9 @@ public class Main extends Application {
 		
 		g.add(new Label("Productos añadidos:"), 0, 0); g.add(new Label("Subtotal:"), 1, 0);
 		g.add(carro,0, 1); g.add(f.getChild(), 1, 1,2,1);
+		if (usut.getCarro().getInventario().size()>0) {
 		Button Comprar=new Button("Comprar");
 		g.add(Comprar, 1, 2);
-		car.getChildren().addAll(lis1,g);
-		g.setAlignment(Pos.CENTER);
-		car.setAlignment(Pos.TOP_CENTER);
 		Comprar.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				Alert a =new Alert(AlertType.CONFIRMATION);
@@ -1995,10 +1993,15 @@ public class Main extends Application {
 				}
 			}
 		});
+		}
+		car.getChildren().addAll(lis1,g);
+		g.setAlignment(Pos.CENTER);
+		car.setAlignment(Pos.TOP_CENTER);
 		
 		carro.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle (MouseEvent e) {
 				int j=carro.getSelectionModel().getSelectedIndex();
+				if (usut.getCarro().getInventario().size()>0) {
 				Button eliminar= new Button("eliminar del carro");
 				g.add(eliminar, 2, 2);
 				eliminar.setOnAction(new EventHandler <ActionEvent>() {
@@ -2015,6 +2018,7 @@ public class Main extends Application {
 
 					}
 				});
+				}
 			}
 		});
 

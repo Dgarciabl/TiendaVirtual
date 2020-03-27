@@ -1,12 +1,10 @@
 package UImain;
 import java.io.*;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.util.*;
 import java.util.function.Consumer;
-
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;

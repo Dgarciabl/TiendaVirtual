@@ -1084,6 +1084,29 @@ public class Main extends Application {
 							resultado.add(elimExist, 1, 5);
 							resultado.add(eliminar, 2, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
+							elimExist.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle (ActionEvent e) {
+									Alert ale=new Alert(AlertType.CONFIRMATION);
+									ale.setTitle("Eliminar inventario");
+									ale.setHeaderText("¿Eliminar producto del inventario?");
+									Optional<ButtonType> res=ale.showAndWait();
+									if (res.get()==ButtonType.OK) {
+										inventario.DelInventario(j);
+									}
+								}
+							});
+							eliminar.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle (ActionEvent e) {
+									Alert ale=new Alert(AlertType.CONFIRMATION);
+									ale.setTitle("Eliminar Producto");
+									ale.setHeaderText("¿Eliminar producto?");
+									Optional<ButtonType> res=ale.showAndWait();
+									if (res.get()==ButtonType.OK) {
+										inventario.DelInventario(j);
+										productos.remove(j);
+									}
+								}
+							});
 						}
 					}else {
 						mensaje.setText("Producto no Encontrado");
@@ -1151,8 +1174,8 @@ public class Main extends Application {
 										respuesta.ifPresent(new Consumer<String>() {
 								            @Override public void accept(String user) {
 								                ((Usuario) usuario).getCarro().AddProducto(new Detalle(pt.get(t),Integer.valueOf(respuesta.get())));
-								                int b=inventario.RealizarBusqueda(pt.get(t).getNombre());
-								                inventario.getInventario().get(b).restarCantidad(Integer.valueOf(respuesta.get()));
+								                int bis=inventario.RealizarBusqueda(pt.get(t).getNombre());
+								                inventario.getInventario(bis).restarCantidad(Integer.valueOf(respuesta.get()));
 								                BuscarCategoria();
 								            }
 								        });
@@ -1376,8 +1399,12 @@ public class Main extends Application {
 			public void handle(MouseEvent e) {
 				int s=listaprod.getSelectionModel().getSelectedIndex();
 				FieldPane f=productor(s);
-				g.add(f.getChild(), 1, 1);
+				g.add(f.getChild(), 1, 1,2,1);
 				Button opciones=new Button("Opciones");
+				Button añadirexi=new Button("Añadir existencias");
+				if (inventario.RealizarBusqueda(productos.get(s).getNombre())==-1) {
+					añadirexi.setDisable(false);
+				}
 				g.add(opciones, 1, 2);
 				opciones.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle (ActionEvent e) {

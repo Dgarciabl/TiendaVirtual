@@ -1237,11 +1237,12 @@ public class Main extends Application {
 				g.add(opciones, 1, 2);
 				opciones.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle (ActionEvent e) {
+						opciones.setDisable(true); opciones.setVisible(false);
 						HBox info=new HBox();
 						info.getChildren().removeAll(info.getChildren());
 						FieldPane l=productorNom(s);
-						Button b1=new Button("Editar"); Button b2=new Button("Eliminar"); Button b3=new Button("Modifcar categoria");
-						info.getChildren().addAll(l.getChild(),b1,b2,b3);
+						Button b1=new Button("Editar"); Button b2=new Button("Eliminar"); Button b3=new Button("Modifcar categoria"); Button b4=new Button("Cancelar");
+						info.getChildren().addAll(l.getChild(),b1,b2,b3,b4);
 						g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
 						b1.setOnAction(new EventHandler<ActionEvent>() {
 							public void handle(ActionEvent e) {
@@ -1277,14 +1278,23 @@ public class Main extends Application {
 						});
 						b3.setOnAction(new EventHandler<ActionEvent>() {
 							public void handle (ActionEvent e) {
-								opciones.setDisable(true); opciones.setVisible(false);
+								prod.getChildren().removeAll(prod.getChildren());
 								info.getChildren().removeAll(info.getChildren());
 								String[]categoriasT=new String[categorias.size()];
 								for (int i=0;i<categoriasT.length;i++) {categoriasT[i]=categorias.get(i).getNombre();}
 								ComboBox cats=new ComboBox(FXCollections.observableArrayList(categoriasT));
+								cats.setPromptText("Categorias");
+								
 								Button save2=new Button ("Guardar");
+								Button cancel=new Button ("cancelar");
 								save2.setDisable(true); save2.setVisible(false);
-								info.getChildren().addAll(cats,save2);
+								prod.getChildren().add(info);
+								info.getChildren().addAll(cats,save2,cancel);
+								cancel.setOnAction(new EventHandler<ActionEvent>() {
+									public void handle (ActionEvent e) {
+										mostrarProductos();
+									}
+								});
 								cats.valueProperty().addListener(new ChangeListener<String>() {
 									public void changed (ObservableValue s1,String s2,String s3) {
 										int pi=cats.getSelectionModel().getSelectedIndex();
@@ -1298,6 +1308,11 @@ public class Main extends Application {
 										});
 									}
 								});
+							}
+						});
+						b4.setOnAction(new EventHandler <ActionEvent>() {
+							public void handle (ActionEvent e) {
+								mostrarProductos();
 							}
 						});
 					}

@@ -95,7 +95,10 @@
       "producto": {
         "nombre": "Horno",
         "descripcion": "Haceb",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Electrodomesticos",
+          "descripcion": "Todo para el hogar"
+        },
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
@@ -119,8 +122,8 @@
         "nombre": "Audifonos",
         "descripcion": "Buena calidad de sonido",
         "categorias": {
-          "nombre": "Lacteos",
-          "descripcion": "Derivados de la leche"
+          "nombre": "Comestibles",
+          "descripcion": "comida para comer"
         },
         "precioVenta": 2000.0,
         "precioCompra": 3000.0

@@ -257,12 +257,13 @@ public class Main extends Application {
 		return true;
 	}
 	public static FieldPane productor(int j) {
-		String[] criterios= {"Descripcion:","Precio de compra:","Precio de venta:"};
-		String[] valores=new String[3];
+		String[] criterios= {"Descripcion:","Categoria","Precio de compra:","Precio de venta:"};
+		String[] valores=new String[4];
 		valores[0]=productos.get(j).getDescripcion();
-		valores[1]=Double.toString(productos.get(j).getPrecioCompra());
-		valores[2]=Double.toString(productos.get(j).getPrecioVenta());
-		boolean[] habilitado=new boolean[3];
+		valores[1]=productos.get(j).getCategoria().getNombre();
+		valores[2]=Double.toString(productos.get(j).getPrecioCompra());
+		valores[3]=Double.toString(productos.get(j).getPrecioVenta());
+		boolean[] habilitado=new boolean[4];
 		for(int i=0;i<habilitado.length;i++) {habilitado[i]=false;}
 		FieldPane resultado=new FieldPane("",criterios,"",valores,habilitado);
 		resultado.getChild().setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
@@ -302,25 +303,27 @@ public class Main extends Application {
 	}
 	public static FieldPane inventateEsta (int j) {
 		if (usuario==null || usuario instanceof Usuario ) {
-		String[] Criterios= {"Descripcion:","Precio:","Unidades disponibles:"};
-		String[] Valores=new String[3];
+		String[] Criterios= {"Descripcion:","Categoria","Precio:","Unidades disponibles:"};
+		String[] Valores=new String[4];
 		Valores[0]=inventario.getInventario(j).getProducto().getDescripcion();
-		Valores[1]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
-		Valores[2]=Integer.toString(inventario.getInventario(j).getCantidad());
-		boolean[] Hab=new boolean[3]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
+		Valores[1]=inventario.getInventario(j).getProducto().getCategoria().getNombre();
+		Valores[2]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
+		Valores[3]=Integer.toString(inventario.getInventario(j).getCantidad());
+		boolean[] Hab=new boolean[4]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
 		FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
 		}
 		else {
-			String[] Criterios= {"Nombre:","Descripcion:","Precio de compra:","Precio de venta:","Unidades disponibles:"};
-			String[] Valores=new String[5];
+			String[] Criterios= {"Nombre:","Descripcion:","Categoria","Precio de compra:","Precio de venta:","Unidades disponibles:"};
+			String[] Valores=new String[6];
 			Valores[0]=inventario.getInventario(j).getProducto().getNombre();
 			Valores[1]=inventario.getInventario(j).getProducto().getDescripcion();
-			Valores[2]=Double.toString(inventario.getInventario(j).getProducto().getPrecioCompra());
-			Valores[3]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
-			Valores[4]=Integer.toString(inventario.getInventario(j).getCantidad());
-			boolean[] Hab=new boolean[5]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
+			Valores[2]=inventario.getInventario(j).getProducto().getCategoria().getNombre();
+			Valores[3]=Double.toString(inventario.getInventario(j).getProducto().getPrecioCompra());
+			Valores[4]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
+			Valores[5]=Integer.toString(inventario.getInventario(j).getCantidad());
+			boolean[] Hab=new boolean[6]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
 			FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
 			res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 			return res;
@@ -1316,10 +1319,12 @@ public class Main extends Application {
 				g.add(opciones, 1, 2);
 				opciones.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle (ActionEvent e) {
+						opciones.setDisable(true); opciones.setVisible(false);
 						HBox info=new HBox();
+						info.getChildren().removeAll(info.getChildren());
 						FieldPane l=productorNom(s);
-						Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
-						info.getChildren().addAll(l.getChild(),b1,b2);
+						Button b1=new Button("Editar"); Button b2=new Button("Eliminar"); Button b3=new Button("Modifcar categoria"); Button b4=new Button("Cancelar");
+						info.getChildren().addAll(l.getChild(),b1,b2,b3,b4);
 						g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
 						b1.setOnAction(new EventHandler<ActionEvent>() {
 							public void handle(ActionEvent e) {
@@ -1351,6 +1356,45 @@ public class Main extends Application {
 									int w=inventario.RealizarBusqueda(nom);
 									productos.remove(s); inventario.DelInventario(w);
 								}
+							}
+						});
+						b3.setOnAction(new EventHandler<ActionEvent>() {
+							public void handle (ActionEvent e) {
+								prod.getChildren().removeAll(prod.getChildren());
+								info.getChildren().removeAll(info.getChildren());
+								String[]categoriasT=new String[categorias.size()];
+								for (int i=0;i<categoriasT.length;i++) {categoriasT[i]=categorias.get(i).getNombre();}
+								ComboBox cats=new ComboBox(FXCollections.observableArrayList(categoriasT));
+								cats.setPromptText("Categorias");
+								
+								Button save2=new Button ("Guardar");
+								Button cancel=new Button ("cancelar");
+								save2.setDisable(true); save2.setVisible(false);
+								prod.getChildren().add(info);
+								info.getChildren().addAll(cats,save2,cancel);
+								cancel.setOnAction(new EventHandler<ActionEvent>() {
+									public void handle (ActionEvent e) {
+										mostrarProductos();
+									}
+								});
+								cats.valueProperty().addListener(new ChangeListener<String>() {
+									public void changed (ObservableValue s1,String s2,String s3) {
+										int pi=cats.getSelectionModel().getSelectedIndex();
+										save2.setDisable(false); save2.setVisible(true);
+										save2.setOnAction(new EventHandler<ActionEvent>() {
+											public void handle(ActionEvent e) {
+												Administrador admT=(Administrador) usuario;
+												admT.addCategoriaProducto(s, categorias.get(pi));
+												mostrarProductos();
+											}
+										});
+									}
+								});
+							}
+						});
+						b4.setOnAction(new EventHandler <ActionEvent>() {
+							public void handle (ActionEvent e) {
+								mostrarProductos();
 							}
 						});
 					}

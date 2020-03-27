@@ -1885,7 +1885,7 @@ public class Main extends Application {
 
 					for(int i=0;i<productos.size();i++) {
 						if(productos.get(i).getNombre().equals(nombre)) {
-							throw  new NombreDuplicadoError();
+							throw  new NombreDuplicado();
 						}
 					}
 					if(nombre==null || nombre.isEmpty()) {
@@ -1924,7 +1924,7 @@ public class Main extends Application {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e2.getMessage());
 					al.setTitle("Formulario Incompleto");
-				}catch(NombreDuplicadoError e3) {
+				}catch(NombreDuplicado e3) {
 					al.setAlertType(AlertType.ERROR);
 					al.setHeaderText(e3.getMessage());
 					al.setTitle("Nombre duplicado");
@@ -1980,20 +1980,41 @@ public class Main extends Application {
 				try {
 					String nombre = columnas.getValue(0);
 					String descripcion = columnas.getValue(1);
+					for(int i=0;i<productos.size();i++) {
+						if(categorias.get(i).getNombre().equals(nombre)) {
+							throw  new NombreDuplicado();
+						}
+					}
 					if(nombre==null || nombre.isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
 					if(descripcion ==null || descripcion.isEmpty()) {
 						throw  new FormularioIncompletoError();
 					}
-				}
+					Categoria categoriaCreada = new Categoria(nombre,descripcion);
+					categorias.add(categoriaCreada);
+					Alert info = new Alert(AlertType.INFORMATION);
+					info.setHeaderText("Categoria creada");
+					info.setTitle("Información");
 
-				Categoria categoriaCreada = new Categoria(nombre,descripcion);
-				categorias.add(categoriaCreada);
-				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Categoria creada");
-				info.setTitle("Información");
-				info.show();
+				}catch (NumberFormatException e1){
+					try {
+						throw new InputError();
+					}catch(InputError e4) {
+						al.setAlertType(AlertType.ERROR);
+						al.setHeaderText(e4.getMessage());
+						al.setTitle("Input Error");
+					}
+				}catch(FormularioIncompletoError e2) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e2.getMessage());
+					al.setTitle("Formulario Incompleto");
+				}catch(NombreDuplicado e3) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e3.getMessage());
+					al.setTitle("Nombre duplicado");
+				}
+				al.show();
 				for(int i=0; i<2;i++) {
 					columnas.getBox(i).clear();
 				}

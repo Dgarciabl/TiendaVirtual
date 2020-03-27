@@ -4,17 +4,23 @@
       "producto": {
         "nombre": "Leche",
         "descripcion": "1 Litro",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Lacteos",
+          "descripcion": "Derivados de la leche"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 46
+      "cantidad": 40
     },
     {
       "producto": {
         "nombre": "Yogur",
         "descripcion": "1.2 Litros",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Lacteos",
+          "descripcion": "Derivados de la leche"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -24,7 +30,10 @@
       "producto": {
         "nombre": "Almendras",
         "descripcion": "Enteras con cascara 250gr",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Granos",
+          "descripcion": "Semillas entera"
+        },
         "precioVenta": 8900.0,
         "precioCompra": 3000.0
       },
@@ -34,7 +43,10 @@
       "producto": {
         "nombre": "Frijoles",
         "descripcion": "500gr",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Granos",
+          "descripcion": "Semillas entera"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -44,7 +56,10 @@
       "producto": {
         "nombre": "Lentejas",
         "descripcion": "400ml",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Enlatados",
+          "descripcion": "Empacados para durar"
+        },
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
@@ -54,7 +69,10 @@
       "producto": {
         "nombre": "Portatil",
         "descripcion": "Ryzen 7",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Tecnologia",
+          "descripcion": "El avance es el futuro"
+        },
         "precioVenta": 2000000.0,
         "precioCompra": 1450000.0
       },
@@ -64,7 +82,10 @@
       "producto": {
         "nombre": "Celular",
         "descripcion": "Mejor calida Precio del mercado",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Tecnologia",
+          "descripcion": "El avance es el futuro"
+        },
         "precioVenta": 1200000.0,
         "precioCompra": 650000.0
       },
@@ -84,7 +105,10 @@
       "producto": {
         "nombre": "Licuadora",
         "descripcion": "Oster",
-        "categorias": null,
+        "categorias": {
+          "nombre": "Electrodomesticos",
+          "descripcion": "Todo para el hogar"
+        },
         "precioVenta": 75000.0,
         "precioCompra": 35000.0
       },

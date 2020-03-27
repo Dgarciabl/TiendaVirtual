@@ -1037,7 +1037,13 @@ public class Main extends Application {
 		g.add(new Label("Lista de categorias:"), 0, 0);
 		g.add(listacat,0, 1); 
 		if (usuario==null|| usuario instanceof Usuario) {
-		g.add(new Button("Busqueda por categoria"), 1, 2);
+			Button buscat=new Button("Busqueda por categoria");
+		g.add(buscat, 1, 2);
+		buscat.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle (ActionEvent e) {
+				BuscarCategoria();
+			}
+		});
 		}
 		cat.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.TOP_CENTER);

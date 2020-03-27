@@ -1,8 +1,5 @@
 package gestorAplicacion.Usuario;
 import java.util.*;
-
-import gestorAplicacion.Administrador.Detalle;
-import gestorAplicacion.Administrador.Categoria;
 import gestorAplicacion.Administrador.Producto;
 import UImain.*;
 
@@ -62,7 +59,6 @@ public class Usuario extends Persona {
 	//Methods
 	public boolean comprar() {
 		double Subt=carroCompra.getSubTotal();
-		int Totalobj=carroCompra.getNumObjetos();
 		
 		if (saldo>Subt) {
 			saldo-=Subt;

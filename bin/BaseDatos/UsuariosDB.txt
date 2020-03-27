@@ -2,20 +2,9 @@
   {
     "saldo": 0.0,
     "carroCompra": {
-      "subTotal": 7000.0,
-      "numObjetos": 1,
-      "inventario": [
-        {
-          "producto": {
-            "nombre": "Leche",
-            "descripcion": "1 Litro",
-            "categorias": null,
-            "precioVenta": 3500.0,
-            "precioCompra": 3000.0
-          },
-          "cantidad": 2
-        }
-      ]
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
     },
     "nombre": "superuser",
     "genero": true,

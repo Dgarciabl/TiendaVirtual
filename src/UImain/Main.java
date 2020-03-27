@@ -1454,6 +1454,7 @@ public class Main extends Application {
 									Optional<ButtonType>res=a.showAndWait();
 									if (res.get()==ButtonType.OK) {
 										inventario.DelInventario(s);
+										mostrarInventario();
 									}
 								}
 							});
@@ -1571,15 +1572,42 @@ public class Main extends Application {
 		
 		listaprod.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent e) {
+				GridPane bott=new GridPane();
+				bott.getChildren().removeAll(bott.getChildren());
 				int s=listaprod.getSelectionModel().getSelectedIndex();
 				FieldPane f=productor(s);
 				g.add(f.getChild(), 1, 1,2,1);
 				Button opciones=new Button("Opciones");
 				Button añadirexi=new Button("Añadir existencias");
+				añadirexi.setDisable(true); añadirexi.setVisible(false);
+				bott.add(opciones, 0, 0);
 				if (inventario.RealizarBusqueda(productos.get(s).getNombre())==-1) {
-					añadirexi.setDisable(false);
+					añadirexi.setDisable(false); añadirexi.setVisible(true);
+					añadirexi.setOnAction(new EventHandler<ActionEvent>() {
+						public void handle(ActionEvent e) {
+							Producto pidi=productos.get(s);
+							TextInputDialog texto=new TextInputDialog();
+							texto.setTitle("Añadir existencia");
+							texto.setHeaderText("¿Cuantas unidades desea añadir?");
+							texto.setContentText("Unidades:");
+							Optional<String> res=texto.showAndWait();
+							res.ifPresent(new Consumer<String>() {
+								public void accept(String sid) {
+									if (isNumeric(res.get())==false) {
+										
+									}
+									else {
+										inventario.AddInventario(new Detalle(productos.get(s),Integer.parseInt(res.get())));
+										mostrarProductos();
+									}
+								}
+							});
+						}
+					});
+					bott.add(añadirexi, 1, 0);
 				}
-				g.add(opciones, 1, 2);
+				g.add(bott, 1, 2);
+				g.impl_updatePeer();
 				opciones.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle (ActionEvent e) {
 						opciones.setDisable(true); opciones.setVisible(false);

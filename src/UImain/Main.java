@@ -361,8 +361,8 @@ public class Main extends Application {
 					return true;
 				}else {
 					Alert info = new Alert(AlertType.ERROR);
-					info.setHeaderText("Error");
-					info.setTitle("Contraseña Incorrecta");
+					info.setHeaderText("Usuario o contraseña incorrecta");
+					info.setTitle("Usuario Invalido");
 					info.show();
 				}
 			}

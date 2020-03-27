@@ -18,6 +18,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -387,15 +388,13 @@ public class Main extends Application {
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
 		//Abajo
-		String[] hojaVida = new String[4];
-		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
-		hojaActual = 0;
-		
-		GridPane biografia = new GridPane();
-		hojaVida[0] = "Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre, practico natación y me gusta aprender cosas nuevas";
-		hojaVida[1] = "Juan Pablo Buitrago Díaz: 19 años, amantes de los juegos y salir con buena compañía, estudiante de tercer semestre ingenieria en sisemas";
+		String[] hojaVida = new String[4];		
+		//GridPane biografia = new GridPane();
+		hojaVida[0] = "Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractico natación y me gusta aprender cosas nuevas";
+		hojaVida[1] = "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sisemas";
 		hojaVida[2] = "David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial";
-		hojaVida[3] = "David Andres Cano Gonzalez, 19 años, Estudiante de ingenieria de sistemas de 3er semestre, Busca enfocarse en el campo de desarrollo de videojuegos";
+		hojaVida[3] = "David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos";
+		hojaActual = 0;
 		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 		
 		Label creadores = new Label(hojaVida[hojaActual]);
@@ -406,11 +405,11 @@ public class Main extends Application {
 				if( hojaActual != 3){
 					hojaActual +=1;
 					creadores.setText(hojaVida[hojaActual]);
-					biografia.add(creadores, 0, 0);
+					//biografia.add(creadores, 0, 0);
 				}else {
 					hojaActual = 0;
 					creadores.setText(hojaVida[hojaActual]);
-					biografia.add(creadores, 0, 0);
+					//biografia.add(creadores, 0, 0);
 				}
 			}
 		});

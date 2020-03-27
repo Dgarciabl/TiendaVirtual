@@ -2041,11 +2041,8 @@ public class Main extends Application {
 					al.setHeaderText("Producto creado");
 					al.setTitle("Información");
 					
-				}catch(FormularioIncompletoError e2) {
-					al.setAlertType(AlertType.ERROR);
-					al.setHeaderText(e2.getMessage());
-					al.setTitle("Formulario Incompleto");
-				}catch (NumberFormatException e1){
+				}
+				catch (NumberFormatException e1){
 					try {
 						throw new InputError();
 					}catch(InputError e4) {

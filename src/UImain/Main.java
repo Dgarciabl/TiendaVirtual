@@ -1351,7 +1351,7 @@ public class Main extends Application {
 		}		
 		
 	}
-				//crear
+//crear
 
 	public static void crearProducto() {
 		
@@ -1384,7 +1384,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				finalizar();
+				archivo();
 			}
 		});
 		Button crear = new Button("Crear");
@@ -1395,7 +1395,7 @@ public class Main extends Application {
 				String descripcion = columnas.getValue(1);
 				int oPrice = Integer.valueOf(columnas.getValue(2));
 				int sPrice = Integer.valueOf(columnas.getValue(3));
-				int cantidad = Integer.valueOf(columnas.getValue(6));
+				int cantidad = Integer.valueOf(columnas.getValue(5));
 				Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice,categorias.get(indice));
 				productos.add(productoCreado);
 				for(int i=0;i<productos.size();i++) {
@@ -1409,6 +1409,9 @@ public class Main extends Application {
 				info.setHeaderText("Producto creado");
 				info.setTitle("Información");
 				info.show();
+				for(int i=0; i<6;i++) {
+					columnas.getBox(i).clear();
+				}
 			}
 			
 		});
@@ -1444,7 +1447,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				finalizar();
+				archivo();
 			}
 		});
 		Button crear = new Button("Crear");
@@ -1456,13 +1459,16 @@ public class Main extends Application {
 				Categoria categoriaCreada = new Categoria(nombre,descripcion);
 				categorias.add(categoriaCreada);
 				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Categoria creado");
+				info.setHeaderText("Categoria creada");
 				info.setTitle("Información");
 				info.show();
+				for(int i=0; i<2;i++) {
+					columnas.getBox(i).clear();
+				}
 			}
 		});
 		botones.add(salir, 0, 0);
-		botones.add(crear, 0, 1);
+		botones.add(crear, 1, 0);
 		botones.setPadding(new Insets(8,8,8,8));
 		botones.setHgap(5);
 		botones.setAlignment(Pos.TOP_CENTER);
@@ -1501,7 +1507,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				finalizar();
+				archivo();
 			}
 		});
 		Button crear = new Button("Crear");
@@ -1527,6 +1533,9 @@ public class Main extends Application {
 				info.setHeaderText("Usuario creado");
 				info.setTitle("Información");
 				info.show();
+				for(int i=0; i<7;i++) {
+					columnas.getBox(i).clear();
+				}
 			}
 		});
 		botones.add(salir, 0, 0);

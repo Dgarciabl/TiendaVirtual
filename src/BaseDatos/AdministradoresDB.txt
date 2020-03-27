@@ -22,7 +22,7 @@
     "genero": false,
     "edad": 28,
     "usuario": "dani",
-    "contraseña": "dan",
+    "contraseña": "dani",
     "preguntaRecuperacion": "NombreMadre",
     "respuestaRecuperacion": "Johana"
   }

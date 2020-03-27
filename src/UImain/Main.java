@@ -9,6 +9,7 @@ import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FalloInicioSesion;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
+import gestorAplicacion.Exepciones.InputError;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -549,12 +550,84 @@ public class Main extends Application {
 		botones.setAlignment(Pos.TOP_CENTER);
 		login.getChildren().addAll(title,columnas.getChild(),botones);
 		login.setAlignment(Pos.TOP_CENTER);
-		
-		Label bienvenida = new Label("\n \n \n    Bienvenido\n    a la \n    tienda virtual");
+//Bienvenida
+		GridPane imms = new GridPane();
+		Label bienvenida = new Label("Bienvenido\na la\ntienda virtual");
 		bienvenida.setTextAlignment(TextAlignment.CENTER);
-		bienvenida.setFont(new Font("Arial",20));
+		bienvenida.setFont(new Font("Arial",18));
 		bienvenida.setTextFill(Color.BLUE);
 		bienvenida.setMaxWidth(Double.MAX_VALUE);
+		ImageView[] imagenes = new ImageView[6];
+		try {
+			Image uno = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\1.png"));
+			ImageView unoImg = new ImageView(uno);
+			unoImg.setFitHeight(130);
+			unoImg.setFitWidth(100);
+			imagenes[0] = unoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image dos = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\2.jpg"));
+			ImageView dosImg = new ImageView(dos);
+			dosImg.setFitHeight(130);
+			dosImg.setFitWidth(100);
+			imagenes[1] = dosImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image tres = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\3.jpg"));
+			ImageView tresImg = new ImageView(tres);
+			tresImg.setFitHeight(130);
+			tresImg.setFitWidth(100);
+			imagenes[2] = tresImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image cuatro = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\4.jpg"));
+			ImageView cuatroImg = new ImageView(cuatro);
+			cuatroImg.setFitHeight(130);
+			cuatroImg.setFitWidth(100);
+			imagenes[3] = cuatroImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image cinco = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\5.jpg"));
+			ImageView cincoImg = new ImageView(cinco);
+			cincoImg.setFitHeight(130);
+			cincoImg.setFitWidth(100);
+			imagenes[5] = cincoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("No se pudo encontrar la imagen");
+			info.setTitle("Error");
+			info.setContentText("");
+			info.show();
+		}
+		imms.add(bienvenida, 0, 0);
+		int imActual = 0;
+		
+		
+//General		
 		mainPane.setRight(login);
 		mainPane.setLeft(bienvenida);
 		mainPane.setTop(menuPrincipal());
@@ -600,18 +673,82 @@ public class Main extends Application {
 			}
 		});
 		MenuItem recuperar = new MenuItem("Recuperar contraseña");
-		recuperar.setOnAction(new EventHandler<ActionEvent>() {
+		recuperar.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub	
+				TextInputDialog confirmacion=new TextInputDialog();
+				confirmacion.setTitle("Opciones de recuperación");
+				confirmacion.setHeaderText("Recuperar contraseña");
+				confirmacion.setContentText("Usuario:");
+				Optional<String> respuesta=confirmacion.showAndWait();
+				respuesta.ifPresent(new Consumer<String>() {
+					@Override
+					public void accept(String t){
+						try {
+							String usName = respuesta.get();
+							if(isNumeric(usName)) {
+								throw new InputError();
+							}
+							for(int i=0; i<Usuarios.size();i++) {
+								if(Usuarios.get(i).getUsuario().equals(usName)) {
+									int user=i;
+									TextInputDialog confirmacion=new TextInputDialog();
+			        				confirmacion.setTitle("Opciones de recuperación");
+			        				confirmacion.setHeaderText("Pregunta de recuperación: "+Usuarios.get(i).getPregunta());
+			        				confirmacion.setContentText("Respuesta:");
+			        				Optional<String> respuesta=confirmacion.showAndWait();
+			        				respuesta.ifPresent(new Consumer<String>() {
+										@Override
+										public void accept(String t) {
+											String answer = respuesta.get();
+											if(Usuarios.get(user).comprobarRespuesta(answer)) {
+												TextInputDialog nuevaContraseña=new TextInputDialog();
+												nuevaContraseña.setTitle("Recuperacion Exitosa");
+												nuevaContraseña.setHeaderText("La respuesta es correcta");
+												nuevaContraseña.setContentText("Nueva Contraseña:");
+						        				Optional<String> contraseña=nuevaContraseña.showAndWait();
+						        				respuesta.ifPresent(new Consumer<String>() {
+													@Override
+													public void accept(String t) {
+														String key = contraseña.get();
+														Usuarios.get(user).recuperarContraseña(answer,key);
+													}
+						        				});
+											}else {
+												Alert erronea=new Alert(AlertType.ERROR);
+												erronea.setHeaderText("Respuesta Incorrecta");
+												erronea.setContentText("Intente mas Tarde");
+												erronea.show();
+											}
+											
+										}
+			        				});
+								}else {
+									Alert erronea=new Alert(AlertType.ERROR);
+									erronea.setHeaderText("Usuario no Encontrado");
+									erronea.setContentText("Intente mas Tarde");
+									erronea.show();
+								}
+							}
+						}catch(InputError err) {
+							Alert erronea=new Alert(AlertType.ERROR);
+							erronea.setHeaderText(err.getMessage());
+							erronea.setContentText("Input no puede ser numerico");
+							erronea.show();
+						}
+						
+					}
+					
+				});
 			}
 		});
+		
 		ayuda.getItems().addAll(contacto,recuperar);
 		mainMenu = new MenuBar(descripcion,ayuda,salir);
 		return mainMenu;
 	}
-		//Panes
-			//menus
+		
+//menus
 	public static MenuBar menuInvitado() {
 		MenuBar menu;
 		//Archivo

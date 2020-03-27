@@ -2,9 +2,49 @@
   {
     "saldo": 12100.0,
     "carroCompra": {
-      "subTotal": 0.0,
-      "numObjetos": 0,
-      "inventario": []
+      "subTotal": 354000.0,
+      "numObjetos": 3,
+      "inventario": [
+        {
+          "producto": {
+            "nombre": "Audifonos",
+            "descripcion": "Buena calidad de sonido",
+            "categorias": {
+              "nombre": "Tecnologia",
+              "descripcion": "El avance es el futuro"
+            },
+            "precioVenta": 2000.0,
+            "precioCompra": 3000.0
+          },
+          "cantidad": 1
+        },
+        {
+          "producto": {
+            "nombre": "Horno",
+            "descripcion": "Haceb",
+            "categorias": {
+              "nombre": "Electrodomesticos",
+              "descripcion": "Todo para el hogar"
+            },
+            "precioVenta": 350000.0,
+            "precioCompra": 260000.0
+          },
+          "cantidad": 1
+        },
+        {
+          "producto": {
+            "nombre": "Audifonos",
+            "descripcion": "Buena calidad de sonido",
+            "categorias": {
+              "nombre": "Tecnologia",
+              "descripcion": "El avance es el futuro"
+            },
+            "precioVenta": 2000.0,
+            "precioCompra": 3000.0
+          },
+          "cantidad": 1
+        }
+      ]
     },
     "nombre": "superuser",
     "genero": true,

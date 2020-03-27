@@ -924,6 +924,7 @@ public class Main extends Application {
 	}	
 	public static void BuscarCategoria() {
 		VBox principal=new VBox();
+		ListView listaprod=new ListView();
 		String[]categoriasT=new String[categorias.size()];
 		for (int i=0;i<categoriasT.length;i++) {categoriasT[i]=categorias.get(i).getNombre();}
 		Label titulo=new Label("Seleccione la Categoria:");
@@ -933,25 +934,27 @@ public class Main extends Application {
 		buscador.setAlignment(Pos.TOP_CENTER);
 		buscador.setPadding(new Insets(5));
 		buscador.add(new Label("Seleccione la Categoria"), 0, 0);
+		Button buscar=new Button("Buscar"); buscar.setAlignment(Pos.CENTER);
+		buscar.setDisable(true); buscar.setVisible(false);
 		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categoriasT));
 		cats.setPromptText("Categorias");
 		
 		cats.valueProperty().addListener(new ChangeListener<String>() {
 			public void changed (ObservableValue s1,String s2,String s3) {
+				listaprod.getItems().removeAll(listaprod.getItems());
 				int ind=cats.getSelectionModel().getSelectedIndex();
-				Button buscar=new Button("Buscar");
-				buscar.setAlignment(Pos.CENTER);
-				principal.getChildren().add(buscar);
+				buscar.setDisable(false); buscar.setVisible(true);
 				buscar.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent e) {
+						
 						ArrayList<Producto> pt=inventario.RealizarBusqueda(ind);
-						ListView listaprod=new ListView(); listaprod.getItems().addAll(pt);
-						principal.getChildren().add(listaprod);
+						listaprod.getItems().addAll(pt);
+						principal.getChildren().set(3,listaprod);
 					}
 				});
 			}
 		});
-		principal.getChildren().addAll(titulo,cats);
+		principal.getChildren().addAll(titulo,cats,buscar,listaprod);
 		principal.setAlignment(Pos.TOP_CENTER);
 		if (usuario==null) {
 			principalInvitado.setCenter(principal);

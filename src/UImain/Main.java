@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
+import gestorAplicacion.Exepciones.FalloInicioSesion;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -68,7 +69,6 @@ public class Main extends Application {
 		principal();
 		mainStage.setScene(sceneInicial);
 		mainStage.show();
-		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 	}
 	//Database
 	public static void inicio() {
@@ -347,7 +347,7 @@ public class Main extends Application {
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
 	}
-	public static boolean InicioSesion(String usu, String key) {
+	public static boolean InicioSesion(String usu, String key) throws FalloInicioSesion{
 		Persona temp;
 		for (int i=0;i<Usuarios.size();i++) {
 			temp=Usuarios.get(i);
@@ -361,7 +361,7 @@ public class Main extends Application {
 					}
 					return true;
 				}else {
-					System.out.println("la contrasena es incorrecta");
+					throw new FalloInicioSesion();
 				}
 			}
 		}
@@ -390,38 +390,109 @@ public class Main extends Application {
 	}
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
-		//Abajo
-		String[] hojaVida = new String[4];		
-		//GridPane biografia = new GridPane();
-		hojaVida[0] = "Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractico natación y me gusta aprender cosas nuevas";
-		hojaVida[1] = "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sisemas";
-		hojaVida[2] = "David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial";
-		hojaVida[3] = "David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos";
+//Abajo
+		Label[] hojaVida = new Label[4];
+		//Texto
+		hojaVida[0] = new Label( "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sistemas");
+		hojaVida[1] = new Label("David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos");
+		hojaVida[2] = new Label("Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractica natación y le gusta aprender cosas nuevas");
+		hojaVida[3] = new Label("David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial");
 		hojaActual = 0;
-		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
-		
-		
-		Label creadores = new Label(hojaVida[hojaActual]);
-		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		//Imagenes
+		ImageView[] fotos = new ImageView[4];
+		try {
+			Image buitragoI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\buitrago.jpg"));
+			ImageView buitragoImg = new ImageView(buitragoI);
+			buitragoImg.setFitHeight(130);
+			buitragoImg.setFitWidth(100);
+			fotos[0] = buitragoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image canoI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\cano.jpg"));
+			ImageView canoImg = new ImageView(canoI);
+			canoImg.setFitHeight(130);
+			canoImg.setFitWidth(100);
+			fotos[1] = canoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image julianI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\julian.jpg"));
+			ImageView julianImg = new ImageView(julianI);
+			julianImg.setFitHeight(130);
+			julianImg.setFitWidth(100);
+			fotos[2] = julianImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+		}
+		try {
+			Image davidI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\david.jpg"));
+			ImageView davidImg = new ImageView(davidI);
+			davidImg.setFitHeight(130);
+			davidImg.setFitWidth(100);
+			fotos[3] = davidImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+		}
+		HBox[] descripciones = new HBox[4];
+		HBox buitrago = new HBox();
+		buitrago.getChildren().addAll(fotos[0],hojaVida[0]);
+		descripciones[0] = buitrago;
+		HBox cano = new HBox();
+		cano.getChildren().addAll(fotos[1],hojaVida[1]);
+		descripciones[1] = cano;
+		HBox julian = new HBox();
+		julian.getChildren().addAll(fotos[2],hojaVida[2]);
+		descripciones[2] = julian;
+		HBox david = new HBox();
+		david.getChildren().addAll(fotos[3],hojaVida[3]);
+		descripciones[3] = david;
+		mainPane.setBottom(descripciones[0]);
+		hojaVida[0].setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event){
-				
-				if( hojaActual != 3){
-					hojaActual +=1;
-					creadores.setText(hojaVida[hojaActual]);
-					//biografia.add(creadores, 0, 0);
-				}else {
-					hojaActual = 0;
-					creadores.setText(hojaVida[hojaActual]);
-					//biografia.add(creadores, 0, 0);
-				}
+				mainPane.setBottom(descripciones[1]);
 			}
 		});
-		//Derecha
+		hojaVida[1].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[2]);
+			}
+		});
+		hojaVida[2].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[3]);
+			}
+		});
+		hojaVida[3].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[0]);
+			}
+		});
+//Derecha
 		VBox login = new VBox();
 		Label title = new Label("");
-		
-		
 		title.setAlignment(Pos.TOP_CENTER);
 		title.setPadding(new Insets(5));
 		String[] campos = new String [2];
@@ -437,7 +508,7 @@ public class Main extends Application {
 			public void handle(ActionEvent event) {
 				String usu = columnas.getValue(0);
 				String password = columnas.getValue(1);
-
+				try {
 					if (Main.isNumeric(usu)) {
 						System.out.println("El usuario no puede ser un numero");
 					}else if(InicioSesion(usu,password)) {
@@ -448,6 +519,12 @@ public class Main extends Application {
 							mainStage.setScene(sceneAdministrador);
 						}
 					}
+				}catch(FalloInicioSesion fallo) {
+					Alert info = new Alert(AlertType.ERROR);
+					info.setHeaderText(fallo.getMessage());
+					info.setTitle("Usuario o Contraseña Invalido");
+					info.show();
+				}
 			}
 		});
 		Button logInvitado = new Button("Entrar como invitado");
@@ -473,7 +550,6 @@ public class Main extends Application {
 		bienvenida.setMaxWidth(Double.MAX_VALUE);
 		mainPane.setRight(login);
 		mainPane.setLeft(bienvenida);
-		mainPane.setBottom(creadores);
 		mainPane.setTop(menuPrincipal());
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;
@@ -481,6 +557,7 @@ public class Main extends Application {
 	}
 	
 	public static MenuBar menuPrincipal() {
+		//Sistema contacto y recuperar cotrasena
 		MenuBar mainMenu;
 		Menu descripcion = new Menu("Descripción");
 		MenuItem sistema = new Menu("Sistema");
@@ -853,7 +930,7 @@ public class Main extends Application {
 								}
 							}else {
 								Alert info = new Alert(AlertType.ERROR);
-								info.setHeaderText("Debe Ingresar numeros en este campo");
+								info.setHeaderText("Error");
 								info.setTitle("Debe Ingresar numeros en este campo");
 								info.setContentText("");
 								info.show();
@@ -1646,7 +1723,7 @@ public class Main extends Application {
 		campos[3] = "Usuario";
 		campos[4]  = "Contrasena";
 		campos[5] = "Pregunta de recuperacion";
-		campos[6] = "Resupuesta";
+		campos[6] = "Respuesta";
 		campos[7] = "Saldo";
 		
 		String [] empty = new String[8];

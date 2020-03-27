@@ -936,25 +936,52 @@ public class Main extends Application {
 		buscador.add(new Label("Seleccione la Categoria"), 0, 0);
 		Button buscar=new Button("Buscar"); buscar.setAlignment(Pos.CENTER);
 		buscar.setDisable(true); buscar.setVisible(false);
+		Button añadir=new Button("Añadir al carro"); añadir.setAlignment(Pos.CENTER);
+		añadir.setDisable(true); añadir.setVisible(false);
 		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categoriasT));
 		cats.setPromptText("Categorias");
 		
 		cats.valueProperty().addListener(new ChangeListener<String>() {
 			public void changed (ObservableValue s1,String s2,String s3) {
+				añadir.setDisable(true); añadir.setVisible(false);
 				listaprod.getItems().removeAll(listaprod.getItems());
 				int ind=cats.getSelectionModel().getSelectedIndex();
 				buscar.setDisable(false); buscar.setVisible(true);
 				buscar.setOnAction(new EventHandler<ActionEvent>() {
-					public void handle(ActionEvent e) {
-						
+					public void handle(ActionEvent e) {					
 						ArrayList<Producto> pt=inventario.RealizarBusqueda(ind);
 						listaprod.getItems().addAll(pt);
 						principal.getChildren().set(3,listaprod);
+						listaprod.setOnMouseClicked(new EventHandler<MouseEvent>() {
+							public void handle(MouseEvent e) {
+								if (usuario instanceof Usuario) {
+								int t=listaprod.getSelectionModel().getSelectedIndex();
+								añadir.setDisable(false); añadir.setVisible(true);
+								añadir.setOnAction(new EventHandler<ActionEvent>() {
+									public void handle (ActionEvent e) {
+										TextInputDialog confirmacion=new TextInputDialog();
+										confirmacion.setTitle("Confirmar Adicion");
+										confirmacion.setHeaderText("Confirmar la cantidad a añadir");
+										confirmacion.setContentText("Cantidad:");
+										Optional<String> respuesta=confirmacion.showAndWait();
+										respuesta.ifPresent(new Consumer<String>() {
+								            @Override public void accept(String user) {
+								                ((Usuario) usuario).getCarro().AddProducto(new Detalle(pt.get(t),Integer.valueOf(respuesta.get())));
+								                int b=inventario.RealizarBusqueda(pt.get(t).getNombre());
+								                inventario.getInventario().get(b).restarCantidad(Integer.valueOf(respuesta.get()));
+								                BuscarCategoria();
+								            }
+								        });
+									}
+								});
+								}
+							}
+						});
 					}
 				});
 			}
 		});
-		principal.getChildren().addAll(titulo,cats,buscar,listaprod);
+		principal.getChildren().addAll(titulo,cats,buscar,listaprod,añadir);
 		principal.setAlignment(Pos.TOP_CENTER);
 		if (usuario==null) {
 			principalInvitado.setCenter(principal);

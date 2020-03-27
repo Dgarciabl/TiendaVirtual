@@ -1,14 +1,2 @@
-
-bin/BaseDatos/CategoriasDB.txt
-bin/BaseDatos/InventarioDB.txt
-bin/BaseDatos/ProductosDB.txt
-bin/UImain/Main.class
-bin/UImain/Main.class
-bin/BaseDatos/ProductosDB.txt
-bin/BaseDatos/InventarioDB.txt
-bin/BaseDatos/CategoriasDB.txt
-bin/UImain/Main.class
-bin/UImain/Main.class
-*.class
-*.class
-*.class
+bin/BaseDatos/*.txt
+bin/UImain/*.class

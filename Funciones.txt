@@ -1,5 +1,0 @@
-Cliente:
-  . cambiar sus atributos
-Administrador:
-  . funciones estadisticas
-    . ver las estadisticas de la tienda

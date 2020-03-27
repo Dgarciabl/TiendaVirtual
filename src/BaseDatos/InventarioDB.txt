@@ -11,7 +11,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 38
+      "cantidad": 37
     },
     {
       "producto": {
@@ -89,7 +89,7 @@
         "precioVenta": 1200000.0,
         "precioCompra": 650000.0
       },
-      "cantidad": 40
+      "cantidad": 39
     },
     {
       "producto": {
@@ -102,7 +102,7 @@
         "precioVenta": 350000.0,
         "precioCompra": 260000.0
       },
-      "cantidad": 15
+      "cantidad": 14
     },
     {
       "producto": {
@@ -116,19 +116,6 @@
         "precioCompra": 35000.0
       },
       "cantidad": 73
-    },
-    {
-      "producto": {
-        "nombre": "Audifonos",
-        "descripcion": "Buena calidad de sonido",
-        "categorias": {
-          "nombre": "Comestibles",
-          "descripcion": "comida para comer"
-        },
-        "precioVenta": 2000.0,
-        "precioCompra": 3000.0
-      },
-      "cantidad": 4
     }
   ]
 }

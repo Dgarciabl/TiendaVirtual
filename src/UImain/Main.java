@@ -330,8 +330,8 @@ public class Main extends Application {
 		}
 	}
 	public static FieldPane stosMortales(int j) {
-		String[] Criterios= {"Nombre;","Edad:","Genero:","Nick:","Pregunta recuperacion"};
-		String[] Valores=new String[5];
+		String[] Criterios= {"Nombre;","Edad:","Genero:","Nick:","Saldo:", "Pregunta recuperacion"};
+		String[] Valores=new String[6];
 		Valores[0]=Usuarios.get(j).getNombre();
 		Valores[1]=Integer.toString(Usuarios.get(j).getEdad());
 		if (Usuarios.get(j).getGenero()==true) {
@@ -341,8 +341,15 @@ public class Main extends Application {
 			Valores[2]="Femenino";
 		}
 		Valores[3]=Usuarios.get(j).getUsuario();
-		Valores[4]=Usuarios.get(j).getPregunta();
-		boolean[] Hab=new boolean[5]; for (int i=0;i<Hab.length;i++) {Hab[i]=false;}
+		if (Usuarios.get(j) instanceof Usuario) {
+			Usuario usut=(Usuario) Usuarios.get(j);
+			Valores[4]=Double.toString((usut.getSaldo()));
+		}
+		else {
+			Valores[4]="No tiene";
+		}
+		Valores[5]=Usuarios.get(j).getPregunta();
+		boolean[] Hab=new boolean[6]; for (int i=0;i<Hab.length;i++) {Hab[i]=false;}
 		FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
 		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		return res;
@@ -1105,13 +1112,34 @@ public class Main extends Application {
 							resultado.add(añadir, 1, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
 						}else if(usuario instanceof Administrador) {
-							Button editar=new Button("Editar");
 							Button elimExist=new Button("Eliminar del Inventario");
-							Button eliminar=new Button("Eliminar");
-							resultado.add(editar, 0, 5);
+							Button eliminar=new Button("Eliminar producto");
 							resultado.add(elimExist, 1, 5);
 							resultado.add(eliminar, 2, 5);
 							principal.setBottom(new VBox(resultado,mensaje));
+							elimExist.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle (ActionEvent e) {
+									Alert ale=new Alert(AlertType.CONFIRMATION);
+									ale.setTitle("Eliminar inventario");
+									ale.setHeaderText("¿Eliminar producto del inventario?");
+									Optional<ButtonType> res=ale.showAndWait();
+									if (res.get()==ButtonType.OK) {
+										inventario.DelInventario(j);
+									}
+								}
+							});
+							eliminar.setOnAction(new EventHandler<ActionEvent>() {
+								public void handle (ActionEvent e) {
+									Alert ale=new Alert(AlertType.CONFIRMATION);
+									ale.setTitle("Eliminar Producto");
+									ale.setHeaderText("¿Eliminar producto?");
+									Optional<ButtonType> res=ale.showAndWait();
+									if (res.get()==ButtonType.OK) {
+										inventario.DelInventario(j);
+										productos.remove(j);
+									}
+								}
+							});
 						}
 					}else {
 						mensaje.setText("Producto no Encontrado");
@@ -1179,8 +1207,8 @@ public class Main extends Application {
 										respuesta.ifPresent(new Consumer<String>() {
 								            @Override public void accept(String user) {
 								                ((Usuario) usuario).getCarro().AddProducto(new Detalle(pt.get(t),Integer.valueOf(respuesta.get())));
-								                int b=inventario.RealizarBusqueda(pt.get(t).getNombre());
-								                inventario.getInventario().get(b).restarCantidad(Integer.valueOf(respuesta.get()));
+								                int bis=inventario.RealizarBusqueda(pt.get(t).getNombre());
+								                inventario.getInventario(bis).restarCantidad(Integer.valueOf(respuesta.get()));
 								                BuscarCategoria();
 								            }
 								        });
@@ -1404,8 +1432,12 @@ public class Main extends Application {
 			public void handle(MouseEvent e) {
 				int s=listaprod.getSelectionModel().getSelectedIndex();
 				FieldPane f=productor(s);
-				g.add(f.getChild(), 1, 1);
+				g.add(f.getChild(), 1, 1,2,1);
 				Button opciones=new Button("Opciones");
+				Button añadirexi=new Button("Añadir existencias");
+				if (inventario.RealizarBusqueda(productos.get(s).getNombre())==-1) {
+					añadirexi.setDisable(false);
+				}
 				g.add(opciones, 1, 2);
 				opciones.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle (ActionEvent e) {

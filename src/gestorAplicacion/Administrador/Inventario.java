@@ -33,10 +33,10 @@ public class Inventario {
 		inventario.remove(i);
 	}
 	public int RealizarBusqueda(String n) {
-		ArrayList<Producto> Lis=Main.productos;
+		ArrayList<Detalle> Lis=inventario;
 		for (int i=0;i<Lis.size();i++) {
-			Producto Temp=Lis.get(i);
-			if(n.equals(Temp.getNombre())) {
+			Detalle Temp=Lis.get(i);
+			if(n.equals(Temp.getProducto().getNombre())) {
 				return i;
 				
 			}
@@ -45,11 +45,11 @@ public class Inventario {
 	}
 	public ArrayList<Producto> RealizarBusqueda(int indexCategoria) {
 		Categoria Ind=Main.categorias.get(indexCategoria);
-		ArrayList<Producto> Lis=Main.productos; ArrayList<Producto> Regreso=new ArrayList<Producto>();
+		ArrayList<Detalle> Lis=inventario; ArrayList<Producto> Regreso=new ArrayList<Producto>();
 		for (int i=0;i<Lis.size();i++) {
-			Producto temp=Lis.get(i);
-			if(temp.getCategoria().equalsto(Ind)) {
-				Regreso.add(temp);
+			Detalle temp=Lis.get(i);
+			if(temp.getProducto().getCategoria().equalsto(Ind)) {
+				Regreso.add(temp.getProducto());
 			}
 		}
 		return Regreso;

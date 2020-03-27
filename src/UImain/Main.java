@@ -593,18 +593,51 @@ public class Main extends Application {
 			}
 		});
 		MenuItem recuperar = new MenuItem("Recuperar contraseña");
-		recuperar.setOnAction(new EventHandler<ActionEvent>() {
+		recuperar.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub	
+				TextInputDialog confirmacion=new TextInputDialog();
+				confirmacion.setTitle("Opciones de recuperación");
+				confirmacion.setHeaderText("Recuperar contraseña");
+				confirmacion.setContentText("Usuario:");
+				Optional<String> respuesta=confirmacion.showAndWait();
+				respuesta.ifPresent(new Consumer<String>() {
+
+					@Override
+					public void accept(String t) {
+						String usName = respuesta.get();
+						for(int i=0; i<Usuarios.size();i++) {
+							if(Usuarios.get(i).getNombre().equals("usName")) {
+								TextInputDialog confirmacion=new TextInputDialog();
+		        				confirmacion.setTitle("Opciones de recuperación");
+		        				confirmacion.setHeaderText("Pregunta de recuperación: "+Usuarios.get(i).getPregunta());
+		        				confirmacion.setContentText("Respuesta:");
+		        				Optional<String> respuesta=confirmacion.showAndWait();
+		        				respuesta.ifPresent(new Consumer<String>() {
+									@Override
+									public void accept(String t) {
+										String answer = respuesta.get();
+										if(answer.equals(Usuarios.get(i).comprobarRespuesta(answer))) {
+											
+										}
+										
+									}
+		        				});
+							}
+						}
+						
+					}
+					
+				});
 			}
 		});
+		
 		ayuda.getItems().addAll(contacto,recuperar);
 		mainMenu = new MenuBar(descripcion,ayuda,salir);
 		return mainMenu;
 	}
-		//Panes
-			//menus
+		
+//menus
 	public static MenuBar menuInvitado() {
 		MenuBar menu;
 		//Archivo

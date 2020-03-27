@@ -19,6 +19,7 @@ import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -68,6 +69,7 @@ public class Main extends Application {
 		principal();
 		mainStage.setScene(sceneInicial);
 		mainStage.show();
+		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 	}
 	//Database
 	public static void inicio() {
@@ -391,12 +393,14 @@ public class Main extends Application {
 		hojaVida[0] = "Cano";hojaVida[1] = "David"; hojaVida[2] = "Pablo"; hojaVida[3] = "Julian";
 		hojaActual = 0;
 		
-		/*GridPane[] creadores = new GridPane[4];
-		Label julian = new Label("Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre, practico natación y me gusta aprender cosas nuevas");
-		Label buitrago = new Label("Juan Pablo Buitrago Díaz: 19 años, amantes de los juegos y salir con buena compañía, estudiante de tercer semestre ingenieria en sisemas");
-		Label david = new Label("David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial");
+		GridPane biografia = new GridPane();
+		hojaVida[0] = "Julian Fernández Montoya, Estudiante de Ingenieria de Sistemas de tercer semestre, practico natación y me gusta aprender cosas nuevas";
+		hojaVida[1] = "Juan Pablo Buitrago Díaz: 19 años, amantes de los juegos y salir con buena compañía, estudiante de tercer semestre ingenieria en sisemas";
+		hojaVida[2] = "David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial";
+		hojaVida[3] = "David Andres Cano Gonzalez, 19 años, Estudiante de ingenieria de sistemas de 3er semestre, Busca enfocarse en el campo de desarrollo de videojuegos";
+		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
 		
-		*/Label creadores = new Label(hojaVida[hojaActual]);
+		Label creadores = new Label(hojaVida[hojaActual]);
 		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event){
@@ -404,9 +408,11 @@ public class Main extends Application {
 				if( hojaActual != 3){
 					hojaActual +=1;
 					creadores.setText(hojaVida[hojaActual]);
+					biografia.add(creadores, 0, 0);
 				}else {
 					hojaActual = 0;
 					creadores.setText(hojaVida[hojaActual]);
+					biografia.add(creadores, 0, 0);
 				}
 			}
 		});
@@ -1489,13 +1495,13 @@ public class Main extends Application {
 			public void handle(ActionEvent event) {
 				String nombre = columnas.getValue(0);
 				boolean genero;
-				int edad = Integer.valueOf(columnas.getValue(1));
+				int edad = Integer.valueOf(columnas.getValue(2));
 				if(columnas.getValue(2).equals("m")){
 					genero = true;
 				}else {
 					genero = false;
 				}
-				String usuario = columnas.getValue(2);
+				String usuario = columnas.getValue(3);
 				String contrasena = columnas.getValue(3);
 				String question = columnas.getValue(4);
 				String answer = columnas.getValue(5);

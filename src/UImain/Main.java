@@ -257,6 +257,15 @@ public class Main extends Application {
 		}
 		return true;
 	}
+	public static boolean isNumericDouble(String s) {
+		try {
+			Double.parseDouble(s);
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
 	public static FieldPane productor(int j) {
 		String[] criterios= {"Descripcion:","Categoria","Precio de compra:","Precio de venta:"};
 		String[] valores=new String[4];
@@ -329,6 +338,19 @@ public class Main extends Application {
 			res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 			return res;
 		}
+	}
+	public static FieldPane inventateEstaNoCat(int j) {
+		String[] Criterios= {"Nombre:","Descripcion:","Precio de compra:","Precio de venta:","Unidades disponibles:"};
+		String[] Valores=new String[5];
+		Valores[0]=inventario.getInventario(j).getProducto().getNombre();
+		Valores[1]=inventario.getInventario(j).getProducto().getDescripcion();
+		Valores[2]=Double.toString(inventario.getInventario(j).getProducto().getPrecioCompra());
+		Valores[3]=Double.toString(inventario.getInventario(j).getProducto().getPrecioVenta());
+		Valores[4]=Integer.toString(inventario.getInventario(j).getCantidad());
+		boolean[] Hab=new boolean[5]; for (int l=0;l<Hab.length;l++) {Hab[l]=false;}
+		FieldPane res=new FieldPane("",Criterios,"",Valores,Hab);
+		res.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		return res;
 	}
 	public static FieldPane stosMortales(int j) {
 		String[] Criterios= {"Nombre;","Edad:","Genero:","Nick:","Saldo:", "Pregunta recuperacion"};
@@ -1207,8 +1229,22 @@ public class Main extends Application {
 									Optional<String> respuesta=confirmacion.showAndWait();
 									respuesta.ifPresent(new Consumer<String>() {
 							            @Override public void accept(String user) {
+							            	try {
+							            	if (isNumeric(respuesta.get())==false) {
+							            		throw new InputError();
+							            	}
+							            	else {
 							                ((Usuario) usuario).getCarro().AddInventario(new Detalle(inventario.getInventario(j).getProducto(),Integer.valueOf(respuesta.get())));
 							                ((Usuario) usuario).getCarro().actualizar();
+							            	}
+							            	}
+							            	catch (InputError error) {
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error.getMessage());
+												fallo.setTitle("Fallo en inputs");
+												fallo.show();
+												BuscarNombre();
+							            	}
 							            }
 							        });
 								}
@@ -1250,8 +1286,12 @@ public class Main extends Application {
 						mensaje.setAlignment(Pos.TOP_CENTER);
 						principal.setBottom(mensaje);
 					}	
-				}catch(FormularioIncompletoError err){
-					
+				}catch(FormularioIncompletoError error){
+					Alert fallo=new Alert(AlertType.ERROR);
+					fallo.setHeaderText(error.getMessage());
+					fallo.setTitle("Fallo en inputs");
+					fallo.show();
+					BuscarNombre();
 				}
 			}
 		});
@@ -1360,9 +1400,23 @@ public class Main extends Application {
 					Optional<String> respuesta=confirmacion.showAndWait();
 					respuesta.ifPresent(new Consumer<String>() {
 			            @Override public void accept(String user) {
-			                ((Usuario) usuario).getCarro().AddProducto(new Detalle(inventario.getInventario().get(j).getProducto(),Integer.valueOf(respuesta.get())));
-			                inventario.getInventario().get(j).restarCantidad(Integer.valueOf(respuesta.get()));
-			                mostrarInventario();
+			            	try {
+			            		if(isNumeric(respuesta.get())==false) {
+			            			throw new InputError();
+			            		}
+			            		else {
+			            			((Usuario) usuario).getCarro().AddProducto(new Detalle(inventario.getInventario().get(j).getProducto(),Integer.valueOf(respuesta.get())));
+			            			inventario.getInventario().get(j).restarCantidad(Integer.valueOf(respuesta.get()));
+			            			mostrarInventario();
+			            		}
+			            	}
+			            	catch(InputError error) {
+								Alert fallo=new Alert(AlertType.ERROR);
+								fallo.setHeaderText(error.getMessage());
+								fallo.setTitle("Fallo en inputs");
+								fallo.show();
+								mostrarInventario();
+			            	}
 			            }
 			        });
 				}
@@ -1375,7 +1429,7 @@ public class Main extends Application {
 		inv.setAlignment(Pos.TOP_CENTER);
 		
 		listainv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			public void handle (MouseEvent e) {
+			public void handle (MouseEvent e) {			
 				int s=listainv.getSelectionModel().getSelectedIndex();
 				FieldPane f=inventateEsta(s);
 				g.add(f.getChild(), 1, 1);
@@ -1385,7 +1439,7 @@ public class Main extends Application {
 					editar.setOnAction(new EventHandler<ActionEvent>() {
 						public void handle(ActionEvent e) {
 							HBox info=new HBox();
-							FieldPane l=inventateEsta(s);
+							FieldPane l=inventateEstaNoCat(s);
 							Button b1=new Button("Editar"); Button b2=new Button("Eliminar");
 							info.getChildren().addAll(l.getChild(),b1,b2);
 							g.add(info, 0, 3,2,1);info.setMaxWidth(Double.MAX_VALUE);
@@ -1397,13 +1451,32 @@ public class Main extends Application {
 									info.getChildren().add(save);
 									save.setOnAction(new EventHandler<ActionEvent>() {
 										public void handle (ActionEvent e) {
-											Administrador adm=(Administrador) usuario;
-											adm.modificarNombreProducto(s,l.getValue(0));
-											adm.modificarDescripcionProducto(s, l.getValue(1));
-											adm.modificarPrecioCompra(s, Double.parseDouble(l.getValue(2)));
-											adm.modificarPrecioVenta(s, Double.parseDouble(l.getValue(3)));
-											adm.modificarCantidadProducto(s, Integer.parseInt(l.getValue(4)));
-											mostrarInventario();
+											try {
+												Administrador adm=(Administrador) usuario;
+											if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==true) {
+												throw new InputError();
+											}
+											else {
+												adm.modificarNombreProducto(s,l.getValue(0));
+												adm.modificarDescripcionProducto(s, l.getValue(1));
+												if (isNumericDouble(l.getValue(2))==false || isNumericDouble(l.getValue(3))==false || isNumeric(l.getValue(4))==false) {
+													throw new InputError();
+												}
+												else {
+													adm.modificarPrecioCompra(s, Double.parseDouble(l.getValue(2)));
+													adm.modificarPrecioVenta(s, Double.parseDouble(l.getValue(3)));
+													adm.modificarCantidadProducto(s, Integer.parseInt(l.getValue(4)));
+													mostrarInventario();
+													}
+												}
+											}
+											catch (InputError error) {
+												Alert fallo=new Alert(AlertType.ERROR);
+												fallo.setHeaderText(error.getMessage());
+												fallo.setTitle("Fallo en inputs");
+												fallo.show();
+												mostrarInventario();
+											}
 										
 										}
 									});
@@ -1519,6 +1592,7 @@ public class Main extends Application {
 		
 	}
 	public static void mostrarProductos() {
+		
 		VBox prod=new VBox();
 		ListView listaprod=new ListView();
 		for (int k=0;k<productos.size();k++) {listaprod.getItems().add(productos.get(k).getNombre());}
@@ -1556,11 +1630,20 @@ public class Main extends Application {
 							Optional<String> res=texto.showAndWait();
 							res.ifPresent(new Consumer<String>() {
 								public void accept(String sid) {
+									try {
 									if (isNumeric(res.get())==false) {
-										
+										throw new InputError();
 									}
 									else {
 										inventario.AddInventario(new Detalle(productos.get(s),Integer.parseInt(res.get())));
+										mostrarProductos();
+									}
+									}
+									catch (InputError error) {
+										Alert fallo=new Alert(AlertType.ERROR);
+										fallo.setHeaderText(error.getMessage());
+										fallo.setTitle("Fallo en inputs");
+										fallo.show();
 										mostrarProductos();
 									}
 								}
@@ -1588,12 +1671,31 @@ public class Main extends Application {
 								info.getChildren().add(save);
 								save.setOnAction(new EventHandler<ActionEvent>() {
 									public void handle (ActionEvent e) {
-										Administrador adm=(Administrador) usuario;
-										adm.modificarNombreProducto(s,l.getValue(0));
-										adm.modificarDescripcionProducto(s, l.getValue(1));
-										adm.modificarPrecioCompra(s, Double.parseDouble(l.getValue(2)));
-										adm.modificarPrecioVenta(s, Double.parseDouble(l.getValue(3)));
-										mostrarProductos();
+										try {
+											Administrador adm=(Administrador) usuario;
+										if (isNumeric(l.getValue(0))==true || isNumeric(l.getValue(1))==true) {
+											throw new InputError();
+										}
+										else {
+											adm.modificarNombreProducto(s,l.getValue(0));
+											adm.modificarDescripcionProducto(s, l.getValue(1));
+											if (isNumericDouble(l.getValue(2))==false || isNumericDouble(l.getValue(3))==false) {
+												throw new InputError();
+											}
+											else {
+												adm.modificarPrecioCompra(s, Double.parseDouble(l.getValue(2)));
+												adm.modificarPrecioVenta(s, Double.parseDouble(l.getValue(3)));
+												mostrarProductos();
+												}
+											}
+										}
+										catch (InputError error) {
+											Alert fallo=new Alert(AlertType.ERROR);
+											fallo.setHeaderText(error.getMessage());
+											fallo.setTitle("Fallo en inputs");
+											fallo.show();
+											mostrarProductos();
+										}
 									
 									}
 								});
@@ -1663,6 +1765,7 @@ public class Main extends Application {
 		}else if(usuario instanceof Administrador) {
 			principalAdministrador.setCenter(prod);
 		}
+		
 		
 	}
 				//Carro

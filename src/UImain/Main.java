@@ -10,6 +10,7 @@ import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FalloInicioSesion;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import gestorAplicacion.Exepciones.InputError;
+import gestorAplicacion.Exepciones.NombreDuplicado;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -2120,9 +2121,8 @@ public class Main extends Application {
 					}
 					Categoria categoriaCreada = new Categoria(nombre,descripcion);
 					categorias.add(categoriaCreada);
-					Alert info = new Alert(AlertType.INFORMATION);
-					info.setHeaderText("Categoria creada");
-					info.setTitle("Información");
+					al.setHeaderText("Categoria creada");
+					al.setTitle("Información");
 
 				}catch (NumberFormatException e1){
 					try {
@@ -2194,25 +2194,72 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String nombre = columnas.getValue(0);
-				boolean genero;
-				int edad = Integer.valueOf(columnas.getValue(2));
-				if(columnas.getValue(2).equals("m")){
-					genero = true;
-				}else {
-					genero = false;
+				Alert al = new Alert(AlertType.NONE);
+				try {
+					String nombre = columnas.getValue(0);
+					int edad = Integer.valueOf(columnas.getValue(1));
+					boolean genero;
+					if(columnas.getValue(2).equals("m")){
+						genero = true;
+					}else {
+						genero = false;
+					}
+					String usuario = columnas.getValue(3);
+					String contrasena = columnas.getValue(3);
+					String question = columnas.getValue(4);
+					String answer = columnas.getValue(5);
+					int saldo = Integer.valueOf(columnas.getValue(7));
+					for(int i=0;i<Usuarios.size();i++) {
+						if(Usuarios.get(i).getNombre().equals(nombre)) {
+							throw  new NombreDuplicado();
+						}
+					}
+					if(nombre==null || nombre.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(1)==null || columnas.getValue(1).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(2)==null || columnas.getValue(2).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(usuario==null || usuario.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(contrasena==null || contrasena.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(question==null || question.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(answer==null || answer.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(7)==null || columnas.getValue(7).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
+					Usuarios.add(usuariocreado);
+					al.setHeaderText("Usuario creado");
+					al.setTitle("Información");
+				}catch (NumberFormatException e1){
+					try {
+						throw new InputError();
+					}catch(InputError e4) {
+						al.setAlertType(AlertType.ERROR);
+						al.setHeaderText(e4.getMessage());
+						al.setTitle("Input Error");
+					}
+				}catch(FormularioIncompletoError e2) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e2.getMessage());
+					al.setTitle("Formulario Incompleto");
+				}catch(NombreDuplicado e3) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e3.getMessage());
+					al.setTitle("Nombre duplicado");
 				}
-				String usuario = columnas.getValue(3);
-				String contrasena = columnas.getValue(3);
-				String question = columnas.getValue(4);
-				String answer = columnas.getValue(5);
-				int saldo = Integer.valueOf(columnas.getValue(7)); 
-				Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
-				Usuarios.add(usuariocreado);
-				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Usuario creado");
-				info.setTitle("Información");
-				info.show();
+				al.show();
 				for(int i=0; i<7;i++) {
 					columnas.getBox(i).clear();
 				}

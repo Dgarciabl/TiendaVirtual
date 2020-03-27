@@ -1099,7 +1099,8 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				finalizar();
+				mainStage.setScene(sceneInicial);
+				usuario = null;
 			}
 		});
 		Button editar=new Button("Editar");

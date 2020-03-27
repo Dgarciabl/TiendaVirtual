@@ -1727,6 +1727,7 @@ public class Main extends Application {
 									Optional<ButtonType>res=a.showAndWait();
 									if (res.get()==ButtonType.OK) {
 										categorias.remove(s);
+										mostrarCategorias();
 									}
 								}
 							});

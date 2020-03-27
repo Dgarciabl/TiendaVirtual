@@ -6,7 +6,7 @@
       "numObjetos": 0,
       "inventario": []
     },
-    "nombre": "hola",
+    "nombre": "pablo",
     "genero": true,
     "edad": 21,
     "usuario": "user",

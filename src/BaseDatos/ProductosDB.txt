@@ -82,7 +82,10 @@
   {
     "nombre": "Licuadora",
     "descripcion": "Oster",
-    "categorias": null,
+    "categorias": {
+      "nombre": "Electrodomesticos",
+      "descripcion": "Todo para el hogar"
+    },
     "precioVenta": 75000.0,
     "precioCompra": 35000.0
   },

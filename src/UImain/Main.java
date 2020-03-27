@@ -33,6 +33,7 @@ import javafx.beans.value.ObservableValue;
 public class Main extends Application {
 	//App data
 	public static int hojaActual;
+	public static int imActual;
 	public static int indice;
 	public static int indice2;
 	public static ArrayList<Persona> Usuarios;
@@ -551,13 +552,13 @@ public class Main extends Application {
 		login.getChildren().addAll(title,columnas.getChild(),botones);
 		login.setAlignment(Pos.TOP_CENTER);
 //Bienvenida
-		GridPane imms = new GridPane();
+		VBox imms[] = new VBox[5];
 		Label bienvenida = new Label("Bienvenido\na la\ntienda virtual");
 		bienvenida.setTextAlignment(TextAlignment.CENTER);
 		bienvenida.setFont(new Font("Arial",18));
 		bienvenida.setTextFill(Color.BLUE);
 		bienvenida.setMaxWidth(Double.MAX_VALUE);
-		ImageView[] imagenes = new ImageView[6];
+		ImageView[] imagenes = new ImageView[5];
 		try {
 			Image uno = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\1.png"));
 			ImageView unoImg = new ImageView(uno);
@@ -615,7 +616,7 @@ public class Main extends Application {
 			ImageView cincoImg = new ImageView(cinco);
 			cincoImg.setFitHeight(130);
 			cincoImg.setFitWidth(100);
-			imagenes[5] = cincoImg;
+			imagenes[4] = cincoImg;
 		} catch (FileNotFoundException e) {
 			Alert info = new Alert(AlertType.ERROR);
 			info.setHeaderText("No se pudo encontrar la imagen");
@@ -623,13 +624,49 @@ public class Main extends Application {
 			info.setContentText("");
 			info.show();
 		}
-		imms.add(bienvenida, 0, 0);
-		int imActual = 0;
-		
-		
+		imms[0] = new VBox();
+		imms[0].getChildren().addAll(bienvenida,imagenes[0]);
+		imms[1] = new VBox();
+		imms[1].getChildren().addAll(bienvenida,imagenes[1]);
+		imms[2] = new VBox();
+		imms[2].getChildren().addAll(bienvenida,imagenes[2]);
+		imms[3] = new VBox();
+		imms[3].getChildren().addAll(bienvenida,imagenes[3]);
+		imms[4] = new VBox();
+		imms[4].getChildren().addAll(bienvenida,imagenes[4]);
+		mainPane.setLeft(imms[4]);
+		imagenes[0].setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setLeft(imms[1]);
+			}
+		});
+		imagenes[1].setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setLeft(imms[2]);
+			}
+		});
+		imagenes[2].setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setLeft(imms[3]);
+			}
+		});
+		imagenes[3].setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setLeft(imms[4]);
+			}
+		});
+		imagenes[4].setOnMouseEntered(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setLeft(imms[0]);
+			}
+		});
 //General		
 		mainPane.setRight(login);
-		mainPane.setLeft(bienvenida);
 		mainPane.setTop(menuPrincipal());
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;
@@ -1810,24 +1847,62 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String nombre = columnas.getValue(0);
-				String descripcion = columnas.getValue(1);
-				int oPrice = Integer.valueOf(columnas.getValue(2));
-				int sPrice = Integer.valueOf(columnas.getValue(3));
-				int cantidad = Integer.valueOf(columnas.getValue(5));
-				Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice,categorias.get(indice));
-				productos.add(productoCreado);
-				for(int i=0;i<productos.size();i++) {
-					if(productos.get(i).getNombre().equals(nombre)) {
-						indice2 = i;
+				Alert al = new Alert(AlertType.NONE);
+				try {
+					String nombre = columnas.getValue(0);
+					String descripcion = columnas.getValue(1);
+					int oPrice = Integer.valueOf(columnas.getValue(2));
+					int sPrice = Integer.valueOf(columnas.getValue(3));
+					int cantidad = Integer.valueOf(columnas.getValue(5));
+
+					for(int i=0;i<productos.size();i++) {
+						if(productos.get(i).getNombre().equals(nombre)) {
+							throw  new NombreDuplicadoError();
+						}
 					}
+					if(nombre==null || nombre.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(descripcion==null || descripcion.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(2)==null || columnas.getValue(2).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(3)==null || columnas.getValue(3).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(columnas.getValue(5)==null || columnas.getValue(5).isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					
+					Producto productoCreado = new Producto(nombre,descripcion,oPrice,sPrice,categorias.get(indice));
+					productos.add(productoCreado);	
+					Detalle detalleCreado = new Detalle(productos.get(indice2),cantidad);
+					inventario.AddInventario(detalleCreado);
+					al.setAlertType(AlertType.INFORMATION);
+					al.setHeaderText("Producto creado");
+					al.setTitle("Información");
+					
+				}catch (NumberFormatException e1){
+					try {
+						throw new InputError();
+					}catch(InputError e4) {
+						al.setAlertType(AlertType.ERROR);
+						al.setHeaderText(e4.getMessage());
+						al.setTitle("Input Error");
+					}
+				}catch(FormularioIncompletoError e2) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e2.getMessage());
+					al.setTitle("Formulario Incompleto");
+				}catch(NombreDuplicadoError e3) {
+					al.setAlertType(AlertType.ERROR);
+					al.setHeaderText(e3.getMessage());
+					al.setTitle("Nombre duplicado");
 				}
-				Detalle detalleCreado = new Detalle(productos.get(indice2),cantidad);
-				inventario.AddInventario(detalleCreado);
-				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Producto creado");
-				info.setTitle("Información");
-				info.show();
+				al.show();
+
 				for(int i=0; i<6;i++) {
 					columnas.getBox(i).clear();
 				}
@@ -1873,8 +1948,18 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				String nombre = columnas.getValue(0);
-				String descripcion = columnas.getValue(1);
+				Alert al = new Alert(AlertType.NONE);
+				try {
+					String nombre = columnas.getValue(0);
+					String descripcion = columnas.getValue(1);
+					if(nombre==null || nombre.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+					if(descripcion ==null || descripcion.isEmpty()) {
+						throw  new FormularioIncompletoError();
+					}
+				}
+
 				Categoria categoriaCreada = new Categoria(nombre,descripcion);
 				categorias.add(categoriaCreada);
 				Alert info = new Alert(AlertType.INFORMATION);

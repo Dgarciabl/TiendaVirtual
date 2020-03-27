@@ -397,7 +397,7 @@ public class Main extends Application {
 		//Texto
 		hojaVida[0] = new Label( "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sistemas");
 		hojaVida[1] = new Label("David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos");
-		hojaVida[2] = new Label("Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractico natación y me gusta aprender cosas nuevas");
+		hojaVida[2] = new Label("Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractica natación y le gusta aprender cosas nuevas");
 		hojaVida[3] = new Label("David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial");
 		hojaActual = 0;
 		//Imagenes

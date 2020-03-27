@@ -409,6 +409,7 @@ public class Main extends Application {
 		VBox login = new VBox();
 		Label title = new Label("");
 		
+		
 		title.setAlignment(Pos.TOP_CENTER);
 		title.setPadding(new Insets(5));
 		String[] campos = new String [2];
@@ -1013,7 +1014,6 @@ public class Main extends Application {
 									Optional<ButtonType>res=a.showAndWait();
 									if (res.get()==ButtonType.OK) {
 										inventario.DelInventario(s);
-										productos.remove(s);
 									}
 								}
 							});

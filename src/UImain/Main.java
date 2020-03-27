@@ -360,7 +360,10 @@ public class Main extends Application {
 					}
 					return true;
 				}else {
-					System.out.println("la contrasena es incorrecta");
+					Alert info = new Alert(AlertType.ERROR);
+					info.setHeaderText("Error");
+					info.setTitle("Contraseña Incorrecta");
+					info.show();
 				}
 			}
 		}
@@ -550,6 +553,7 @@ public class Main extends Application {
 	}
 	
 	public static MenuBar menuPrincipal() {
+		//Sistema contacto y recuperar cotrasena
 		MenuBar mainMenu;
 		Menu descripcion = new Menu("Descripción");
 		MenuItem sistema = new Menu("Sistema");
@@ -1676,7 +1680,7 @@ public class Main extends Application {
 		campos[3] = "Usuario";
 		campos[4]  = "Contrasena";
 		campos[5] = "Pregunta de recuperacion";
-		campos[6] = "Resupuesta";
+		campos[6] = "Respuesta";
 		campos[7] = "Saldo";
 		
 		String [] empty = new String[8];

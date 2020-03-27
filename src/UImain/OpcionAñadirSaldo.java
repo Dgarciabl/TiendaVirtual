@@ -1,7 +1,5 @@
-package UImain.Opciones.Usuario;
+package UImain;
 
-import UImain.Main;
-import UImain.OpcionDeMenu;
 import gestorAplicacion.Usuario.*;
 import java.util.*;
 public class OpcionAñadirSaldo implements OpcionDeMenu {

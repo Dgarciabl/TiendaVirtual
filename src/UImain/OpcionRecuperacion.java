@@ -1,8 +1,7 @@
-package UImain.Opciones.Invitado;
+package UImain;
 import java.util.Scanner;
-import UImain.OpcionDeMenu;
+
 import gestorAplicacion.Usuario.Persona;
-import UImain.Main;
 public class OpcionRecuperacion implements OpcionDeMenu {
 	private Scanner in = new Scanner(System.in);
 	private Persona temp;

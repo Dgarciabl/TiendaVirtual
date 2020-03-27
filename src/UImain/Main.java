@@ -11,8 +11,6 @@ import gestorAplicacion.Usuario.*;
 import gestorAplicacion.Administrador.*;
 import gestorAplicacion.Exepciones.FormularioIncompletoError;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -1045,7 +1043,13 @@ public class Main extends Application {
 		g.add(new Label("Lista de categorias:"), 0, 0);
 		g.add(listacat,0, 1); 
 		if (usuario==null|| usuario instanceof Usuario) {
-		g.add(new Button("Busqueda por categoria"), 1, 2);
+			Button buscat=new Button("Busqueda por categoria");
+		g.add(buscat, 1, 2);
+		buscat.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle (ActionEvent e) {
+				BuscarCategoria();
+			}
+		});
 		}
 		cat.getChildren().addAll(lis1,g);
 		g.setAlignment(Pos.TOP_CENTER);
@@ -1337,33 +1341,21 @@ public class Main extends Application {
 		
 		FieldPane columnas = new FieldPane(" ",campos, " ", empty, null);
 		columnas.getChild().getChildren().remove(columnas.getBox(4));
-
 		String[] categ = new String[categorias.size()];
 		for(int i = 0; i<categorias.size(); i++) {
 			categ[i]= categorias.get(i).getNombre();
 		}
+
 		ComboBox cats=new ComboBox(FXCollections.observableArrayList(categ));
-		cats.setPromptText("Categorias");
 		cats.setValue("Ninguno");
-		cats.valueProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue observable, String oldValue, String newValue) {
-				for(int i=0; i<categorias.size();i++) {
-					if(categorias.get(i).getNombre().equals(newValue)) {
-						indice = i;
-					}
-				}
-			}
-			
-		});
-		
-		columnas.getChild().add(cats, 1, 5);
+		cats.setPromptText("Categorias");
+		columnas.getChild().add(cats, 2, 5);
 		GridPane botones = new GridPane();
 		Button salir = new Button("Salir");
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				archivo();
+				finalizar();
 			}
 		});
 		Button crear = new Button("Crear");
@@ -1423,22 +1415,7 @@ public class Main extends Application {
 		salir.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				archivo();
-			}
-		});
-		Button crear = new Button("Crear");
-		crear.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				String nombre = columnas.getValue(0);
-				String descripcion = columnas.getValue(1);
-				Categoria categoriaCreada = new Categoria(nombre,descripcion);
-				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Categoria creado");
-				info.setTitle("Información");
-				info.show();
-				categorias.add(categoriaCreada);
-				
+				finalizar();
 			}
 		});
 		botones.add(salir, 0, 0);
@@ -1503,7 +1480,7 @@ public class Main extends Application {
 				Usuario usuariocreado = new Usuario(nombre,genero,edad,usuario,contrasena,question,answer,saldo);
 				Usuarios.add(usuariocreado);
 				Alert info = new Alert(AlertType.INFORMATION);
-				info.setHeaderText("Usuario creado");
+				info.setHeaderText("Producto creado");
 				info.setTitle("Información");
 				info.show();
 			}

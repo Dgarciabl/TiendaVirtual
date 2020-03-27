@@ -785,7 +785,7 @@ public class Main extends Application {
 				mostrarProductos();
 			}
 		});
-		MenuItem mostrarCategorias = new MenuItem("Mostar categorias");
+		MenuItem mostrarCategorias = new MenuItem("Mostrar categorias");
 		mostrarCategorias.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {

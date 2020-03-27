@@ -550,7 +550,7 @@ public class Main extends Application {
 		login.getChildren().addAll(title,columnas.getChild(),botones);
 		login.setAlignment(Pos.TOP_CENTER);
 //Bienvenida
-		
+		GridPane imms = new GridPane();
 		Label bienvenida = new Label("Bienvenido\na la\ntienda virtual");
 		bienvenida.setTextAlignment(TextAlignment.CENTER);
 		bienvenida.setFont(new Font("Arial",18));
@@ -560,6 +560,8 @@ public class Main extends Application {
 		try {
 			Image uno = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\1.png"));
 			ImageView unoImg = new ImageView(uno);
+			unoImg.setFitHeight(130);
+			unoImg.setFitWidth(100);
 			imagenes[0] = unoImg;
 		} catch (FileNotFoundException e) {
 			Alert info = new Alert(AlertType.ERROR);
@@ -571,6 +573,8 @@ public class Main extends Application {
 		try {
 			Image dos = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\2.png"));
 			ImageView dosImg = new ImageView(dos);
+			dosImg.setFitHeight(130);
+			dosImg.setFitWidth(100);
 			imagenes[1] = dosImg;
 		} catch (FileNotFoundException e) {
 			Alert info = new Alert(AlertType.ERROR);
@@ -582,6 +586,8 @@ public class Main extends Application {
 		try {
 			Image tres = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\3.png"));
 			ImageView tresImg = new ImageView(tres);
+			tresImg.setFitHeight(130);
+			tresImg.setFitWidth(100);
 			imagenes[2] = tresImg;
 		} catch (FileNotFoundException e) {
 			Alert info = new Alert(AlertType.ERROR);
@@ -593,6 +599,8 @@ public class Main extends Application {
 		try {
 			Image cuatro = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\4.png"));
 			ImageView cuatroImg = new ImageView(cuatro);
+			cuatroImg.setFitHeight(130);
+			cuatroImg.setFitWidth(100);
 			imagenes[3] = cuatroImg;
 		} catch (FileNotFoundException e) {
 			Alert info = new Alert(AlertType.ERROR);
@@ -604,6 +612,8 @@ public class Main extends Application {
 		try {
 			Image cinco = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\5.png"));
 			ImageView cincoImg = new ImageView(cinco);
+			cincoImg.setFitHeight(130);
+			cincoImg.setFitWidth(100);
 			imagenes[5] = cincoImg;
 		} catch (FileNotFoundException e) {
 			Alert info = new Alert(AlertType.ERROR);
@@ -612,6 +622,8 @@ public class Main extends Application {
 			info.setContentText("");
 			info.show();
 		}
+		imms.add(bienvenida, 0, 0);
+		int imActual = 0;
 		
 		
 //General		

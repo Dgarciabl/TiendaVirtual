@@ -98,5 +98,15 @@
     },
     "precioVenta": 700.0,
     "precioCompra": 2000.0
+  },
+  {
+    "nombre": "Audifonos",
+    "descripcion": "Buena calidad de sonido",
+    "categorias": {
+      "nombre": "Lacteos",
+      "descripcion": "Derivados de la leche"
+    },
+    "precioVenta": 2000.0,
+    "precioCompra": 3000.0
   }
 ]

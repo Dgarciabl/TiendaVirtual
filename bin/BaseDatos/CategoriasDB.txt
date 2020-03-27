@@ -18,5 +18,9 @@
   {
     "nombre": "Electrodomesticos",
     "descripcion": "Todo para el hogar"
+  },
+  {
+    "nombre": "Comestibles",
+    "descripcion": "comida para comer"
   }
 ]

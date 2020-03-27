@@ -18,5 +18,17 @@
   {
     "nombre": "Electrodomesticos",
     "descripcion": "Todo para el hogar"
+  },
+  {
+    "nombre": "Comestibles",
+    "descripcion": "comida para comer"
+  },
+  {
+    "nombre": "Varios",
+    "descripcion": "utilidades"
+  },
+  {
+    "nombre": "Belleza",
+    "descripcion": "cuidado personal"
   }
 ]

@@ -61,5 +61,15 @@
     "categorias": null,
     "precioVenta": 75000.0,
     "precioCompra": 35000.0
+  },
+  {
+    "nombre": "Papitas",
+    "descripcion": "saladas",
+    "categorias": {
+      "nombre": "Lacteos",
+      "descripcion": "Derivados de la leche"
+    },
+    "precioVenta": 700.0,
+    "precioCompra": 2000.0
   }
 ]

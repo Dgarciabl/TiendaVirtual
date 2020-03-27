@@ -572,7 +572,7 @@ public class Main extends Application {
 			info.show();
 		}
 		try {
-			Image dos = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\2.png"));
+			Image dos = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\2.jpg"));
 			ImageView dosImg = new ImageView(dos);
 			dosImg.setFitHeight(130);
 			dosImg.setFitWidth(100);
@@ -585,7 +585,7 @@ public class Main extends Application {
 			info.show();
 		}
 		try {
-			Image tres = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\3.png"));
+			Image tres = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\3.jpg"));
 			ImageView tresImg = new ImageView(tres);
 			tresImg.setFitHeight(130);
 			tresImg.setFitWidth(100);
@@ -598,7 +598,7 @@ public class Main extends Application {
 			info.show();
 		}
 		try {
-			Image cuatro = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\4.png"));
+			Image cuatro = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\4.jpg"));
 			ImageView cuatroImg = new ImageView(cuatro);
 			cuatroImg.setFitHeight(130);
 			cuatroImg.setFitWidth(100);
@@ -611,7 +611,7 @@ public class Main extends Application {
 			info.show();
 		}
 		try {
-			Image cinco = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\5.png"));
+			Image cinco = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\5.jpg"));
 			ImageView cincoImg = new ImageView(cinco);
 			cincoImg.setFitHeight(130);
 			cincoImg.setFitWidth(100);

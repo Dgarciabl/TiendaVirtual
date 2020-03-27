@@ -11,7 +11,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 40
+      "cantidad": 38
     },
     {
       "producto": {
@@ -24,7 +24,7 @@
         "precioVenta": 3500.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 31
+      "cantidad": 30
     },
     {
       "producto": {
@@ -37,7 +37,7 @@
         "precioVenta": 8900.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 46
+      "cantidad": 44
     },
     {
       "producto": {
@@ -125,7 +125,7 @@
         "precioVenta": 2000.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 5
+      "cantidad": 4
     }
   ]
 }

@@ -371,50 +371,132 @@ public class Main extends Application {
 	public void Escenas() {
 		//Inicial
 		principalInicial=new BorderPane();
-		sceneInicial=new Scene(principalInicial, 400,400);
+		sceneInicial=new Scene(principalInicial, 800,800);
 		//Invitado
 		principalInvitado=new BorderPane();
-		sceneInvitado=new Scene(principalInvitado, 400,400);
+		sceneInvitado=new Scene(principalInvitado, 800,800);
 		principalInvitado.setTop(menuInvitado());
 		//Usuario
 		principalUsuario=new BorderPane();
-		sceneUsuario=new Scene(principalUsuario, 400,400);
+		sceneUsuario=new Scene(principalUsuario, 800,800);
 		principalUsuario.setTop(menuUsuario());
 		//Administrador
 		principalAdministrador=new BorderPane();
-		sceneAdministrador=new Scene(principalAdministrador, 400,400);
+		sceneAdministrador=new Scene(principalAdministrador, 800,800);
 		principalAdministrador.setTop(menuAdministrador());
 	}
 	public static void principal() {
 		BorderPane mainPane = new BorderPane();
-		//Abajo
-		String[] hojaVida = new String[4];		
-		//GridPane biografia = new GridPane();
-		hojaVida[0] = "Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractico natación y me gusta aprender cosas nuevas";
-		hojaVida[1] = "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sisemas";
-		hojaVida[2] = "David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial";
-		hojaVida[3] = "David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos";
+//Abajo
+		Label[] hojaVida = new Label[4];		
+		GridPane biografia = new GridPane();
+		//Texto
+		hojaVida[0] = new Label( "Juan Pablo Buitrago Díaz: 19 años \nAmantes de los juegos y salir con buena compañía, \nEstudiante de tercer semestre ingenieria en sisemas");
+		hojaVida[1] = new Label("David Andres Cano Gonzalez 19 años \nEstudiante de ingenieria de sistemas de 3er semestre \nBusca enfocarse en el campo de desarrollo de videojuegos");
+		hojaVida[2] = new Label("Julian Fernández Montoya \nEstudiante de Ingenieria de Sistemas de tercer semestre \nPractico natación y me gusta aprender cosas nuevas");
+		hojaVida[3] = new Label("David García Blandón\nFecha Nacimiento: 08-05-1997(DD-MM-AAAA)\nEstudia Actualmente: Universidad Nacional de Colombia sede Medellin\ncursa: Ingenieria de Sistemas, 3er Semestre\nCurso el Bachillerato: Colegio Jorge Robledo, Colegio Fontan.\nAspiraciones: Ser investigador en temas de Inteligencia Artificial");
 		hojaActual = 0;
-		//Image julianI = new Image(getClass().getResourceAsStream("src//BaseDatos//julian.jpg"));
-		
+		//Imagenes
+		ImageView[] fotos = new ImageView[4];
+
+		try {
+			Image buitragoI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\buitrago.jpg"));
+			ImageView buitragoImg = new ImageView(buitragoI);
+			buitragoImg.setFitHeight(130);
+			buitragoImg.setFitWidth(100);
+			fotos[0] = buitragoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+			e.printStackTrace();
+		}
+		try {
+			Image canoI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\cano.jpg"));
+			ImageView canoImg = new ImageView(canoI);
+			canoImg.setFitHeight(130);
+			canoImg.setFitWidth(100);
+			fotos[1] = canoImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+			e.printStackTrace();
+		}
+		try {
+			Image julianI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\julian.jpg"));
+			ImageView julianImg = new ImageView(julianI);
+			julianImg.setFitHeight(130);
+			julianImg.setFitWidth(100);
+			fotos[2] = julianImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+			e.printStackTrace();
+		}
+		try {
+			Image davidI = new Image(new FileInputStream(System.getProperty("user.dir") + "\\src\\BaseDatos\\david.jpg"));
+			ImageView davidImg = new ImageView(davidI);
+			davidImg.setFitHeight(130);
+			davidImg.setFitWidth(100);
+			fotos[3] = davidImg;
+		} catch (FileNotFoundException e) {
+			Alert info = new Alert(AlertType.ERROR);
+			info.setHeaderText("Error");
+			info.setTitle("No se pudo encontrar la imagen");
+			info.setContentText("");
+			info.show();
+			e.printStackTrace();
+		}
 		
 		Label creadores = new Label(hojaVida[hojaActual]);
+		biografia.add(fotos[0],0,0);
+		biografia.add(creadores, 0, 1);
 		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event){
 				
 				if( hojaActual != 3){
+					biografia.getChildren().remove(hojaVida[hojaActual]);
+					biografia.getChildren().remove(creadores);
 					hojaActual +=1;
 					creadores.setText(hojaVida[hojaActual]);
-					//biografia.add(creadores, 0, 0);
+					biografia.add(fotos[hojaActual], 0, 0);
+					biografia.add(creadores, 0, 1);
 				}else {
+					biografia.getChildren().remove(hojaVida[hojaActual]);
+					biografia.getChildren().remove(creadores);
 					hojaActual = 0;
 					creadores.setText(hojaVida[hojaActual]);
-					//biografia.add(creadores, 0, 0);
+					biografia.add(fotos[hojaActual], 0, 0);
+					biografia.add(creadores, 0, 1);
 				}
 			}
 		});
-		//Derecha
+		HBox[] descripciones = new HBox[4];
+		HBox buitrago = new HBox();
+		buitrago.getChildren().addAll(fotos[0],hojaVida[0]);
+		descripciones[0] = buitrago;
+		HBox cano = new HBox();
+		buitrago.getChildren().addAll(fotos[1],hojaVida[1]);
+		descripciones[1] = cano;
+		HBox julian = new HBox();
+		buitrago.getChildren().addAll(fotos[2],hojaVida[2]);
+		descripciones[2] = julian;
+		HBox david = new HBox();
+		buitrago.getChildren().addAll(fotos[3],hojaVida[3]);
+		descripciones[3] = david;
+		
+		
+		
+//Derecha
 		VBox login = new VBox();
 		Label title = new Label("");
 		
@@ -470,7 +552,7 @@ public class Main extends Application {
 		bienvenida.setMaxWidth(Double.MAX_VALUE);
 		mainPane.setRight(login);
 		mainPane.setLeft(bienvenida);
-		mainPane.setBottom(creadores);
+		mainPane.setBottom(biografia);
 		mainPane.setTop(menuPrincipal());
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;
@@ -813,7 +895,7 @@ public class Main extends Application {
 								}
 							}else {
 								Alert info = new Alert(AlertType.ERROR);
-								info.setHeaderText("Debe Ingresar numeros en este campo");
+								info.setHeaderText("Error");
 								info.setTitle("Debe Ingresar numeros en este campo");
 								info.setContentText("");
 								info.show();

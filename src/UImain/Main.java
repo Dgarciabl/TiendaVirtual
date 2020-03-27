@@ -458,44 +458,44 @@ public class Main extends Application {
 			info.show();
 			e.printStackTrace();
 		}
-		
-		Label creadores = new Label(hojaVida[hojaActual]);
-		biografia.add(fotos[0],0,0);
-		biografia.add(creadores, 0, 1);
-		creadores.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent event){
-				
-				if( hojaActual != 3){
-					biografia.getChildren().remove(hojaVida[hojaActual]);
-					biografia.getChildren().remove(creadores);
-					hojaActual +=1;
-					creadores.setText(hojaVida[hojaActual]);
-					biografia.add(fotos[hojaActual], 0, 0);
-					biografia.add(creadores, 0, 1);
-				}else {
-					biografia.getChildren().remove(hojaVida[hojaActual]);
-					biografia.getChildren().remove(creadores);
-					hojaActual = 0;
-					creadores.setText(hojaVida[hojaActual]);
-					biografia.add(fotos[hojaActual], 0, 0);
-					biografia.add(creadores, 0, 1);
-				}
-			}
-		});
 		HBox[] descripciones = new HBox[4];
 		HBox buitrago = new HBox();
 		buitrago.getChildren().addAll(fotos[0],hojaVida[0]);
 		descripciones[0] = buitrago;
 		HBox cano = new HBox();
-		buitrago.getChildren().addAll(fotos[1],hojaVida[1]);
+		cano.getChildren().addAll(fotos[1],hojaVida[1]);
 		descripciones[1] = cano;
 		HBox julian = new HBox();
-		buitrago.getChildren().addAll(fotos[2],hojaVida[2]);
+		julian.getChildren().addAll(fotos[2],hojaVida[2]);
 		descripciones[2] = julian;
 		HBox david = new HBox();
-		buitrago.getChildren().addAll(fotos[3],hojaVida[3]);
+		david.getChildren().addAll(fotos[3],hojaVida[3]);
 		descripciones[3] = david;
+		mainPane.setBottom(descripciones[0]);
+		hojaVida[0].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[1]);
+			}
+		});
+		hojaVida[1].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[2]);
+			}
+		});
+		hojaVida[2].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[3]);
+			}
+		});
+		hojaVida[3].setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event){
+				mainPane.setBottom(descripciones[0]);
+			}
+		});
 		
 		
 		
@@ -555,7 +555,6 @@ public class Main extends Application {
 		bienvenida.setMaxWidth(Double.MAX_VALUE);
 		mainPane.setRight(login);
 		mainPane.setLeft(bienvenida);
-		mainPane.setBottom(biografia);
 		mainPane.setTop(menuPrincipal());
 		Scene principal = new Scene(mainPane,400,400);
 		sceneInicial = principal;

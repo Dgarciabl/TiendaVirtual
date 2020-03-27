@@ -3,7 +3,7 @@
     {
       "producto": {
         "nombre": "Leche",
-        "descripcion": "1 Litro",
+        "descripcion": "2 Litros",
         "categorias": {
           "nombre": "Lacteos",
           "descripcion": "Derivados de la leche"
@@ -128,7 +128,7 @@
         "precioVenta": 2000.0,
         "precioCompra": 3000.0
       },
-      "cantidad": 10
+      "cantidad": 9
     }
   ]
 }

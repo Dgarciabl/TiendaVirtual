@@ -776,6 +776,43 @@ public class Main extends Application {
 		});
 		Button editar=new Button("Editar");
 		Button añadirSaldo=new Button("Añadir Saldo");
+		Button Ccontraseña=new Button ("Cambiar Contraseña");
+		Ccontraseña.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				TextInputDialog con=new TextInputDialog();
+				con.setTitle("Cambiar Contraseña");
+				con.setHeaderText("Digite su contraseña actual");
+				con.setContentText("Contraseña actual");
+				Optional<String>res=con.showAndWait();
+				res.ifPresent(new Consumer<String>() {
+					public void accept (String u) {
+						if (usuario.comprobarContraseña(res.get())==false) {
+							Alert a=new Alert(AlertType.ERROR);
+							a.setTitle("Error");
+							a.setHeaderText("Contraseña incorrecta");
+							a.show();
+						}
+						else {
+							TextInputDialog act=new TextInputDialog();
+							act.setTitle("Cambiar Contraseña");
+							act.setHeaderText("Digite la nueva contraseña");
+							act.setContentText("Nueva contraseña");
+							Optional<String>res2=act.showAndWait();
+							res2.ifPresent(new Consumer<String>() {
+								public void accept(String e) {
+									usuario.setContraseña(res.get(), res2.get());
+									Alert a=new Alert(AlertType.CONFIRMATION);
+									a.setTitle("Cambiar Contraseña");
+									a.setHeaderText("Contrtaseña cambiada correctamente");
+									a.show();
+									archivo();
+								}
+							});
+						}
+					}
+				});
+			}
+		});
 		titulo.setPadding(new Insets(5));
 		Botones.setAlignment(Pos.CENTER);
 		Botones.setPadding(new Insets(8,8,8,8));
@@ -826,9 +863,10 @@ public class Main extends Application {
 			            });
 					}
 			});
-			Botones.add(salir, 2, 0);
+			Botones.add(salir, 3, 0);
 			Botones.add(editar, 0, 0);
 			Botones.add(añadirSaldo, 1, 0);
+			Botones.add(Ccontraseña, 2, 0);
 		}else if (usuario instanceof Administrador) {
 			titulo.setText("Perfil de Administrador");
 			categorias=new String[] {"Nombre:","Edad:","Genero:"};
@@ -839,7 +877,8 @@ public class Main extends Application {
 			}
 			boolean[] habilitado=new boolean[] {false,false,false};
 			presentacion=new FieldPane("Información", categorias, "Personal", valores, habilitado);
-			Botones.add(salir, 1, 0);
+			Botones.add(salir, 2, 0);
+			Botones.add(Ccontraseña, 1, 0);
 			Botones.add(editar, 0, 0);
 		}else {
 			titulo.setText("Perfil de Invitado");

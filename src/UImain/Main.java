@@ -2120,7 +2120,7 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Alert al = new Alert(AlertType.ERROR);
+				Alert al = new Alert(AlertType.INFORMATION);
 				try {
 					String nombre = columnas.getValue(0);
 					String descripcion = columnas.getValue(1);
@@ -2222,7 +2222,7 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Alert al = new Alert(AlertType.ERROR);
+				Alert al = new Alert(AlertType.INFORMATION);
 				try {
 					String nombre = columnas.getValue(0);
 					String descripcion = columnas.getValue(1);
@@ -2312,7 +2312,7 @@ public class Main extends Application {
 		crear.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Alert al = new Alert(AlertType.ERROR);
+				Alert al = new Alert(AlertType.INFORMATION);
 				try {
 					if(columnas.getValue(1)==null || columnas.getValue(1).isEmpty()) {
 						throw  new FormularioIncompletoError();
@@ -2381,7 +2381,7 @@ public class Main extends Application {
 					al.setTitle("Nombre duplicado");
 				}
 				al.show();
-				for(int i=0; i<7;i++) {
+				for(int i=0; i<=7;i++) {
 					columnas.getBox(i).clear();
 				}
 			}

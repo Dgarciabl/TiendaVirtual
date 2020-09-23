@@ -2,11 +2,25 @@
   {
     "saldo": 12100.0,
     "carroCompra": {
-      "subTotal": 0.0,
-      "numObjetos": 0,
-      "inventario": []
+      "subTotal": 10500.0,
+      "numObjetos": 1,
+      "inventario": [
+        {
+          "producto": {
+            "nombre": "Frijoles",
+            "descripcion": "500gr",
+            "categorias": {
+              "nombre": "Granos",
+              "descripcion": "Semillas entera"
+            },
+            "precioVenta": 3500.0,
+            "precioCompra": 3000.0
+          },
+          "cantidad": 3
+        }
+      ]
     },
-    "nombre": "pablo",
+    "nombre": "pablo buitrago",
     "genero": true,
     "edad": 24,
     "usuario": "user",
@@ -88,5 +102,20 @@
     "contraseña": "cami",
     "preguntaRecuperacion": "kami",
     "respuestaRecuperacion": "kami"
+  },
+  {
+    "saldo": 3.0,
+    "carroCompra": {
+      "subTotal": 0.0,
+      "numObjetos": 0,
+      "inventario": []
+    },
+    "nombre": "david",
+    "genero": true,
+    "edad": 23,
+    "usuario": "1234321",
+    "contraseña": "1234321",
+    "preguntaRecuperacion": "david",
+    "respuestaRecuperacion": "david"
   }
 ]
